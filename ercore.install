@@ -1,0 +1,210 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the ERCore module.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * Add entities and fields, set variables.
+ */
+function ercore_install() {
+  $t = get_t();
+  $ercore_admin_menu = array(
+    'menu_name' => 'ercore_admin_menu',
+    'title' => $t('ERCore Administration'),
+    'description' => $t('ERCore specific adminstrative content.'),
+  );
+  menu_save($ercore_admin_menu);
+
+  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/ercore_variable_set.inc";
+  // Adds variables.
+  foreach (_ercore_node_types() as $type) {
+    // Check node type, create if it doesn't exist.
+    $name = $type['type'];
+    $body_label = $type['body_label'];
+    $typecheck = node_type_load($name);
+    if (!isset($typecheck->name)) {
+      // Set other node defaults not declared above.
+      $content_type = node_type_set_defaults($type);
+
+      if ($body_label != NULL) {
+        // Add the body field.
+        node_add_body_field($content_type, $t('Body'));
+      }
+      // Save the content type.
+      node_type_save($content_type);
+    }
+    if ($body_label != NULL) {
+      $body_instance = field_info_instance('node', 'body', $name);
+      $body_instance['type'] = 'default_text';
+      $body_instance['label'] = $body_label;
+      $body_instance['display']['default'] = array(
+        'label' => 'hidden',
+        'type' => 'default_text',
+        'weight' => '5',
+      );
+      $body_instance['display']['full'] = array(
+        'label' => 'hidden',
+        'type' => 'default_text',
+        'weight' => '5',
+      );
+      $body_instance['display']['teaser'] = array(
+        'label' => 'hidden',
+        'type' => 'default_text',
+        'weight' => '5',
+      );
+      field_update_instance($body_instance);
+    }
+  }
+
+  // Create all the fields we are adding to our content type.
+  foreach (_ercore_installed_fields() as $field) {
+    field_create_field($field);
+  }
+  // Create all the instances for our fields.
+  foreach (_ercore_installed_instances() as $instance) {
+    field_create_instance($instance);
+  }
+  // Create ERCore Taxonomies.
+  $vocabularies = array(
+    'component',
+    '',
+  );
+
+  $vocabulary = 'Organizational Components';
+  // Vocabulary Name.
+  $machine = 'ercore_component_vocab';
+  // Vocabulary machine name to add.
+  $vocab = taxonomy_vocabulary_machine_name_load($machine);
+  if (!isset($vocab->vid)) {
+
+    // If taxonomy doesn't exist.
+    // Add taxonomy.
+    taxonomy_vocabulary_save((object)array(
+      'name' => $vocabulary,
+      'machine_name' => $machine,
+    ));
+
+  }
+
+  // Call the array with your default roles.
+  $roles = _ercore_default_roles();
+  // Loop through the array.
+  foreach ($roles as $value) {
+    // Check that a role is not already returned.
+    if (!user_role_load_by_name($value)) {
+
+      $role = new stdClass(); // create your Class
+
+      // Match values to the role Class.
+      $role->name = $value['name'];
+      $role->weight = $value['weight'];
+
+      // Save the Role using Drupal's API.
+      user_role_save($role);
+    }
+    else {
+      $role = user_role_load_by_name($value);
+      $role->weight = $value['weight'];
+      user_role_save($role);
+    }
+
+    $valuename = $value['name'];
+    $permissions = $value['permissions'];
+    $role_id = user_role_load_by_name($valuename);
+    user_role_grant_permissions($role_id->rid, $permissions);
+  }
+  // define admin role
+  $admin = user_role_load_by_name('administrator');
+  variable_set('user_admin_role', $admin->rid);
+}
+
+// Adds node type array.
+include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/ercore_default_roles.inc";
+
+// Adds node type array.
+include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/ercore_node_types.inc";
+
+// Adds field definitions array.
+include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/ercore_field_definitions.inc";
+
+// Adds field instances array.
+include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/ercore_field_instances.inc";
+
+
+/**
+ * Implements hook_uninstall().
+ *
+ * Remove entities and fields, set variables.
+ */
+function ercore_uninstall() {
+
+  // Adds variables to delete.
+  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/ercore_variable_del.inc";
+
+  // Find all field collection fields and delete instance.
+  $collections = array(
+    'field_ev_engagement',
+    'field_cn_collaborator',
+  );
+  foreach ($collections as $collection) {
+    $collection_instances = field_info_instances('field_collection_item', $collection);
+    foreach ($collection_instances as $collection_instance_name => $collection_instance) {
+      field_delete_instance($collection_instance);
+    }
+  }
+
+  // Gather all ERCore nodes created.
+  $nids = array();
+  foreach (_ercore_node_types() as $type) {
+    $node_bundle = $type['type'];
+    $sql = 'SELECT nid FROM {node} n WHERE n.type = :type';
+    $result = db_query($sql, array(':type' => $node_bundle));
+
+    foreach ($result as $row) {
+      $nids[] = $row->nid;
+    }
+    // Delete all ERCore nodes by type.
+    node_delete_multiple($nids);
+
+    // Find all node fields and delete instance.
+    $node_instances = field_info_instances('node', $node_bundle);
+    foreach ($node_instances as $node_instance_name => $node_instance) {
+      field_delete_instance($node_instance);
+    }
+    node_type_delete($node_bundle);
+  }
+  // Purge all field information.
+  field_purge_batch(1000);
+
+  $term_bundle = 'ercore_component_vocab';
+  // Vocabulary machine name to remove.
+  // Find all taxonomy term fields and delete instance.
+  $term_instances = field_info_instances('taxoomy_term', $term_bundle);
+  foreach ($term_instances as $term_instance_name => $term_instance) {
+    field_delete_instance($term_instance);
+  }
+
+  // Find all user fields and delete instance.
+  $user_instances = field_info_instances('user', 'user');
+  foreach ($user_instances as $user_instance_name => $user_instance) {
+    field_delete_instance($user_instance);
+  }
+
+  // Uninstall Vocabulary.
+  $vocab = taxonomy_vocabulary_machine_name_load($term_bundle);
+  if (isset($vocab->vid)) {
+
+    // If taxonomy exists.
+    taxonomy_vocabulary_delete($vocab->vid);
+    // Delete Vocabulary.
+  }
+  // Remove ERCore Admin menu on uninstall.
+  $menu = array(
+    'menu_name' => 'ercore_admin_menu',
+  );
+  menu_delete($menu);
+}

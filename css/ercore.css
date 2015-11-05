@@ -1,0 +1,35 @@
+/* ERCore module stylesheet */
+.ercore-cn-description em {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.date-display-single div {
+    display: inline-block;
+}
+
+.field-name-field-ercore-cr-name, .field-name-field-ercore-cr-name div {
+    display: inline;
+    font-weight: bold;
+}
+
+.field-name-field-ercore-cr-dpt, .field-name-field-ercore-cr-dpt div {
+    display: inline;
+}
+
+.field-name-field-ercore-cr-name + .field-name-field-ercore-cr-dpt:before {
+    content: ", ";
+    display: inline;
+}
+.field-name-field-ercore-cn-collaborator .field-item + .field-item {
+    margin-top:12px;
+}
+.field-name-field-ercore-organizer .field-item {
+    padding-left:25px;
+}
+.field-name-field-ercore-organizer .field-item + .field-item {
+    padding-top:5px;
+}
+.collaborator-name {
+    font-weight: bold;
+}

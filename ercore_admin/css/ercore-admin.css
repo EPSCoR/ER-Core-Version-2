@@ -1,0 +1,13 @@
+/* ERCore module stylesheet */
+.list-row.rows-counted .counter {
+    float: left;
+    font-size: 2em;
+    margin-top: 12px;
+}
+.list-row.rows-counted .counted {
+    padding-left: 50px;
+}
+.view-ercore-external-engagements-information table caption {
+    font-weight:bold;
+    font-size: 1.2em;
+}

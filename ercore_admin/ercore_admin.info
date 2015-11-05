@@ -1,0 +1,15 @@
+name = ERCore Admin
+description = Administrative pages for the ERCore module
+
+package = ERCore
+core = 7.x
+
+dependencies[] = ercore
+dependencies[] = date_views
+dependencies[] = phpexcel
+dependencies[] = semanticviews
+
+
+version = "7.x-1.0"
+
+stylesheets[all][] = css/ercore-admin.css

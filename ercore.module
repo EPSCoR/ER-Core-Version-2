@@ -1,0 +1,622 @@
+<?php
+/**
+ * @file
+ * Module file for the ERCore module.
+ */
+
+/**
+ * Implements hook_date_format_types().
+ */
+function ercore_date_format_types() {
+  return array(
+    'ercore_date_format_filter' => t('ErCore: View Filter'),
+    'ercore_date_format_day_name' => t('Day Name'),
+    'ercore_date_format_month_day_year' => t('Month Day Year'),
+    'ercore_date_format_month_year' => t('Month Year'),
+    'ercore_date_format_month' => t('Month'),
+    'ercore_date_format_year' => t('Year'),
+    'ercore_date_format_time' => t('Time'),
+  );
+}
+/**
+ * Add custom view modes
+ * Implements hook_entity_info_alter().
+ * The first attribute in the array defines an arbitrary label for the view mode machine name.
+ * 'custom settings' => TRUE displays the view mode as a default at the top of the display modes settings screen
+ */
+
+function ercore_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['teaser_alternate'] = array(
+    'label' => t('Alternate Teaser'),
+    'custom settings' => FALSE,
+  );
+  $entity_info['field_collection_item']['view modes']['simplified'] = array(
+    'label' => t('Simplified'),
+    'custom settings' => FALSE,
+  );
+  $entity_info['user']['view modes']['user_institution'] = array(
+    'label' => t('User with Institution'),
+    'custom settings' => FALSE,
+  );
+}
+/**
+ * Implements hook_date_formats().
+ */
+function ercore_date_formats() {
+  $formats = array();
+  // Short date formats.
+  $formats[] = array(
+    'type' => 'ercore_date_format_filter',
+    'format' => 'Y-m-d',
+    'locales' => array(),
+  );
+  $formats[] = array(
+    'type' => 'ercore_date_format_day_name',
+    'format' => 'l',
+    'locales' => array(),
+  );
+  $formats[] = array(
+    'type' => 'ercore_date_format_year',
+    'format' => 'Y',
+    'locales' => array(),
+  );
+  $formats[] = array(
+    'type' => 'ercore_date_format_month_day_year',
+    'format' => 'F j, Y',
+    'locales' => array(),
+  );
+  $formats[] = array(
+    'type' => 'ercore_date_format_month_year',
+    'format' => 'F Y',
+    'locales' => array(),
+  );
+  $formats[] = array(
+    'type' => 'ercore_date_format_month',
+    'format' => 'm',
+    'locales' => array(),
+  );
+  $formats[] = array(
+    'type' => 'ercore_date_format_time',
+    'format' => 'g:i a',
+    'locales' => array(),
+  );
+  return $formats;
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function ercore_menu_alter(&$items) {
+  $items['node/add'] = array(
+    'title' => 'Add content',
+    'page callback' => '_ercore_callback_node_add_page',
+    'access callback' => '_node_add_access',
+  );
+}
+
+/**
+ * Menu page callback for add/node page.
+ *
+ *  Callback for ercore_menu_alter().
+ */
+function _ercore_callback_node_add_page() {
+  $item = menu_get_item();
+  $content = system_admin_menu_block($item);
+  $type = array();
+  $type['ercore_types']['name'] = 'ERCore';
+  $type['ercore_types']['content'] = (array_filter($content, '_ercore_node_type_check'));
+  $type['jurisdictional_types']['name'] = 'ERCore Jurisdictional';
+  $type['jurisdictional_types']['content'] = (array_filter($content, '_ercore_j_node_type_check'));
+  $type['old_ercore_types']['name'] = 'Old ERCore Content Types';
+  $type['old_ercore_types']['content'] = (array_filter($content, '_ercore_old_node_type_check'));
+  $type['drupal_types']['name'] = 'Drupal';
+  $type['drupal_types']['content'] = (array_filter($content, '_ercore_drupal_node_type_check'));
+  $print_type = _ercore_theme_node_add_list($type);
+  return $print_type;
+
+  // Return theme('node_add_list', array('content' => $content));
+}
+
+
+/**
+ * Receives node type array, returns true if type is ERCore.
+ *
+ * @param array $type_check
+ *   Checks if node type are identified as ERCore.
+ *
+ * @return bool
+ *   Returns boolean value of ERCore Status
+ */
+function _ercore_node_type_check(array $type_check) {
+  if (substr($type_check['link_path'], 9, 6) === 'ercore' && substr($type_check['link_path'], 9, 8) !== 'ercore-j') {
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/**
+ * Receives node type array, returns true if type is ERCore.
+ *
+ * @param array $type_check
+ *   Checks if node type are identified as ERCore Jurisdictional.
+ *
+ * @return bool
+ *   Returns boolean value of ERCore Jurisdicitonal Status
+ */
+function _ercore_j_node_type_check(array $type_check) {
+  if (substr($type_check['link_path'], 9, 8) === 'ercore-j') {
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/**
+ * Receives node type array, returns true if type is Old ERCore.
+ *
+ * @param array $type_check
+ *   Checks if node type are identified as Old ERCore related.
+ *
+ * @return bool
+ *   Returns boolean value of Old ERCore Status
+ */
+function _ercore_old_node_type_check(array $type_check) {
+  if (substr($type_check['link_path'], 9, 3) === 'er-') {
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/**
+ * Receives node type array, returns true if type is ERCore.
+ *
+ * @param array $type_check
+ *   Checks if node type are identified as not ERCore related.
+ *
+ * @return bool
+ *   Returns boolean value of ERCore Status
+ */
+function _ercore_drupal_node_type_check(array $type_check) {
+  if (substr($type_check['link_path'], 9, 6) !== 'ercore' && substr($type_check['link_path'], 9, 3) !== 'er-') {
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/**
+ * Themes Drupal add node page with categories.
+ */
+function _ercore_theme_node_add_list($variables) {
+  $output = '';
+
+  if ($variables != '' || $variables != NULL) {
+    foreach ($variables as $type) {
+      if ($type['content']) {
+        $output .= '<h2>' . $type['name'] . '</h2><ul class="admin-list">';
+        foreach ($type['content'] as $item) {
+          $output .= '<li class="clearfix">' . l($item['title'], $item['href'], $item['localized_options']);
+          $output .= '<div class="description">' . filter_xss_admin($item['description']) . '</div></li>';
+        }
+        $output .= '</ul>';
+      }
+    }
+  }
+  else {
+    $output = '<p>' . t('You have not created any content types yet. Go to the <a href="@create-content">content type creation page</a> to add a new content type.', array('@create-content' => url('admin/structure/types/add'))) . '</p>';
+  }
+  return $output;
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function ercore_views_api($module, $api) {
+  if ($module == 'views' && $api == 'views_default') {
+    return array('version' => 2);
+  }
+}
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function ercore_ctools_plugin_api($module, $api) {
+  if ($module == 'field_group' && $api == 'field_group') {
+    return array('version' => 1);
+  }
+}
+
+/**
+ * Custom hook using phpexcel() api.
+ */
+function ercore_ee_import() {
+  module_load_include('inc', 'phpexcel');
+
+  $path = '';
+  $result = phpexcel_import($path);
+
+  if (is_array($result)) {
+    drupal_set_message(t("External engagement data imported."));
+  }
+  else {
+    drupal_set_message(t("Sorry, an error occured. No engagement data was imported."), 'error');
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function ercore_form_alter(&$form, &$form_state, $form_id) {
+  //dpm($form_id);
+  $forms = array(
+    'ercore_other_product_node_form',
+    'ercore_event_node_form',
+    'ercore_collaboration_node_form',
+    'ercore_patent_node_form',
+    'ercore_presentation_node_form',
+    'ercore_proposal_node_form',
+    'ercore_publication_node_form',
+    'ercore_j_highlight_node_form',
+    'ercore_j_honor_node_form',
+  );
+  if (in_array($form_id, $forms) && $form['nid']['#value'] == NULL) {
+    $author = $form['author']['name']['#default_value'];
+    $author_uid = $form['uid']['#value'];
+    $form['field_ercore_organizer']['und'][0]['target_id']['#default_value'] = "$author ($author_uid)";
+    $message = 'Your name, "' . $author . '", has been automatically added to ' . $form['field_ercore_organizer']['und']['#title'] . ' field.';
+    drupal_set_message($message, 'status');
+  }
+  // Patent conditional fields
+  if ($form_id == 'ercore_patent_node_form') {
+    $form['field_ercore_pt_date']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_pt_licensed[und]"]' => array('checked' => TRUE),
+      ),
+      'required' => array(
+      ':input[name="field_ercore_pt_licensed[und]"]' => array('checked' => TRUE),
+      ),
+    );
+    $form['field_ercore_pt_licensee']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_pt_licensed[und]"]' => array('checked' => TRUE),
+      ),
+      'required' => array(
+        ':input[name="field_ercore_pt_licensed[und]"]' => array('checked' => TRUE),
+      ),
+    );
+
+  }
+  // Proposal conditional fields
+  if ($form_id == 'ercore_proposal_node_form') {
+    $form['field_ercore_pp_proposal_submit']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_pp_proposal_status[und]"]' => array(
+          array('value' => 'Submitted'),
+          array('value' => 'Pending'),
+          array('value' => 'Awarded'),
+          array('value' => 'Expired'),
+          array('value' => 'Denied'),
+        ),
+      ),
+    );
+    $form['field_ercore_pp_proposal_pending']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_pp_proposal_status[und]"]' => array('value' => 'Pending'),
+      ),
+      'required' => array(
+        ':input[name="field_ercore_pp_proposal_status[und]"]' => array('value' => 'Pending'),
+      ),
+    );
+    $form['field_ercore_pp_proposal_denied']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_pp_proposal_status[und]"]' => array('value' => 'Denied'),
+      ),
+      'required' => array(
+        ':input[name="field_ercore_pp_proposal_status[und]"]' => array('value' => 'Denied'),
+      ),
+    );
+    $form['field_ercore_pp_proposal_date']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_pp_proposal_status[und]"]' => array(
+          array('value' => 'Awarded'),
+          array('value' => 'Expired'),
+        ),
+      ),
+      'required' => array(
+        ':input[name="field_ercore_pp_proposal_status[und]"]' => array(
+          array('value' => 'Awarded'),
+          array('value' => 'Expired'),
+        ),
+      ),
+    );
+    $form['field_ercore_pp_award_amount']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_pp_proposal_status[und]"]' => array('value' => 'Awarded'),
+      ),
+      'required' => array(
+        ':input[name="field_ercore_pp_proposal_status[und]"]' => array('value' => 'Awarded'),
+      ),
+    );
+  }
+  // Publication conditional fields
+  if ($form_id == 'ercore_publication_node_form') {
+    // Publication Status Fields.
+    // Submitted Date field #states.
+    $form['field_ercore_pb_submit_date']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_pb_status[und]"]' => array(
+          array('value' => '0'),
+          array('value' => '1'),
+          array('value' => '2'),
+        ),
+      ),
+    );
+    // Published Date field #states.
+    $form['field_ercore_pb_date']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_pb_status[und]"]' => array('value' => '0'),
+      ),
+      'required' => array(
+        ':input[name="field_ercore_pb_status[und]"]' => array('value' => '0'),
+      ),
+    );
+    // NSF field #states.
+    $form['field_ercore_nsf']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_pb_status[und]"]' => array('value' => '0'),
+      ),
+      'required' => array(
+        ':input[name="field_ercore_pb_status[und]"]' => array('value' => '0'),
+      ),
+    );
+    // Body field #states.
+    $form['body']['#weight'] = '9';
+    $form['body']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_pb_status[und]"]' => array('value' => '0'),
+      ),
+      'required' => array(
+        ':input[name="field_ercore_pb_status[und]"]' => array('value' => '0'),
+      ),
+    );
+    // Publication Type Fields.
+    // Journal Name field #states.
+    $form['field_ercore_pb_journal_name']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_pb_type[und]"]' => array(
+          array('value' => 'Journal Article'),
+          array('value' => 'Book'),
+          array('value' => 'Conference Proceedings'),
+          array('value' => 'Magazine Article'),
+          array('value' => 'Technical Report'),
+          array('value' => 'Newspaper Article'),
+        ),
+      ),
+      'required' => array(
+        ':input[name="field_ercore_pb_type[und]"]' => array(
+          array('value' => 'Journal Article'),
+          array('value' => 'Book'),
+          array('value' => 'Conference Proceedings'),
+          array('value' => 'Magazine Article'),
+          array('value' => 'Newspaper Article'),
+        ),
+      ),
+    );
+    // Volume field #states.
+    $form['field_ercore_pb_journal_volume']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_pb_type[und]"]' => array(
+          array('value' => 'Journal Article'),
+          array('value' => 'Book'),
+          array('value' => 'Conference Proceedings'),
+          array('value' => 'Magazine Article'),
+          array('value' => 'Technical Report'),
+          array('value' => 'Newspaper Article'),
+        ),
+      ),
+    );
+    // Publisher field #states.
+    $form['field_ercore_pb_publisher']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_pb_type[und]"]' => array(
+          array('value' => 'Journal Article'),
+          array('value' => 'Book'),
+          array('value' => 'Conference Proceedings'),
+          array('value' => 'Magazine Article'),
+          array('value' => 'Technical Report'),
+          array('value' => 'Newspaper Article'),
+        ),
+      ),
+    );
+    // Title of Series field #states.
+    $form['field_ercore_pb_coll_title']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_pb_type[und]"]' => array(
+          array('value' => 'Journal Article'),
+          array('value' => 'Book'),
+          array('value' => 'Conference Proceedings'),
+          array('value' => 'Magazine Article'),
+          array('value' => 'Technical Report'),
+          array('value' => 'Newspaper Article'),
+        ),
+      ),
+    );
+    // Pages field #states.
+    $form['field_ercore_pb_journal_pages']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_pb_type[und]"]' => array(
+          array('value' => 'Journal Article'),
+          array('value' => 'Book'),
+          array('value' => 'Conference Proceedings'),
+          array('value' => 'Magazine Article'),
+          array('value' => 'Technical Report'),
+          array('value' => 'Newspaper Article'),
+        ),
+      ),
+    );
+    // DOI field #states.
+    $form['field_ercore_pb_doi']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_pb_type[und]"]' => array(
+          array('value' => 'Journal Article'),
+          array('value' => 'Book'),
+          array('value' => 'Conference Proceedings'),
+          array('value' => 'Magazine Article'),
+          array('value' => 'Technical Report'),
+          array('value' => 'Newspaper Article'),
+        ),
+      ),
+    );
+    // ARK field #states.
+    $form['field_ercore_pb_ark']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_pb_type[und]"]' => array(
+          array('value' => 'Journal Article'),
+          array('value' => 'Book'),
+          array('value' => 'Conference Proceedings'),
+          array('value' => 'Magazine Article'),
+          array('value' => 'Technical Report'),
+          array('value' => 'Newspaper Article'),
+        ),
+      ),
+    );
+
+    // Data field #states.
+    $form['field_ercore_pb_archived']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_pb_data[und]"]' => array('value' => '1'),
+      ),
+    );
+    $form['field_ercore_pb_arch_name']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_pb_archived[und]"]' => array('value' => '2'),
+      ),
+      'required' => array(
+        ':input[name="field_ercore_pb_archived[und]"]' => array('value' => '2'),
+      ),
+    );
+  }
+}
+
+/**
+ * Implements hook_permission().
+ */
+function ercore_permission() {
+  return array(
+    'administer ercore module' => array(
+      'title' => t('Administer ERCore module'),
+      'description' => t('Administer ERCore configuration and settings.'),
+    ),
+    'access ercore content' => array(
+      'title' => t('Access ERCore content'),
+      'description' => NULL,
+    ),
+    'access ercore excel sheets' => array(
+      'title' => t('Access ERCore Excel sheets'),
+      'description' => t('Display the download NSF table link on the
+      Accomplishments tab'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_help().
+ */
+function ercore_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#ercore':
+       return t("Help text to come.");
+  }
+}
+
+/**
+ * Implements hook_field_access().
+ *
+ * We want to make sure that fields aren't being seen or edited
+ * by those who shouldn't.
+ *
+ * We have to build a permission string similar to those in
+ * hook_permission() in order to ask Drupal whether the user
+ * has that permission. Permission strings will end up being
+ * like 'view any fieldnote' or 'edit own fieldnote'.
+ *
+ * The tricky thing here is that a field can be attached to any type
+ * of entity, so it's not always trivial to figure out whether
+ * $account 'owns' the entity. We'll support access restrictions for
+ * user and node entity types, and be permissive with others,
+ * since that's easy to demonstrate.
+ *
+ */
+function ercore_field_access($op, $field, $entity_type, $entity, $account) {
+  if ($op != 'edit') {
+    if (isset($entity->field_ercore_ev_date['und'][0]['value'])) {
+      $engagement = $entity->field_ercore_ev_reminders['und'][0]['value'];
+      $event_date = $entity->field_ercore_ev_date['und'][0]['value'];
+      $now = date("Y-m-d\TH:i:s");
+
+
+      if ($field['field_name'] == 'field_ercore_ev_engagement') {
+        if ($now >= $event_date && $engagement == 1) {
+          return TRUE;
+        }
+        else {
+          return FALSE;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_libraries_info().
+ */
+function ercore_libraries_info() {
+  $libraries['phpexcel'] = array(
+    'name' => 'PHPExcel',
+    "vendor url"=>"http://phpexcel.codeplex.com/",
+    "download url"=>"http://phpexcel.codeplex.com/downloads/get/688493",
+    "version arguments" => array(
+      'file' => 'changelog.txt',
+      'pattern' => "/@version\s+([0-9\.]+)/",
+      'lines' => 25,
+    ),
+    'path' => 'Classes',
+    'files' => array(
+      'php' => array(
+        'PHPExcel.php',
+      ),
+    ),
+  );
+  return $libraries;
+}
+/**
+ * Implements hook_menu().
+ */
+function ercore_menu() {
+  $items['admin/config/ercore'] = array(
+    'title' => 'ERCore',
+    'description' => 'ERCore Administrative settings.',
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('administer ercore module'),
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+  );
+  $items['admin/config/ercore/admin'] = array(
+    'title' => 'ERCore Reporting Module Settings',
+    'description' =>
+      'Settings which affect the functionality of the ERCore Reporting module.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ercore_settings_callback'),
+    'access arguments' => array('administer ercore module'),
+    'file' => 'pages/ercore-admin.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}

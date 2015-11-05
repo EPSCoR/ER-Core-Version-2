@@ -1,0 +1,42 @@
+name = ERCore
+description = ERCore data types and fields
+
+package = ERCore
+core = 7.x
+
+dependencies[] = computed_field
+dependencies[] = ctools
+dependencies[] = date
+dependencies[] = date_api
+dependencies[] = date_popup
+dependencies[] = date_repeat_field
+;dependencies[] = date_views
+dependencies[] = entity
+dependencies[] = entityconnect
+dependencies[] = entity_token
+dependencies[] = entityreference
+;dependencies[] = entityreference_prepopulate
+dependencies[] = field_collection
+dependencies[] = field_group
+dependencies[] = field_permissions
+;dependencies[] = flag
+;dependencies[] = libraries
+dependencies[] = link
+dependencies[] = list
+dependencies[] = name
+dependencies[] = nodeaccess_userreference
+dependencies[] = number
+;dependencies[] = page_manager
+dependencies[] = pathauto
+;dependencies[] = php
+;dependencies[] = phpexcel
+dependencies[] = realname
+dependencies[] = select_or_other
+dependencies[] = views
+;dependencies[] = views_content
+;dependencies[] = views_data_export
+;dependencies[] = views_php
+
+stylesheets[all][] = css/ercore.css
+
+configure = admin/config/ercore/admin

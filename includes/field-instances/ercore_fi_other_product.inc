@@ -1,0 +1,442 @@
+<?php
+/**
+ * @file
+ * Includes array of ERCore Other Product field instances.
+ */
+
+$ercore_other_product_instances = array(
+// INSTANCE: field_ercore_op_non_epscor
+  'field_ercore_op_non_epscor' => array(
+    'label' => 'Non-EPSCoR Participant Research Product Creators',
+    'widget' => array(
+      'weight' => '4',
+      'type' => 'text_textfield',
+      'module' => 'text',
+      'active' => 1,
+      'settings' => array(
+        'size' => '60',
+      ),
+    ),
+    'settings' => array(
+      'text_processing' => '0',
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'type' => 'text_default',
+        'weight' => '3',
+        'settings' => array(),
+        'module' => 'text',
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'type' => 'text_default',
+        'weight' => '3',
+        'settings' => array(),
+        'module' => 'text',
+      ),
+      'full' => array(
+        'label' => 'above',
+        'type' => 'text_default',
+        'weight' => '3',
+        'settings' => array(),
+        'module' => 'text',
+      ),
+    ),
+    'required' => 0,
+    'description' => '',
+    'default_value' => NULL,
+    'field_name' => 'field_ercore_op_non_epscor',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_other_product',
+    'deleted' => '0',
+  ),
+
+// INSTANCE: field_ercore_op_description
+  'field_ercore_op_description' => array(
+    'weight' => '2',
+    'label' => 'Description',
+    'widget_type' => 'text_textarea',
+    'description' => 'Please provide a brief description of your products. 3-4 sentences maximum.',
+    'default_value' => NULL,
+    'widget' => array(
+      'weight' => '9',
+      'type' => 'text_textarea',
+      'module' => 'text',
+      'active' => 1,
+      'settings' => array(
+        'rows' => '10',
+      ),
+    ),
+    'display' => array(
+      'teaser' => array(
+        'label' => 'above',
+        'type' => 'hidden',
+        'weight' => '2',
+        'settings' => array(
+          'trim_length' => 600,
+        ),
+        'module' => 'text',
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'type' => 'text_default',
+        'weight' => '6',
+        'settings' => array(),
+        'module' => 'text',
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'type' => 'text_default',
+        'weight' => '6',
+        'settings' => array(),
+        'module' => 'text',
+      ),
+    ),
+    'settings' => array(
+      'text_processing' => '0',
+      'user_register_form' => FALSE,
+    ),
+    'required' => 1,
+    'field_name' => 'field_ercore_op_description',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_other_product',
+    'deleted' => '0',
+  ),
+
+// INSTANCE: field_ercore_nsf
+  'field_ercore_nsf' => array(
+    'weight' => '1',
+    'label' => 'NSF Acknowledgement',
+    'widget_type' => 'optionwidgets_buttons',
+    'description' => '',
+    'default_value' => array(
+      array(
+        'value' => '0',
+      ),
+    ),
+    'widget' => array(
+      'weight' => '8',
+      'type' => 'options_buttons',
+      'module' => 'options',
+      'active' => 1,
+      'settings' => array(),
+    ),
+    'display' => array(
+      'teaser' => array(
+        'label' => 'inline',
+        'type' => 'list_default',
+        'weight' => '5',
+        'settings' => array(),
+        'module' => 'list',
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'type' => 'list_default',
+        'weight' => '5',
+        'settings' => array(),
+        'module' => 'list',
+      ),
+      'default' => array(
+        'label' => 'inline',
+        'type' => 'list_default',
+        'weight' => '5',
+        'settings' => array(),
+        'module' => 'list',
+      ),
+    ),
+    'settings' => array(
+      'min' => '',
+      'max' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'required' => 1,
+    'field_name' => 'field_ercore_nsf',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_other_product',
+    'deleted' => '0',
+  ),
+
+// INSTANCE: field_ercore_op_date
+  'field_ercore_op_date' => array(
+    'weight' => '-2',
+    'label' => 'Date',
+    'widget_type' => 'date_popup',
+    'description' => '',
+    'widget' => array(
+      'weight' => '6',
+      'type' => 'date_popup',
+      'module' => 'date',
+      'active' => 1,
+      'settings' => array(
+        'input_format' => 'm/d/Y - H:i:s',
+        'input_format_custom' => '',
+        'year_range' => '-3:+3',
+        'increment' => '1',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'repeat_collapsed' => 0,
+      ),
+    ),
+    'display' => array(
+      'teaser' => array(
+        'label' => 'inline',
+        'type' => 'date_default',
+        'weight' => '1',
+        'settings' => array(
+          'format_type' => 'ercore_date_format_month_day_year',
+          'fromto' => 'both',
+          'multiple_number' => '',
+          'multiple_from' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => 0,
+          'show_repeat_rule' => 'show',
+        ),
+        'module' => 'date',
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'type' => 'date_default',
+        'weight' => '1',
+        'settings' => array(
+          'format_type' => 'ercore_date_format_month_day_year',
+          'fromto' => 'both',
+          'multiple_number' => '',
+          'multiple_from' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => 0,
+          'show_repeat_rule' => 'show',
+        ),
+        'module' => 'date',
+      ),
+      'default' => array(
+        'label' => 'inline',
+        'type' => 'date_default',
+        'weight' => '1',
+        'settings' => array(
+          'format_type' => 'ercore_date_format_month_day_year',
+          'fromto' => 'both',
+          'multiple_number' => '',
+          'multiple_from' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => 0,
+          'show_repeat_rule' => 'show',
+        ),
+        'module' => 'date',
+      ),
+    ),
+    'settings' => array(
+      'default_value' => 'blank',
+      'default_value_code' => '',
+      'default_value2' => 'same',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'required' => 1,
+    'field_name' => 'field_ercore_op_date',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_other_product',
+    'deleted' => '0',
+  ),
+
+// INSTANCE: field_ercore_op_type
+  'field_ercore_op_type' => array(
+    'weight' => '-3',
+    'label' => 'Type',
+    'widget_type' => 'optionwidgets_buttons',
+    'description' => '',
+    'default_value' => NULL,
+    'widget' => array(
+      'weight' => '5',
+      'type' => 'options_buttons',
+      'module' => 'options',
+      'active' => 1,
+      'settings' => array(),
+    ),
+    'display' => array(
+      'teaser' => array(
+        'label' => 'inline',
+        'type' => 'list_default',
+        'weight' => '0',
+        'settings' => array(),
+        'module' => 'list',
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'type' => 'list_default',
+        'weight' => '0',
+        'settings' => array(),
+        'module' => 'list',
+      ),
+      'default' => array(
+        'label' => 'inline',
+        'type' => 'list_default',
+        'weight' => '0',
+        'settings' => array(),
+        'module' => 'list',
+      ),
+    ),
+    'settings' => array(
+      'text_processing' => '0',
+      'user_register_form' => FALSE,
+    ),
+    'required' => 1,
+    'field_name' => 'field_ercore_op_type',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_other_product',
+    'deleted' => '0',
+  ),
+
+// INSTANCE: field_ercore_op_rii_support
+  'field_ercore_op_rii_support' => array(
+    'weight' => '0',
+    'label' => 'EPSCoR Support',
+    'widget_type' => 'optionwidgets_select',
+    'description' => '',
+    'default_value' => NULL,
+    'widget' => array(
+      'weight' => '7',
+      'type' => 'options_select',
+      'module' => 'options',
+      'active' => 1,
+      'settings' => array(),
+    ),
+    'display' => array(
+      'teaser' => array(
+        'label' => 'inline',
+        'type' => 'list_default',
+        'weight' => '4',
+        'settings' => array(),
+        'module' => 'list',
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'type' => 'list_default',
+        'weight' => '4',
+        'settings' => array(),
+        'module' => 'list',
+      ),
+      'default' => array(
+        'label' => 'inline',
+        'type' => 'list_default',
+        'weight' => '4',
+        'settings' => array(),
+        'module' => 'list',
+      ),
+    ),
+    'settings' => array(
+      'text_processing' => '0',
+      'user_register_form' => FALSE,
+    ),
+    'required' => 1,
+    'field_name' => 'field_ercore_op_rii_support',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_other_product',
+    'deleted' => '0',
+  ),
+
+// INSTANCE: field_ercore_op_organizer
+  'field_ercore_op_organizer' => array(
+    'label' => 'EPSCoR Participant Research Creator(s)',
+    'widget' => array(
+      'weight' => '-3',
+      'type' => 'entityreference_autocomplete',
+      'module' => 'entityreference',
+      'active' => 1,
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'size' => '60',
+        'path' => '',
+      ),
+    ),
+    'settings' => array(
+      'nodeaccess_userreference' => array(
+        'referenced' => array(
+          'view' => 'view',
+          'update' => 'update',
+          'delete' => 'delete',
+          'deny_view' => 0,
+          'deny_update' => 0,
+          'deny_delete' => 0,
+        ),
+        'referenced_published' => '1',
+        'create' => array(
+          'article' => 0,
+          'page' => 0,
+          'ercore_admin' => 0,
+          'ercore_event' => 0,
+          'ercore_collaboration' => 0,
+          'ercore_j_highlight' => 0,
+          'ercore_j_honor' => 0,
+          'ercore_institution' => 0,
+          'ercore_other_product' => 0,
+          'ercore_patent' => 0,
+          'ercore_presentation' => 0,
+          'ercore_proposal' => 0,
+          'ercore_publication' => 0,
+        ),
+        'author' => array(
+          'view' => 'view',
+          'update' => 'update',
+          'delete' => 'delete',
+        ),
+        'author_published' => '1',
+        'all' => array(
+          'view' => 'view',
+        ),
+        'all_published' => '0',
+        'unused' => '0',
+        'views' => array(
+          'view' => '',
+          'view_args' => '',
+        ),
+        'priority' => '0',
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'type' => 'entityreference_label',
+        'weight' => '2',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'module' => 'entityreference',
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'type' => 'entityreference_label',
+        'weight' => '2',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'module' => 'entityreference',
+      ),
+      'full' => array(
+        'label' => 'above',
+        'type' => 'entityreference_label',
+        'weight' => '2',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'module' => 'entityreference',
+      ),
+    ),
+    'required' => 1,
+    'description' => '',
+    'default_value' => NULL,
+    'default_value_function' => '',
+    'entityconnect_unload_add' => '1',
+    'entityconnect_unload_edit' => '1',
+    'entityconnect_show_add_icon' => '0',
+    'entityconnect_show_edit_icon' => '0',
+    'field_name' => 'field_ercore_organizer',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_other_product',
+    'deleted' => '0',
+  ),
+);

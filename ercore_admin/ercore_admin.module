@@ -1,0 +1,335 @@
+<?php
+/**
+ * @file
+ * Module file for the ERCore Admin module.
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function ercore_admin_permission() {
+  return array(
+    'access ercore admin help' => array(
+      'title' => t('Access ERCore Admin Help Page'),
+      'description' => t('Allow users to access Administrative Help Page.'),
+    ),
+    'access ercore admin content' => array(
+      'title' => t('Access ERCore Administrative content'),
+      'description' => NULL,
+    ),
+  );
+}
+
+/**
+ * Implements hook_help().
+ */
+function ercore_admin_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#ercore_admin':
+      return t("Testing.");
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function ercore_admin_menu() {
+  $items['epscor'] = array(
+    'title' => 'ERCore',
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('access ercore admin content'),
+    'file' => 'system.admin.inc',
+    'expanded' => TRUE,
+    'file path' => drupal_get_path('module', 'system'),
+  );
+  $items['reporting'] = array(
+    'title' => 'Accomplishments',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ercore_reporting_callback'),
+    'access arguments' => array('access ercore admin content'),
+    'type' => MENU_NORMAL_ITEM,
+    'menu_name' => 'main-menu',
+    'file' => '/pages/ercore-reporting.inc',
+  );
+//ERCore Content Menu, accomplishments table views point here
+  $items['epscor/content'] = array(
+    'menu_name' => 'ercore_admin_menu',
+    'title' => 'ERCore Content',
+    'description' => 'All ERCore related content types that come with the ER-Core module in populating the reporting tables are located in ERCore Content. ',
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('access administration pages'),
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+  );
+  //Administration views point here
+  $items['epscor/views'] = array(
+    'menu_name' => 'ercore_admin_menu',
+    'title' => 'Administrative Views',
+    'description' => 'At a glance ERCore generated reporting views related to NSF Reporting Tables are available here. In addition, other views such as flagged items for review are available in this menu flyout.',
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('access administration pages'),
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+  );
+//Administrative actions menu
+  $items['epscor/actions'] = array(
+    'menu_name' => 'ercore_admin_menu',
+    'title' => 'Administrative Actions',
+    'description' => 'Administrative actions for administrators and staff.',
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('access ercore admin content'),
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+  );
+  $items['epscor/actions/new-inst'] = array(
+    'menu_name' => 'ercore_admin_menu',
+    'title' => 'Create New Institution',
+    'description' => 'This page allows administrators to add new institutions.',
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'drupal_goto',
+    'page arguments' => array('node/add/er-institution'),
+    'access arguments' => array('access ercore admin content'),
+  );
+  $items['epscor/actions/config'] = array(
+    'menu_name' => 'ercore_admin_menu',
+    'title' => 'ERCore Reporting Core Settings',
+    'description' => 'This area is specific to ERCore grant start dates as well as reporting period dates.',
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'drupal_goto',
+    'page arguments' => array('admin/config/ercore/admin'),
+    'access arguments' => array('access ercore admin content'),
+  );
+
+  $items['epscor/actions/new-user'] = array(
+    'menu_name' => 'ercore_admin_menu',
+    'title' => 'Create New User',
+    'description' => 'This page allows administrators to register new users.',
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'drupal_goto',
+    'page arguments' => array('admin/people/create'),
+    'access arguments' => array('administer users'),
+  );
+
+//NSF TABLE VIEWS:
+  $items['epscor/views/salary-support'] = array(
+    'menu_name' => 'ercore_admin_menu',
+    'title' => 'NSF Table A - Salary Support',
+    'description' => 'This view aims to help you determine where the Salary Support information is coming from.',
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'drupal_goto',
+    'page arguments' => array('reporting/salary-support'),
+    'access arguments' => array('access ercore admin content'),
+  );
+  $items['epscor/views/participants'] = array(
+    'menu_name' => 'ercore_admin_menu',
+    'title' => 'NSF Table B - Participants',
+    'description' => 'This view aims to help you determine where the Participant information is coming from.',
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'drupal_goto',
+    'page arguments' => array('reporting/participants'),
+    'access arguments' => array('access ercore admin content'),
+  );
+  $items['epscor/views/collaborations'] = array(
+    'menu_name' => 'ercore_admin_menu',
+    'title' => 'NSF Table C - Collaborations',
+    'description' => 'This view aims to help you determine where the Collaborator counts are coming from.',
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'drupal_goto',
+    'page arguments' => array('reporting/collaborations'),
+    'access arguments' => array('access ercore admin content'),
+  );
+  $items['epscor/views/external-engagement'] = array(
+    'menu_name' => 'ercore_admin_menu',
+    'title' => 'NSF Table D - External Engagements',
+    'description' => 'This view aims to help you determine where the External Engagement counts are coming from.',
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'drupal_goto',
+    'page arguments' => array('reporting/external-engagement'),
+    'access arguments' => array('access ercore admin content'),
+  );
+  $items['epscor/views/outputs'] = array(
+    'menu_name' => 'ercore_admin_menu',
+    'title' => 'NSF Table E - Outputs',
+    'description' => 'This view aims to help you determine where the Outputs counts are coming from.',
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'drupal_goto',
+    'page arguments' => array('reporting/outputs'),
+    'access arguments' => array('access ercore admin content'),
+  );
+
+  //Links to content views
+  $content_views = array(
+    "calendar" => "Calendar Events",
+    "collaborations" => "Collaborations",
+    "collaborators" => "External Collaborators",
+    "external-engagements" => "External Engagements",
+    "highlights" => "Highlights",
+    "awards" => "Honors and Awards",
+    "institutions" => "Institutions",
+    "other-research-products" => "Other Research Products",
+    "participants" => "Participants",
+    "patents" => "Patents",
+    "presentations" => "Presentations",
+    "proposals" => "Proposal or Grant",
+    "publications" => "Publications"
+  );
+  foreach ($content_views as $url => $label) {
+    $items['epscor/content/' . $url] = array(
+      'menu_name' => 'ercore_admin_menu',
+      'title' => $label,
+      'type' => MENU_NORMAL_ITEM,
+      'page callback' => 'drupal_goto',
+      'page arguments' => array($url),
+      'access arguments' => array('access ercore content'),
+    );
+  }
+
+  $items['epscor/reporting'] = array(
+    'menu_name' => 'ercore_admin_menu',
+    'title' => 'Accomplishments',
+    'description' => 'This page shows all categories of accomplishments (collaborations, grants & proposals, external engagements, etc) with the option of selecting by reporting year/period.',
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'drupal_goto',
+    'page arguments' => array('reporting'),
+    'access arguments' => array('access ercore content'),
+  );
+  $items['epscor/reporting/download'] = array(
+    'menu_name' => 'ercore_admin_menu',
+    'title' => 'Download Reporting Tables',
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'drupal_goto',
+    'page arguments' => array('reporting/download'),
+    'access arguments' => array('access ercore excel sheets'),
+  );
+  $items['epscor/guides'] = array(
+    'menu_name' => 'ercore_admin_menu',
+    'title' => 'User Guides',
+    'description' => 'Reference guides for ERCore administrators and users.',
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('access administration pages'),
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+  );
+  $items['epscor/guides/admin-guide'] = array(
+    'menu_name' => 'ercore_admin_menu',
+    'title' => 'Administrative Guide',
+    'description' => 'A reference and guide for administrator and staff.',
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'ercore_admin_guide_callback',
+    'access arguments' => array('access ercore content'),
+    'file' => '/pages/ercore-admin-guide.inc',
+    'access arguments' => array('access ercore content'),
+  );
+  $items['epscor/guides/user-guide'] = array(
+    'menu_name' => 'ercore_admin_menu',
+    'title' => 'User Guide',
+    'description' => 'A reference and guide for the ERCore user.',
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'ercore_user_guide_callback',
+    'access arguments' => array('access ercore content'),
+    'file' => '/pages/ercore-user-guide.inc',
+  );
+  $items['epscor/participants'] = array(
+    'menu_name' => 'ercore_admin_menu',
+    'title' => 'Participant Views',
+    'description' => 'Views for administrating Participants.',
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('access administration pages'),
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+  );
+  return $items;
+}
+
+/**
+ * Constructs the epscor page.
+ *
+ * Our menu maps this function to the path 'epscor'.
+ */
+function ercore_epscor_callback() {
+  return array(
+    '#markup' =>
+      t('Testing'),
+  );
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function ercore_admin_views_api($module, $api) {
+  if ($module == 'views' && $api == 'views_default') {
+    return array('version' => 2);
+  }
+}
+
+
+/**
+ * Implements hook_preprocess_user_profile().
+ */
+function ercore_admin_preprocess_user_profile(&$vars) {
+  if ($vars['elements']['#view_mode'] == 'user_institution') {
+    $vars['theme_hook_suggestions'][] = 'user_profile__user_institution';
+  }
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+
+function ercore_admin_theme_registry_alter(&$theme_registry) {
+  // Get the path to this module
+
+  $modulepath = drupal_get_path('module', 'ercore_admin');
+
+  // Find all .tpl.php files in this module's folder recursively.
+  $template_file_objects = drupal_find_theme_templates($theme_registry, '.tpl.php', $modulepath);
+
+  // Iterate through all found template file objects.
+  foreach ($template_file_objects as $key => $template_file_object) {
+
+    // If the template has not already been overridden by a theme.
+    if (!isset($theme_registry[$key]['theme path']) || !preg_match('#/themes/#', $theme_registry[$key]['theme path'])) {
+      // Alter the theme path and template elements.
+      $theme_registry[$key]['theme path'] = $modulepath;
+      $theme_registry[$key] = array_merge($theme_registry[$key], $template_file_object);
+      $theme_registry[$key]['type'] = 'module';
+    }
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function ercore_admin_theme($existing, $type, $theme, $path) {
+  $theme = array(
+    'ercore_summary_table' => array(
+      'variables' => array('ranges' => array(), 'debug' => FALSE),
+      'function' => 'ercore_summary_table'
+    )
+  );
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_html
+ */
+function ercore_admin_preprocess_html(){
+
+//bring current url info
+  $url = request_uri();
+  $query = drupal_get_query_parameters();
+
+  //url seems to be: "path?field=value" - (encoded) "path%3Ffield%3Dvalue"
+  if (strpos($url, '?') !== FALSE and empty($query)){
+    //we'll have $url['path'] = 'path' and $url['query'] = 'field=value'
+    $url = parse_url($url);
+
+    //make $query associative array
+    parse_str($url['query'], $query);
+
+
+    //go to where you were supposed to go from the beginning
+    if ($url['path'] and is_array($query))   drupal_goto($url['path'], array('query' => $query));
+  }
+
+}
