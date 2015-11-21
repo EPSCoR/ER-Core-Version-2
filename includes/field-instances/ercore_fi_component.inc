@@ -4,8 +4,8 @@
  * Includes array of ERCore Components field instances.
  */
 
-$ercore_components_instances = array(
-// INSTANCE: field_ercore_cmp_core
+$ercore_component_instances = array(
+// INSTANCE: field_ercore_cmp_core.
   'field_ercore_cmp_core' => array(
     'label' => 'Core Component',
     'widget' => array(
@@ -45,7 +45,7 @@ $ercore_components_instances = array(
     ),
     'required' => 0,
     'description' =>
-      "Core components should show up on every selection list. Most components
+    "Core components should show up on every selection list. Most components
       will be core components. Non-core components are those that will only
       show up in special circumstances. For example, \"Administration\" and
       \"Guest\" may be considered non-core components, since we do not want to

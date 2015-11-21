@@ -5,7 +5,7 @@
  */
 
 $ercore_patent_instances = array(
-  // INSTANCE: field_ercore_pt_description
+  // INSTANCE: field_ercore_pt_description.
   'field_ercore_pt_description' => array(
     'weight' => '4',
     'label' => 'Description',
@@ -54,7 +54,7 @@ $ercore_patent_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pt_disclosure
+// INSTANCE: field_ercore_pt_disclosure.
   'field_ercore_pt_disclosure' => array(
     'label' => 'Disclosure Date',
     'widget' => array(
@@ -126,7 +126,7 @@ $ercore_patent_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pt_filing
+// INSTANCE: field_ercore_pt_filing.
   'field_ercore_pt_filing' => array(
     'label' => 'Filing Date',
     'widget' => array(
@@ -198,7 +198,7 @@ $ercore_patent_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pt_link
+// INSTANCE: field_ercore_pt_link.
   'field_ercore_pt_link' => array(
     'weight' => '-3',
     'label' => 'Link',
@@ -264,7 +264,7 @@ $ercore_patent_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pt_award
+// INSTANCE: field_ercore_pt_award.
   'field_ercore_pt_award' => array(
     'label' => 'Award Date',
     'widget' => array(
@@ -336,7 +336,7 @@ $ercore_patent_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pt_date
+// INSTANCE: field_ercore_pt_date.
   'field_ercore_pt_date' => array(
     'weight' => '2',
     'label' => 'License Date',
@@ -418,7 +418,7 @@ $ercore_patent_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pt_licensed
+// INSTANCE: field_ercore_pt_licensed.
   'field_ercore_pt_licensed' => array(
     'label' => 'Licensed',
     'widget' => array(
@@ -466,7 +466,7 @@ $ercore_patent_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pt_licensee
+// INSTANCE: field_ercore_pt_licensee.
   'field_ercore_pt_licensee' => array(
     'label' => 'Licensee',
     'widget' => array(
@@ -517,7 +517,7 @@ $ercore_patent_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pt_provisional
+// INSTANCE: field_ercore_pt_provisional.
   'field_ercore_pt_provisional' => array(
     'label' => 'Provisional Date',
     'widget' => array(
@@ -589,7 +589,7 @@ $ercore_patent_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pt_organizer
+// INSTANCE: field_ercore_pt_organizer.
   'field_ercore_pt_organizer' => array(
     'label' => 'EPSCoR Organizer(s)',
     'widget' => array(
@@ -687,6 +687,62 @@ $ercore_patent_instances = array(
     'default_value' => NULL,
     'default_value_function' => '',
     'field_name' => 'field_ercore_organizer',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_patent',
+    'deleted' => '0',
+  ),
+  // INSTANCE: field_ercore_programs.
+  'field_ercore_pt_programs' => array(
+    'label' => 'Program',
+    'widget' => array(
+      'weight' => '4',
+      'type' => 'options_select',
+      'module' => 'options',
+      'active' => 1,
+      'settings' => array(),
+    ),
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'type' => 'entityreference_label',
+        'weight' => '4',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'module' => 'entityreference',
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'type' => 'entityreference_label',
+        'weight' => '5',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'module' => 'entityreference',
+      ),
+      'teaser' => array(
+        'type' => 'hidden',
+        'label' => 'above',
+        'settings' => array(),
+        'weight' => 0,
+      ),
+    ),
+    'required' => 0,
+    'description' => '',
+    'entityconnect_unload_add' => '1',
+    'entityconnect_unload_edit' => '1',
+    'entityconnect_show_add_icon' => '0',
+    'entityconnect_show_edit_icon' => '0',
+    'default_value' => NULL,
+    'field_name' => 'field_ercore_programs',
     'entity_type' => 'node',
     'bundle' => 'ercore_patent',
     'deleted' => '0',

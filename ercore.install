@@ -66,28 +66,32 @@ function ercore_install() {
   }
   // Create all the instances for our fields.
   foreach (_ercore_installed_instances() as $instance) {
+    dpm('Creating ' . $instance['field_name']);
     field_create_instance($instance);
+    dpm('Created ' . $instance['field_name']);
   }
-  // Create ERCore Taxonomies.
-  $vocabularies = array(
-    'component',
-    '',
+
+  $vocabulary['component'] = array(
+    'name' => 'Organizational Components',
+    'machine' => 'ercore_component_vocab',
+  );
+  $vocabulary['program'] = array(
+    'name' => 'Program',
+    'machine' => 'ercore_program_vocab',
   );
 
-  $vocabulary = 'Organizational Components';
-  // Vocabulary Name.
-  $machine = 'ercore_component_vocab';
-  // Vocabulary machine name to add.
-  $vocab = taxonomy_vocabulary_machine_name_load($machine);
-  if (!isset($vocab->vid)) {
+  foreach ($vocabulary as $each_vocab) {
+    // Check for vocabulary.
+    $vocab = taxonomy_vocabulary_machine_name_load($each_vocab['machine']);
 
-    // If taxonomy doesn't exist.
-    // Add taxonomy.
-    taxonomy_vocabulary_save((object)array(
-      'name' => $vocabulary,
-      'machine_name' => $machine,
-    ));
+    if (!isset($vocab->vid)) {
 
+      // Add if taxonomy doesn't exist.
+      taxonomy_vocabulary_save((object) array(
+        'name' => $each_vocab['name'],
+        'machine_name' => $each_vocab['machine'],
+      ));
+    }
   }
 
   // Call the array with your default roles.
@@ -180,27 +184,31 @@ function ercore_uninstall() {
   // Purge all field information.
   field_purge_batch(1000);
 
-  $term_bundle = 'ercore_component_vocab';
-  // Vocabulary machine name to remove.
-  // Find all taxonomy term fields and delete instance.
-  $term_instances = field_info_instances('taxoomy_term', $term_bundle);
-  foreach ($term_instances as $term_instance_name => $term_instance) {
-    field_delete_instance($term_instance);
-  }
+  $term_bundles = array(
+    'ercore_component_vocab',
+    'ercore_program_vocab',
+  );
+  foreach ($term_bundles as $term_bundle) {
+    // Find all taxonomy term fields and delete instance.
+    $term_instances = field_info_instances('taxonomy_term', $term_bundle);
+    foreach ($term_instances as $term_instance_name => $term_instance) {
+      field_delete_instance($term_instance);
+    }
 
-  // Find all user fields and delete instance.
-  $user_instances = field_info_instances('user', 'user');
-  foreach ($user_instances as $user_instance_name => $user_instance) {
-    field_delete_instance($user_instance);
-  }
+    // Find all user fields and delete instance.
+    $user_instances = field_info_instances('user', 'user');
+    foreach ($user_instances as $user_instance_name => $user_instance) {
+      field_delete_instance($user_instance);
+    }
 
-  // Uninstall Vocabulary.
-  $vocab = taxonomy_vocabulary_machine_name_load($term_bundle);
-  if (isset($vocab->vid)) {
+    // Uninstall Vocabulary.
+    $vocab = taxonomy_vocabulary_machine_name_load($term_bundle);
+    if (isset($vocab->vid)) {
 
-    // If taxonomy exists.
-    taxonomy_vocabulary_delete($vocab->vid);
-    // Delete Vocabulary.
+      // If taxonomy exists.
+      taxonomy_vocabulary_delete($vocab->vid);
+      // Delete Vocabulary.
+    }
   }
   // Remove ERCore Admin menu on uninstall.
   $menu = array(

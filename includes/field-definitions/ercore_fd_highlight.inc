@@ -5,7 +5,7 @@
  */
 
 $ercore_highlight_definitions = array(
-// FIELD: field_ercore_hi_date
+// FIELD: field_ercore_hi_date.
   'field_ercore_hi_date' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -70,7 +70,7 @@ $ercore_highlight_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_hi_image
+// FIELD: field_ercore_hi_image.
   'field_ercore_hi_image' => array(
     'translatable' => '0',
     'entity_types' => array(),

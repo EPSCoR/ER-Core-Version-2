@@ -5,7 +5,7 @@
  */
 
 $ercore_honor_instances = array(
-  // INSTANCE: field_ercore_hn_date
+  // INSTANCE: field_ercore_hn_date.
   'field_ercore_hn_date' => array(
     'label' => 'Date Awarded',
     'widget' => array(
@@ -86,7 +86,7 @@ $ercore_honor_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_hn_organizer
+// INSTANCE: field_ercore_hn_organizer.
   'field_ercore_hn_organizer' => array(
     'label' => 'EPSCoR Researcher(s)',
     'widget' => array(
@@ -184,6 +184,62 @@ $ercore_honor_instances = array(
     'default_value' => NULL,
     'default_value_function' => '',
     'field_name' => 'field_ercore_organizer',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_j_honor',
+    'deleted' => '0',
+  ),
+  // INSTANCE: field_ercore_programs.
+  'field_ercore_hn_programs' => array(
+    'label' => 'Program',
+    'widget' => array(
+      'weight' => '4',
+      'type' => 'options_select',
+      'module' => 'options',
+      'active' => 1,
+      'settings' => array(),
+    ),
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'type' => 'entityreference_label',
+        'weight' => '4',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'module' => 'entityreference',
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'type' => 'entityreference_label',
+        'weight' => '5',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'module' => 'entityreference',
+      ),
+      'teaser' => array(
+        'type' => 'hidden',
+        'label' => 'above',
+        'settings' => array(),
+        'weight' => 0,
+      ),
+    ),
+    'required' => 0,
+    'description' => '',
+    'entityconnect_unload_add' => '1',
+    'entityconnect_unload_edit' => '1',
+    'entityconnect_show_add_icon' => '0',
+    'entityconnect_show_edit_icon' => '0',
+    'default_value' => NULL,
+    'field_name' => 'field_ercore_programs',
     'entity_type' => 'node',
     'bundle' => 'ercore_j_honor',
     'deleted' => '0',

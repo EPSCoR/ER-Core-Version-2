@@ -1,37 +1,42 @@
 <?php
 /**
+ * @file
  * Created by PhpStorm.
  * User: tschet
  * Date: 10/21/15
- * Time: 11:02 AM
+ * Time: 11:02 AM.
  */
 
-/*
+/**
  * Generates start and end dates for views and displays
- * This is being used on the summary table (ercore-reporting.inc)
+ * This is being used on the summary table (ercore-reporting.inc).
  */
+
 function ercore_start_end_dates() {
   $ercore_date = variable_get('ercore_start_date');
   $argument_date_format = variable_get('date_format_ercore_date_format_filter');
-  $default = date_create(implode('-', $ercore_date));
+  $default = date_create(implode('/', $ercore_date));
   $default_date['start'] = date_format($default, $argument_date_format);
   $default_date['end'] = date($argument_date_format, strtotime('+1 year'));
   return $default_date;
 }
 
-/*
+/**
  * Generates an array of reporting periods
- * This is being used on the summary table (ercore-reporting.inc)
+ * This is being used on the summary table (ercore-reporting.inc).
  */
+
 function ercore_select_list() {
 
   $display_date_format = variable_get('date_format_ercore_date_format_month_day_year');
   $zone = variable_get('date_default_timezone');
 
-  $ranges = ercore_get_reporting_ranges(); //This returns the list of available date ranges...
-  $range = ercore_get_reporting_range(); //Get the select reporting period, this defaults to the current reporting period if none was selected.
-  $range_is_set = _reporting_range_is_set();//Was a reporting period selected, or is $range the default -- current reporting period.
-
+  $ranges = ercore_get_reporting_ranges();
+  // This returns the list of available date ranges...
+  $range = ercore_get_reporting_range();
+  // Get the select reporting period, this defaults to the current reporting period if none was selected.
+  $range_is_set = _reporting_range_is_set();
+  // Was a reporting period selected, or is $range the default -- current reporting period.
   $select_list = array('Select');
   foreach ($ranges as $k => $v) {
     $select_list[] = date($display_date_format, $v[0]) . ' to ' . date($display_date_format, $v[1]);
@@ -42,20 +47,23 @@ function ercore_select_list() {
   return $select_list;
 }
 
-/*
+/**
  * Generates a nested array of date ranges corresponding to the start and end of a valid reporting period.
- * This is primarily being used on the summary table (accomplishments.inc)
+ * This is primarily being used on the summary table (accomplishments.inc).
  */
+
 function ercore_get_reporting_ranges() {
   static $ranges = array();
-  if (!count($ranges)) {//should only need to do this once
-    //provide the default ranges
-    //this code takes the start date provided in er.module file, and creates an array of date ranges.
-    //it is assumed that the reporting periods start with whatever month the grant was awarded on.
+  if (!count($ranges)) {
+    // Should only need to do this once
+    // provide the default ranges
+    // this code takes the start date provided in er.module file, and creates an array of date ranges.
+    // it is assumed that the reporting periods start with whatever month the grant was awarded on.
     $start_date = variable_get('ercore_start_date');
     $reporting_month = intval(variable_get('ercore_reporting_month'));
     $cur_month = date('n');
-    $adjusted_date = mktime(0, 0, 0, $cur_month - $reporting_month + 7);//+half a year into the future (6) +1 offset
+    $adjusted_date = mktime(0, 0, 0, $cur_month - $reporting_month + 7);
+    // +half a year into the future (6) +1 offset.
     $cur_year = date('Y', $adjusted_date);
     $start_year = $start_date['year'];
     for ($y = $cur_year; $y >= $start_year; $y--) {
@@ -65,10 +73,11 @@ function ercore_get_reporting_ranges() {
   return $ranges;
 }
 
-/*
+/**
  * Generates a date range corresponding to the starting date
  * The date values get set via the form seen on the summary table.
  */
+
 function ercore_get_reporting_range($use_default = TRUE) {
   drupal_session_start();
   if (array_key_exists('ercore_start_date', $_SESSION) && array_key_exists('ercore_end_date', $_SESSION)) {
@@ -76,13 +85,15 @@ function ercore_get_reporting_range($use_default = TRUE) {
   }
   else {
     if ($use_default) {
-      //$ranges = ercore_get_reporting_ranges();
-      //return array_shift($ranges);
+      // $ranges = ercore_get_reporting_ranges();
+      // return array_shift($ranges);
       $reporting_month = intval(variable_get('ercore_reporting_month'));
       $cur_month = date('n');
-      $adjusted_date = mktime(0, 0, 0, $cur_month - $reporting_month - 5);//+half a year into the past (6) +1 offset
+      $adjusted_date = mktime(0, 0, 0, $cur_month - $reporting_month - 5);
+      // +half a year into the past (6) +1 offset.
       $year = date('Y', $adjusted_date);
-      return _generate_reporting_range($year);//array(mktime(0, 0, 0, $reporting_month, 1, $cur_year), mktime(0, 0, 0, $reporting_month, 0, $cur_year+1));
+      return _generate_reporting_range($year);
+      // array(mktime(0, 0, 0, $reporting_month, 1, $cur_year), mktime(0, 0, 0, $reporting_month, 0, $cur_year+1));.
     }
     else {
       return FALSE;
@@ -90,8 +101,10 @@ function ercore_get_reporting_range($use_default = TRUE) {
   }
 }
 
-//This returns a date range as a pair of unix timestamps in an array
-//If the year requested == the start year, use the exact start date rather than the standard reporting period.
+/**
+ * This returns a date range as a pair of unix timestamps in an array
+ * If the year requested == the start year, use the exact start date rather than the standard reporting period.
+ */
 function _generate_reporting_range($year) {
   static $start_date;
   static $reporting_month;
@@ -104,39 +117,45 @@ function _generate_reporting_range($year) {
   if ($year == $start_date['year']) {
     return array(
       mktime(0, 0, 0, $start_date['month'], $start_date['day'], $start_date['year']),
-      mktime(0, 0, 0, $reporting_month, 0, $year + 1)
+      mktime(0, 0, 0, $reporting_month, 0, $year + 1),
     );
   }
   else {
     return array(
       mktime(0, 0, 0, $reporting_month, 1, $year),
-      mktime(0, 0, 0, $reporting_month, 0, $year + 1)
+      mktime(0, 0, 0, $reporting_month, 0, $year + 1),
     );
   }
 }
 
-/*
+/**
  * Generates a nested array of date ranges corresponding to the start and end of a valid reporting period.
  * This is used primarily on the summary table.
  */
+
 function _summary_table_ranges() {
-  if ($range = ercore_get_reporting_range(FALSE)) {//only if explicitly specified.
+  if ($range = ercore_get_reporting_range(FALSE)) {
+    // Only if explicitly specified.
     return array($range);
   }
-  else {//only need to do this once.
-
+  else {
+    // Only need to do this once.
     return ercore_get_reporting_ranges();
   }
 }
 
+/**
+ *
+ */
 function _reporting_range_is_set() {
   return array_key_exists('ercore_start_date', $_SESSION) && array_key_exists('ercore_end_date', $_SESSION);
 }
 
-/*
+/**
  * Ajax callack function for er_date_range_form.
  * This gets fired when the select box is changed.
  */
+
 function ercore_change_reporting_year($form, $form_state) {
   $ranges = ercore_get_reporting_ranges();
   $selected = $form_state['input']['reporting-year']['range'] - 1;
@@ -154,11 +173,12 @@ function ercore_change_reporting_year($form, $form_state) {
   return $form['table'];
 }
 
-/*
+/**
  * Ajax callack function for er_date_range_form.
  * This gets fired when the save button is clicked.
  * This updates the summary table when a date range is specified.
  */
+
 function ercore_change_date_range($form, $form_state) {
   $ranges = array();
   if ($form_state['values']['op'] == t('Save')) {
@@ -182,15 +202,16 @@ function ercore_change_date_range($form, $form_state) {
   return $form['table'];
 }
 
-/*
+/**
  * This theme function (see theme.inc) generates the summary table.
+ *
  * @param $ranges = a nested a array of date ranges
  * @param $debug = a flag which turns on debug messages
  */
+
 function ercore_summary_table($variables) {
   $summary_values = variable_get('ercore_summary_types');
   $ranges = $variables['ranges'];
-  $debug = $variables['debug'];
   $short_date = 'm/d/Y';
 
   $summary = array('#theme' => 'table');
@@ -226,7 +247,8 @@ function ercore_summary_table($variables) {
           $view->exposed_input['start_date']['value']['date'] = date('Y-m-d', $v[0]);
           $view->exposed_input['end_date']['value']['date'] = date('Y-m-d', $v[1]);
           $view->execute();
-          $count = isset($view->result[0]->nid) ? $view->result[0]->nid : $view->result[0]->uid;//count nodes or users
+          $count = isset($view->result[0]->nid) ? $view->result[0]->nid : $view->result[0]->uid;
+          // Count nodes or users.
           $data[] = $count > 0 ? $count : 0;
         }
       }
@@ -234,7 +256,7 @@ function ercore_summary_table($variables) {
         drupal_set_message(t('View not found: @name', array('@name' => $view_name)), 'error');
       }
       $summary['#rows'][] = $data;
-      //d($data, '$data');
+      // d($data, '$data');.
     }
   }
   else {
@@ -244,32 +266,31 @@ function ercore_summary_table($variables) {
   }
 
   $range = ercore_get_reporting_range();
-  // $date_label = ' ('.date('n/j/y', $range[0]).' - '.date('n/j/y', $range[1]).')';
-
-  //$user_can_download = user_access(ER_DOWNLOAD_PERMISSION);
+  $date_label = ' ('.date('n/j/y', $range[0]).' - '.date('n/j/y', $range[1]).')';
   $summary = array(
     'table' => $summary,
     'asterisk' => array(
       '#type' => 'markup',
-      '#markup' => "* Grant & Proposal counts include all grants regardless of status."
+      '#markup' => "* Grant & Proposal counts include all grants regardless of status.",
     ),
     'download' => array(
       '#type' => 'markup',
-      //'#access' => $user_can_download,
-      '#markup' => '<p>Download EPSCoR Reporting Core Tables</p>',
-    )
+      '#access' => array('access ercore excel sheets'),
+      '#markup' => '<p class="summary-download">' . ercore_download_link('Download EPSCoR Reporting Core Tables' . $date_label, 'excel') . "</p>",
+    ),
   );
-
 
   return render($summary);
 }
 
-/*
- * This tcustom function generates summary table links to section reports
+/**
+ * This custom function generates summary table links to section reports.
+ *
  * @param $type = a string values of section type value
  * @param $view = the View array that builds the summary table sections
  * @param $ranges = an optional array of date ranges to define link paths
  */
+
 
 function ercore_format_label($type, &$view, &$ranges) {
   $argument_date_format = variable_get('date_format_ercore_date_format_filter');
@@ -288,8 +309,8 @@ function ercore_format_label($type, &$view, &$ranges) {
     $destination = array(
       'query' => array(
         'start-date[value][date]' => $start,
-        'end-date[value][date]' => $end
-      )
+        'end-date[value][date]' => $end,
+      ),
     );
   }
   else {

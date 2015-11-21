@@ -5,7 +5,7 @@
  */
 
 $ercore_engagement_instances = array(
-  // INSTANCE: field_ercore_ee_ari_fac_f
+  // INSTANCE: field_ercore_ee_ari_fac_f.
   'field_ercore_ee_ari_fac_f' => array(
     'weight' => '77',
     'label' => 'ARI: Faculty - Female',
@@ -75,7 +75,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_ari_fac_m
+// INSTANCE: field_ercore_ee_ari_fac_m.
   'field_ercore_ee_ari_fac_m' => array(
     'weight' => '79',
     'label' => 'ARI: Faculty - Male',
@@ -145,7 +145,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_ari_fac_u
+// INSTANCE: field_ercore_ee_ari_fac_u.
   'field_ercore_ee_ari_fac_u' => array(
     'weight' => '78',
     'label' => 'ARI: Faculty - Undeclared',
@@ -215,7 +215,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_ari_stu_f
+// INSTANCE: field_ercore_ee_ari_stu_f.
   'field_ercore_ee_ari_stu_f' => array(
     'weight' => '72',
     'label' => 'ARI: Students - Female',
@@ -285,7 +285,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_ari_stu_m
+// INSTANCE: field_ercore_ee_ari_stu_m.
   'field_ercore_ee_ari_stu_m' => array(
     'weight' => '74',
     'label' => 'ARI: Students - Male',
@@ -355,7 +355,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_ari_stu_u
+// INSTANCE: field_ercore_ee_ari_stu_u.
   'field_ercore_ee_ari_stu_u' => array(
     'weight' => '73',
     'label' => 'ARI: Students - Undeclared',
@@ -425,7 +425,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_ee_file
+// INSTANCE: field_ercore_ee_ee_file.
   'field_ercore_ee_ee_file' => array(
     'label' => 'Upload the Excel Sheet',
     'widget' => array(
@@ -474,7 +474,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_estimated
+// INSTANCE: field_ercore_ee_estimated.
   'field_ercore_ee_estimated' => array(
     'weight' => '51',
     'label' => 'Values are estimated',
@@ -537,7 +537,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_k12i_stud_f
+// INSTANCE: field_ercore_ee_k12i_stud_f.
   'field_ercore_ee_k12i_stud_f' => array(
     'weight' => '74',
     'label' => 'K-12: Students Reached Directly - Female',
@@ -607,7 +607,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_k12i_stud_m
+// INSTANCE: field_ercore_ee_k12i_stud_m.
   'field_ercore_ee_k12i_stud_m' => array(
     'weight' => '76',
     'label' => 'K-12: Students Reached Directly - Male',
@@ -677,7 +677,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_k12i_stud_u
+// INSTANCE: field_ercore_ee_k12i_stud_u.
   'field_ercore_ee_k12i_stud_u' => array(
     'weight' => '75',
     'label' => 'K-12: Students Reached Directly - Undeclared',
@@ -747,7 +747,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_k12i_stut_f
+// INSTANCE: field_ercore_ee_k12i_stut_f.
   'field_ercore_ee_k12i_stut_f' => array(
     'weight' => '79',
     'label' => 'K-12: Students Reached via Teach. Training - Female',
@@ -817,7 +817,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_k12i_stut_m
+// INSTANCE: field_ercore_ee_k12i_stut_m.
   'field_ercore_ee_k12i_stut_m' => array(
     'weight' => '81',
     'label' => 'K-12: Students Reached via Teach. Training - Male',
@@ -887,7 +887,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_k12i_stut_u
+// INSTANCE: field_ercore_ee_k12i_stut_u.
   'field_ercore_ee_k12i_stut_u' => array(
     'weight' => '80',
     'label' => 'K-12: Students Reached via Teach. Training - Undeclared',
@@ -957,7 +957,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_k12i_tec_f
+// INSTANCE: field_ercore_ee_k12i_tec_f.
   'field_ercore_ee_k12i_tec_f' => array(
     'weight' => '69',
     'label' => 'K-12: Teachers - Female',
@@ -1027,7 +1027,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_k12i_tec_m
+// INSTANCE: field_ercore_ee_k12i_tec_m.
   'field_ercore_ee_k12i_tec_m' => array(
     'weight' => '71',
     'label' => 'K-12: Teachers - Male',
@@ -1097,7 +1097,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_k12i_tec_u
+// INSTANCE: field_ercore_ee_k12i_tec_u.
   'field_ercore_ee_k12i_tec_u' => array(
     'weight' => '70',
     'label' => 'K-12: Teachers - Undeclared',
@@ -1167,7 +1167,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_msi_fac_f
+// INSTANCE: field_ercore_ee_msi_fac_f.
   'field_ercore_ee_msi_fac_f' => array(
     'weight' => '74',
     'label' => 'MSI: Faculty - Female',
@@ -1237,7 +1237,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_msi_fac_m
+// INSTANCE: field_ercore_ee_msi_fac_m.
   'field_ercore_ee_msi_fac_m' => array(
     'weight' => '76',
     'label' => 'MSI: Faculty - Male',
@@ -1307,7 +1307,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_msi_fac_u
+// INSTANCE: field_ercore_ee_msi_fac_u.
   'field_ercore_ee_msi_fac_u' => array(
     'weight' => '75',
     'label' => 'MSI: Faculty - Undeclared',
@@ -1377,7 +1377,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_msi_stu_f
+// INSTANCE: field_ercore_ee_msi_stu_f.
   'field_ercore_ee_msi_stu_f' => array(
     'weight' => '69',
     'label' => 'MSI: Students - Female',
@@ -1447,7 +1447,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_msi_stu_m
+// INSTANCE: field_ercore_ee_msi_stu_m.
   'field_ercore_ee_msi_stu_m' => array(
     'weight' => '71',
     'label' => 'MSI: Students - Male',
@@ -1517,7 +1517,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_msi_stu_u
+// INSTANCE: field_ercore_ee_msi_stu_u.
   'field_ercore_ee_msi_stu_u' => array(
     'weight' => '70',
     'label' => 'MSI: Students - Undeclared',
@@ -1587,7 +1587,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_oth_f
+// INSTANCE: field_ercore_ee_oth_f.
   'field_ercore_ee_oth_f' => array(
     'weight' => '69',
     'label' => 'Other: Female',
@@ -1657,7 +1657,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_oth_m
+// INSTANCE: field_ercore_ee_oth_m.
   'field_ercore_ee_oth_m' => array(
     'weight' => '71',
     'label' => 'Other: Male',
@@ -1727,7 +1727,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_oth_u
+// INSTANCE: field_ercore_ee_oth_u.
   'field_ercore_ee_oth_u' => array(
     'weight' => '70',
     'label' => 'Other: Undeclared',
@@ -1797,7 +1797,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_pui_fac_f
+// INSTANCE: field_ercore_ee_pui_fac_f.
   'field_ercore_ee_pui_fac_f' => array(
     'weight' => '77',
     'label' => 'UI: Faculty - Female',
@@ -1867,7 +1867,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_pui_fac_m
+// INSTANCE: field_ercore_ee_pui_fac_m.
   'field_ercore_ee_pui_fac_m' => array(
     'weight' => '79',
     'label' => 'UI: Faculty - Male',
@@ -1937,7 +1937,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_pui_fac_u
+// INSTANCE: field_ercore_ee_pui_fac_u.
   'field_ercore_ee_pui_fac_u' => array(
     'weight' => '78',
     'label' => 'UI: Faculty - Undeclared',
@@ -2007,7 +2007,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_pui_stu_f
+// INSTANCE: field_ercore_ee_pui_stu_f.
   'field_ercore_ee_pui_stu_f' => array(
     'weight' => '72',
     'label' => 'UI: Students - Female',
@@ -2077,7 +2077,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_pui_stu_m
+// INSTANCE: field_ercore_ee_pui_stu_m.
   'field_ercore_ee_pui_stu_m' => array(
     'weight' => '74',
     'label' => 'UI: Students - Male',
@@ -2147,7 +2147,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_pui_stu_u
+// INSTANCE: field_ercore_ee_pui_stu_u.
   'field_ercore_ee_pui_stu_u' => array(
     'weight' => '73',
     'label' => 'UI: Students - Undeclared',
@@ -2217,7 +2217,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_ari_stu_mn
+// INSTANCE: field_ercore_ee_ari_stu_mn.
   'field_ercore_ee_ari_stu_mn' => array(
     'label' => 'ARI: Student - Under-represented Minority',
     'widget' => array(
@@ -2273,7 +2273,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_k12i_tec_mn
+// INSTANCE: field_ercore_ee_k12i_tec_mn.
   'field_ercore_ee_k12i_tec_mn' => array(
     'label' => 'K-12: Teachers - Under-represented Minority',
     'widget' => array(
@@ -2329,7 +2329,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_k12i_stud_mn
+// INSTANCE: field_ercore_ee_k12i_stud_mn.
   'field_ercore_ee_k12i_stud_mn' => array(
     'label' => 'K-12: Students Reached Directly - Under-represented Minority',
     'widget' => array(
@@ -2385,7 +2385,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_k12i_stut_mn
+// INSTANCE: field_ercore_ee_k12i_stut_mn.
   'field_ercore_ee_k12i_stut_mn' => array(
     'label' => 'K-12: Students Reached via Teach. Training - Under-represented Minority',
     'widget' => array(
@@ -2441,7 +2441,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_oth_mn
+// INSTANCE: field_ercore_ee_oth_mn.
   'field_ercore_ee_oth_mn' => array(
     'label' => 'Other: Under-represented Minority',
     'widget' => array(
@@ -2497,7 +2497,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_pui_fac_mn
+// INSTANCE: field_ercore_ee_pui_fac_mn.
   'field_ercore_ee_pui_fac_mn' => array(
     'label' => 'UI: Faculty - Under-represented Minority',
     'widget' => array(
@@ -2553,7 +2553,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_pui_stu_mn
+// INSTANCE: field_ercore_ee_pui_stu_mn.
   'field_ercore_ee_pui_stu_mn' => array(
     'label' => 'UI: Student - Under-represented Minority',
     'widget' => array(
@@ -2609,7 +2609,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_ari_fac_mn
+// INSTANCE: field_ercore_ee_ari_fac_mn.
   'field_ercore_ee_ari_fac_mn' => array(
     'label' => 'ARI: Faculty - Under-represented Minority',
     'widget' => array(
@@ -2665,7 +2665,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_msi_fac_mn
+// INSTANCE: field_ercore_ee_msi_fac_mn.
   'field_ercore_ee_msi_fac_mn' => array(
     'label' => 'MSI: Faculty - Under-represented Minority',
     'widget' => array(
@@ -2721,7 +2721,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_msi_stu_mn
+// INSTANCE: field_ercore_ee_msi_stu_mn.
   'field_ercore_ee_msi_stu_mn' => array(
     'label' => 'MSI: Student - Under-represented Minority',
     'widget' => array(
@@ -2777,7 +2777,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_oth_t
+// INSTANCE: field_ercore_ee_oth_t.
   'field_ercore_ee_oth_t' => array(
     'label' => 'Other: Total',
     'widget' => array(
@@ -2814,7 +2814,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_k12i_stut_t
+// INSTANCE: field_ercore_ee_k12i_stut_t.
   'field_ercore_ee_k12i_stut_t' => array(
     'label' => 'K-12: Students Reached via Teach. Training - Total',
     'widget' => array(
@@ -2851,7 +2851,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_k12i_stud_t
+// INSTANCE: field_ercore_ee_k12i_stud_t.
   'field_ercore_ee_k12i_stud_t' => array(
     'label' => 'K-12: Students Reached Directly - Total',
     'widget' => array(
@@ -2888,7 +2888,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_k12i_tec_t
+// INSTANCE: field_ercore_ee_k12i_tec_t.
   'field_ercore_ee_k12i_tec_t' => array(
     'label' => 'K-12: Teachers - Total',
     'widget' => array(
@@ -2925,7 +2925,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_msi_fac_t
+// INSTANCE: field_ercore_ee_msi_fac_t.
   'field_ercore_ee_msi_fac_t' => array(
     'label' => 'MSI: Faculty - Total',
     'widget' => array(
@@ -2962,7 +2962,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_msi_stu_t
+// INSTANCE: field_ercore_ee_msi_stu_t.
   'field_ercore_ee_msi_stu_t' => array(
     'label' => 'MSI: Students - Total',
     'widget' => array(
@@ -2999,7 +2999,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_pui_stu_t
+// INSTANCE: field_ercore_ee_pui_stu_t.
   'field_ercore_ee_pui_stu_t' => array(
     'label' => 'UI: Students - Total',
     'widget' => array(
@@ -3036,7 +3036,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_pui_fac_t
+// INSTANCE: field_ercore_ee_pui_fac_t.
   'field_ercore_ee_pui_fac_t' => array(
     'label' => 'UI: Faculty - Total',
     'widget' => array(
@@ -3073,7 +3073,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_ari_stu_t
+// INSTANCE: field_ercore_ee_ari_stu_t.
   'field_ercore_ee_ari_stu_t' => array(
     'label' => 'ARI: Students - Total',
     'widget' => array(
@@ -3110,7 +3110,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ari_fac_t
+// INSTANCE: field_ercore_ari_fac_t.
   'field_ercore_ari_fac_t' => array(
     'label' => 'ARI: Faculty - Total',
     'widget' => array(
@@ -3147,7 +3147,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_t_t
+// INSTANCE: field_ercore_ee_t_t.
   'field_ercore_ee_t_t' => array(
     'label' => 'Total',
     'widget' => array(
@@ -3184,7 +3184,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_f_t
+// INSTANCE: field_ercore_ee_f_t.
   'field_ercore_ee_f_t' => array(
     'label' => 'Total - Female',
     'widget' => array(
@@ -3221,7 +3221,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_m_t
+// INSTANCE: field_ercore_ee_m_t.
   'field_ercore_ee_m_t' => array(
     'label' => 'Total - Male',
     'widget' => array(
@@ -3258,7 +3258,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_u_t
+// INSTANCE: field_ercore_ee_u_t.
   'field_ercore_ee_u_t' => array(
     'label' => 'Total - Undeclared',
     'widget' => array(
@@ -3295,7 +3295,7 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ee_um_t
+// INSTANCE: field_ercore_ee_um_t.
   'field_ercore_ee_um_t' => array(
     'label' => 'Total - Under-represented Minority',
     'widget' => array(

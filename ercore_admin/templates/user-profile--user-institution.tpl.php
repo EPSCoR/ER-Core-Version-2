@@ -48,7 +48,7 @@ if (isset($user_profile['field_ercore_us_inst_ref'])) {
   $institutions = trim($institutions);
   $institutions = rtrim($institutions, "</div>");
   $institutions = explode('</div>', $institutions);
-  //$institutions = array_filter($institutions);
+  // $institutions = array_filter($institutions);
   $i = 1;
   foreach ($institutions as $value) {
     $value = trim($value);
@@ -70,4 +70,3 @@ else {
 }
 
 print $name . ': ' . $institutions . $dept;
-

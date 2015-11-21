@@ -5,7 +5,7 @@
  */
 
 $ercore_publication_instances = array(
-// INSTANCE: field_ercore_pb_ark
+// INSTANCE: field_ercore_pb_ark.
   'field_ercore_pb_ark' => array(
     'label' => 'ARK',
     'widget' => array(
@@ -52,7 +52,7 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_coll_title
+// INSTANCE: field_ercore_pb_coll_title.
   'field_ercore_pb_coll_title' => array(
     'label' => 'Title of Series',
     'widget' => array(
@@ -100,7 +100,7 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_doi
+// INSTANCE: field_ercore_pb_doi.
   'field_ercore_pb_doi' => array(
     'label' => 'DOI',
     'widget' => array(
@@ -148,7 +148,7 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_epscor
+// INSTANCE: field_ercore_pb_epscor.
   'field_ercore_pb_epscor' => array(
     'label' => 'EPSCoR Acknowledged ',
     'widget' => array(
@@ -195,7 +195,7 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_citation
+// INSTANCE: field_ercore_pb_citation.
   'field_ercore_pb_citation' => array(
     'label' => 'Full Citation',
     'widget' => array(
@@ -243,13 +243,13 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_journal_name
+// INSTANCE: field_ercore_pb_journal_name.
   'field_ercore_pb_journal_name' => array(
     'weight' => '52',
     'label' => 'Journal, Book, Magazine or Newspaper Name',
     'widget_type' => 'text_textfield',
     'description' =>
-      'For Publication Types of Journal Article, Book, Conference Proceedings,
+    'For Publication Types of Journal Article, Book, Conference Proceedings,
       Magazine Article, and Newspaper Article.',
     'default_value' => NULL,
     'widget' => array(
@@ -295,7 +295,7 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_journal_pages
+// INSTANCE: field_ercore_pb_journal_pages.
   'field_ercore_pb_journal_pages' => array(
     'weight' => '54',
     'label' => 'Pages',
@@ -349,7 +349,7 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_journal_volume
+// INSTANCE: field_ercore_pb_journal_volume.
   'field_ercore_pb_journal_volume' => array(
     'weight' => '53',
     'label' => 'Volume',
@@ -403,7 +403,7 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_link
+// INSTANCE: field_ercore_pb_link.
   'field_ercore_pb_link' => array(
     'weight' => '56',
     'label' => 'Internet Link',
@@ -470,7 +470,7 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_nonepscor_auth
+// INSTANCE: field_ercore_pb_nonepscor_auth.
   'field_ercore_pb_nonepscor_auth' => array(
     'label' => 'Non-EPSCoR Authors',
     'widget' => array(
@@ -518,7 +518,7 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_nsf
+// INSTANCE: field_ercore_pb_nsf.
   'field_ercore_pb_nsf' => array(
     'weight' => '12',
     'label' => 'NSF Acknowledgement',
@@ -570,7 +570,7 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_peer_reviewed
+// INSTANCE: field_ercore_pb_peer_reviewed.
   'field_ercore_pb_peer_reviewed' => array(
     'weight' => '3',
     'label' => 'Peer Reviewed',
@@ -622,7 +622,7 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_archived
+// INSTANCE: field_ercore_pb_archived.
   'field_ercore_pb_archived' => array(
     'label' => 'Is it being archived?',
     'widget' => array(
@@ -650,7 +650,7 @@ $ercore_publication_instances = array(
         'settings' => array(),
         'module' => 'list',
       ),
-      'full' => array(
+      'teaser' => array(
         'label' => 'inline',
         'type' => 'list_default',
         'weight' => '22',
@@ -671,7 +671,7 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_data
+// INSTANCE: field_ercore_pb_data.
   'field_ercore_pb_data' => array(
     'label' => 'Are you collecting Data?',
     'widget' => array(
@@ -715,7 +715,7 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_arch_name
+// INSTANCE: field_ercore_pb_arch_name.
   'field_ercore_pb_arch_name' => array(
     'label' => 'What Archive?',
     'widget' => array(
@@ -762,7 +762,7 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_date
+// INSTANCE: field_ercore_pb_date.
   'field_ercore_pb_date' => array(
     'weight' => '10',
     'label' => 'Date of Publication',
@@ -845,7 +845,7 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_status
+// INSTANCE: field_ercore_pb_status.
   'field_ercore_pb_status' => array(
     'label' => 'Status',
     'widget' => array(
@@ -891,7 +891,7 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_submit_date
+// INSTANCE: field_ercore_pb_submit_date.
   'field_ercore_pb_submit_date' => array(
     'weight' => '9',
     'label' => 'Date Submitted',
@@ -974,7 +974,7 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_type
+// INSTANCE: field_ercore_pb_type.
   'field_ercore_pb_type' => array(
     'label' => 'Publication Type',
     'widget' => array(
@@ -1020,7 +1020,7 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_publisher
+// INSTANCE: field_ercore_pb_publisher.
   'field_ercore_pb_publisher' => array(
     'label' => 'Publisher',
     'widget' => array(
@@ -1067,11 +1067,11 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_rii_support
+// INSTANCE: field_ercore_pb_rii_support.
   'field_ercore_pb_rii_support' => array(
     'weight' => '4',
     'label' =>
-      'What level of funding support did EPSCoR provide for this publication?',
+    'What level of funding support did EPSCoR provide for this publication?',
     'widget_type' => 'optionwidgets_select',
     'description' => '',
     'default_value' => NULL,
@@ -1117,7 +1117,7 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_upload
+// INSTANCE: field_ercore_pb_upload.
   'field_ercore_pb_upload' => array(
     'label' => 'Upload File',
     'widget' => array(
@@ -1166,7 +1166,7 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_organizer
+// INSTANCE: field_ercore_pb_organizer.
   'field_ercore_pb_organizer' => array(
     'label' => 'EPSCoR Author(s)',
     'widget' => array(
@@ -1263,6 +1263,62 @@ $ercore_publication_instances = array(
     'entityconnect_show_add_icon' => '0',
     'entityconnect_show_edit_icon' => '0',
     'field_name' => 'field_ercore_organizer',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_publication',
+    'deleted' => '0',
+  ),
+  // INSTANCE: field_ercore_programs.
+  'field_ercore_pb_programs' => array(
+    'label' => 'Program',
+    'widget' => array(
+      'weight' => '4',
+      'type' => 'options_select',
+      'module' => 'options',
+      'active' => 1,
+      'settings' => array(),
+    ),
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'type' => 'entityreference_label',
+        'weight' => '4',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'module' => 'entityreference',
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'type' => 'entityreference_label',
+        'weight' => '5',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'module' => 'entityreference',
+      ),
+      'teaser' => array(
+        'type' => 'hidden',
+        'label' => 'above',
+        'settings' => array(),
+        'weight' => 0,
+      ),
+    ),
+    'required' => 0,
+    'description' => '',
+    'entityconnect_unload_add' => '1',
+    'entityconnect_unload_edit' => '1',
+    'entityconnect_show_add_icon' => '0',
+    'entityconnect_show_edit_icon' => '0',
+    'default_value' => NULL,
+    'field_name' => 'field_ercore_programs',
     'entity_type' => 'node',
     'bundle' => 'ercore_publication',
     'deleted' => '0',

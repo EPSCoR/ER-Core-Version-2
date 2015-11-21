@@ -1,10 +1,10 @@
 <?php
 /**
  * @file
- * Includes variales to be deleted on uninstall.
+ * Includes variables to be deleted on uninstall.
  */
 
-// ERCore date formats
+// ERCore date formats.
 variable_del('date_format_ercore_date_format_day_name');
 variable_del('date_format_ercore_date_format_filter');
 variable_del('date_format_ercore_date_format_month_day_year');
@@ -14,8 +14,14 @@ variable_del('date_format_ercore_date_format_year');
 
 
 // Delete ERCore set variables.
-variable_del('er_start_date');
-variable_del('er_reporting_month');
+variable_del('ercore_start_date');
+variable_del('ercore_reporting_month');
+variable_del('ercore_summary_types');
+variable_del('ercore_grant_number');
+variable_del('ercore_component_usage');
+variable_del('ercore_component_required');
+variable_del('ercore_program_usage');
+variable_del('ercore_program_required');
 
 // Delete node-type Admin variables.
 variable_del('additional_settings__active_tab_ercore_admin');
@@ -145,9 +151,11 @@ variable_del('comment_ercore_publication');
 variable_del('field_bundle_settings_node__ercore_publication');
 
 // Delete vocabulary Organizational Component variables.
-variable_del('components/[term:name]');
-variable_del('field_bundle_settings_taxonomy_term__ercore_components');
+variable_del('pathauto_taxonomy_term_ercore_component_vocab_pattern');
+variable_del('field_bundle_settings_taxonomy_term__ercore_component_vocab');
+variable_del('pathauto_taxonomy_term_ercore_program_vocab_pattern');
+variable_del('field_bundle_settings_taxonomy_term__ercore_program_vocab');
 
-// Delete User Variables
+// Delete User Variables.
 variable_del('field_bundle_settings_user__user');
 variable_del('pathauto_user_pattern');

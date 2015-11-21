@@ -5,7 +5,7 @@
  */
 
 $ercore_other_product_definitions = array(
-  // FIELD: field_ercore_op_non_epscor
+  // FIELD: field_ercore_op_non_epscor.
   'field_ercore_op_non_epscor' => array(
     'entity_types' => array(),
     'settings' => array(
@@ -79,7 +79,7 @@ $ercore_other_product_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_op_description
+// FIELD: field_ercore_op_description.
   'field_ercore_op_description' => array(
     'type_name' => 'er_user_profile',
     'entity_types' => array(),
@@ -163,7 +163,7 @@ $ercore_other_product_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_nsf
+// FIELD: field_ercore_nsf.
   'field_ercore_nsf' => array(
     'entity_types' => array(),
     'settings' => array(
@@ -229,7 +229,7 @@ $ercore_other_product_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_op_date
+// FIELD: field_ercore_op_date.
   'field_ercore_op_date' => array(
     'type_name' => 'ercore_other_product',
     'entity_types' => array(),
@@ -301,7 +301,7 @@ $ercore_other_product_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_op_type
+// FIELD: field_ercore_op_type.
   'field_ercore_op_type' => array(
     'type_name' => 'ercore_other_product',
     'entity_types' => array(),
@@ -367,7 +367,7 @@ $ercore_other_product_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_op_rii_support
+// FIELD: field_ercore_op_rii_support.
   'field_ercore_op_rii_support' => array(
     'type_name' => 'er_publication',
     'entity_types' => array(),

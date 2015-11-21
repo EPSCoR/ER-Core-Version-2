@@ -5,7 +5,7 @@
  */
 
 $ercore_collaborator_instances = array(
-// INSTANCE: field_ercore_cr_inst_ref
+// INSTANCE: field_ercore_cr_inst_ref.
   'field_ercore_cr_inst_ref' => array(
     'label' => 'Institution/Organization',
     'widget' => array(
@@ -67,7 +67,7 @@ $ercore_collaborator_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_cr_name
+// INSTANCE: field_ercore_cr_name.
   'field_ercore_cr_name' => array(
     'label' => 'Name of Collaborating Individual',
     'widget' => array(
@@ -114,7 +114,7 @@ $ercore_collaborator_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_cr_dpt
+// INSTANCE: field_ercore_cr_dpt.
   'field_ercore_cr_dpt' => array(
     'label' => 'Department',
     'widget' => array(

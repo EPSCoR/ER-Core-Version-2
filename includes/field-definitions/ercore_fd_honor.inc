@@ -5,7 +5,7 @@
  */
 
 $ercore_honor_definitions = array(
-// FIELD: field_ercore_hn_date
+// FIELD: field_ercore_hn_date.
   'field_ercore_hn_date' => array(
     'translatable' => '0',
     'entity_types' => array(),

@@ -25,7 +25,8 @@ function _ercore_installed_fields() {
   include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-definitions/ercore_fd_presentation.inc";
   include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-definitions/ercore_fd_proposal.inc";
   include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-definitions/ercore_fd_publication.inc";
-  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-definitions/ercore_fd_components.inc";
+  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-definitions/ercore_fd_component.inc";
+  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-definitions/ercore_fd_program.inc";
   include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-definitions/ercore_fd_user.inc";
 
   $installed_fields = array();
@@ -39,7 +40,7 @@ function _ercore_installed_fields() {
   $installed_fields = $installed_fields + $ercore_event_definitions;
 
   // Add Engagement fields.
- $installed_fields = $installed_fields + $ercore_engagement_definitions;
+  $installed_fields = $installed_fields + $ercore_engagement_definitions;
 
   // Add Highlight fields.
   $installed_fields = $installed_fields + $ercore_highlight_definitions;
@@ -65,8 +66,11 @@ function _ercore_installed_fields() {
   // Add Publication fields.
   $installed_fields = $installed_fields + $ercore_publication_definitions;
 
-  // Add Components fields.
-  $installed_fields = $installed_fields + $ercore_components_definitions;
+  // Add Component fields.
+  $installed_fields = $installed_fields + $ercore_component_definitions;
+
+  // Add Program fields.
+  $installed_fields = $installed_fields + $ercore_program_definitions;
 
   // Add User fields.
   $installed_fields = $installed_fields + $ercore_user_definitions;

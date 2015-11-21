@@ -5,7 +5,7 @@
  */
 
 $ercore_collaborator_definitions = array(
-  // FIELD: field_ercore_cr_inst_ref
+  // FIELD: field_ercore_cr_inst_ref.
   'field_ercore_cr_inst_ref' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -83,7 +83,7 @@ $ercore_collaborator_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_cr_name
+// FIELD: field_ercore_cr_name.
   'field_ercore_cr_name' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -154,7 +154,7 @@ $ercore_collaborator_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_cr_dpt
+// FIELD: field_ercore_cr_dpt.
   'field_ercore_cr_dpt' => array(
     'translatable' => '0',
     'entity_types' => array(),

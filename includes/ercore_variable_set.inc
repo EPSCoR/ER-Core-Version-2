@@ -1,26 +1,27 @@
 <?php
 /**
  * @file
- * Includes variales to be set on install.
+ * Includes variables to be set on install.
  */
 
-// ERCore date formats
-variable_set('date_format_ercore_date_format_day_name','l');
-variable_set('date_format_ercore_date_format_filter','Y-m-d');
-variable_set('date_format_ercore_date_format_month_day_year','F j, Y');
-variable_set('date_format_ercore_date_format_month_year','F Y');
-variable_set('date_format_ercore_date_format_month','m');
-variable_set('date_format_ercore_date_format_time','g:i a');
-variable_set('date_format_ercore_date_format_year','Y');
+
+// ERCore date formats.
+variable_set('date_format_ercore_date_format_day_name', 'l');
+variable_set('date_format_ercore_date_format_filter', 'Y-m-d');
+variable_set('date_format_ercore_date_format_month_day_year', 'F j, Y');
+variable_set('date_format_ercore_date_format_month_year', 'F Y');
+variable_set('date_format_ercore_date_format_month', 'm');
+variable_set('date_format_ercore_date_format_time', 'g:i a');
+variable_set('date_format_ercore_date_format_year', 'Y');
 
 // ERCore basic settings variables.
 variable_set('ercore_start_date', array(
-  'month' => '9',
+  'month' => '09',
   'day' => '15',
   'year' => '2015',
 ));
 variable_set('ercore_reporting_month', '09');
-variable_set('ercore_summary_types', array (
+variable_set('ercore_summary_types', array(
   'ercore_collaboration' => 'ercore_collaboration',
   'ercore_event' => 'ercore_event',
   'ercore_engagement' => 'ercore_engagement',
@@ -34,6 +35,11 @@ variable_set('ercore_summary_types', array (
   'ercore_proposal' => 'ercore_proposal',
   'ercore_publication' => 'ercore_publication',
 ));
+variable_set('ercore_grant_number','');
+variable_set('ercore_component_usage','1');
+variable_set('ercore_component_required','1');
+variable_set('ercore_program_usage','0');
+variable_set('ercore_program_required','0');
 
 // Set node type Admin variables.
 variable_set('additional_settings__active_tab_ercore_admin', 'edit-display');
@@ -54,48 +60,48 @@ variable_set('field_bundle_settings_node__ercore_admin', array(
     'view_modes' =>
       array(
         'full' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => TRUE,
+        ),
         'teaser' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'teaser_alternate' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'rss' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_index' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_result' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'diff_standard' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'token' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'revision' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-          array(),
+        array(),
         'display' =>
-          array(),
+        array(),
       ),
   )
 );
@@ -116,48 +122,48 @@ variable_set('field_bundle_settings_node__ercore_collaboration', array(
     'view_modes' =>
       array(
         'full' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => TRUE,
+        ),
         'teaser' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => TRUE,
+        ),
         'teaser_alternate' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'rss' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_index' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_result' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'diff_standard' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'token' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'revision' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-          array(),
+        array(),
         'display' =>
-          array(),
+        array(),
       ),
   )
 );
@@ -166,24 +172,24 @@ variable_set('field_bundle_settings_field_collection_item__field_ercore_cn_colla
     'view_modes' =>
       array(
         'full' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => TRUE,
+        ),
         'simplified' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => TRUE,
+        ),
         'token' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-          array(),
+        array(),
         'display' =>
-          array(),
+        array(),
       ),
   )
 );
@@ -205,75 +211,75 @@ variable_set('field_bundle_settings_node__ercore_event', array(
     'view_modes' =>
       array(
         'full' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => TRUE,
+        ),
         'teaser' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => TRUE,
+        ),
         'teaser_alternate' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'rss' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_index' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_result' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'diff_standard' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'token' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'revision' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-          array(),
+        array(),
         'display' =>
-          array(),
+        array(),
       ),
   )
 );
 
-// Set Engagement variables
+// Set Engagement variables.
 variable_set('field_bundle_settings_field_collection_item__field_ercore_ev_engagement', array(
   'view_modes' =>
     array(
       'full' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+      array(
+        'custom_settings' => TRUE,
+      ),
       'simplified' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+      array(
+        'custom_settings' => TRUE,
+      ),
       'token' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+      array(
+        'custom_settings' => FALSE,
+      ),
     ),
   'extra_fields' =>
     array(
       'form' =>
-        array(),
+      array(),
       'display' =>
-        array(),
+      array(),
     ),
 ));
 
@@ -294,48 +300,48 @@ variable_set('field_bundle_settings_node__ercore_j_highlight', array(
     'view_modes' =>
       array(
         'full' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => TRUE,
+        ),
         'teaser' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => TRUE,
+        ),
         'teaser_alternate' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'rss' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_index' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_result' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'diff_standard' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'token' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'revision' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-          array(),
+        array(),
         'display' =>
-          array(),
+        array(),
       ),
   )
 );
@@ -356,48 +362,48 @@ variable_set('field_bundle_settings_node__ercore_j_honor', array(
     'view_modes' =>
       array(
         'full' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => TRUE,
+        ),
         'teaser' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'teaser_alternate' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'rss' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_index' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_result' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'diff_standard' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'token' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'revision' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-          array(),
+        array(),
         'display' =>
-          array(),
+        array(),
       ),
   )
 );
@@ -418,48 +424,48 @@ variable_set('field_bundle_settings_node__ercore_institution', array(
     'view_modes' =>
       array(
         'full' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => TRUE,
+        ),
         'teaser' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'teaser_alternate' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'rss' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_index' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_result' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'diff_standard' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'token' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'revision' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-          array(),
+        array(),
         'display' =>
-          array(),
+        array(),
       ),
   )
 );
@@ -480,48 +486,48 @@ variable_set('field_bundle_settings_node__ercore_other_product', array(
     'view_modes' =>
       array(
         'full' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => TRUE,
+        ),
         'teaser' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => TRUE,
+        ),
         'teaser_alternate' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'rss' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_index' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_result' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'diff_standard' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'token' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'revision' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-          array(),
+        array(),
         'display' =>
-          array(),
+        array(),
       ),
   )
 );
@@ -541,48 +547,48 @@ variable_set('field_bundle_settings_node__ercore_patent', array(
     'view_modes' =>
       array(
         'full' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => TRUE,
+        ),
         'teaser' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => TRUE,
+        ),
         'teaser_alternate' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'rss' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_index' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_result' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'diff_standard' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'token' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'revision' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-          array(),
+        array(),
         'display' =>
-          array(),
+        array(),
       ),
   )
 );
@@ -603,48 +609,48 @@ variable_set('field_bundle_settings_node__ercore_presentation', array(
     'view_modes' =>
       array(
         'full' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => TRUE,
+        ),
         'teaser' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'teaser_alternate' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'rss' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_index' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_result' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'diff_standard' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'token' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'revision' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-          array(),
+        array(),
         'display' =>
-          array(),
+        array(),
       ),
   )
 );
@@ -665,48 +671,48 @@ variable_set('field_bundle_settings_node__ercore_proposal', array(
     'view_modes' =>
       array(
         'full' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => TRUE,
+        ),
         'teaser' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => TRUE,
+        ),
         'teaser_alternate' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'rss' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_index' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_result' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'diff_standard' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'token' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'revision' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-          array(),
+        array(),
         'display' =>
-          array(),
+        array(),
       ),
   )
 );
@@ -727,55 +733,82 @@ variable_set('field_bundle_settings_node__ercore_publication', array(
     'view_modes' =>
       array(
         'full' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => TRUE,
+        ),
         'teaser' =>
-          array(
-            'custom_settings' => TRUE,
-          ),
+        array(
+          'custom_settings' => TRUE,
+        ),
         'teaser_alternate' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'rss' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_index' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'search_result' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'diff_standard' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'token' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
         'revision' =>
-          array(
-            'custom_settings' => FALSE,
-          ),
+        array(
+          'custom_settings' => FALSE,
+        ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-          array(),
+        array(),
         'display' =>
-          array(),
+        array(),
       ),
   )
 );
 
 // Set vocabulary Organizational Component variables.
-variable_set('pathauto_taxonomy_term_ercore_components_pattern', 'components/[term:name]');
-variable_set('field_bundle_settings_taxonomy_term__ercore_components', array(
+variable_set('pathauto_taxonomy_term_ercore_component_vvocab_pattern', 'components/[term:name]');
+variable_set('field_bundle_settings_taxonomy_term__ercore_component_vocab', array(
+  'view_modes' => array(
+    'full' => array(
+      'custom_settings' => TRUE,
+    ),
+    'token' => array(
+      'custom_settings' => FALSE,
+    ),
+  ),
+  'extra_fields' => array(
+    'form' => array(),
+    'display' => array(
+      'description' => array(
+        'default' => array(
+          'weight' => '0',
+          'visible' => TRUE,
+        ),
+        'full' => array(
+          'weight' => '0',
+          'visible' => TRUE,
+        ),
+      ),
+    ),
+  ),
+));
+// Set vocabulary Program variables.
+variable_set('pathauto_taxonomy_term_ercore_program_vocab_pattern', 'components/[term:name]');
+variable_set('field_bundle_settings_taxonomy_term__ercore_program_vocab', array(
   'view_modes' => array(
     'full' => array(
       'custom_settings' => TRUE,
@@ -801,46 +834,46 @@ variable_set('field_bundle_settings_taxonomy_term__ercore_components', array(
   ),
 ));
 
-// Set User Variables
-variable_set('field_bundle_settings_user__user', array (
+// Set User Variables.
+variable_set('field_bundle_settings_user__user', array(
   'view_modes' =>
-    array (
+    array(
       'full' =>
-        array (
-          'custom_settings' => true,
-        ),
+      array(
+        'custom_settings' => TRUE,
+      ),
       'token' =>
-        array (
-          'custom_settings' => false,
-        ),
+      array(
+        'custom_settings' => FALSE,
+      ),
     ),
   'extra_fields' =>
-    array (
+    array(
       'form' =>
-        array (
-        ),
+      array(),
       'display' =>
-        array (
-          'summary' =>
-            array (
-              'default' =>
-                array (
-                  'weight' => '5',
-                  'visible' => true,
-                ),
-              'full' =>
-                array (
-                  'weight' => '5',
-                  'visible' => true,
-                ),
-              'token' =>
-                array (
-                  'weight' => '5',
-                  'visible' => true,
-                ),
-            ),
+      array(
+        'summary' =>
+        array(
+          'default' =>
+          array(
+            'weight' => '5',
+            'visible' => TRUE,
+          ),
+          'full' =>
+          array(
+            'weight' => '5',
+            'visible' => TRUE,
+          ),
+          'token' =>
+          array(
+            'weight' => '5',
+            'visible' => TRUE,
+          ),
         ),
+      ),
     ),
 )
 );
-variable_set('pathauto_user_pattern','users/[user:name]');
+variable_set('pathauto_user_pattern', 'users/[user:name]');
+variable_set('realname_pattern', '[user:name-field-user-name:formatter-full]');

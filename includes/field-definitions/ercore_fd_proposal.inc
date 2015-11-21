@@ -5,7 +5,7 @@
  */
 
 $ercore_proposal_definitions = array(
-  // FIELD: field_ercore_pp_award_amount
+  // FIELD: field_ercore_pp_award_amount.
   'field_ercore_pp_award_amount' => array(
     'type_name' => 'ercore_proposal',
     'entity_types' => array(),
@@ -61,7 +61,7 @@ $ercore_proposal_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_pp_award_req_dec
+// FIELD: field_ercore_pp_award_req_dec.
   'field_ercore_pp_award_req_dec' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -117,7 +117,7 @@ $ercore_proposal_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_pp_location
+// FIELD: field_ercore_pp_location.
   'field_ercore_pp_location' => array(
     'type_name' => 'ercore_proposal',
     'entity_types' => array(),
@@ -192,7 +192,7 @@ $ercore_proposal_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_pp_other_pi
+// FIELD: field_ercore_pp_other_pi.
   'field_ercore_pp_other_pi' => array(
     'type_name' => 'ercore_proposal',
     'entity_types' => array(),
@@ -267,7 +267,7 @@ $ercore_proposal_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_pp_proposal_date
+// FIELD: field_ercore_pp_proposal_date.
   'field_ercore_pp_proposal_date' => array(
     'type_name' => 'ercore_proposal',
     'entity_types' => array(),
@@ -343,7 +343,7 @@ $ercore_proposal_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_pp_proposal_denied
+// FIELD: field_ercore_pp_proposal_denied.
   'field_ercore_pp_proposal_denied' => array(
     'type_name' => 'ercore_proposal',
     'entity_types' => array(),
@@ -407,7 +407,7 @@ $ercore_proposal_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_pp_proposal_paid
+// FIELD: field_ercore_pp_proposal_paid.
   'field_ercore_pp_proposal_paid' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -464,7 +464,7 @@ $ercore_proposal_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_pp_proposal_pending
+// FIELD: field_ercore_pp_proposal_pending.
   'field_ercore_pp_proposal_pending' => array(
     'type_name' => 'ercore_proposal',
     'entity_types' => array(),
@@ -528,7 +528,7 @@ $ercore_proposal_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_pp_proposal_status
+// FIELD: field_ercore_pp_proposal_status.
   'field_ercore_pp_proposal_status' => array(
     'type_name' => 'ercore_proposal',
     'entity_types' => array(),
@@ -592,7 +592,7 @@ $ercore_proposal_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_pp_proposal_submit
+// FIELD: field_ercore_pp_proposal_submit.
   'field_ercore_pp_proposal_submit' => array(
     'type_name' => 'ercore_proposal',
     'entity_types' => array(),
@@ -664,7 +664,7 @@ $ercore_proposal_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_pp_support
+// FIELD: field_ercore_pp_support.
   'field_ercore_pp_support' => array(
     'type_name' => 'ercore_proposal',
     'entity_types' => array(),
@@ -739,7 +739,7 @@ $ercore_proposal_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_pp_support_type
+// FIELD: field_ercore_pp_support_type.
   'field_ercore_pp_support_type' => array(
     'type_name' => 'ercore_proposal',
     'entity_types' => array(),
@@ -806,7 +806,7 @@ $ercore_proposal_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_pp_others
+// FIELD: field_ercore_pp_others.
   'field_ercore_pp_others' => array(
     'translatable' => '0',
     'entity_types' => array(),

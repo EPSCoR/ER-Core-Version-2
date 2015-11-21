@@ -4,8 +4,8 @@
  * Includes array of ERCore Components field definitions.
  */
 
-$ercore_components_definitions = array(
-// FIELD: field_ercore_cmp_core
+$ercore_component_definitions = array(
+// FIELD: field_ercore_cmp_core.
   'field_ercore_cmp_core' => array(
     'translatable' => '0',
     'entity_types' => array(),

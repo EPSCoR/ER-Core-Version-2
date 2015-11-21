@@ -81,7 +81,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['form_type'] = 'date_popup';
   /* Filter criterion: Content: Dates -  start date (field_ercore_cn_dates) */
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['id'] = 'field_ercore_cn_dates_value';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['table'] = 'field_data_field_ercore_cn_dates';
@@ -101,7 +101,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['form_type'] = 'date_popup';
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'count');
@@ -193,7 +193,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['form_type'] = 'date_popup';
   /* Filter criterion: Content: Date -  start date (field_ercore_ev_date) */
   $handler->display->display_options['filters']['field_ercore_ev_date_value']['id'] = 'field_ercore_ev_date_value';
   $handler->display->display_options['filters']['field_ercore_ev_date_value']['table'] = 'field_data_field_ercore_ev_date';
@@ -215,7 +215,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_ev_date_value']['form_type'] = 'date_popup';
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'count');
@@ -293,7 +293,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['form_type'] = 'date_popup';
   /* Filter criterion: Content: Date -  start date (field_ercore_ev_date) */
   $handler->display->display_options['filters']['field_ercore_ev_date_value']['id'] = 'field_ercore_ev_date_value';
   $handler->display->display_options['filters']['field_ercore_ev_date_value']['table'] = 'field_data_field_ercore_ev_date';
@@ -313,7 +313,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_ev_date_value']['form_type'] = 'date_popup';
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'count');
@@ -391,7 +391,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_hi_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_hi_date_value']['form_type'] = 'date_popup';
   /* Filter criterion: Content: Date completed (field_ercore_hi_date) */
   $handler->display->display_options['filters']['field_ercore_hi_date_value_1']['id'] = 'field_ercore_hi_date_value_1';
   $handler->display->display_options['filters']['field_ercore_hi_date_value_1']['table'] = 'field_data_field_ercore_hi_date';
@@ -411,7 +411,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_hi_date_value_1']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_hi_date_value_1']['form_type'] = 'date_popup';
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'count');
@@ -488,7 +488,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_hn_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_hn_date_value']['form_type'] = 'date_popup';
   /* Filter criterion: Content: Date Awarded (field_ercore_hn_date) */
   $handler->display->display_options['filters']['field_ercore_hn_date_value_1']['id'] = 'field_ercore_hn_date_value_1';
   $handler->display->display_options['filters']['field_ercore_hn_date_value_1']['table'] = 'field_data_field_ercore_hn_date';
@@ -508,7 +508,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_hn_date_value_1']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_hn_date_value_1']['form_type'] = 'date_popup';
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'count');
@@ -644,7 +644,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_op_date_value']['form_type'] = 'date_popup';
   /* Filter criterion: Content: Date (field_ercore_op_date) */
   $handler->display->display_options['filters']['field_ercore_op_date_value_1']['id'] = 'field_ercore_op_date_value_1';
   $handler->display->display_options['filters']['field_ercore_op_date_value_1']['table'] = 'field_data_field_ercore_op_date';
@@ -664,7 +664,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['form_type'] = 'date_popup';
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'count');
@@ -752,7 +752,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['form_type'] = 'date_popup';
   /* Filter criterion: User: Participating Date(s) -  start date (field_ercore_us_part_date) */
   $handler->display->display_options['filters']['field_ercore_us_part_date_value']['id'] = 'field_ercore_us_part_date_value';
   $handler->display->display_options['filters']['field_ercore_us_part_date_value']['table'] = 'field_data_field_ercore_us_part_date';
@@ -857,7 +857,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_pt_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_pt_date_value']['form_type'] = 'date_popup';
   /* Filter criterion: Content: License Date (field_ercore_pt_date) */
   $handler->display->display_options['filters']['field_ercore_pt_date_value_1']['id'] = 'field_ercore_pt_date_value_1';
   $handler->display->display_options['filters']['field_ercore_pt_date_value_1']['table'] = 'field_data_field_ercore_pt_date';
@@ -877,7 +877,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_pt_date_value_1']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_pt_date_value_1']['form_type'] = 'date_popup';
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'count');
@@ -955,7 +955,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_ps_date_value']['form_type'] = 'date_popup';
   /* Filter criterion: Content: Date (field_ercore_ps_date) */
   $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['id'] = 'field_ercore_ps_date_value_1';
   $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['table'] = 'field_data_field_ercore_ps_date';
@@ -975,7 +975,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['form_type'] = 'date_popup';
   /* Filter criterion: Content: Type of Presentation (field_ercore_ps_type) */
   $handler->display->display_options['filters']['field_ercore_ps_type_value']['id'] = 'field_ercore_ps_type_value';
   $handler->display->display_options['filters']['field_ercore_ps_type_value']['table'] = 'field_data_field_ercore_ps_type';
@@ -1072,7 +1072,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['form_type'] = 'date_popup';
   /* Filter criterion: Content: Award Dates -  start date (field_ercore_pp_proposal_date) */
   $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['id'] = 'field_ercore_pp_proposal_date_value';
   $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['table'] = 'field_data_field_ercore_pp_proposal_date';
@@ -1093,7 +1093,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['form_type'] = 'date_popup';
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'count');
@@ -1171,7 +1171,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_pb_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_pb_date_value']['form_type'] = 'date_popup';
   /* Filter criterion: Content: Date of Publication (field_ercore_pb_date) */
   $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['id'] = 'field_ercore_pb_date_value_1';
   $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['table'] = 'field_data_field_ercore_pb_date';
@@ -1191,7 +1191,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['form_type'] = 'date_popup';
   /* Filter criterion: Content: Publication Type (field_ercore_pb_type) */
   $handler->display->display_options['filters']['field_ercore_pb_type_value']['id'] = 'field_ercore_pb_type_value';
   $handler->display->display_options['filters']['field_ercore_pb_type_value']['table'] = 'field_data_field_ercore_pb_type';
@@ -1366,7 +1366,7 @@ function ercore_admin_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'epscor/participants/160-hours';
+  $handler->display->display_options['path'] = 'ercore/participants/160-hours';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = '160 Hour Criteria';
   $handler->display->display_options['menu']['description'] = 'Shows a list of users that work more than 160 hours, according to their User Profile';
@@ -1500,8 +1500,8 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['content'] = '<div class="tabs">
 <h2 class="element-invisible">Collaboration Links</h2>
 <ul class="tabs primary">
-<li><a href="/epscor/views/collaboration">Collaborating Institutions - Participating</a></li>
-<li class="active"><a href="/epscor/views/collaboration/non-participating">Collaborating Institutions - Non-participating</a></li>
+<li><a href="/ercore/views/collaboration">Collaborating Institutions - Participating</a></li>
+<li class="active"><a href="/ercore/views/collaboration/non-participating">Collaborating Institutions - Non-participating</a></li>
 </ul>
 </div>';
   /* Relationship: Field Collection to Node */
@@ -1551,7 +1551,7 @@ function ercore_admin_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'epscor/views/collaboration/non-participating';
+  $handler->display->display_options['path'] = 'ercore/views/collaboration/non-participating';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Non-participating';
   $handler->display->display_options['menu']['weight'] = '0';
@@ -1612,8 +1612,8 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['content'] = '<div class="tabs">
 <h2 class="element-invisible">Collaboration Links</h2>
 <ul class="tabs primary">
-<li class="active"><a href="/epscor/views/collaboration">Collaborating Institutions - Participating</a></li>
-<li><a href="/epscor/views/collaboration/non-participating">Collaborating Institutions - Non-participating</a></li>
+<li class="active"><a href="/ercore/views/collaboration">Collaborating Institutions - Participating</a></li>
+<li><a href="/ercore/views/collaboration/non-participating">Collaborating Institutions - Non-participating</a></li>
 </ul>
 </div>';
   /* Relationship: Institution to User */
@@ -1675,7 +1675,7 @@ function ercore_admin_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['path'] = 'epscor/views/collaboration';
+  $handler->display->display_options['path'] = 'ercore/views/collaboration';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Collaborating Institutions';
   $handler->display->display_options['menu']['weight'] = '0';
@@ -1964,7 +1964,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'External Engagement Events';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['path'] = 'epscor/views/external-engagements-information';
+  $handler->display->display_options['path'] = 'ercore/views/external-engagements-information';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Manage External Engagements';
   $handler->display->display_options['menu']['description'] = 'Lists Calendar Events that were open to the public, and which need External Engagements';
@@ -2299,7 +2299,7 @@ function ercore_admin_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'epscor/participants/incomplete-profiles';
+  $handler->display->display_options['path'] = 'ercore/participants/incomplete-profiles';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Users with Incomplete Profiles';
   $handler->display->display_options['menu']['description'] = 'Displays users with missing on incomplete profile information.';
@@ -2322,6 +2322,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Collaborations';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page collaborations-page';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
@@ -2408,7 +2409,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['form_type'] = 'date_popup';
   /* Filter criterion: Content: Dates -  start date (field_ercore_cn_dates) */
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['id'] = 'field_ercore_cn_dates_value';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['table'] = 'field_data_field_ercore_cn_dates';
@@ -2429,7 +2430,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['form_type'] = 'date_popup';
   /* Filter criterion: User: Participating Institutions (field_ercore_us_inst_ref) */
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
@@ -2523,6 +2524,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'External Collaborators';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page collaborators-page';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
@@ -2782,6 +2784,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'External Engagements';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page engagements-page';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
@@ -2887,7 +2890,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['form_type'] = 'date_popup';
   /* Filter criterion: Content: Date -  start date (field_ercore_ev_date) */
   $handler->display->display_options['filters']['field_ercore_ev_date_value']['id'] = 'field_ercore_ev_date_value';
   $handler->display->display_options['filters']['field_ercore_ev_date_value']['table'] = 'field_data_field_ercore_ev_date';
@@ -2908,7 +2911,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_ev_date_value']['form_type'] = 'date_popup';
   /* Filter criterion: User: Participating Institutions (field_ercore_us_inst_ref) */
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
@@ -3459,6 +3462,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Calendar Events';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page events-page';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
@@ -3566,7 +3570,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['form_type'] = 'date_popup';
   /* Filter criterion: Content: Date -  start date (field_ercore_ev_date) */
   $handler->display->display_options['filters']['field_ercore_ev_date_value']['id'] = 'field_ercore_ev_date_value';
   $handler->display->display_options['filters']['field_ercore_ev_date_value']['table'] = 'field_data_field_ercore_ev_date';
@@ -3587,7 +3591,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_ev_date_value']['form_type'] = 'date_popup';
   /* Filter criterion: User: Participating Institutions (field_ercore_us_inst_ref) */
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
@@ -3675,6 +3679,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Highlights';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page highlights-page';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
@@ -3879,6 +3884,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Honors and Awards';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page honors-page';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -4040,7 +4046,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Institutions';
-  $handler->display->display_options['css_class'] = 'ercore-data';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page institutions-page';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
@@ -4345,6 +4351,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Other Research Products';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page other-products-page';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
@@ -4585,6 +4592,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Participants';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page participants-page';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
@@ -4850,6 +4858,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Patents';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page patents-page';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
@@ -4941,7 +4950,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_pt_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_pt_date_value']['form_type'] = 'date_popup';
   /* Filter criterion: Content: License Date (field_ercore_pt_date) */
   $handler->display->display_options['filters']['field_ercore_pt_date_value_1']['id'] = 'field_ercore_pt_date_value_1';
   $handler->display->display_options['filters']['field_ercore_pt_date_value_1']['table'] = 'field_data_field_ercore_pt_date';
@@ -4962,7 +4971,7 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_ercore_pt_date_value_1']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_pt_date_value_1']['form_type'] = 'date_popup';
   /* Filter criterion: User: Participating Institutions (field_ercore_us_inst_ref) */
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
@@ -5081,6 +5090,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Presentations';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page presentations-page';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
@@ -5379,6 +5389,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Grants and Proposals*';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page proposals-page';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'create er_proposal content';
@@ -5787,6 +5798,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Publications';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page publications-page';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
@@ -6219,7 +6231,7 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  $handler->display->display_options['path'] = 'epscor/participants/activity';
+  $handler->display->display_options['path'] = 'ercore/participants/activity';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Participant Activity';
   $handler->display->display_options['menu']['description'] = 'Shows all activity from Users with Titles, Dates, Revisions, etc. This helps Administrators track users and what is reported';
@@ -6476,7 +6488,7 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'epscor/participants/collecting-data-information';
+  $handler->display->display_options['path'] = 'ercore/participants/collecting-data-information';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Data Collection Information';
   $handler->display->display_options['menu']['description'] = 'Lists details on Users that will be collecting data';

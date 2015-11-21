@@ -5,7 +5,7 @@
  */
 
 $ercore_user_definitions = array(
-// FIELD: field_ercore_us_160hours
+// FIELD: field_ercore_us_160hours.
   'field_ercore_us_160hours' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -74,7 +74,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_doctor_act
+// FIELD: field_ercore_us_doctor_act.
   'field_ercore_us_doctor_act' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -145,7 +145,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_masters_act
+// FIELD: field_ercore_us_masters_act.
   'field_ercore_us_masters_act' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -216,7 +216,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_under_act
+// FIELD: field_ercore_us_under_act.
   'field_ercore_us_under_act' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -287,7 +287,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_additional_doc
+// FIELD: field_ercore_us_additional_doc.
   'field_ercore_us_additional_doc' => array(
     'type_name' => 'er_user_profile',
     'entity_types' => array(),
@@ -382,7 +382,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_address
+// FIELD: field_ercore_us_address.
   'field_ercore_us_address' => array(
     'type_name' => 'er_user_profile',
     'entity_types' => array(),
@@ -465,7 +465,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_advisor
+// FIELD: field_ercore_us_advisor.
   'field_ercore_us_advisor' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -536,7 +536,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_doctor_ant
+// FIELD: field_ercore_us_doctor_ant.
   'field_ercore_us_doctor_ant' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -607,7 +607,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_masters_ant
+// FIELD: field_ercore_us_masters_ant.
   'field_ercore_us_masters_ant' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -678,7 +678,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_under_ant
+// FIELD: field_ercore_us_under_ant.
   'field_ercore_us_under_ant' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -749,7 +749,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_collect_data
+// FIELD: field_ercore_us_collect_data.
   'field_ercore_us_collect_data' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -818,7 +818,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_committees
+// FIELD: field_ercore_us_committees.
   'field_ercore_us_committees' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -898,7 +898,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_data_frequency
+// FIELD: field_ercore_us_data_frequency.
   'field_ercore_us_data_frequency' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -967,7 +967,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_data_submit_date
+// FIELD: field_ercore_us_data_submit_date.
   'field_ercore_us_data_submit_date' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -1047,7 +1047,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_data_url
+// FIELD: field_ercore_us_data_url.
   'field_ercore_us_data_url' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -1128,7 +1128,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_department
+// FIELD: field_ercore_us_department.
   'field_ercore_us_department' => array(
     'type_name' => 'er_user_profile',
     'entity_types' => array(),
@@ -1211,7 +1211,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_description
+// FIELD: field_ercore_us_description.
   'field_ercore_us_description' => array(
     'type_name' => 'er_user_profile',
     'entity_types' => array(),
@@ -1294,7 +1294,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_disabilities
+// FIELD: field_ercore_us_disabilities.
   'field_ercore_us_disabilities' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -1373,7 +1373,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_ethnicity
+// FIELD: field_ercore_us_ethnicity.
   'field_ercore_us_ethnicity' => array(
     'type_name' => 'er_user_profile',
     'entity_types' => array(),
@@ -1446,7 +1446,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_fac_support
+// FIELD: field_ercore_us_fac_support.
   'field_ercore_us_fac_support' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -1506,7 +1506,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_gender
+// FIELD: field_ercore_us_gender.
   'field_ercore_us_gender' => array(
     'type_name' => 'er_user_profile',
     'entity_types' => array(),
@@ -1578,7 +1578,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_has_this_user
+// FIELD: field_ercore_us_has_this_user.
   'field_ercore_us_has_this_user' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -1638,7 +1638,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_hired_date
+// FIELD: field_ercore_us_hired_date.
   'field_ercore_us_hired_date' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -1709,7 +1709,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_inst_ref
+// FIELD: field_ercore_us_inst_ref.
   'field_ercore_us_inst_ref' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -1724,7 +1724,7 @@ $ercore_user_definitions = array(
         ),
         'behaviors' => array(
           'views-select-list' => array(
-            'status' => 0,
+            'status' => 1,
           ),
         ),
       ),
@@ -1796,7 +1796,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_leadership_team
+// FIELD: field_ercore_us_leadership_team.
   'field_ercore_us_leadership_team' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -1857,7 +1857,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_funding_src
+// FIELD: field_ercore_us_funding_src.
   'field_ercore_us_funding_src' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -1926,7 +1926,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_mnt_up
+// FIELD: field_ercore_us_mnt_up.
   'field_ercore_us_mnt_up' => array(
     'type_name' => 'er_user_profile',
     'entity_types' => array(),
@@ -2021,7 +2021,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_ment_signoff
+// FIELD: field_ercore_us_ment_signoff.
   'field_ercore_us_ment_signoff' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -2092,7 +2092,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_months_of_effort
+// FIELD: field_ercore_us_months_of_effort.
   'field_ercore_us_months_of_effort' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -2162,7 +2162,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_sen_role
+// FIELD: field_ercore_us_sen_role.
   'field_ercore_us_sen_role' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -2206,7 +2206,7 @@ $ercore_user_definitions = array(
       ),
     ),
     'field_permissions' => array(
-      'type' => '0',
+      'type' => '2',
     ),
     'field_name' => 'field_ercore_us_sen_role',
     'type' => 'list_text',
@@ -2229,7 +2229,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_paid
+// FIELD: field_ercore_us_paid.
   'field_ercore_us_paid' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -2298,7 +2298,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_part_date
+// FIELD: field_ercore_us_part_date.
   'field_ercore_us_part_date' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -2381,7 +2381,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_person_month
+// FIELD: field_ercore_us_person_month.
   'field_ercore_us_person_month' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -2451,7 +2451,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_phone_personal
+// FIELD: field_ercore_us_phone_personal.
   'field_ercore_us_phone_personal' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -2530,7 +2530,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_phone_work
+// FIELD: field_ercore_us_phone_work.
   'field_ercore_us_phone_work' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -2609,7 +2609,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_pro_link
+// FIELD: field_ercore_us_pro_link.
   'field_ercore_us_pro_link' => array(
     'type_name' => 'er_user_profile',
     'entity_types' => array(),
@@ -2701,7 +2701,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_race
+// FIELD: field_ercore_us_race.
   'field_ercore_us_race' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -2780,7 +2780,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_rcr_bool
+// FIELD: field_ercore_us_rcr_bool.
   'field_ercore_us_rcr_bool' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -2848,7 +2848,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_rcr_in_person
+// FIELD: field_ercore_us_rcr_in_person.
   'field_ercore_us_rcr_in_person' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -2919,7 +2919,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_rcr_inperson_ul
+// FIELD: field_ercore_us_rcr_inperson_ul.
   'field_ercore_us_rcr_inperson_ul' => array(
     'type_name' => 'er_user_profile',
     'entity_types' => array(),
@@ -3013,7 +3013,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_rcr_online
+// FIELD: field_ercore_us_rcr_online.
   'field_ercore_us_rcr_online' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -3084,7 +3084,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_rcr_online_up
+// FIELD: field_ercore_us_rcr_online_up.
   'field_ercore_us_rcr_online_up' => array(
     'type_name' => 'er_user_profile',
     'entity_types' => array(),
@@ -3178,7 +3178,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_supervisor
+// FIELD: field_ercore_us_supervisor.
   'field_ercore_us_supervisor' => array(
     'type_name' => 'er_user_profile',
     'entity_types' => array(),
@@ -3261,7 +3261,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_data_type
+// FIELD: field_ercore_us_data_type.
   'field_ercore_us_data_type' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -3340,7 +3340,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_us_veteran_status
+// FIELD: field_ercore_us_veteran_status.
   'field_ercore_us_veteran_status' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -3409,7 +3409,7 @@ $ercore_user_definitions = array(
     ),
   ),
 
-// FIELD: field_user_name
+// FIELD: field_user_name.
   'field_user_name' => array(
     'translatable' => '0',
     'entity_types' => array(),

@@ -16,12 +16,12 @@ function _ercore_node_types() {
     // Type ERCore Admin.
     'ercore_admin' => array(
       'type' => 'ercore_admin',
-      'name' => $t("ERCore Adminstrative Page"),
+      'name' => $t("ERCore Administrative Page"),
       'base' => 'node_content',
       'title_label' => $t("Title"),
       'body_label' => $t("Body"),
       'description' =>
-      $t("For ERCore adminstrative content."),
+      $t("For ERCore administrative content."),
       'custom' => TRUE,
     ),
     // Type ERCore Collaboration.

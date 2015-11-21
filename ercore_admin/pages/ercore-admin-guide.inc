@@ -12,7 +12,7 @@
 function ercore_admin_guide_callback() {
   return array(
     '#markup' =>
-      t('<p>This guide is aimed at site administrators and administrative staff.
+    t('<p>This guide is aimed at site administrators and administrative staff.
 This document helps describe some of the internal features of ER Core, and how
 administrators may customize the Core to meet jurisdictional needs. This
 document aims to describe the various tasks, views, operations, and procedures

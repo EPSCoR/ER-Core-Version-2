@@ -5,11 +5,11 @@
  */
 
 $ercore_event_instances = array(
-// INSTANCE: field_ercore_ev_date
+// INSTANCE: field_ercore_ev_date.
   'field_ercore_ev_date' => array(
     'label' => 'Date',
     'widget' => array(
-      'weight' => '-3',
+      'weight' => '1',
       'type' => 'date_popup',
       'module' => 'date',
       'active' => 1,
@@ -86,11 +86,11 @@ $ercore_event_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ev_organizer
+// INSTANCE: field_ercore_organizer.
   'field_ercore_ev_organizer' => array(
     'label' => 'EPSCoR Organizer(s)',
     'widget' => array(
-      'weight' => '-2',
+      'weight' => '2',
       'type' => 'entityreference_autocomplete',
       'module' => 'entityreference',
       'active' => 1,
@@ -154,7 +154,7 @@ $ercore_event_instances = array(
       'default' => array(
         'label' => 'above',
         'type' => 'entityreference_label',
-        'weight' => '4',
+        'weight' => '3',
         'settings' => array(
           'link' => 1,
         ),
@@ -189,11 +189,11 @@ $ercore_event_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ev_url
+// INSTANCE: field_ercore_ev_url.
   'field_ercore_ev_url' => array(
     'label' => 'Event Link',
     'widget' => array(
-      'weight' => '2',
+      'weight' => '6',
       'type' => 'link_field',
       'module' => 'link',
       'active' => 0,
@@ -230,11 +230,12 @@ $ercore_event_instances = array(
         'settings' => array(),
         'module' => 'link',
       ),
-      'default' => array(
+      'teaser' => array(
         'label' => 'inline',
         'type' => 'hidden',
         'settings' => array(),
         'module' => 'link',
+        'weight' => 6,
       ),
       'full' => array(
         'label' => 'inline',
@@ -253,21 +254,19 @@ $ercore_event_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ev_type
+// INSTANCE: field_ercore_ev_type.
   'field_ercore_ev_type' => array(
     'label' => 'Event Type',
     'widget' => array(
-      'weight' => '-1',
+      'weight' => '3',
       'type' => 'select_or_other',
       'module' => 'select_or_other',
       'active' => 1,
       'settings' => array(
-        'available_options' =>
-          "0|Brown Bag\r\n1|Meeting\r\n2|Workshop\r\n3|Conference\r\n4|Seminar\r\n5|Retreat",
+        'available_options' => "0|Brown Bag\r\n1|Meeting\r\n2|Workshop\r\n3|Conference\r\n4|Seminar\r\n5|Retreat",
         'available_options_php' => '',
         'other' => 'Other',
-        'other_title' =>
-          'You selected "Other", please give more information on your event.',
+        'other_title' => 'You selected "Other", please give more information on your event.',
         'other_unknown_defaults' => 'other',
         'other_size' => '60',
         'sort_options' => 0,
@@ -296,7 +295,7 @@ $ercore_event_instances = array(
       'full' => array(
         'label' => 'inline',
         'type' => 'select_or_other_formatter',
-        'weight' => '3',
+        'weight' => '4',
         'settings' => array(),
         'module' => 'select_or_other',
       ),
@@ -310,7 +309,7 @@ $ercore_event_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ev_reminders
+// INSTANCE: field_ercore_ev_reminders.
   'field_ercore_ev_reminders' => array(
     'weight' => '4',
     'label' => 'Will this event be attended by non-EPSCoR participants',
@@ -322,7 +321,7 @@ $ercore_event_instances = array(
       ),
     ),
     'widget' => array(
-      'weight' => '6',
+      'weight' => '8',
       'type' => 'options_buttons',
       'module' => 'options',
       'active' => 1,
@@ -338,13 +337,13 @@ $ercore_event_instances = array(
       'full' => array(
         'label' => 'inline',
         'type' => 'hidden',
-        'weight' => '9',
+        'weight' => '10',
         'settings' => array(),
       ),
       'default' => array(
         'label' => 'inline',
         'type' => 'hidden',
-        'weight' => '9',
+        'weight' => '10',
         'settings' => array(),
       ),
     ),
@@ -365,11 +364,11 @@ $ercore_event_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ev_document
+// INSTANCE: field_ercore_ev_document.
   'field_ercore_ev_document' => array(
     'label' => 'Attach Document(s)',
     'widget' => array(
-      'weight' => '5',
+      'weight' => '7',
       'type' => 'file_generic',
       'module' => 'file',
       'active' => 1,
@@ -414,56 +413,9 @@ $ercore_event_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ev_location
+// INSTANCE: field_ercore_ev_location.
   'field_ercore_ev_location' => array(
     'label' => 'Location/Address',
-    'widget' => array(
-      'weight' => '7',
-      'type' => 'text_textfield',
-      'module' => 'text',
-      'active' => 1,
-      'settings' => array(
-        'size' => '60',
-      ),
-    ),
-    'settings' => array(
-      'text_processing' => '0',
-      'user_register_form' => FALSE,
-    ),
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'type' => 'text_default',
-        'weight' => '6',
-        'settings' => array(),
-        'module' => 'text',
-      ),
-      'teaser' => array(
-        'type' => 'hidden',
-        'label' => 'above',
-        'settings' => array(),
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'type' => 'text_default',
-        'weight' => '6',
-        'settings' => array(),
-        'module' => 'text',
-      ),
-    ),
-    'required' => 0,
-    'description' => '',
-    'default_value' => NULL,
-    'field_name' => 'field_ercore_ev_location',
-    'entity_type' => 'node',
-    'bundle' => 'ercore_event',
-    'deleted' => '0',
-  ),
-
-// INSTANCE: field_ercore_ev_room
-  'field_ercore_ev_room' => array(
-    'label' => 'Building (Room Number)',
     'widget' => array(
       'weight' => '9',
       'type' => 'text_textfield',
@@ -479,7 +431,7 @@ $ercore_event_instances = array(
     ),
     'display' => array(
       'default' => array(
-        'label' => 'inline',
+        'label' => 'above',
         'type' => 'text_default',
         'weight' => '7',
         'settings' => array(),
@@ -492,9 +444,56 @@ $ercore_event_instances = array(
         'weight' => 0,
       ),
       'full' => array(
-        'label' => 'inline',
+        'label' => 'above',
         'type' => 'text_default',
         'weight' => '7',
+        'settings' => array(),
+        'module' => 'text',
+      ),
+    ),
+    'required' => 0,
+    'description' => '',
+    'default_value' => NULL,
+    'field_name' => 'field_ercore_ev_location',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_event',
+    'deleted' => '0',
+  ),
+
+// INSTANCE: field_ercore_ev_room.
+  'field_ercore_ev_room' => array(
+    'label' => 'Building (Room Number)',
+    'widget' => array(
+      'weight' => '10',
+      'type' => 'text_textfield',
+      'module' => 'text',
+      'active' => 1,
+      'settings' => array(
+        'size' => '60',
+      ),
+    ),
+    'settings' => array(
+      'text_processing' => '0',
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'type' => 'text_default',
+        'weight' => '8',
+        'settings' => array(),
+        'module' => 'text',
+      ),
+      'teaser' => array(
+        'type' => 'hidden',
+        'label' => 'above',
+        'settings' => array(),
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'type' => 'text_default',
+        'weight' => '8',
         'settings' => array(),
         'module' => 'text',
       ),
@@ -508,7 +507,7 @@ $ercore_event_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ev_engagement
+// INSTANCE: field_ercore_ev_engagement.
   'field_ercore_ev_engagement' => array(
     'label' => 'External Engagement',
     'widget' => array(
@@ -526,11 +525,13 @@ $ercore_event_instances = array(
         'label' => 'hidden',
         'type' => 'hidden',
         'module' => 'field_collection',
+        'settings' => array(),
+        'weight' => 10,
       ),
       'default' => array(
         'label' => 'hidden',
         'type' => 'field_collection_view',
-        'weight' => '8',
+        'weight' => '9',
         'settings' => array(
           'edit' => 'Edit External Engagement',
           'delete' => 'Delete External Engagement',
@@ -543,7 +544,7 @@ $ercore_event_instances = array(
       'full' => array(
         'label' => 'hidden',
         'type' => 'field_collection_view',
-        'weight' => '8',
+        'weight' => '9',
         'settings' => array(
           'edit' => 'Edit External Engagement',
           'delete' => 'Delete External Engagement',
@@ -558,6 +559,63 @@ $ercore_event_instances = array(
     'description' => '',
     'default_value' => NULL,
     'field_name' => 'field_ercore_ev_engagement',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_event',
+    'deleted' => '0',
+  ),
+
+// INSTANCE: field_ercore_programs.
+  'field_ercore_ev_programs' => array(
+    'label' => 'Program',
+    'widget' => array(
+      'weight' => '5',
+      'type' => 'options_select',
+      'module' => 'options',
+      'active' => 1,
+      'settings' => array(),
+    ),
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'type' => 'entityreference_label',
+        'weight' => '4',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'module' => 'entityreference',
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'type' => 'entityreference_label',
+        'weight' => '3',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'module' => 'entityreference',
+      ),
+      'teaser' => array(
+        'type' => 'hidden',
+        'label' => 'above',
+        'settings' => array(),
+        'weight' => 0,
+      ),
+    ),
+    'required' => 0,
+    'description' => '',
+    'entityconnect_unload_add' => '1',
+    'entityconnect_unload_edit' => '1',
+    'entityconnect_show_add_icon' => '0',
+    'entityconnect_show_edit_icon' => '0',
+    'default_value' => NULL,
+    'field_name' => 'field_ercore_programs',
     'entity_type' => 'node',
     'bundle' => 'ercore_event',
     'deleted' => '0',

@@ -5,7 +5,7 @@
  */
 
 $ercore_proposal_instances = array(
-// INSTANCE: field_ercore_pp_award_amount
+// INSTANCE: field_ercore_pp_award_amount.
   'field_ercore_pp_award_amount' => array(
     'label' => 'Award Amount',
     'widget_type' => 'number',
@@ -69,7 +69,7 @@ $ercore_proposal_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pp_award_req_dec
+// INSTANCE: field_ercore_pp_award_req_dec.
   'field_ercore_pp_award_req_dec' => array(
     'label' => 'Amount Requested',
     'widget' => array(
@@ -128,7 +128,7 @@ $ercore_proposal_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pp_location
+// INSTANCE: field_ercore_pp_location.
   'field_ercore_pp_location' => array(
     'label' => 'Location',
     'widget_type' => 'text_textfield',
@@ -177,13 +177,13 @@ $ercore_proposal_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pp_other_pi
+// INSTANCE: field_ercore_pp_other_pi.
   'field_ercore_pp_other_pi' => array(
     'weight' => '5',
     'label' => 'Non-EPSCoR PI/Co-PI',
     'widget_type' => 'text_textfield',
     'description' =>
-      'Please add the first and last name of non-EPSCoR PI or Co-PI.',
+    'Please add the first and last name of non-EPSCoR PI or Co-PI.',
     'default_value' => NULL,
     'widget' => array(
       'weight' => '4',
@@ -228,7 +228,7 @@ $ercore_proposal_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pp_proposal_date
+// INSTANCE: field_ercore_pp_proposal_date.
   'field_ercore_pp_proposal_date' => array(
     'label' => 'Award Dates',
     'widget_type' => 'date_popup',
@@ -311,7 +311,7 @@ $ercore_proposal_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pp_proposal_denied
+// INSTANCE: field_ercore_pp_proposal_denied.
   'field_ercore_pp_proposal_denied' => array(
     'label' => 'Date of Denial Notification',
     'widget_type' => 'date_popup',
@@ -385,7 +385,7 @@ $ercore_proposal_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pp_proposal_paid
+// INSTANCE: field_ercore_pp_proposal_paid.
   'field_ercore_pp_proposal_paid' => array(
     'label' => 'Salary Support',
     'widget' => array(
@@ -424,7 +424,7 @@ $ercore_proposal_instances = array(
     ),
     'required' => 1,
     'description' =>
-      'Are EPSCoR participants listed on this grant receiving financial
+    'Are EPSCoR participants listed on this grant receiving financial
       support?',
     'default_value' => NULL,
     'field_name' => 'field_ercore_pp_proposal_paid',
@@ -433,7 +433,7 @@ $ercore_proposal_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pp_proposal_pending
+// INSTANCE: field_ercore_pp_proposal_pending.
   'field_ercore_pp_proposal_pending' => array(
     'label' => 'Date of Pending Notification',
     'widget_type' => 'date_popup',
@@ -508,7 +508,7 @@ $ercore_proposal_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pp_proposal_status
+// INSTANCE: field_ercore_pp_proposal_status.
   'field_ercore_pp_proposal_status' => array(
     'label' => 'Status',
     'widget_type' => 'optionwidgets_buttons',
@@ -556,7 +556,7 @@ $ercore_proposal_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pp_proposal_submit
+// INSTANCE: field_ercore_pp_proposal_submit.
   'field_ercore_pp_proposal_submit' => array(
     'label' => 'Date Submitted',
     'widget_type' => 'date_popup',
@@ -638,7 +638,7 @@ $ercore_proposal_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pp_support
+// INSTANCE: field_ercore_pp_support.
   'field_ercore_pp_support' => array(
     'label' => 'Funding Agency',
     'widget_type' => 'text_textfield',
@@ -686,12 +686,12 @@ $ercore_proposal_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pp_support_type
+// INSTANCE: field_ercore_pp_support_type.
   'field_ercore_pp_support_type' => array(
     'label' => 'Support Type',
     'widget_type' => 'optionwidgets_buttons',
     'description' =>
-      'Please categorize the nature of the Source of Support.  Do not list your
+    'Please categorize the nature of the Source of Support.  Do not list your
        NSF EPSCoR grant here. You are required to list ALL other sources of
        funding, current or pending. We also need to collect information on
        grants that were not funded in order to help with tracking and success
@@ -741,7 +741,7 @@ $ercore_proposal_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pp_organizer
+// INSTANCE: field_ercore_pp_organizer.
   'field_ercore_pp_organizer' => array(
     'label' => 'EPSCoR PI/Co-PI',
     'widget' => array(
@@ -843,7 +843,7 @@ $ercore_proposal_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pp_others
+// INSTANCE: field_ercore_pp_others.
   'field_ercore_pp_others' => array(
     'label' => 'Other EPSCoR Researchers',
     'widget' => array(
@@ -939,6 +939,62 @@ $ercore_proposal_instances = array(
     'entityconnect_show_edit_icon' => '0',
     'default_value' => NULL,
     'field_name' => 'field_ercore_pp_others',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_proposal',
+    'deleted' => '0',
+  ),
+  // INSTANCE: field_ercore_programs.
+  'field_ercore_pp_programs' => array(
+    'label' => 'Program',
+    'widget' => array(
+      'weight' => '4',
+      'type' => 'options_select',
+      'module' => 'options',
+      'active' => 1,
+      'settings' => array(),
+    ),
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'type' => 'entityreference_label',
+        'weight' => '4',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'module' => 'entityreference',
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'type' => 'entityreference_label',
+        'weight' => '5',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'module' => 'entityreference',
+      ),
+      'teaser' => array(
+        'type' => 'hidden',
+        'label' => 'above',
+        'settings' => array(),
+        'weight' => 0,
+      ),
+    ),
+    'required' => 0,
+    'description' => '',
+    'entityconnect_unload_add' => '1',
+    'entityconnect_unload_edit' => '1',
+    'entityconnect_show_add_icon' => '0',
+    'entityconnect_show_edit_icon' => '0',
+    'default_value' => NULL,
+    'field_name' => 'field_ercore_programs',
     'entity_type' => 'node',
     'bundle' => 'ercore_proposal',
     'deleted' => '0',

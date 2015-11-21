@@ -5,7 +5,7 @@
  */
 
 $ercore_collaboration_instances = array(
-// INSTANCE: field_ercore_cn_dates
+// INSTANCE: field_ercore_cn_dates.
   'field_ercore_cn_dates' => array(
     'label' => 'Collaboration Dates',
     'widget' => array(
@@ -86,7 +86,7 @@ $ercore_collaboration_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_cn_collaborator
+// INSTANCE: field_ercore_cn_collaborator.
   'field_ercore_cn_collaborator' => array(
     'label' => 'External Collaborators',
     'widget' => array(
@@ -137,11 +137,11 @@ $ercore_collaboration_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_organizer
+// INSTANCE: field_ercore_organizer.
   'field_ercore_organizer' => array(
     'label' => 'EPSCoR Collaborator(s)',
     'widget' => array(
-      'weight' => '1',
+      'weight' => '4',
       'type' => 'entityreference_autocomplete',
       'module' => 'entityreference',
       'active' => 1,
@@ -235,7 +235,7 @@ $ercore_collaboration_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_components
+// INSTANCE: field_ercore_components.
   'field_ercore_components' => array(
     'label' => 'Components',
     'widget' => array(
@@ -268,15 +268,12 @@ $ercore_collaboration_instances = array(
       ),
       'teaser' => array(
         'label' => 'above',
-        'type' => 'entityreference_label',
+        'type' => 'hidden',
         'weight' => '3',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'module' => 'entityreference',
+        'settings' => array(),
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'type' => 'entityreference_label',
         'weight' => '3',
         'settings' => array(
@@ -290,6 +287,63 @@ $ercore_collaboration_instances = array(
     'default_value' => NULL,
     'default_value_function' => '',
     'field_name' => 'field_ercore_components',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_collaboration',
+    'deleted' => '0',
+  ),
+
+// INSTANCE: field_ercore_programs.
+  'field_ercore_programs' => array(
+    'label' => 'Program',
+    'widget' => array(
+      'weight' => '2',
+      'type' => 'options_select',
+      'module' => 'options',
+      'active' => 1,
+      'settings' => array(),
+    ),
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'type' => 'entityreference_label',
+        'weight' => '4',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'module' => 'entityreference',
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'type' => 'entityreference_label',
+        'weight' => '4',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'module' => 'entityreference',
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'type' => 'hidden',
+        'weight' => '4',
+        'settings' => array(),
+      ),
+    ),
+    'required' => 0,
+    'description' => '',
+    'entityconnect_unload_add' => '1',
+    'entityconnect_unload_edit' => '1',
+    'entityconnect_show_add_icon' => '0',
+    'entityconnect_show_edit_icon' => '0',
+    'default_value' => NULL,
+    'field_name' => 'field_ercore_programs',
     'entity_type' => 'node',
     'bundle' => 'ercore_collaboration',
     'deleted' => '0',

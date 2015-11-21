@@ -20,53 +20,53 @@ function ercore_reporting_callback($form_state) {
 
   $form = array();
   $form['reporting-year'] = array(
-     '#type' => 'fieldset',
-     '#title' => t('Reporting Year'),
-     '#tree' => TRUE,
-     '#attributes' => array('class' => array('fieldset-class')),
-     '#collapsible' => TRUE,
-     '#collapsed' => FALSE,
-   );
-   $form['reporting-year']['range'] = array(
-     '#type' => 'select',
-     '#title' => t('Reporting Period'),
-     '#options' => $select_list,
-     '#default_value' => 0,
-     '#ajax' => array(
-       'callback' => 'ercore_change_reporting_year',
-       'wrapper' => 'ercore_summary_table',
-       'method' => 'replace',
-       'effect' => 'fade',
-     ),
-   );
+    '#type' => 'fieldset',
+    '#title' => t('Reporting Year'),
+    '#tree' => TRUE,
+    '#attributes' => array('class' => array('fieldset-class')),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+  $form['reporting-year']['range'] = array(
+    '#type' => 'select',
+    '#title' => t('Reporting Period'),
+    '#options' => $select_list,
+    '#default_value' => 0,
+    '#ajax' => array(
+      'callback' => 'ercore_change_reporting_year',
+      'wrapper' => 'ercore_summary_table',
+      'method' => 'replace',
+      'effect' => 'fade',
+    ),
+  );
 
-   $form['dates'] = array(
-     '#type' => 'fieldset',
-     '#title' => t('Date range'),
-     '#tree' => TRUE,
-     '#attributes' => array('class' => array('fieldset-class')),
-     '#collapsible' => TRUE,
-     '#collapsed' => TRUE,
-   );
+  $form['dates'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Date range'),
+    '#tree' => TRUE,
+    '#attributes' => array('class' => array('fieldset-class')),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
 
-   $form['dates']['start_date'] = array(
-     '#type' => 'date_popup',
-     '#title' => t('Start Date'),
-     '#date_format' => $argument_date_format,
-     '#default_value' => $default_dates['start'],
-     '#date_timezone' => $zone,
-     '#date_year_range' => $date_year_range,
-     '#date_label_position' => 'none',
-   );
-  $form['dates']['end_date'] = array(
-     '#type' => 'date_popup',
-     '#title' => t('End Date'),
-     '#date_format' => $argument_date_format,
-     '#default_value' => $default_dates['end'],
-     '#date_timezone' => $zone,
+  $form['dates']['start_date'] = array(
+    '#type' => 'date_popup',
+    '#title' => t('Start Date'),
+    '#date_format' => $argument_date_format,
+    '#default_value' => $default_dates['start'],
+    '#date_timezone' => $zone,
     '#date_year_range' => $date_year_range,
-     '#date_label_position' => 'none',
-   );
+    '#date_label_position' => 'none',
+  );
+  $form['dates']['end_date'] = array(
+    '#type' => 'date_popup',
+    '#title' => t('End Date'),
+    '#date_format' => $argument_date_format,
+    '#default_value' => $default_dates['end'],
+    '#date_timezone' => $zone,
+    '#date_year_range' => $date_year_range,
+    '#date_label_position' => 'none',
+  );
   $form['dates']['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Save'),
@@ -87,9 +87,9 @@ function ercore_reporting_callback($form_state) {
       'effect' => 'fade',
     ),
   );
-  $form['stuff'] = array(
-    '#markup' => t('<p>Reporting text goes here.</p>'),
-  );
+  /* $form['stuff'] = array(
+  '#markup' => t('<p>Reporting text goes here.</p>'),
+  ); */
 
   $form['table'] = array(
     '#theme' => 'ercore_summary_table',
@@ -103,18 +103,18 @@ function ercore_reporting_callback($form_state) {
  * ERCore Reporting submit callback.
  */
 function ercore_reporting_callback_submit($form, &$form_state) {
-  dpm($form);
-  dpm($form_state);
-  if ($form_state['clicked_button']['#id'] == 'edit-dates-reset'){
+  if ($form_state['clicked_button']['#id'] == 'edit-dates-reset') {
     unset($_SESSION['ercore_start_date']);
     unset($_SESSION['ercore_end_date']);
-  }else{
+  }
+  else {
     $s = strtotime($form['dates']['start_date']['#value']['date']);
     $e = strtotime($form['dates']['end_date']['#value']['date']);
-    if ($s <= $e){
+    if ($s <= $e) {
       $_SESSION['ercore_start_date'] = $s;
       $_SESSION['ercore_end_date'] = $e;
-    }else{
+    }
+    else {
       drupal_set_message("Start date must be earlier than end date.", 'error');
     }
   }

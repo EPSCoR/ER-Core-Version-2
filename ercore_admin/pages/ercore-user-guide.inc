@@ -12,7 +12,7 @@
 function ercore_user_guide_callback() {
   return array(
     '#markup' =>
-      t('<h2>Introduction</h2>
+    t('<h2>Introduction</h2>
 <p>This guide has been developed for first time users of the EPSCoR Core
 Reporting site (ER-Core).  This site has been developed using Drupal 7, an
 open-source content management system. Whether you are a developer, tester,
@@ -111,7 +111,7 @@ that better defines your involvement, select the Other option.</li></ul>
 Components can easily be changed by an administrator or Drupal developer.</p>
 <ul>
 <li>Select the project component of which you are involved</li>
-<li>Select multiple componenets if you are involved with more than one</li>
+<li>Select multiple components if you are involved with more than one</li>
 <li>If a component you are involved with is not listed, contact your
 administrator</li></ul>
 <h4>Please select which boards or committees you will be a member of</h4>
@@ -209,7 +209,7 @@ appear. Enter the last day of your participation with EPSCoR </li>
 time been participating, then ceased, and now are involved again. Enter your
 new start date of when you became involved the second time.</li>
 <li>Click the "Show end date" box if you know the end date of your second
-involvment </li>
+involvement</li>
 <li>Use the "<em>Add another item</em>" to add a PARTICIPANT DATE 3 group.</li>
 <li>You can also rearrange the dates by a click -and-drag of the 4 - way arrow
 icon to the left of the date group.</li></ol>
@@ -240,7 +240,7 @@ the default forms that come with standard Drupal installation, plus links to
 the ERCore reporting forms, and custom jurisdictional forms.</p>
 <p>Hover over the Content link to show the expanded menu and click on the Add
 Content link. You will see a page that has the various types of content you can
-add grouped into the headings of Drupal Conent, EPSCoR Reporting Categories,
+add grouped into the headings of Drupal Content, EPSCoR Reporting Categories,
 and Jurisdictional.</p>
 <p>Drupal Content is the type of content that Drupal comes with during a
 standard installation such as article, page, blog, image, etc. Your jurisdiction
@@ -250,7 +250,7 @@ module and represent the minimal reporting requirements to populate the
 reporting tables.</p>
 <p>The Jurisdictional group includes items that are optional or custom to that
 jurisdiction. During installation your Drupal expert has the option to install
-ERCore submodules. These submodules are optional and when installed will
+ERCore sub-modules. These sub-modules are optional and when installed will
 appear in this group.</p>
 <h3 id = "ercore-event">Calendar Events</h3>
 <p>The Calendar Event and External Engagement content types are unique content

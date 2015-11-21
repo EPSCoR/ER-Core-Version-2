@@ -5,7 +5,7 @@
  */
 
 $ercore_institution_instances = array(
-// INSTANCE: field_ercore_in_abbr
+// INSTANCE: field_ercore_in_abbr.
   'field_ercore_in_abbr' => array(
     'label' => 'Abbreviation',
     'widget' => array(
@@ -52,7 +52,7 @@ $ercore_institution_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_in_category
+// INSTANCE: field_ercore_in_category.
   'field_ercore_in_category' => array(
     'weight' => '-1',
     'label' => 'Category',
@@ -105,7 +105,7 @@ $ercore_institution_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_in_country
+// INSTANCE: field_ercore_in_country.
   'field_ercore_in_country' => array(
     'label' => 'Country',
     'widget' => array(
@@ -152,7 +152,7 @@ $ercore_institution_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_in_link
+// INSTANCE: field_ercore_in_link.
   'field_ercore_in_link' => array(
     'label' => 'Institution Link',
     'widget' => array(
@@ -215,7 +215,7 @@ $ercore_institution_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_in_participating
+// INSTANCE: field_ercore_in_participating.
   'field_ercore_in_participating' => array(
     'label' => 'Participating',
     'widget' => array(
@@ -266,7 +266,7 @@ $ercore_institution_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_in_type
+// INSTANCE: field_ercore_in_type.
   'field_ercore_in_type' => array(
     'weight' => '-2',
     'label' => 'Type',

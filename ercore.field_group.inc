@@ -970,195 +970,36 @@ function ercore_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_ercore_us_account|user|user|form';
-  $field_group->group_name = 'group_ercore_us_account';
-  $field_group->entity_type = 'user';
-  $field_group->bundle = 'user';
+  $field_group->identifier = 'group_ercore_pt_licenses|node|ercore_patent|form';
+  $field_group->group_name = 'group_ercore_pt_licenses';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'ercore_patent';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_ercore_us_profile';
+  $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Account Information',
-    'weight' => '8',
+    'label' => 'Licensing Information',
+    'weight' => '9',
     'children' => array(
-      0 => 'account',
-      1 => 'timezone',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $field_groups['group_ercore_us_account|user|user|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_ercore_us_certs|user|user|form';
-  $field_group->group_name = 'group_ercore_us_certs';
-  $field_group->entity_type = 'user';
-  $field_group->bundle = 'user';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_ercore_us_rcr';
-  $field_group->data = array(
-    'label' => 'Certifications and Supporting Documents',
-    'weight' => '12',
-    'children' => array(
-      0 => 'field_ercore_us_additional_doc',
-      1 => 'field_ercore_us_mnt_up',
-      2 => 'field_ercore_us_ment_signoff',
-      3 => 'field_ercore_us_rcr_in_person',
-      4 => 'field_ercore_us_rcr_inperson_ul',
-      5 => 'field_ercore_us_rcr_online',
-      6 => 'field_ercore_us_rcr_online_up',
+      0 => 'field_ercore_pt_date',
+      1 => 'field_ercore_pt_licensee',
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'label' => 'Certifications and Supporting Documents',
+      'label' => 'Licenses',
       'instance_settings' => array(
-        'required_fields' => 1,
+        'required_fields' => 0,
         'id' => '',
-        'classes' => 'group-ercore-us-certs field-group-div',
+        'classes' => 'group-ercore-pt-licenses field-group-div',
         'description' => '',
-        'show_label' => '1',
-        'label_element' => 'h3',
+        'show_label' => '0',
+        'label_element' => 'h2',
         'effect' => 'none',
-        'speed' => 'fast',
+        'speed' => 'none',
       ),
       'formatter' => 'open',
     ),
   );
-  $field_groups['group_ercore_us_certs|user|user|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_ercore_us_contact|user|user|form';
-  $field_group->group_name = 'group_ercore_us_contact';
-  $field_group->entity_type = 'user';
-  $field_group->bundle = 'user';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_ercore_us_profile';
-  $field_group->data = array(
-    'label' => 'Contact Information',
-    'weight' => '3',
-    'children' => array(
-      0 => 'field_ercore_us_address',
-      1 => 'field_ercore_us_phone_personal',
-      2 => 'field_ercore_us_phone_work',
-      3 => 'field_ercore_us_pro_link',
-      4 => 'field_user_name',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-ercore-us-contact field-group-tab',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $field_groups['group_ercore_us_contact|user|user|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_ercore_us_data|user|user|form';
-  $field_group->group_name = 'group_ercore_us_data';
-  $field_group->entity_type = 'user';
-  $field_group->bundle = 'user';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_ercore_us_profile';
-  $field_group->data = array(
-    'label' => 'Data Collection',
-    'weight' => '7',
-    'children' => array(
-      0 => 'field_ercore_us_collect_data',
-      1 => 'field_ercore_us_data_frequency',
-      2 => 'field_ercore_us_data_submit_date',
-      3 => 'field_ercore_us_data_url',
-      4 => 'field_ercore_us_has_this_user',
-      5 => 'field_ercore_us_data_type',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-ercore-us-data field-group-tab',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $field_groups['group_ercore_us_data|user|user|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_ercore_us_demo|user|user|form';
-  $field_group->group_name = 'group_ercore_us_demo';
-  $field_group->entity_type = 'user';
-  $field_group->bundle = 'user';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_ercore_us_profile';
-  $field_group->data = array(
-    'label' => 'Demographics',
-    'weight' => '4',
-    'children' => array(
-      0 => 'field_ercore_us_disabilities',
-      1 => 'field_ercore_us_ethnicity',
-      2 => 'field_ercore_us_gender',
-      3 => 'field_ercore_us_race',
-      4 => 'field_ercore_us_veteran_status',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $field_groups['group_ercore_us_demo|user|user|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_ercore_us_d_certs|user|user|default';
-  $field_group->group_name = 'group_ercore_us_d_certs';
-  $field_group->entity_type = 'user';
-  $field_group->bundle = 'user';
-  $field_group->mode = 'default';
-  $field_group->parent_name = 'group_ercore_us_d_epscor';
-  $field_group->data = array(
-    'label' => 'Certifications and Supporting Documents',
-    'weight' => '53',
-    'children' => array(
-      0 => 'field_ercore_us_additional_doc',
-      1 => 'field_ercore_us_mnt_up',
-      2 => 'field_ercore_us_ment_signoff',
-      3 => 'field_ercore_us_rcr_in_person',
-      4 => 'field_ercore_us_rcr_inperson_ul',
-      5 => 'field_ercore_us_rcr_online',
-      6 => 'field_ercore_us_rcr_online_up',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'formatter' => 'collapsible',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-ercore-us-d-certs field-group-fieldset',
-      ),
-    ),
-  );
-  $field_groups['group_ercore_us_d_certs|user|user|default'] = $field_group;
+  $field_groups['group_ercore_pt_licenses|node|ercore_patent|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1195,35 +1036,6 @@ function ercore_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_ercore_us_d_data|user|user|default';
-  $field_group->group_name = 'group_ercore_us_d_data';
-  $field_group->entity_type = 'user';
-  $field_group->bundle = 'user';
-  $field_group->mode = 'default';
-  $field_group->parent_name = 'group_ercore_us_d_profile';
-  $field_group->data = array(
-    'label' => 'Data Collection',
-    'weight' => '5',
-    'children' => array(
-      0 => 'field_ercore_us_data_frequency',
-      1 => 'field_ercore_us_data_submit_date',
-      2 => 'field_ercore_us_data_url',
-      3 => 'field_ercore_us_data_type',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-ercore-us-d-data field-group-tab',
-      ),
-    ),
-  );
-  $field_groups['group_ercore_us_d_data|user|user|default'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_ercore_us_d_data|user|user|full';
   $field_group->group_name = 'group_ercore_us_d_data';
   $field_group->entity_type = 'user';
@@ -1249,36 +1061,6 @@ function ercore_field_group_info() {
     ),
   );
   $field_groups['group_ercore_us_d_data|user|user|full'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_ercore_us_d_demo|user|user|default';
-  $field_group->group_name = 'group_ercore_us_d_demo';
-  $field_group->entity_type = 'user';
-  $field_group->bundle = 'user';
-  $field_group->mode = 'default';
-  $field_group->parent_name = 'group_ercore_us_d_profile';
-  $field_group->data = array(
-    'label' => 'Demographics',
-    'weight' => '2',
-    'children' => array(
-      0 => 'field_ercore_us_disabilities',
-      1 => 'field_ercore_us_ethnicity',
-      2 => 'field_ercore_us_gender',
-      3 => 'field_ercore_us_race',
-      4 => 'field_ercore_us_veteran_status',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-ercore-us-d-demo field-group-tab',
-      ),
-    ),
-  );
-  $field_groups['group_ercore_us_d_demo|user|user|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1313,45 +1095,6 @@ function ercore_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_ercore_us_d_epscor|user|user|default';
-  $field_group->group_name = 'group_ercore_us_d_epscor';
-  $field_group->entity_type = 'user';
-  $field_group->bundle = 'user';
-  $field_group->mode = 'default';
-  $field_group->parent_name = 'group_ercore_us_d_profile';
-  $field_group->data = array(
-    'label' => 'EPSCoR Involvement',
-    'weight' => '3',
-    'children' => array(
-      0 => 'field_ercore_us_160hours',
-      1 => 'field_ercore_us_description',
-      2 => 'field_ercore_us_fac_support',
-      3 => 'field_ercore_us_hired_date',
-      4 => 'field_ercore_us_leadership_team',
-      5 => 'field_ercore_us_funding_src',
-      6 => 'field_ercore_us_months_of_effort',
-      7 => 'field_ercore_us_sen_role',
-      8 => 'field_ercore_us_paid',
-      9 => 'field_ercore_us_part_date',
-      10 => 'field_ercore_us_person_month',
-      11 => 'field_ercore_us_supervisor',
-      12 => 'field_ercore_components',
-      13 => 'group_ercore_us_d_certs',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-ercore-us-d-epscor field-group-tab',
-      ),
-    ),
-  );
-  $field_groups['group_ercore_us_d_epscor|user|user|default'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_ercore_us_d_epscor|user|user|full';
   $field_group->group_name = 'group_ercore_us_d_epscor';
   $field_group->entity_type = 'user';
@@ -1374,8 +1117,7 @@ function ercore_field_group_info() {
       9 => 'field_ercore_us_part_date',
       10 => 'field_ercore_us_person_month',
       11 => 'field_ercore_us_supervisor',
-      12 => 'field_ercore_components',
-      13 => 'group_ercore_us_d_certs',
+      12 => 'group_ercore_us_d_certs',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1387,36 +1129,6 @@ function ercore_field_group_info() {
     ),
   );
   $field_groups['group_ercore_us_d_epscor|user|user|full'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_ercore_us_d_info|user|user|default';
-  $field_group->group_name = 'group_ercore_us_d_info';
-  $field_group->entity_type = 'user';
-  $field_group->bundle = 'user';
-  $field_group->mode = 'default';
-  $field_group->parent_name = 'group_ercore_us_d_profile';
-  $field_group->data = array(
-    'label' => 'Contact Information',
-    'weight' => '1',
-    'children' => array(
-      0 => 'field_ercore_us_address',
-      1 => 'field_ercore_us_phone_personal',
-      2 => 'field_ercore_us_phone_work',
-      3 => 'field_ercore_us_pro_link',
-      4 => 'field_user_name',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-ercore-us-d-info field-group-tab',
-      ),
-    ),
-  );
-  $field_groups['group_ercore_us_d_info|user|user|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1435,7 +1147,6 @@ function ercore_field_group_info() {
       1 => 'field_ercore_us_phone_personal',
       2 => 'field_ercore_us_phone_work',
       3 => 'field_ercore_us_pro_link',
-      4 => 'field_user_name',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1447,41 +1158,6 @@ function ercore_field_group_info() {
     ),
   );
   $field_groups['group_ercore_us_d_info|user|user|full'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_ercore_us_d_institution|user|user|default';
-  $field_group->group_name = 'group_ercore_us_d_institution';
-  $field_group->entity_type = 'user';
-  $field_group->bundle = 'user';
-  $field_group->mode = 'default';
-  $field_group->parent_name = 'group_ercore_us_d_profile';
-  $field_group->data = array(
-    'label' => 'Institution',
-    'weight' => '4',
-    'children' => array(
-      0 => 'field_ercore_us_doctor_act',
-      1 => 'field_ercore_us_masters_act',
-      2 => 'field_ercore_us_under_act',
-      3 => 'field_ercore_us_advisor',
-      4 => 'field_ercore_us_doctor_ant',
-      5 => 'field_ercore_us_masters_ant',
-      6 => 'field_ercore_us_under_ant',
-      7 => 'field_ercore_us_committees',
-      8 => 'field_ercore_us_department',
-      9 => 'field_ercore_us_inst_ref',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-ercore-us-d-institution field-group-tab',
-      ),
-    ),
-  );
-  $field_groups['group_ercore_us_d_institution|user|user|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1521,35 +1197,6 @@ function ercore_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_ercore_us_d_profile|user|user|default';
-  $field_group->group_name = 'group_ercore_us_d_profile';
-  $field_group->entity_type = 'user';
-  $field_group->bundle = 'user';
-  $field_group->mode = 'default';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Profile',
-    'weight' => '0',
-    'children' => array(
-      0 => 'group_ercore_us_d_info',
-      1 => 'group_ercore_us_d_demo',
-      2 => 'group_ercore_us_d_epscor',
-      3 => 'group_ercore_us_d_institution',
-      4 => 'group_ercore_us_d_data',
-    ),
-    'format_type' => 'tabs',
-    'format_settings' => array(
-      'formatter' => '',
-      'instance_settings' => array(
-        'classes' => 'group-ercore-us-d-profile field-group-tabs',
-      ),
-    ),
-  );
-  $field_groups['group_ercore_us_d_profile|user|user|default'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_ercore_us_d_profile|user|user|full';
   $field_group->group_name = 'group_ercore_us_d_profile';
   $field_group->entity_type = 'user';
@@ -1560,11 +1207,11 @@ function ercore_field_group_info() {
     'label' => 'Profile',
     'weight' => '0',
     'children' => array(
-      0 => 'group_ercore_us_d_info',
+      0 => 'group_ercore_us_d_data',
       1 => 'group_ercore_us_d_demo',
       2 => 'group_ercore_us_d_epscor',
-      3 => 'group_ercore_us_d_institution',
-      4 => 'group_ercore_us_d_data',
+      3 => 'group_ercore_us_d_info',
+      4 => 'group_ercore_us_d_institution',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -1579,12 +1226,169 @@ function ercore_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_ercore_us_education|user|user|form';
-  $field_group->group_name = 'group_ercore_us_education';
+  $field_group->identifier = 'group_ercore_us_f_account|user|user|form';
+  $field_group->group_name = 'group_ercore_us_f_account';
   $field_group->entity_type = 'user';
   $field_group->bundle = 'user';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_ercore_us_epscor';
+  $field_group->parent_name = 'group_ercore_us_f_profile';
+  $field_group->data = array(
+    'label' => 'Account Information',
+    'weight' => '30',
+    'children' => array(
+      0 => 'account',
+      1 => 'timezone',
+      2 => 'picture',
+    ),
+    'format_type' => 'accordion-item',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-ercore-us-f-account field-group-accordion-item',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_ercore_us_f_account|user|user|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_ercore_us_f_certs|user|user|form';
+  $field_group->group_name = 'group_ercore_us_f_certs';
+  $field_group->entity_type = 'user';
+  $field_group->bundle = 'user';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_ercore_us_f_epscor';
+  $field_group->data = array(
+    'label' => 'Certifications and Supporting Documents',
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_ercore_us_additional_doc',
+      1 => 'field_ercore_us_mnt_up',
+      2 => 'field_ercore_us_ment_signoff',
+      3 => 'field_ercore_us_rcr_in_person',
+      4 => 'field_ercore_us_rcr_inperson_ul',
+      5 => 'field_ercore_us_rcr_online',
+      6 => 'field_ercore_us_rcr_online_up',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_ercore_us_f_certs|user|user|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_ercore_us_f_contact|user|user|form';
+  $field_group->group_name = 'group_ercore_us_f_contact';
+  $field_group->entity_type = 'user';
+  $field_group->bundle = 'user';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_ercore_us_f_profile';
+  $field_group->data = array(
+    'label' => 'Contact Information',
+    'weight' => '24',
+    'children' => array(
+      0 => 'field_ercore_us_address',
+      1 => 'field_ercore_us_phone_personal',
+      2 => 'field_ercore_us_phone_work',
+      3 => 'field_ercore_us_pro_link',
+      4 => 'field_user_name',
+    ),
+    'format_type' => 'accordion-item',
+    'format_settings' => array(
+      'label' => 'Contact Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-ercore-us-f-contact field-group-accordion-item',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_ercore_us_f_contact|user|user|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_ercore_us_f_data|user|user|form';
+  $field_group->group_name = 'group_ercore_us_f_data';
+  $field_group->entity_type = 'user';
+  $field_group->bundle = 'user';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_ercore_us_f_profile';
+  $field_group->data = array(
+    'label' => 'Data Collection',
+    'weight' => '29',
+    'children' => array(
+      0 => 'field_ercore_us_collect_data',
+      1 => 'field_ercore_us_data_frequency',
+      2 => 'field_ercore_us_data_submit_date',
+      3 => 'field_ercore_us_data_url',
+      4 => 'field_ercore_us_has_this_user',
+      5 => 'field_ercore_us_data_type',
+    ),
+    'format_type' => 'accordion-item',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-ercore-us-f-data field-group-accordion-item',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_ercore_us_f_data|user|user|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_ercore_us_f_demo|user|user|form';
+  $field_group->group_name = 'group_ercore_us_f_demo';
+  $field_group->entity_type = 'user';
+  $field_group->bundle = 'user';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_ercore_us_f_profile';
+  $field_group->data = array(
+    'label' => 'Demographics',
+    'weight' => '26',
+    'children' => array(
+      0 => 'field_ercore_us_disabilities',
+      1 => 'field_ercore_us_ethnicity',
+      2 => 'field_ercore_us_gender',
+      3 => 'field_ercore_us_race',
+      4 => 'field_ercore_us_veteran_status',
+    ),
+    'format_type' => 'accordion-item',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-ercore-us-f-demo field-group-accordion-item',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_ercore_us_f_demo|user|user|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_ercore_us_f_ed|user|user|form';
+  $field_group->group_name = 'group_ercore_us_f_ed';
+  $field_group->entity_type = 'user';
+  $field_group->bundle = 'user';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_ercore_us_f_epscor';
   $field_group->data = array(
     'label' => 'Education',
     'weight' => '9',
@@ -1597,36 +1401,30 @@ function ercore_field_group_info() {
       5 => 'field_ercore_us_masters_ant',
       6 => 'field_ercore_us_under_ant',
     ),
-    'format_type' => 'div',
+    'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Education',
+      'formatter' => 'collapsible',
       'instance_settings' => array(
-        'required_fields' => 1,
-        'id' => '',
-        'classes' => 'group-ercore-us-education field-group-div',
         'description' => '',
-        'show_label' => '1',
-        'label_element' => 'h2',
-        'effect' => 'none',
-        'speed' => 'none',
+        'classes' => 'group-ercore-us-f-ed field-group-fieldset',
+        'required_fields' => 1,
       ),
-      'formatter' => 'open',
     ),
   );
-  $field_groups['group_ercore_us_education|user|user|form'] = $field_group;
+  $field_groups['group_ercore_us_f_ed|user|user|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_ercore_us_epscor|user|user|form';
-  $field_group->group_name = 'group_ercore_us_epscor';
+  $field_group->identifier = 'group_ercore_us_f_epscor|user|user|form';
+  $field_group->group_name = 'group_ercore_us_f_epscor';
   $field_group->entity_type = 'user';
   $field_group->bundle = 'user';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_ercore_us_profile';
+  $field_group->parent_name = 'group_ercore_us_f_profile';
   $field_group->data = array(
     'label' => 'EPSCoR Involvement',
-    'weight' => '5',
+    'weight' => '27',
     'children' => array(
       0 => 'field_ercore_us_160hours',
       1 => 'field_ercore_us_committees',
@@ -1640,148 +1438,83 @@ function ercore_field_group_info() {
       9 => 'field_ercore_us_paid',
       10 => 'field_ercore_us_part_date',
       11 => 'field_ercore_us_person_month',
-      12 => 'field_ercore_us_supervisor',
-      13 => 'field_ercore_components',
-      14 => 'group_ercore_us_education',
-      15 => 'group_ercore_us_rcr',
+      12 => 'field_ercore_us_rcr_bool',
+      13 => 'field_ercore_us_supervisor',
+      14 => 'group_ercore_us_f_certs',
+      15 => 'group_ercore_us_f_ed',
     ),
-    'format_type' => 'tab',
+    'format_type' => 'accordion-item',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-ercore-us-epscor field-group-tab',
+        'classes' => 'group-ercore-us-f-epscor field-group-accordion-item',
         'required_fields' => 1,
       ),
     ),
   );
-  $field_groups['group_ercore_us_epscor|user|user|form'] = $field_group;
+  $field_groups['group_ercore_us_f_epscor|user|user|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_ercore_us_institution|user|user|form';
-  $field_group->group_name = 'group_ercore_us_institution';
+  $field_group->identifier = 'group_ercore_us_f_inst|user|user|form';
+  $field_group->group_name = 'group_ercore_us_f_inst';
   $field_group->entity_type = 'user';
   $field_group->bundle = 'user';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_ercore_us_profile';
+  $field_group->parent_name = 'group_ercore_us_f_profile';
   $field_group->data = array(
     'label' => 'Institution',
-    'weight' => '6',
+    'weight' => '28',
     'children' => array(
       0 => 'field_ercore_us_department',
       1 => 'field_ercore_us_inst_ref',
+      2 => 'field_ercore_programs',
+      3 => 'field_ercore_components',
     ),
-    'format_type' => 'tab',
+    'format_type' => 'accordion-item',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-ercore-us-institution field-group-tab',
+        'classes' => 'group-ercore-us-f-inst field-group-accordion-item',
         'required_fields' => 1,
       ),
     ),
   );
-  $field_groups['group_ercore_us_institution|user|user|form'] = $field_group;
+  $field_groups['group_ercore_us_f_inst|user|user|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_ercore_us_profile|user|user|form';
-  $field_group->group_name = 'group_ercore_us_profile';
+  $field_group->identifier = 'group_ercore_us_f_profile|user|user|form';
+  $field_group->group_name = 'group_ercore_us_f_profile';
   $field_group->entity_type = 'user';
   $field_group->bundle = 'user';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Profile',
-    'weight' => '0',
+    'weight' => '1',
     'children' => array(
-      0 => 'group_ercore_us_contact',
-      1 => 'group_ercore_us_demo',
-      2 => 'group_ercore_us_account',
-      3 => 'group_ercore_us_epscor',
-      4 => 'group_ercore_us_institution',
-      5 => 'group_ercore_us_data',
+      0 => 'group_ercore_us_f_contact',
+      1 => 'group_ercore_us_f_demo',
+      2 => 'group_ercore_us_f_epscor',
+      3 => 'group_ercore_us_f_data',
+      4 => 'group_ercore_us_f_inst',
+      5 => 'group_ercore_us_f_account',
     ),
-    'format_type' => 'tabs',
+    'format_type' => 'accordion',
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
-        'classes' => 'group-ercore-us-profile field-group-tabs',
-      ),
-    ),
-  );
-  $field_groups['group_ercore_us_profile|user|user|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_ercore_us_rcr|user|user|form';
-  $field_group->group_name = 'group_ercore_us_rcr';
-  $field_group->entity_type = 'user';
-  $field_group->bundle = 'user';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_ercore_us_epscor';
-  $field_group->data = array(
-    'label' => 'Have you completed the Responsible Conduct for Research (RCR) training?',
-    'weight' => '10',
-    'children' => array(
-      0 => 'field_ercore_us_rcr_bool',
-      1 => 'group_ercore_us_certs',
-    ),
-    'format_type' => 'div',
-    'format_settings' => array(
-      'label' => 'Have you completed the Responsible Conduct for Research (RCR) training?',
-      'instance_settings' => array(
-        'required_fields' => 0,
-        'id' => '',
-        'classes' => 'group-ercore-us-rcr field-group-div',
-        'description' => '',
-        'show_label' => '1',
-        'label_element' => 'h2',
         'effect' => 'none',
-        'speed' => 'none',
+        'classes' => 'group-ercore-us-f-profile field-group-accordion',
       ),
-      'formatter' => 'open',
     ),
   );
-  $field_groups['group_ercore_us_rcr|user|user|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_ercore_pt_licenses|node|ercore_patent|form';
-  $field_group->group_name = 'group_ercore_pt_licenses';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'ercore_patent';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Licensing Information',
-    'weight' => '9',
-    'children' => array(
-      0 => 'field_ercore_pt_date',
-      1 => 'field_ercore_pt_licensee',
-    ),
-    'format_type' => 'div',
-    'format_settings' => array(
-      'label' => 'Licenses',
-      'instance_settings' => array(
-        'required_fields' => 0,
-        'id' => '',
-        'classes' => 'group-ercore-pt-licenses field-group-div',
-        'description' => '',
-        'show_label' => '0',
-        'label_element' => 'h2',
-        'effect' => 'none',
-        'speed' => 'none',
-      ),
-      'formatter' => 'open',
-    ),
-  );
-  $field_groups['group_ercore_pt_licenses|node|ercore_patent|form'] = $field_group;
+  $field_groups['group_ercore_us_f_profile|user|user|form'] = $field_group;
 
   return $field_groups;
 }

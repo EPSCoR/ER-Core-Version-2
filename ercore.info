@@ -3,6 +3,7 @@ description = ERCore data types and fields
 
 package = ERCore
 core = 7.x
+version = "7.x-1.0-beta10"
 
 dependencies[] = computed_field
 dependencies[] = ctools
@@ -29,12 +30,10 @@ dependencies[] = number
 ;dependencies[] = page_manager
 dependencies[] = pathauto
 ;dependencies[] = php
-;dependencies[] = phpexcel
 dependencies[] = realname
 dependencies[] = select_or_other
 dependencies[] = views
 ;dependencies[] = views_content
-;dependencies[] = views_data_export
 ;dependencies[] = views_php
 
 stylesheets[all][] = css/ercore.css

@@ -5,7 +5,7 @@
  */
 
 $ercore_presentation_definitions = array(
-// FIELD: field_ercore_ps_event
+// FIELD: field_ercore_ps_event.
   'field_ercore_ps_event' => array(
     'type_name' => 'ercore_presentation',
     'entity_types' => array(),
@@ -80,7 +80,7 @@ $ercore_presentation_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_ps_link
+// FIELD: field_ercore_ps_link.
   'field_ercore_ps_link' => array(
     'type_name' => 'er_publication',
     'entity_types' => array(),
@@ -164,7 +164,7 @@ $ercore_presentation_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_ps_date
+// FIELD: field_ercore_ps_date.
   'field_ercore_ps_date' => array(
     'type_name' => 'ercore_presentation',
     'entity_types' => array(),
@@ -228,7 +228,7 @@ $ercore_presentation_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_ps_type
+// FIELD: field_ercore_ps_type.
   'field_ercore_ps_type' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -292,7 +292,7 @@ $ercore_presentation_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_ps_upload
+// FIELD: field_ercore_ps_upload.
   'field_ercore_ps_upload' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -385,7 +385,7 @@ $ercore_presentation_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_ps_others
+// FIELD: field_ercore_ps_others.
   'field_ercore_ps_others' => array(
     'translatable' => '0',
     'entity_types' => array(),

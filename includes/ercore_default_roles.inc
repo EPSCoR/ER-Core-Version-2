@@ -15,14 +15,16 @@
  * Define roles and their weight.
  */
 
-function _ercore_default_roles()
-{
+function _ercore_default_roles() {
+
   $user_role = array();
   $user_role['guest'] = array(
     'name' => 'guest',
     'weight' => '2',
     'permissions' => array(
       'access ercore content',
+      'access user profiles',
+      'view date repeats',
     ),
   );
   $user_role['student'] = array(
@@ -30,6 +32,8 @@ function _ercore_default_roles()
     'weight' => '4',
     'permissions' => array(
       'access ercore content',
+      'access user profiles',
+      'view date repeats',
     ),
   );
   $user_role['faculty'] = array(
@@ -37,6 +41,12 @@ function _ercore_default_roles()
     'weight' => '6',
     'permissions' => array(
       'access ercore content',
+      'access user profiles',
+      'access toolbar',
+      'entityconnect add button',
+      'entityconnect edit button',
+      'access overlay',
+      'view date repeats',
     ),
   );
   $user_role['administrative staff'] = array(
@@ -46,9 +56,17 @@ function _ercore_default_roles()
       'access ercore admin content',
       'access ercore content',
       'access ercore excel sheets',
+      'access user profiles',
+      'access toolbar',
+      'administer menu',
+      'access content overview',
+      'entityconnect add button',
+      'entityconnect edit button',
+      'view date repeats',
+      'administer users',
     ),
   );
-    $user_role['administrator'] = array(
+  $user_role['administrator'] = array(
     'name' => 'administrator',
     'weight' => '10',
     'permissions' => array(
@@ -56,6 +74,14 @@ function _ercore_default_roles()
       'access ercore admin content',
       'access ercore content',
       'access ercore excel sheets',
+      'access user profiles',
+      'access toolbar',
+      'administer menu',
+      'access content overview',
+      'entityconnect add button',
+      'entityconnect edit button',
+      'view date repeats',
+      'administer users',
     ),
   );
   return $user_role;

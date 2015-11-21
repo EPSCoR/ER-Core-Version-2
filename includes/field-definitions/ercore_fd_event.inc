@@ -5,7 +5,7 @@
  */
 
 $ercore_event_definitions = array(
-// FIELD: field_ercore_ev_date
+// FIELD: field_ercore_ev_date.
   'field_ercore_ev_date' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -89,7 +89,8 @@ $ercore_event_definitions = array(
       ),
     ),
   ),
-// FIELD: field_ercore_ev_url
+
+// FIELD: field_ercore_ev_url.
   'field_ercore_ev_url' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -169,7 +170,8 @@ $ercore_event_definitions = array(
       ),
     ),
   ),
-// FIELD: field_ercore_ev_type
+
+// FIELD: field_ercore_ev_type.
   'field_ercore_ev_type' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -239,7 +241,8 @@ $ercore_event_definitions = array(
       ),
     ),
   ),
-// FIELD: field_ercore_ev_reminders
+
+// FIELD: field_ercore_ev_reminders.
   'field_ercore_ev_reminders' => array(
     'translatable' => '0',
     'storage' => array(
@@ -298,7 +301,8 @@ $ercore_event_definitions = array(
       ),
     ),
   ),
-// FIELD: field_ercore_ev_document
+
+// FIELD: field_ercore_ev_document.
   'field_ercore_ev_document' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -381,7 +385,8 @@ $ercore_event_definitions = array(
       ),
     ),
   ),
-// FIELD: field_ercore_ev_location
+
+// FIELD: field_ercore_ev_location.
   'field_ercore_ev_location' => array(
     'type_name' => 'ercore_event',
     'entity_types' => array(),
@@ -455,7 +460,8 @@ $ercore_event_definitions = array(
       ),
     ),
   ),
-// FIELD: field_ercore_ev_room
+
+// FIELD: field_ercore_ev_room.
   'field_ercore_ev_room' => array(
     'translatable' => '0',
     'entity_types' => array(),
@@ -525,7 +531,8 @@ $ercore_event_definitions = array(
       ),
     ),
   ),
-// FIELD: field_ercore_ev_engagement
+
+// FIELD: field_ercore_ev_engagement.
   'field_ercore_ev_engagement' => array(
     'translatable' => '0',
     'entity_types' => array(),

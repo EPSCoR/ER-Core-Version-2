@@ -25,7 +25,8 @@ function _ercore_installed_instances() {
   include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_presentation.inc";
   include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_proposal.inc";
   include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_publication.inc";
-  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_components.inc";
+  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_component.inc";
+  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_program.inc";
   include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_user.inc";
 
   $installed_instances = array();
@@ -65,8 +66,11 @@ function _ercore_installed_instances() {
   // Add Publication fields.
   $installed_instances = $installed_instances + $ercore_publication_instances;
 
-  // Add Components fields.
-  $installed_instances = $installed_instances + $ercore_components_instances;
+  // Add Component fields.
+  $installed_instances = $installed_instances + $ercore_component_instances;
+
+  // Add Program fields.
+  $installed_instances = $installed_instances + $ercore_program_instances;
 
   // Add User fields.
   $installed_instances = $installed_instances + $ercore_user_instances;

@@ -9,7 +9,7 @@
  */
 function ercore_date_format_types() {
   return array(
-    'ercore_date_format_filter' => t('ErCore: View Filter'),
+    'ercore_date_format_filter' => t('ERCore: View Filter'),
     'ercore_date_format_day_name' => t('Day Name'),
     'ercore_date_format_month_day_year' => t('Month Day Year'),
     'ercore_date_format_month_year' => t('Month Year'),
@@ -18,13 +18,10 @@ function ercore_date_format_types() {
     'ercore_date_format_time' => t('Time'),
   );
 }
-/**
- * Add custom view modes
- * Implements hook_entity_info_alter().
- * The first attribute in the array defines an arbitrary label for the view mode machine name.
- * 'custom settings' => TRUE displays the view mode as a default at the top of the display modes settings screen
- */
 
+/**
+ * Implements hook_entity_info_alter().
+ */
 function ercore_entity_info_alter(&$entity_info) {
   $entity_info['node']['view modes']['teaser_alternate'] = array(
     'label' => t('Alternate Teaser'),
@@ -39,6 +36,7 @@ function ercore_entity_info_alter(&$entity_info) {
     'custom settings' => FALSE,
   );
 }
+
 /**
  * Implements hook_date_formats().
  */
@@ -114,7 +112,7 @@ function _ercore_callback_node_add_page() {
   $print_type = _ercore_theme_node_add_list($type);
   return $print_type;
 
-  // Return theme('node_add_list', array('content' => $content));
+  // Return theme('node_add_list', array('content' => $content));.
 }
 
 
@@ -143,7 +141,7 @@ function _ercore_node_type_check(array $type_check) {
  *   Checks if node type are identified as ERCore Jurisdictional.
  *
  * @return bool
- *   Returns boolean value of ERCore Jurisdicitonal Status
+ *   Returns boolean value of ERCore Jurisdictional Status
  */
 function _ercore_j_node_type_check(array $type_check) {
   if (substr($type_check['link_path'], 9, 8) === 'ercore-j') {
@@ -209,7 +207,13 @@ function _ercore_theme_node_add_list($variables) {
     }
   }
   else {
-    $output = '<p>' . t('You have not created any content types yet. Go to the <a href="@create-content">content type creation page</a> to add a new content type.', array('@create-content' => url('admin/structure/types/add'))) . '</p>';
+    $output = '<p>' . t(
+        'You have not created any content types yet. Go to the
+        <a href="@create-content">content type creation page</a> to add a
+        new content type.', array(
+          '@create-content' => url('admin/structure/types/add'),
+        )
+      ) . '</p>';
   }
   return $output;
 }
@@ -253,7 +257,6 @@ function ercore_ee_import() {
  * Implements hook_form_alter().
  */
 function ercore_form_alter(&$form, &$form_state, $form_id) {
-  //dpm($form_id);
   $forms = array(
     'ercore_other_product_node_form',
     'ercore_event_node_form',
@@ -272,14 +275,18 @@ function ercore_form_alter(&$form, &$form_state, $form_id) {
     $message = 'Your name, "' . $author . '", has been automatically added to ' . $form['field_ercore_organizer']['und']['#title'] . ' field.';
     drupal_set_message($message, 'status');
   }
-  // Patent conditional fields
-  if ($form_id == 'ercore_patent_node_form') {
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ercore_form_ercore_patent_node_form_alter(&$form, &$form_state, $form_id) {
     $form['field_ercore_pt_date']['#states'] = array(
       'visible' => array(
         ':input[name="field_ercore_pt_licensed[und]"]' => array('checked' => TRUE),
       ),
       'required' => array(
-      ':input[name="field_ercore_pt_licensed[und]"]' => array('checked' => TRUE),
+        ':input[name="field_ercore_pt_licensed[und]"]' => array('checked' => TRUE),
       ),
     );
     $form['field_ercore_pt_licensee']['#states'] = array(
@@ -292,8 +299,10 @@ function ercore_form_alter(&$form, &$form_state, $form_id) {
     );
 
   }
-  // Proposal conditional fields
-  if ($form_id == 'ercore_proposal_node_form') {
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ercore_form_ercore_proposal_node_form_alter(&$form, &$form_state, $form_id) {
     $form['field_ercore_pp_proposal_submit']['#states'] = array(
       'visible' => array(
         ':input[name="field_ercore_pp_proposal_status[und]"]' => array(
@@ -344,8 +353,10 @@ function ercore_form_alter(&$form, &$form_state, $form_id) {
       ),
     );
   }
-  // Publication conditional fields
-  if ($form_id == 'ercore_publication_node_form') {
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ercore_form_ercore_publication_node_form_alter(&$form, &$form_state, $form_id) {
     // Publication Status Fields.
     // Submitted Date field #states.
     $form['field_ercore_pb_submit_date']['#states'] = array(
@@ -501,7 +512,191 @@ function ercore_form_alter(&$form, &$form_state, $form_id) {
         ':input[name="field_ercore_pb_archived[und]"]' => array('value' => '2'),
       ),
     );
-  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ercore_form_user_profile_form_alter(&$form, &$form_state, $form_id) {
+  // User field Supervisor #states.
+    $form['field_ercore_us_supervisor']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Graduate student'),
+      ),
+    );
+    // User field Advisor #states.
+    $form['field_ercore_us_advisor']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Post Doc'),
+      ),
+    );
+    // User field Faculaty Support #states.
+    $form['field_ercore_us_fac_support']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Faculty participant (or equivalent)'),
+      ),
+      'required' => array(
+        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Faculty participant (or equivalent)'),
+      ),
+    );
+
+    // User field Anticipated Undergraduate Date #states.
+    $form['field_ercore_us_under_ant']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Undergraduate student'),
+      ),
+      'required' => array(
+        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Undergraduate student'),
+      ),
+    );
+    // User field Actual Undergraduate Date #states.
+    $form['field_ercore_us_under_act']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Undergraduate student'),
+      ),
+    );
+    // User field Anticipated Masters Date #states.
+    $form['field_ercore_us_masters_ant']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Graduate student'),
+      ),
+    );
+    // User field Actual Masters Date #states.
+    $form['field_ercore_us_masters_act']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Graduate student'),
+      ),
+    );
+    // User field Anticipated Doctoral Date #states.
+    $form['field_ercore_us_doctor_ant']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Graduate student'),
+      ),
+    );
+    // User field Actual Doctoral Date #states.
+    $form['field_ercore_us_doctor_act']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Graduate student'),
+      ),
+    );
+    // User RCR Training #states.
+    $form['field_ercore_us_rcr_bool']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_sen_role[und]"]' => array(
+          array('value' => 'Undergraduate student'),
+          array('value' => 'Graduate student'),
+        ),
+      ),
+    );
+    // User RCR in Person Date #states.
+    $form['field_ercore_us_rcr_in_person']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+      ),
+      'required' => array(
+        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+      ),
+    );
+    // User RCR in Person Upload #states.
+    $form['field_ercore_us_rcr_inperson_ul']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+      ),
+      'required' => array(
+        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+      ),
+    );
+    // User RCR online Date #states.
+    $form['field_ercore_us_rcr_online']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+      ),
+      'required' => array(
+        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+      ),
+    );
+   // User RCR online Upload #states.
+  /* $form['group_ercore_us_certs']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+    ),
+  );*/
+    $form['field_ercore_us_rcr_online_up']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+      ),
+      'required' => array(
+        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+      ),
+    );
+    // User RCR Certificate #states.
+    $form['field_ercore_us_additional_doc']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+      ),
+      'required' => array(
+        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+      ),
+    );
+    // User Mentoring Signoff #states.
+    $form['field_ercore_us_ment_signoff']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('value' => 'Post Doc'),
+      ),
+      'required' => array(
+        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('value' => 'Post Doc'),
+      ),
+    );
+    // User Mentoring Plan Upload  #states.
+    $form['field_ercore_us_mnt_up']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('value' => 'Post Doc'),
+      ),
+      'required' => array(
+        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('value' => 'Post Doc'),
+      ),
+    );
+    // User Data Description #states.
+    $form['field_ercore_us_data_type']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_collect_data[und]"]' => array('checked' => TRUE),
+      ),
+      'required' => array(
+        ':input[name="field_ercore_us_collect_data[und]"]' => array('checked' => TRUE),
+      ),
+    );
+    // User Data ongoing #states.
+    $form['field_ercore_us_data_frequency']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_collect_data[und]"]' => array('checked' => TRUE),
+      ),
+    );
+    // User Data Submission Date #states.
+    $form['field_ercore_us_data_submit_date']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_collect_data[und]"]' => array('checked' => TRUE),
+      ),
+    );
+    // User Data Manager #states.
+    $form['field_ercore_us_has_this_user']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_collect_data[und]"]' => array('checked' => TRUE),
+      ),
+    );
+    // User Data URL #states.
+    $form['field_ercore_us_data_url']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_ercore_us_collect_data[und]"]' => array('checked' => TRUE),
+      ),
+    );
+ }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ercore_form_user_register_form_alter(&$form, &$form_state, $form_id) {
+    $form['#fieldgroups'] = NULL;
+    $form['field_user_name']['#weight'] = -11;
 }
 
 /**
@@ -510,17 +705,20 @@ function ercore_form_alter(&$form, &$form_state, $form_id) {
 function ercore_permission() {
   return array(
     'administer ercore module' => array(
-      'title' => t('Administer ERCore module'),
-      'description' => t('Administer ERCore configuration and settings.'),
+      'title' => t('Administer ERCore Module'),
+      'description' => t('Administer ERCore Configuration and Settings.'),
+    ),
+    'access ercore admin content' => array(
+      'title' => t('Access ERCore Administrative Content'),
+      'description' => NULL,
     ),
     'access ercore content' => array(
-      'title' => t('Access ERCore content'),
+      'title' => t('Access ERCore Content'),
       'description' => NULL,
     ),
     'access ercore excel sheets' => array(
       'title' => t('Access ERCore Excel sheets'),
-      'description' => t('Display the download NSF table link on the
-      Accomplishments tab'),
+      'description' => t('Download ERCore Data Exports'),
     ),
   );
 }
@@ -531,7 +729,7 @@ function ercore_permission() {
 function ercore_help($path, $arg) {
   switch ($path) {
     case 'admin/help#ercore':
-       return t("Help text to come.");
+      return t("ERCore: Help text to come.");
   }
 }
 
@@ -551,15 +749,24 @@ function ercore_help($path, $arg) {
  * $account 'owns' the entity. We'll support access restrictions for
  * user and node entity types, and be permissive with others,
  * since that's easy to demonstrate.
- *
  */
 function ercore_field_access($op, $field, $entity_type, $entity, $account) {
+ $not_on_new_user = array(
+    'field_ercore_us_committees',
+    'field_ercore_us_leadership_team',
+    'field_ercore_us_ment_signoff',
+    'field_ercore_us_paid',
+    'field_ercore_us_months_of_effort',
+    'field_ercore_us_160hours',
+    'field_ercore_us_has_this_user',
+    'field_ercore_us_fac_support',
+
+  );
   if ($op != 'edit') {
     if (isset($entity->field_ercore_ev_date['und'][0]['value'])) {
       $engagement = $entity->field_ercore_ev_reminders['und'][0]['value'];
       $event_date = $entity->field_ercore_ev_date['und'][0]['value'];
       $now = date("Y-m-d\TH:i:s");
-
 
       if ($field['field_name'] == 'field_ercore_ev_engagement') {
         if ($now >= $event_date && $engagement == 1) {
@@ -571,6 +778,14 @@ function ercore_field_access($op, $field, $entity_type, $entity, $account) {
       }
     }
   }
+  if ($entity_type == 'user') {
+    if (in_array($field['field_name'], $not_on_new_user)) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
 }
 
 /**
@@ -579,8 +794,8 @@ function ercore_field_access($op, $field, $entity_type, $entity, $account) {
 function ercore_libraries_info() {
   $libraries['phpexcel'] = array(
     'name' => 'PHPExcel',
-    "vendor url"=>"http://phpexcel.codeplex.com/",
-    "download url"=>"http://phpexcel.codeplex.com/downloads/get/688493",
+    "vendor url" => "http://phpexcel.codeplex.com/",
+    "download url" => "http://phpexcel.codeplex.com/downloads/get/688493",
     "version arguments" => array(
       'file' => 'changelog.txt',
       'pattern' => "/@version\s+([0-9\.]+)/",
@@ -595,6 +810,7 @@ function ercore_libraries_info() {
   );
   return $libraries;
 }
+
 /**
  * Implements hook_menu().
  */
@@ -609,8 +825,7 @@ function ercore_menu() {
   );
   $items['admin/config/ercore/admin'] = array(
     'title' => 'ERCore Reporting Module Settings',
-    'description' =>
-      'Settings which affect the functionality of the ERCore Reporting module.',
+    'description' => 'Settings which affect the functionality of the ERCore Reporting module.',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('ercore_settings_callback'),
     'access arguments' => array('administer ercore module'),

@@ -5,11 +5,11 @@
  */
 
 $ercore_highlight_instances = array(
-// INSTANCE: field_ercore_hi_date
+// INSTANCE: field_ercore_hi_date.
   'field_ercore_hi_date' => array(
     'label' => 'Date completed',
     'widget' => array(
-      'weight' => '-1',
+      'weight' => '2',
       'type' => 'date_popup',
       'module' => 'date',
       'active' => 1,
@@ -86,11 +86,11 @@ $ercore_highlight_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_hi_image
+// INSTANCE: field_ercore_hi_image.
   'field_ercore_hi_image' => array(
     'label' => 'Image',
     'widget' => array(
-      'weight' => '4',
+      'weight' => '6',
       'type' => 'image_image',
       'module' => 'image',
       'active' => 1,
@@ -114,7 +114,7 @@ $ercore_highlight_instances = array(
       'default' => array(
         'label' => 'hidden',
         'type' => 'image',
-        'weight' => '6',
+        'weight' => '2',
         'settings' => array(
           'image_style' => 'medium',
           'image_link' => '',
@@ -150,11 +150,11 @@ $ercore_highlight_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_hi_organizer
+// INSTANCE: field_ercore_organizer.
   'field_ercore_hi_organizer' => array(
     'label' => 'EPSCoR Organizer(s)',
     'widget' => array(
-      'weight' => '-3',
+      'weight' => '1',
       'type' => 'entityreference_autocomplete',
       'module' => 'entityreference',
       'active' => 1,
@@ -253,11 +253,11 @@ $ercore_highlight_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_components
-  'field_ercore_components' => array(
-    'label' => 'Project Components',
+// INSTANCE: field_ercore_programs.
+  'field_ercore_hi_programs' => array(
+    'label' => 'Program',
     'widget' => array(
-      'weight' => '-2',
+      'weight' => '4',
       'type' => 'options_select',
       'module' => 'options',
       'active' => 1,
@@ -284,13 +284,61 @@ $ercore_highlight_instances = array(
       'full' => array(
         'label' => 'inline',
         'type' => 'entityreference_label',
-        'weight' => '4',
+        'weight' => '5',
         'settings' => array(
           'link' => FALSE,
         ),
         'module' => 'entityreference',
       ),
       'teaser' => array(
+        'type' => 'hidden',
+        'label' => 'above',
+        'settings' => array(),
+        'weight' => 0,
+      ),
+    ),
+    'required' => 0,
+    'description' => '',
+    'entityconnect_unload_add' => '1',
+    'entityconnect_unload_edit' => '1',
+    'entityconnect_show_add_icon' => '0',
+    'entityconnect_show_edit_icon' => '0',
+    'default_value' => NULL,
+    'field_name' => 'field_ercore_programs',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_j_highlight',
+    'deleted' => '0',
+  ),
+
+// INSTANCE: field_ercore_components.
+  'field_ercore_hi_components' => array(
+    'label' => 'Components',
+    'widget' => array(
+      'weight' => '3',
+      'type' => 'options_select',
+      'module' => 'options',
+      'active' => 1,
+      'settings' => array(),
+    ),
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'type' => 'entityreference_label',
+        'weight' => '5',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'module' => 'entityreference',
+      ),
+      'full' => array(
         'label' => 'inline',
         'type' => 'entityreference_label',
         'weight' => '4',
@@ -298,6 +346,12 @@ $ercore_highlight_instances = array(
           'link' => FALSE,
         ),
         'module' => 'entityreference',
+      ),
+      'teaser' => array(
+        'type' => 'hidden',
+        'label' => 'above',
+        'settings' => array(),
+        'weight' => 0,
       ),
     ),
     'required' => 0,
