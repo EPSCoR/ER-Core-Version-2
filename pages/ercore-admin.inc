@@ -78,7 +78,7 @@ documentation</a>."),
     );
   $form['ercore_component_required'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Require Component taxonomy on node fields'),
+    '#title' => t('Require Component taxonomy fields'),
     '#default_value' => $component_required,
   );
   $form['ercore_program_usage'] = array(
@@ -88,7 +88,7 @@ documentation</a>."),
   );
   $form['ercore_program_required'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Require Program taxonomy on node fields'),
+    '#title' => t('Require Program taxonomy fields'),
     '#default_value' => $program_required,
   );
   return system_settings_form($form);
@@ -113,5 +113,3 @@ function ercore_default_accomplishment_content_types() {
   );
   return $default_types;
 }
-
-//ercore_settings_callback

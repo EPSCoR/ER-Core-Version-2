@@ -66,9 +66,7 @@ function ercore_install() {
   }
   // Create all the instances for our fields.
   foreach (_ercore_installed_instances() as $instance) {
-    dpm('Creating ' . $instance['field_name']);
     field_create_instance($instance);
-    dpm('Created ' . $instance['field_name']);
   }
 
   $vocabulary['component'] = array(

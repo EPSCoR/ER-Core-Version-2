@@ -6,7 +6,6 @@ core = 7.x
 
 dependencies[] = ercore
 dependencies[] = date_views
-dependencies[] = phpexcel
 dependencies[] = semanticviews
 dependencies[] = views_data_export
 

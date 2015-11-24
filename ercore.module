@@ -3,7 +3,6 @@
  * @file
  * Module file for the ERCore module.
  */
-
 /**
  * Implements hook_date_format_types().
  */
@@ -275,243 +274,266 @@ function ercore_form_alter(&$form, &$form_state, $form_id) {
     $message = 'Your name, "' . $author . '", has been automatically added to ' . $form['field_ercore_organizer']['und']['#title'] . ' field.';
     drupal_set_message($message, 'status');
   }
+
+  // Require Programs field if ercore_programs variable set.
+  if (variable_get('ercore_program_required') == 1) {
+    $form['field_ercore_programs']['und']['#required'] = 1;
+  }
+// Require Programs field if ercore_programs variable set.
+  if (variable_get('ercore_component_required') == 1) {
+    $form['field_ercore_components']['und']['#required'] = 1;
+  }
+  if ($form_id == 'ercore_settings_callback') {
+    $form['ercore_component_required']['#states'] = array(
+      'visible' => array(
+        ':input[name="ercore_component_usage"]' => array('checked' => TRUE),
+      ),
+    );
+    $form['ercore_program_required']['#states'] = array(
+      'visible' => array(
+        ':input[name="ercore_program_usage"]' => array('checked' => TRUE),
+      ),
+    );
+  }
 }
 
 /**
  * Implements hook_form_FORM_ID_alter().
  */
 function ercore_form_ercore_patent_node_form_alter(&$form, &$form_state, $form_id) {
-    $form['field_ercore_pt_date']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_pt_licensed[und]"]' => array('checked' => TRUE),
-      ),
-      'required' => array(
-        ':input[name="field_ercore_pt_licensed[und]"]' => array('checked' => TRUE),
-      ),
-    );
-    $form['field_ercore_pt_licensee']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_pt_licensed[und]"]' => array('checked' => TRUE),
-      ),
-      'required' => array(
-        ':input[name="field_ercore_pt_licensed[und]"]' => array('checked' => TRUE),
-      ),
-    );
+  $form['field_ercore_pt_date']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_pt_licensed[und]"]' => array('checked' => TRUE),
+    ),
+    'required' => array(
+      ':input[name="field_ercore_pt_licensed[und]"]' => array('checked' => TRUE),
+    ),
+  );
+  $form['field_ercore_pt_licensee']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_pt_licensed[und]"]' => array('checked' => TRUE),
+    ),
+    'required' => array(
+      ':input[name="field_ercore_pt_licensed[und]"]' => array('checked' => TRUE),
+    ),
+  );
 
-  }
+}
+
 /**
  * Implements hook_form_FORM_ID_alter().
  */
 function ercore_form_ercore_proposal_node_form_alter(&$form, &$form_state, $form_id) {
-    $form['field_ercore_pp_proposal_submit']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_pp_proposal_status[und]"]' => array(
-          array('value' => 'Submitted'),
-          array('value' => 'Pending'),
-          array('value' => 'Awarded'),
-          array('value' => 'Expired'),
-          array('value' => 'Denied'),
-        ),
+  $form['field_ercore_pp_proposal_submit']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_pp_proposal_status[und]"]' => array(
+        array('value' => 'Submitted'),
+        array('value' => 'Pending'),
+        array('value' => 'Awarded'),
+        array('value' => 'Expired'),
+        array('value' => 'Denied'),
       ),
-    );
-    $form['field_ercore_pp_proposal_pending']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_pp_proposal_status[und]"]' => array('value' => 'Pending'),
+    ),
+  );
+  $form['field_ercore_pp_proposal_pending']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_pp_proposal_status[und]"]' => array('value' => 'Pending'),
+    ),
+    'required' => array(
+      ':input[name="field_ercore_pp_proposal_status[und]"]' => array('value' => 'Pending'),
+    ),
+  );
+  $form['field_ercore_pp_proposal_denied']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_pp_proposal_status[und]"]' => array('value' => 'Denied'),
+    ),
+    'required' => array(
+      ':input[name="field_ercore_pp_proposal_status[und]"]' => array('value' => 'Denied'),
+    ),
+  );
+  $form['field_ercore_pp_proposal_date']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_pp_proposal_status[und]"]' => array(
+        array('value' => 'Awarded'),
+        array('value' => 'Expired'),
       ),
-      'required' => array(
-        ':input[name="field_ercore_pp_proposal_status[und]"]' => array('value' => 'Pending'),
+    ),
+    'required' => array(
+      ':input[name="field_ercore_pp_proposal_status[und]"]' => array(
+        array('value' => 'Awarded'),
+        array('value' => 'Expired'),
       ),
-    );
-    $form['field_ercore_pp_proposal_denied']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_pp_proposal_status[und]"]' => array('value' => 'Denied'),
-      ),
-      'required' => array(
-        ':input[name="field_ercore_pp_proposal_status[und]"]' => array('value' => 'Denied'),
-      ),
-    );
-    $form['field_ercore_pp_proposal_date']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_pp_proposal_status[und]"]' => array(
-          array('value' => 'Awarded'),
-          array('value' => 'Expired'),
-        ),
-      ),
-      'required' => array(
-        ':input[name="field_ercore_pp_proposal_status[und]"]' => array(
-          array('value' => 'Awarded'),
-          array('value' => 'Expired'),
-        ),
-      ),
-    );
-    $form['field_ercore_pp_award_amount']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_pp_proposal_status[und]"]' => array('value' => 'Awarded'),
-      ),
-      'required' => array(
-        ':input[name="field_ercore_pp_proposal_status[und]"]' => array('value' => 'Awarded'),
-      ),
-    );
-  }
+    ),
+  );
+  $form['field_ercore_pp_award_amount']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_pp_proposal_status[und]"]' => array('value' => 'Awarded'),
+    ),
+    'required' => array(
+      ':input[name="field_ercore_pp_proposal_status[und]"]' => array('value' => 'Awarded'),
+    ),
+  );
+}
+
 /**
  * Implements hook_form_FORM_ID_alter().
  */
 function ercore_form_ercore_publication_node_form_alter(&$form, &$form_state, $form_id) {
-    // Publication Status Fields.
-    // Submitted Date field #states.
-    $form['field_ercore_pb_submit_date']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_pb_status[und]"]' => array(
-          array('value' => '0'),
-          array('value' => '1'),
-          array('value' => '2'),
-        ),
+  // Publication Status Fields.
+  // Submitted Date field #states.
+  $form['field_ercore_pb_submit_date']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_pb_status[und]"]' => array(
+        array('value' => '0'),
+        array('value' => '1'),
+        array('value' => '2'),
       ),
-    );
-    // Published Date field #states.
-    $form['field_ercore_pb_date']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_pb_status[und]"]' => array('value' => '0'),
+    ),
+  );
+  // Published Date field #states.
+  $form['field_ercore_pb_date']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_pb_status[und]"]' => array('value' => '0'),
+    ),
+    'required' => array(
+      ':input[name="field_ercore_pb_status[und]"]' => array('value' => '0'),
+    ),
+  );
+  // NSF field #states.
+  $form['field_ercore_nsf']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_pb_status[und]"]' => array('value' => '0'),
+    ),
+    'required' => array(
+      ':input[name="field_ercore_pb_status[und]"]' => array('value' => '0'),
+    ),
+  );
+  // Body field #states.
+  $form['body']['#weight'] = '9';
+  $form['body']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_pb_status[und]"]' => array('value' => '0'),
+    ),
+    'required' => array(
+      ':input[name="field_ercore_pb_status[und]"]' => array('value' => '0'),
+    ),
+  );
+  // Publication Type Fields.
+  // Journal Name field #states.
+  $form['field_ercore_pb_journal_name']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_pb_type[und]"]' => array(
+        array('value' => 'Journal Article'),
+        array('value' => 'Book'),
+        array('value' => 'Conference Proceedings'),
+        array('value' => 'Magazine Article'),
+        array('value' => 'Technical Report'),
+        array('value' => 'Newspaper Article'),
       ),
-      'required' => array(
-        ':input[name="field_ercore_pb_status[und]"]' => array('value' => '0'),
+    ),
+    'required' => array(
+      ':input[name="field_ercore_pb_type[und]"]' => array(
+        array('value' => 'Journal Article'),
+        array('value' => 'Book'),
+        array('value' => 'Conference Proceedings'),
+        array('value' => 'Magazine Article'),
+        array('value' => 'Newspaper Article'),
       ),
-    );
-    // NSF field #states.
-    $form['field_ercore_nsf']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_pb_status[und]"]' => array('value' => '0'),
+    ),
+  );
+  // Volume field #states.
+  $form['field_ercore_pb_journal_volume']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_pb_type[und]"]' => array(
+        array('value' => 'Journal Article'),
+        array('value' => 'Book'),
+        array('value' => 'Conference Proceedings'),
+        array('value' => 'Magazine Article'),
+        array('value' => 'Technical Report'),
+        array('value' => 'Newspaper Article'),
       ),
-      'required' => array(
-        ':input[name="field_ercore_pb_status[und]"]' => array('value' => '0'),
+    ),
+  );
+  // Publisher field #states.
+  $form['field_ercore_pb_publisher']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_pb_type[und]"]' => array(
+        array('value' => 'Journal Article'),
+        array('value' => 'Book'),
+        array('value' => 'Conference Proceedings'),
+        array('value' => 'Magazine Article'),
+        array('value' => 'Technical Report'),
+        array('value' => 'Newspaper Article'),
       ),
-    );
-    // Body field #states.
-    $form['body']['#weight'] = '9';
-    $form['body']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_pb_status[und]"]' => array('value' => '0'),
+    ),
+  );
+  // Title of Series field #states.
+  $form['field_ercore_pb_coll_title']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_pb_type[und]"]' => array(
+        array('value' => 'Journal Article'),
+        array('value' => 'Book'),
+        array('value' => 'Conference Proceedings'),
+        array('value' => 'Magazine Article'),
+        array('value' => 'Technical Report'),
+        array('value' => 'Newspaper Article'),
       ),
-      'required' => array(
-        ':input[name="field_ercore_pb_status[und]"]' => array('value' => '0'),
+    ),
+  );
+  // Pages field #states.
+  $form['field_ercore_pb_journal_pages']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_pb_type[und]"]' => array(
+        array('value' => 'Journal Article'),
+        array('value' => 'Book'),
+        array('value' => 'Conference Proceedings'),
+        array('value' => 'Magazine Article'),
+        array('value' => 'Technical Report'),
+        array('value' => 'Newspaper Article'),
       ),
-    );
-    // Publication Type Fields.
-    // Journal Name field #states.
-    $form['field_ercore_pb_journal_name']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_pb_type[und]"]' => array(
-          array('value' => 'Journal Article'),
-          array('value' => 'Book'),
-          array('value' => 'Conference Proceedings'),
-          array('value' => 'Magazine Article'),
-          array('value' => 'Technical Report'),
-          array('value' => 'Newspaper Article'),
-        ),
+    ),
+  );
+  // DOI field #states.
+  $form['field_ercore_pb_doi']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_pb_type[und]"]' => array(
+        array('value' => 'Journal Article'),
+        array('value' => 'Book'),
+        array('value' => 'Conference Proceedings'),
+        array('value' => 'Magazine Article'),
+        array('value' => 'Technical Report'),
+        array('value' => 'Newspaper Article'),
       ),
-      'required' => array(
-        ':input[name="field_ercore_pb_type[und]"]' => array(
-          array('value' => 'Journal Article'),
-          array('value' => 'Book'),
-          array('value' => 'Conference Proceedings'),
-          array('value' => 'Magazine Article'),
-          array('value' => 'Newspaper Article'),
-        ),
+    ),
+  );
+  // ARK field #states.
+  $form['field_ercore_pb_ark']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_pb_type[und]"]' => array(
+        array('value' => 'Journal Article'),
+        array('value' => 'Book'),
+        array('value' => 'Conference Proceedings'),
+        array('value' => 'Magazine Article'),
+        array('value' => 'Technical Report'),
+        array('value' => 'Newspaper Article'),
       ),
-    );
-    // Volume field #states.
-    $form['field_ercore_pb_journal_volume']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_pb_type[und]"]' => array(
-          array('value' => 'Journal Article'),
-          array('value' => 'Book'),
-          array('value' => 'Conference Proceedings'),
-          array('value' => 'Magazine Article'),
-          array('value' => 'Technical Report'),
-          array('value' => 'Newspaper Article'),
-        ),
-      ),
-    );
-    // Publisher field #states.
-    $form['field_ercore_pb_publisher']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_pb_type[und]"]' => array(
-          array('value' => 'Journal Article'),
-          array('value' => 'Book'),
-          array('value' => 'Conference Proceedings'),
-          array('value' => 'Magazine Article'),
-          array('value' => 'Technical Report'),
-          array('value' => 'Newspaper Article'),
-        ),
-      ),
-    );
-    // Title of Series field #states.
-    $form['field_ercore_pb_coll_title']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_pb_type[und]"]' => array(
-          array('value' => 'Journal Article'),
-          array('value' => 'Book'),
-          array('value' => 'Conference Proceedings'),
-          array('value' => 'Magazine Article'),
-          array('value' => 'Technical Report'),
-          array('value' => 'Newspaper Article'),
-        ),
-      ),
-    );
-    // Pages field #states.
-    $form['field_ercore_pb_journal_pages']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_pb_type[und]"]' => array(
-          array('value' => 'Journal Article'),
-          array('value' => 'Book'),
-          array('value' => 'Conference Proceedings'),
-          array('value' => 'Magazine Article'),
-          array('value' => 'Technical Report'),
-          array('value' => 'Newspaper Article'),
-        ),
-      ),
-    );
-    // DOI field #states.
-    $form['field_ercore_pb_doi']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_pb_type[und]"]' => array(
-          array('value' => 'Journal Article'),
-          array('value' => 'Book'),
-          array('value' => 'Conference Proceedings'),
-          array('value' => 'Magazine Article'),
-          array('value' => 'Technical Report'),
-          array('value' => 'Newspaper Article'),
-        ),
-      ),
-    );
-    // ARK field #states.
-    $form['field_ercore_pb_ark']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_pb_type[und]"]' => array(
-          array('value' => 'Journal Article'),
-          array('value' => 'Book'),
-          array('value' => 'Conference Proceedings'),
-          array('value' => 'Magazine Article'),
-          array('value' => 'Technical Report'),
-          array('value' => 'Newspaper Article'),
-        ),
-      ),
-    );
+    ),
+  );
 
-    // Data field #states.
-    $form['field_ercore_pb_archived']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_pb_data[und]"]' => array('value' => '1'),
-      ),
-    );
-    $form['field_ercore_pb_arch_name']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_pb_archived[und]"]' => array('value' => '2'),
-      ),
-      'required' => array(
-        ':input[name="field_ercore_pb_archived[und]"]' => array('value' => '2'),
-      ),
-    );
+  // Data field #states.
+  $form['field_ercore_pb_archived']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_pb_data[und]"]' => array('value' => '1'),
+    ),
+  );
+  $form['field_ercore_pb_arch_name']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_pb_archived[und]"]' => array('value' => '2'),
+    ),
+    'required' => array(
+      ':input[name="field_ercore_pb_archived[und]"]' => array('value' => '2'),
+    ),
+  );
 }
 
 /**
@@ -519,184 +541,178 @@ function ercore_form_ercore_publication_node_form_alter(&$form, &$form_state, $f
  */
 function ercore_form_user_profile_form_alter(&$form, &$form_state, $form_id) {
   // User field Supervisor #states.
-    $form['field_ercore_us_supervisor']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Graduate student'),
-      ),
-    );
-    // User field Advisor #states.
-    $form['field_ercore_us_advisor']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Post Doc'),
-      ),
-    );
-    // User field Faculaty Support #states.
-    $form['field_ercore_us_fac_support']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Faculty participant (or equivalent)'),
-      ),
-      'required' => array(
-        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Faculty participant (or equivalent)'),
-      ),
-    );
+  $form['field_ercore_us_supervisor']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Graduate student'),
+    ),
+  );
+  // User field Advisor #states.
+  $form['field_ercore_us_advisor']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Post Doc'),
+    ),
+  );
+  // User field Faculaty Support #states.
+  $form['field_ercore_us_fac_support']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Faculty participant (or equivalent)'),
+    ),
+    'required' => array(
+      ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Faculty participant (or equivalent)'),
+    ),
+  );
 
-    // User field Anticipated Undergraduate Date #states.
-    $form['field_ercore_us_under_ant']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Undergraduate student'),
+  // User field Anticipated Undergraduate Date #states.
+  $form['field_ercore_us_under_ant']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Undergraduate student'),
+    ),
+    'required' => array(
+      ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Undergraduate student'),
+    ),
+  );
+  // User field Actual Undergraduate Date #states.
+  $form['field_ercore_us_under_act']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Undergraduate student'),
+    ),
+  );
+  // User field Anticipated Masters Date #states.
+  $form['field_ercore_us_masters_ant']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Graduate student'),
+    ),
+  );
+  // User field Actual Masters Date #states.
+  $form['field_ercore_us_masters_act']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Graduate student'),
+    ),
+  );
+  // User field Anticipated Doctoral Date #states.
+  $form['field_ercore_us_doctor_ant']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Graduate student'),
+    ),
+  );
+  // User field Actual Doctoral Date #states.
+  $form['field_ercore_us_doctor_act']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Graduate student'),
+    ),
+  );
+  // User RCR Training #states.
+  $form['field_ercore_us_rcr_bool']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_sen_role[und]"]' => array(
+        array('value' => 'Undergraduate student'),
+        array('value' => 'Graduate student'),
       ),
-      'required' => array(
-        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Undergraduate student'),
-      ),
-    );
-    // User field Actual Undergraduate Date #states.
-    $form['field_ercore_us_under_act']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Undergraduate student'),
-      ),
-    );
-    // User field Anticipated Masters Date #states.
-    $form['field_ercore_us_masters_ant']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Graduate student'),
-      ),
-    );
-    // User field Actual Masters Date #states.
-    $form['field_ercore_us_masters_act']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Graduate student'),
-      ),
-    );
-    // User field Anticipated Doctoral Date #states.
-    $form['field_ercore_us_doctor_ant']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Graduate student'),
-      ),
-    );
-    // User field Actual Doctoral Date #states.
-    $form['field_ercore_us_doctor_act']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => 'Graduate student'),
-      ),
-    );
-    // User RCR Training #states.
-    $form['field_ercore_us_rcr_bool']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_sen_role[und]"]' => array(
-          array('value' => 'Undergraduate student'),
-          array('value' => 'Graduate student'),
-        ),
-      ),
-    );
-    // User RCR in Person Date #states.
-    $form['field_ercore_us_rcr_in_person']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
-      ),
-      'required' => array(
-        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
-      ),
-    );
-    // User RCR in Person Upload #states.
-    $form['field_ercore_us_rcr_inperson_ul']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
-      ),
-      'required' => array(
-        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
-      ),
-    );
-    // User RCR online Date #states.
-    $form['field_ercore_us_rcr_online']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
-      ),
-      'required' => array(
-        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
-      ),
-    );
-   // User RCR online Upload #states.
-  /* $form['group_ercore_us_certs']['#states'] = array(
+    ),
+  );
+  // User RCR in Person Date #states.
+  $form['field_ercore_us_rcr_in_person']['#states'] = array(
     'visible' => array(
       ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
     ),
-  );*/
-    $form['field_ercore_us_rcr_online_up']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
-      ),
-      'required' => array(
-        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
-      ),
-    );
-    // User RCR Certificate #states.
-    $form['field_ercore_us_additional_doc']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
-      ),
-      'required' => array(
-        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
-      ),
-    );
-    // User Mentoring Signoff #states.
-    $form['field_ercore_us_ment_signoff']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('value' => 'Post Doc'),
-      ),
-      'required' => array(
-        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('value' => 'Post Doc'),
-      ),
-    );
-    // User Mentoring Plan Upload  #states.
-    $form['field_ercore_us_mnt_up']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('value' => 'Post Doc'),
-      ),
-      'required' => array(
-        ':input[name="field_ercore_us_rcr_bool[und]"]' => array('value' => 'Post Doc'),
-      ),
-    );
-    // User Data Description #states.
-    $form['field_ercore_us_data_type']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_collect_data[und]"]' => array('checked' => TRUE),
-      ),
-      'required' => array(
-        ':input[name="field_ercore_us_collect_data[und]"]' => array('checked' => TRUE),
-      ),
-    );
-    // User Data ongoing #states.
-    $form['field_ercore_us_data_frequency']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_collect_data[und]"]' => array('checked' => TRUE),
-      ),
-    );
-    // User Data Submission Date #states.
-    $form['field_ercore_us_data_submit_date']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_collect_data[und]"]' => array('checked' => TRUE),
-      ),
-    );
-    // User Data Manager #states.
-    $form['field_ercore_us_has_this_user']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_collect_data[und]"]' => array('checked' => TRUE),
-      ),
-    );
-    // User Data URL #states.
-    $form['field_ercore_us_data_url']['#states'] = array(
-      'visible' => array(
-        ':input[name="field_ercore_us_collect_data[und]"]' => array('checked' => TRUE),
-      ),
-    );
- }
+    'required' => array(
+      ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+    ),
+  );
+  // User RCR in Person Upload #states.
+  $form['field_ercore_us_rcr_inperson_ul']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+    ),
+    'required' => array(
+      ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+    ),
+  );
+  // User RCR online Date #states.
+  $form['field_ercore_us_rcr_online']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+    ),
+    'required' => array(
+      ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+    ),
+  );
+  $form['field_ercore_us_rcr_online_up']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+    ),
+    'required' => array(
+      ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+    ),
+  );
+  // User RCR Certificate #states.
+  $form['field_ercore_us_additional_doc']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+    ),
+    'required' => array(
+      ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+    ),
+  );
+  // User Mentoring Signoff #states.
+  $form['field_ercore_us_ment_signoff']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_rcr_bool[und]"]' => array('value' => 'Post Doc'),
+    ),
+    'required' => array(
+      ':input[name="field_ercore_us_rcr_bool[und]"]' => array('value' => 'Post Doc'),
+    ),
+  );
+  // User Mentoring Plan Upload  #states.
+  $form['field_ercore_us_mnt_up']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_rcr_bool[und]"]' => array('value' => 'Post Doc'),
+    ),
+    'required' => array(
+      ':input[name="field_ercore_us_rcr_bool[und]"]' => array('value' => 'Post Doc'),
+    ),
+  );
+  // User Data Description #states.
+  $form['field_ercore_us_data_type']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_collect_data[und]"]' => array('checked' => TRUE),
+    ),
+    'required' => array(
+      ':input[name="field_ercore_us_collect_data[und]"]' => array('checked' => TRUE),
+    ),
+  );
+  // User Data ongoing #states.
+  $form['field_ercore_us_data_frequency']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_collect_data[und]"]' => array('checked' => TRUE),
+    ),
+  );
+  // User Data Submission Date #states.
+  $form['field_ercore_us_data_submit_date']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_collect_data[und]"]' => array('checked' => TRUE),
+    ),
+  );
+  // User Data Manager #states.
+  $form['field_ercore_us_has_this_user']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_collect_data[und]"]' => array('checked' => TRUE),
+    ),
+  );
+  // User Data URL #states.
+  $form['field_ercore_us_data_url']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_collect_data[und]"]' => array('checked' => TRUE),
+    ),
+  );
+}
 
 /**
  * Implements hook_form_FORM_ID_alter().
  */
 function ercore_form_user_register_form_alter(&$form, &$form_state, $form_id) {
-    $form['#fieldgroups'] = NULL;
-    $form['field_user_name']['#weight'] = -11;
+  $form['#fieldgroups'] = NULL;
+  $form['field_user_name']['#weight'] = -11;
 }
 
 /**
@@ -751,7 +767,7 @@ function ercore_help($path, $arg) {
  * since that's easy to demonstrate.
  */
 function ercore_field_access($op, $field, $entity_type, $entity, $account) {
- $not_on_new_user = array(
+  $not_on_new_user = array(
     'field_ercore_us_committees',
     'field_ercore_us_leadership_team',
     'field_ercore_us_ment_signoff',
@@ -762,7 +778,7 @@ function ercore_field_access($op, $field, $entity_type, $entity, $account) {
     'field_ercore_us_fac_support',
 
   );
-  if ($op != 'edit') {
+  if ($op != 'edit' && $entity_type == 'node') {
     if (isset($entity->field_ercore_ev_date['und'][0]['value'])) {
       $engagement = $entity->field_ercore_ev_reminders['und'][0]['value'];
       $event_date = $entity->field_ercore_ev_date['und'][0]['value'];
@@ -778,12 +794,44 @@ function ercore_field_access($op, $field, $entity_type, $entity, $account) {
       }
     }
   }
-  if ($entity_type == 'user') {
+  // Hide some fields from user registration.
+  if ($entity_type == 'user' && !isset($entity->name)) {
     if (in_array($field['field_name'], $not_on_new_user)) {
       return FALSE;
     }
     else {
       return TRUE;
+    }
+  }
+  // Hide some user fields dependent on context.
+  if ($entity_type == 'user' && $op == 'view') {
+    if ($field['field_name'] == 'field_ercore_us_data_frequency') {
+      if ($entity->field_ercore_us_collect_data['und'][0]['value'] == 1) {
+        return TRUE;
+      }
+      else {
+        return FALSE;
+      }
+    }
+  }
+  if ($entity_type == 'user' || $entity_type == 'node') {
+    // Component field usage based on admin configuration.
+    if ($field['field_name'] == 'field_ercore_components') {
+      if (variable_get('ercore_component_usage') == 1) {
+        return TRUE;
+      }
+      else {
+        return FALSE;
+      }
+    }
+    // Project field usage based on admin configuration.
+    if ($field['field_name'] == 'field_ercore_programs') {
+      if (variable_get('ercore_program_usage') == 1) {
+        return TRUE;
+      }
+      else {
+        return FALSE;
+      }
     }
   }
 }
@@ -834,4 +882,206 @@ function ercore_menu() {
   );
 
   return $items;
+}
+
+/**
+ * @param $node
+ */
+/*function ercore_node_presave($node){
+  switch ($node->type){
+    case 'ercore_event':
+      _manage_ee_nodes($node, 'presave');
+      break;
+  }
+}
+*/
+
+/**
+ * @param $node
+ */
+/*function er_node_validate($node) {
+  switch ($node->type) {
+    case 'ercore_event':
+      _manage_ee_nodes($node, 'validate');
+      break;
+  }
+}*/
+
+/**
+ * @param \FieldCollectionItemEntity $field_collection_item
+ */
+function ercore_field_collection_item_presave(FieldCollectionItemEntity $field_collection_item) {
+  if ($field_collection_item->field_name == 'field_ercore_ev_engagement') {
+    $file_new = FALSE;
+    if (count($field_collection_item->field_ercore_ee_ee_file['und'])) {
+      $has_old = isset($field_collection_item->original->field_ercore_ee_ee_file['und']) && count($field_collection_item->original->field_ercore_ee_ee_file['und']);
+      if (!$has_old || ($has_old && $field_collection_item->original->field_ercore_ee_ee_file['und'][0]['fid'] != $field_collection_item->field_ercore_ee_ee_file['und'][0]['fid'])) {
+        $file_new = TRUE;
+      }
+    }
+    if ($file_new == TRUE) {
+      _ercore_parse_ee_file($field_collection_item, 'presave');
+    }
+    else {_ercore_parse_ee_file($field_collection_item, 'presave');}
+  }
+}
+
+/*
+ * This is part of the code that parses the external engagements uploads
+ */
+/**
+ * @param $node
+ * @throws \PHPExcel_Reader_Exception
+ */
+function _ercore_parse_ee_file(&$field_collection_item) {
+  if (($library = libraries_detect('PHPExcel')) && !empty($library['installed']) && libraries_load_files($library)) {// The library is installed, and files are loaded.
+
+    $file = file_load($field_collection_item->field_ercore_ee_ee_file['und'][0]['fid']);
+    $path = $file->uri;//$_SERVER["DOCUMENT_ROOT"].base_path()."/".$file['filepath'];
+    $objReader = PHPExcel_IOFactory::createReader('Excel5');
+    $objPHPExcel = $objReader->load($path);
+    $worksheet = $objPHPExcel->getActiveSheet();
+    //$worksheet = $objPHPExcel->setActiveSheetIndex(0); //initialize to the first page...
+
+    /* Excel Sheet Key:
+     * (2,4) title
+     * (2,5) location
+     * (2,6) date
+     * (2,7) poc
+     * (2,8) notes
+     * (0,14+) #
+     * (1,14+) name
+     * (2,14+) inst code
+     * (3,14+) person code
+     * (4,14+) gender
+     * (5,14+) minority
+     * (6,14+) paid?
+     */
+
+    //really simple validation; this just makes sure that it's the expected excel sheet by checking for the header text.
+    if ($worksheet->getCellByColumnAndRow(2, 1)
+        ->getValue() != "External Engagement Reporting Sheet"
+    ) {
+      return;
+    }
+
+    $title = $worksheet->getCellByColumnAndRow(2, 4)->getValue();
+    //d($title);
+    $location = $worksheet->getCellByColumnAndRow(2, 5)->getValue();
+    //d($location);
+    $date = gmdate('m-d-Y', PHPExcel_Shared_Date::ExcelToPHP($worksheet->getCellByColumnAndRow(2, 6)
+      ->getValue()));
+    //d($date);
+    $poc = $worksheet->getCellByColumnAndRow(2, 7)->getValue();
+    //d($poc);
+    $notes = $worksheet->getCellByColumnAndRow(2, 8)->getValue();
+    //d($notes);
+
+    /* 1 = Academic Research * 2 = Primary Undergrad. * 3 = Minority Serving * 4 = K-12 * //5 = Other (pls specify) */
+    $instCodes = array('1' => 'ari', '2' => 'pui', '3' => 'msi', '4' => 'k12i');
+    /* 1 = Faculty * 2 = Student * 3 = Teacher * //4 = Other (pls specify) */
+    $personCodes1 = array(
+      '1' => 'tec',
+      '2' => 'stud',
+      '3' => 'tec'
+    ); //used for k12i
+    $personCodes2 = array(
+      '1' => 'fac',
+      '2' => 'stu',
+      '3' => 'fac'
+    ); //used for everything else
+    //$genderCodes = array('m' => 'male', 'f' => 'female');
+    $genderCodes = array('m' => 'm', 'f' => 'f', '' => 'u');
+    //$genderCodes = array('m' => 'male', 'f' => 'female');
+    $minorityCodes = array('y' => 'mn');
+
+    //Use this to clear out all of the values in preparation for new values
+    foreach (array(
+               'ari_fac',
+               'ari_stu',
+               'pui_fac',
+               'pui_stu',
+               'msi_fac',
+               'msi_stu',
+               'k12i_tec',
+               'k12i_stud',
+               'k12i_stut',
+               'oth',
+               ) as $prefix) {
+      foreach (array("t", "m", "f", "u", "mn") as $attr) {
+        $field_collection_item->{"field_ercore_ee_{$prefix}_{$attr}"}['und'][0]['value'] = 0;
+      }
+    }
+
+    $highestRow = $worksheet->getHighestRow();//last filled out row of the template...
+    for ($y = 14; $y <= $highestRow; $y++) {//14 is the start of the data rows
+      //note: using "get" function here is to avoid errors in cases where things should be classified into the catchall "other" fields.
+      //get function is defined in er.module
+      //$number = $worksheet->getCellByColumnAndRow(0, $y)->getValue();
+      $name = $worksheet->getCellByColumnAndRow(1, $y)->getValue();
+
+      $inst_code = $worksheet->getCellByColumnAndRow(2, $y)->getValue();
+      $inst = _ercore_get($instCodes, $inst_code);
+      $personCodes = $inst == 'k12i' ? $personCodes1 : $personCodes2;
+      $person_code = $worksheet->getCellByColumnAndRow(3, $y)->getValue();
+      $person = _ercore_get($personCodes, $person_code);
+      //$person = personCodes($inst, $worksheet->getCellByColumnAndRow(3, $y)->getValue());
+      $gender = _ercore_get($genderCodes, strtolower($worksheet->getCellByColumnAndRow(4, $y)
+        ->getValue()));
+      $minority = _ercore_get($minorityCodes, strtolower($worksheet->getCellByColumnAndRow(5, $y)
+        ->getValue()));
+      $paid = strtolower($worksheet->getCellByColumnAndRow(6, $y)
+        ->getValue()); //has no bearing on this form
+
+      if (!$name && !$inst_code && !$person_code && !$minority) //if the information dries up, just assume this is the end of the list.
+      {
+        break;
+      }
+
+      //we can't count paid participants...
+      if (substr($paid, 0, 1) != 'y') {//someone might put in "yes" and not just "y"...
+        if (!$person || !$inst) {
+          $col = "oth";
+        }
+        else {
+          $col = $inst . '_' . $person;
+        }
+
+        if ($gender) {
+          $field_collection_item->{"field_ercore_ee_{$col}_{$gender}"}['und'][0]['value']++;
+        }
+        else {
+          $field_collection_item->{"field_ercore_ee_{$col}_u"}['und'][0]['value']++;
+        }
+        if ($minority) { 
+          $field_collection_item->{"field_ercore_ee_{$col}_mn"}['und'][0]['value']++;
+        }
+      }
+    }
+
+    $message = 'The attachment "%fn" was processed and the External Engagements have been filled out. Please verify that the counts are correct.';
+    $vars = array('%fn' => $file->filename);
+    watchdog('er', $message, $vars, WATCHDOG_INFO);
+    drupal_set_message(t($message, $vars));
+  }
+  else {//Libraries had a problem loading PHPExcel...
+    $error = $library['error'];// This contains a short status code of what went wrong, such as 'not found'.
+    $error_message = $library['error message'];// This contains a detailed (localized) error message.
+    drupal_set_message('PHPExcel library error: ' . $error_message, 'error');
+    watchdog('er', "User tried to use EE Excel Upload, error: " . $error_message, NULL, WATCHDOG_CRITICAL);
+
+  }
+}
+// Helper function, find a value inside of an object or returns a default value.
+function _ercore_get($obj, $thing, $default=FALSE){
+  switch (gettype($obj)){
+    case 'array':
+      return isset($obj[$thing])?$obj[$thing]:$default;
+    case 'object':
+      dpm($obj);
+      return isset($obj->{$thing})?$obj->{$thing}:$default;
+
+    default:
+      return $default;
+  }
 }

@@ -25,10 +25,10 @@ $ercore_event_instances = array(
       ),
     ),
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value_code' => '',
       'default_value2' => 'strtotime',
-      'default_value_code2' => 'now +1 hour',
+      'default_value_code2' => 'blank',
       'user_register_form' => FALSE,
     ),
     'display' => array(

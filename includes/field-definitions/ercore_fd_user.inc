@@ -3561,4 +3561,75 @@ $ercore_user_definitions = array(
       ),
     ),
   ),
+
+// FIELD: field_ercore_us_emp_id.
+  'field_ercore_us_emp_id' => array(
+    'translatable' => '0',
+    'entity_types' => array(),
+    'settings' => array(
+      'max_length' => '25',
+    ),
+    'storage' => array(
+      'type' => 'field_sql_storage',
+      'settings' => array(),
+      'module' => 'field_sql_storage',
+      'active' => '1',
+      'details' => array(
+        'sql' => array(
+          'FIELD_LOAD_CURRENT' => array(
+            'field_data_field_ercore_us_emp_id' => array(
+              'value' => 'field_ercore_us_emp_id_value',
+              'format' => 'field_ercore_us_emp_id_format',
+            ),
+          ),
+          'FIELD_LOAD_REVISION' => array(
+            'field_revision_field_ercore_us_emp_id' => array(
+              'value' => 'field_ercore_us_emp_id_value',
+              'format' => 'field_ercore_us_emp_id_format',
+            ),
+          ),
+        ),
+      ),
+    ),
+    'foreign keys' => array(
+      'format' => array(
+        'table' => 'filter_format',
+        'columns' => array(
+          'format' => 'format',
+        ),
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        'format',
+      ),
+    ),
+    'field_permissions' => array(
+      'type' => '1',
+    ),
+    'field_name' => 'field_ercore_us_emp_id',
+    'type' => 'text',
+    'module' => 'text',
+    'active' => '1',
+    'locked' => '0',
+    'cardinality' => '1',
+    'deleted' => '0',
+    'columns' => array(
+      'value' => array(
+        'type' => 'varchar',
+        'length' => '25',
+        'not null' => FALSE,
+      ),
+      'format' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+    ),
+    'bundles' => array(
+      'user' => array(
+        'user',
+      ),
+    ),
+  ),
 );

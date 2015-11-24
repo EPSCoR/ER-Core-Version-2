@@ -62,7 +62,7 @@ function ercore_admin_views_default_views() {
     'ercore_collaboration' => 'ercore_collaboration',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Dates - end date (field_ercore_cn_dates:value2) */
+  /* Filter criterion: Content: Collaboration Dates - end date (field_ercore_cn_dates:value2) */
   $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['id'] = 'field_ercore_cn_dates_value2';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['table'] = 'field_data_field_ercore_cn_dates';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['field'] = 'field_ercore_cn_dates_value2';
@@ -82,7 +82,7 @@ function ercore_admin_views_default_views() {
     3 => 0,
   );
   $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Dates -  start date (field_ercore_cn_dates) */
+  /* Filter criterion: Content: Collaboration Dates -  start date (field_ercore_cn_dates) */
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['id'] = 'field_ercore_cn_dates_value';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['table'] = 'field_data_field_ercore_cn_dates';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['field'] = 'field_ercore_cn_dates_value';
@@ -1504,6 +1504,17 @@ function ercore_admin_views_default_views() {
 <li class="active"><a href="/ercore/views/collaboration/non-participating">Collaborating Institutions - Non-participating</a></li>
 </ul>
 </div>';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<h2>No institutions currently fit this criteria.</h2>
+<ul>
+<li><a href="/node/add/ercore-institution">Add an Institution</a></li>
+<li><a href="/node/add/ercore-collaboration">Add a Collaboration</a></li>
+</ul>';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Relationship: Field Collection to Node */
   $handler->display->display_options['relationships']['field_ercore_cr_inst_ref_target_id']['id'] = 'field_ercore_cr_inst_ref_target_id';
   $handler->display->display_options['relationships']['field_ercore_cr_inst_ref_target_id']['table'] = 'field_data_field_ercore_cr_inst_ref';
@@ -1616,6 +1627,17 @@ function ercore_admin_views_default_views() {
 <li><a href="/ercore/views/collaboration/non-participating">Collaborating Institutions - Non-participating</a></li>
 </ul>
 </div>';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<h2>No institutions currently fit this criteria.</h2>
+<ul>
+<li><a href="/node/add/ercore-institution">Add an Institution</a></li>
+<li><a href="/node/add/ercore-collaboration">Add a Collaboration</a></li>
+</ul>';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Relationship: Institution to User */
   $handler->display->display_options['relationships']['reverse_field_ercore_us_inst_ref_user']['id'] = 'reverse_field_ercore_us_inst_ref_user';
   $handler->display->display_options['relationships']['reverse_field_ercore_us_inst_ref_user']['table'] = 'node';
@@ -1887,6 +1909,13 @@ function ercore_admin_views_default_views() {
   );
   $handler->display->display_options['style_options']['caption'] = 'All Public Calendar Events';
   $handler->display->display_options['style_options']['summary'] = 'All Public Calendar Events';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<h2>No events currently fit this criteria</h2><ul><li><a href="/node/add/ercore-event">Add an event</a></li></ul>';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
@@ -1925,7 +1954,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['exposed'] = TRUE;
   $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
-  $handler->display->display_options['filters']['status']['expose']['label'] = 'Published';
+  $handler->display->display_options['filters']['status']['expose']['label'] = 'Events Published to Calendar';
   $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
   $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
   $handler->display->display_options['filters']['status']['expose']['required'] = TRUE;
@@ -2014,6 +2043,14 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<p>All events that can have external engagements currently do have engagements assigned.</p>';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -2102,6 +2139,14 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<p>All external engagements currently have positive values. (None set to zero.)</p>';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
@@ -2345,6 +2390,13 @@ function ercore_admin_views_default_views() {
       'class' => 'collaboration counted',
     ),
   );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No Collaborations have been created. <a href="/node/add/ercore-collaboration/">Create an collaboration</a>?';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Relationship: Collaborator to User */
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['id'] = 'field_ercore_organizer_target_id';
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['table'] = 'field_data_field_ercore_organizer';
@@ -2389,7 +2441,7 @@ function ercore_admin_views_default_views() {
     'ercore_collaboration' => 'ercore_collaboration',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Dates - end date (field_ercore_cn_dates:value2) */
+  /* Filter criterion: Content: Collaboration Dates - end date (field_ercore_cn_dates:value2) */
   $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['id'] = 'field_ercore_cn_dates_value2';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['table'] = 'field_data_field_ercore_cn_dates';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['field'] = 'field_ercore_cn_dates_value2';
@@ -2410,7 +2462,7 @@ function ercore_admin_views_default_views() {
     3 => 0,
   );
   $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Dates -  start date (field_ercore_cn_dates) */
+  /* Filter criterion: Content: Collaboration Dates -  start date (field_ercore_cn_dates) */
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['id'] = 'field_ercore_cn_dates_value';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['table'] = 'field_data_field_ercore_cn_dates';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['field'] = 'field_ercore_cn_dates_value';
@@ -2467,6 +2519,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
   $handler->display->display_options['style_options']['provide_file'] = 1;
   $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Global: View result counter */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';
@@ -2560,6 +2613,13 @@ function ercore_admin_views_default_views() {
       'class' => 'collaborator-department',
     ),
   );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No Collaborations have been created. <a href="/node/add/ercore-collaboration/">Create an collaboration</a>?';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Relationship: Content: External Collaborators (field_ercore_cn_collaborator) */
   $handler->display->display_options['relationships']['field_ercore_cn_collaborator_value']['id'] = 'field_ercore_cn_collaborator_value';
   $handler->display->display_options['relationships']['field_ercore_cn_collaborator_value']['table'] = 'field_data_field_ercore_cn_collaborator';
@@ -2618,7 +2678,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Dates - end date (field_ercore_cn_dates:value2) */
+  /* Filter criterion: Content: Collaboration Dates - end date (field_ercore_cn_dates:value2) */
   $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['id'] = 'field_ercore_cn_dates_value2';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['table'] = 'field_data_field_ercore_cn_dates';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['field'] = 'field_ercore_cn_dates_value2';
@@ -2631,7 +2691,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['operator'] = 'field_ercore_cn_dates_value2_op';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['identifier'] = 'start-date';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Dates -  start date (field_ercore_cn_dates) */
+  /* Filter criterion: Content: Collaboration Dates -  start date (field_ercore_cn_dates) */
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['id'] = 'field_ercore_cn_dates_value';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['table'] = 'field_data_field_ercore_cn_dates';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['field'] = 'field_ercore_cn_dates_value';
@@ -2684,6 +2744,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
   $handler->display->display_options['style_options']['provide_file'] = 1;
   $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Global: View result counter */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';
@@ -2751,7 +2812,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = 'Description of Collaboration/Partnership';
-  /* Field: Content: Dates */
+  /* Field: Content: Collaboration Dates */
   $handler->display->display_options['fields']['field_ercore_cn_dates']['id'] = 'field_ercore_cn_dates';
   $handler->display->display_options['fields']['field_ercore_cn_dates']['table'] = 'field_data_field_ercore_cn_dates';
   $handler->display->display_options['fields']['field_ercore_cn_dates']['field'] = 'field_ercore_cn_dates';
@@ -2811,6 +2872,13 @@ function ercore_admin_views_default_views() {
       'class' => 'counted',
     ),
   );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No External Engagements have been created. <a href="/node/add/ercore-event/">Create an event with an engagement</a>?';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Relationship: Event to User */
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['id'] = 'field_ercore_organizer_target_id';
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['table'] = 'field_data_field_ercore_organizer';
@@ -2952,6 +3020,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
   $handler->display->display_options['style_options']['provide_file'] = 1;
   $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Global: View result counter */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';
@@ -3498,6 +3567,13 @@ function ercore_admin_views_default_views() {
       'class' => 'counted',
     ),
   );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No Events have been created. <a href="/node/add/ercore-event/">Create an event</a>?';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Relationship: Event to User */
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['id'] = 'field_ercore_organizer_target_id';
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['table'] = 'field_data_field_ercore_organizer';
@@ -3632,6 +3708,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
   $handler->display->display_options['style_options']['provide_file'] = 1;
   $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
@@ -3706,6 +3783,13 @@ function ercore_admin_views_default_views() {
       'class' => 'counted',
     ),
   );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area_1']['id'] = 'area_1';
+  $handler->display->display_options['empty']['area_1']['table'] = 'views';
+  $handler->display->display_options['empty']['area_1']['field'] = 'area';
+  $handler->display->display_options['empty']['area_1']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area_1']['content'] = 'No Highlights have been created. <a href="/node/add/ercore-highlight/">Create a highlight</a>?';
+  $handler->display->display_options['empty']['area_1']['format'] = 'filtered_html';
   /* Relationship: Highlight to User */
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['id'] = 'field_ercore_organizer_target_id';
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['table'] = 'field_data_field_ercore_organizer';
@@ -3819,6 +3903,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
   $handler->display->display_options['style_options']['provide_file'] = 1;
   $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -4118,7 +4203,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No Institutions fit these filter parameters.';
+  $handler->display->display_options['empty']['area']['content'] = 'No Institutions have been created. <a href="/node/add/ercore-institution/">Create an institution</a>?';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Field: Global: View result counter */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';
@@ -4378,6 +4463,13 @@ function ercore_admin_views_default_views() {
       'class' => 'counted',
     ),
   );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No Research Products have been created. <a href="/node/add/ercore-other-product/">Create a research product</a>?';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Relationship: Research to User */
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['id'] = 'field_ercore_organizer_target_id';
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['table'] = 'field_data_field_ercore_organizer';
@@ -4492,6 +4584,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
   $handler->display->display_options['style_options']['provide_file'] = 1;
   $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Global: View result counter */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';
@@ -4885,6 +4978,13 @@ function ercore_admin_views_default_views() {
       'class' => 'counted',
     ),
   );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No Patents have been created. <a href="/node/add/ercore-patent/">Create a patent</a>?';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Relationship: Patent to User */
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['id'] = 'field_ercore_organizer_target_id';
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['table'] = 'field_data_field_ercore_organizer';
@@ -5013,6 +5113,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
   $handler->display->display_options['style_options']['provide_file'] = 1;
   $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -5147,6 +5248,13 @@ function ercore_admin_views_default_views() {
       'empty_column' => 0,
     ),
   );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No Presentations have been created. <a href="/node/add/ercore-presentation/">Create a presentation</a>?';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Relationship: Presenter to User */
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['id'] = 'field_ercore_organizer_target_id';
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['table'] = 'field_data_field_ercore_organizer';
@@ -5296,6 +5404,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
   $handler->display->display_options['style_options']['provide_file'] = 1;
   $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Global: View result counter */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';
@@ -5388,7 +5497,7 @@ function ercore_admin_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Grants and Proposals*';
+  $handler->display->display_options['title'] = 'Grants and Proposals';
   $handler->display->display_options['css_class'] = 'ercore-summary-page proposals-page';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
@@ -5416,6 +5525,13 @@ function ercore_admin_views_default_views() {
       'class' => 'counted',
     ),
   );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No Grant Proposals have been created. <a href="/node/add/ercore-proposal/">Create a proposal</a>?';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Relationship: Proposal to User */
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['id'] = 'field_ercore_organizer_target_id';
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['table'] = 'field_data_field_ercore_organizer';
@@ -5545,6 +5661,8 @@ function ercore_admin_views_default_views() {
 
   /* Display: Data export */
   $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Grants and Proposals*';
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access er admin content';
@@ -5553,6 +5671,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
   $handler->display->display_options['style_options']['provide_file'] = 1;
   $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -5647,142 +5766,7 @@ function ercore_admin_views_default_views() {
     'page_1' => 'page_1',
     'page_2' => 'page_2',
   );
-
-  /* Display: Summary Table */
-  $handler = $view->new_display('attachment', 'Summary Table', 'attachment_1');
-  $handler->display->display_options['defaults']['group_by'] = FALSE;
-  $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'download er content';
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'views_aggregator';
-  $handler->display->display_options['style_options']['columns'] = array(
-    'field_ercore_pp_proposal_status' => 'field_ercore_pp_proposal_status',
-    'field_ercore_pp_award_req_dec' => 'field_ercore_pp_award_req_dec',
-    'field_ercore_pp_award_amount' => 'field_ercore_pp_award_amount',
-    'field_ercore_pp_proposal_status_1' => 'field_ercore_pp_proposal_status_1',
-  );
-  $handler->display->display_options['style_options']['default'] = '-1';
-  $handler->display->display_options['style_options']['info'] = array(
-    'field_ercore_pp_proposal_status' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-      'has_aggr' => 1,
-      'aggr' => array(
-        'views_aggregator_group_and_compress' => 'views_aggregator_group_and_compress',
-      ),
-      'aggr_par' => '',
-      'has_aggr_column' => 0,
-      'aggr_column' => 'views_aggregator_sum',
-      'aggr_par_column' => '',
-    ),
-    'field_ercore_pp_award_req_dec' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-      'has_aggr' => 0,
-      'aggr' => array(
-        'views_aggregator_first' => 'views_aggregator_first',
-      ),
-      'aggr_par' => '',
-      'has_aggr_column' => 1,
-      'aggr_column' => 'views_aggregator_sum',
-      'aggr_par_column' => '',
-    ),
-    'field_ercore_pp_award_amount' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-      'has_aggr' => 0,
-      'aggr' => array(
-        'views_aggregator_first' => 'views_aggregator_first',
-      ),
-      'aggr_par' => '',
-      'has_aggr_column' => 1,
-      'aggr_column' => 'views_aggregator_sum',
-      'aggr_par_column' => '',
-    ),
-    'field_ercore_pp_proposal_status_1' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-      'has_aggr' => 1,
-      'aggr' => array(
-        'views_aggregator_count' => 'views_aggregator_count',
-      ),
-      'aggr_par' => '',
-      'has_aggr_column' => 1,
-      'aggr_column' => 'views_aggregator_count',
-      'aggr_par_column' => '',
-    ),
-  );
-  $handler->display->display_options['style_options']['summary'] = 'Summary of Proposal Status Values';
-  $handler->display->display_options['style_options']['column_aggregation']['totals_per_page'] = '0';
-  $handler->display->display_options['style_options']['column_aggregation']['totals_row_position'] = array(
-    1 => 0,
-    2 => '2',
-  );
-  $handler->display->display_options['style_options']['column_aggregation']['precision'] = '2';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Status */
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_status']['id'] = 'field_ercore_pp_proposal_status';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_status']['table'] = 'field_data_field_ercore_pp_proposal_status';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_status']['field'] = 'field_ercore_pp_proposal_status';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_status']['element_label_colon'] = FALSE;
-  /* Field: Content: Amount Requested */
-  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['id'] = 'field_ercore_pp_award_req_dec';
-  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['table'] = 'field_data_field_ercore_pp_award_req_dec';
-  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['field'] = 'field_ercore_pp_award_req_dec';
-  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['settings'] = array(
-    'thousand_separator' => ',',
-    'decimal_separator' => '.',
-    'scale' => '0',
-    'prefix_suffix' => 1,
-  );
-  /* Field: Content: Award Amount */
-  $handler->display->display_options['fields']['field_ercore_pp_award_amount']['id'] = 'field_ercore_pp_award_amount';
-  $handler->display->display_options['fields']['field_ercore_pp_award_amount']['table'] = 'field_data_field_ercore_pp_award_amount';
-  $handler->display->display_options['fields']['field_ercore_pp_award_amount']['field'] = 'field_ercore_pp_award_amount';
-  $handler->display->display_options['fields']['field_ercore_pp_award_amount']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_pp_award_amount']['settings'] = array(
-    'thousand_separator' => ',',
-    'decimal_separator' => '.',
-    'scale' => '0',
-    'prefix_suffix' => 1,
-  );
-  /* Field: Content: Status */
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_status_1']['id'] = 'field_ercore_pp_proposal_status_1';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_status_1']['table'] = 'field_data_field_ercore_pp_proposal_status';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_status_1']['field'] = 'field_ercore_pp_proposal_status';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_status_1']['label'] = '#';
-  $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Status (field_ercore_pp_proposal_status) */
-  $handler->display->display_options['sorts']['field_ercore_pp_proposal_status_value']['id'] = 'field_ercore_pp_proposal_status_value';
-  $handler->display->display_options['sorts']['field_ercore_pp_proposal_status_value']['table'] = 'field_data_field_ercore_pp_proposal_status';
-  $handler->display->display_options['sorts']['field_ercore_pp_proposal_status_value']['field'] = 'field_ercore_pp_proposal_status_value';
-  $handler->display->display_options['sorts']['field_ercore_pp_proposal_status_value']['order'] = 'DESC';
-  $handler->display->display_options['displays'] = array(
-    'page' => 'page',
-    'default' => 0,
-  );
-  $handler->display->display_options['attachment_position'] = 'after';
-  $handler->display->display_options['inherit_arguments'] = FALSE;
-  $handler->display->display_options['inherit_exposed_filters'] = TRUE;
+  $handler->display->display_options['sitename_title'] = 0;
   $views['ercore_summary_proposal'] = $view;
 
   $view = new view();
@@ -5832,6 +5816,13 @@ function ercore_admin_views_default_views() {
       'class' => 'counted',
     ),
   );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No Publications have been created. <a href="/node/add/ercore-publication/">Create a publication</a>?';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Field: Global: View result counter */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';
   $handler->display->display_options['fields']['counter']['table'] = 'views';
@@ -5932,6 +5923,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
   $handler->display->display_options['style_options']['provide_file'] = 1;
   $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Global: View result counter */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';

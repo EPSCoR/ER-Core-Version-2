@@ -1008,7 +1008,7 @@ function ercore_field_group_info() {
   $field_group->group_name = 'group_ercore_us_d_certs';
   $field_group->entity_type = 'user';
   $field_group->bundle = 'user';
-  $field_group->mode = 'default';
+  $field_group->mode = 'full';
   $field_group->parent_name = 'group_ercore_us_d_epscor';
   $field_group->data = array(
     'label' => 'Certifications and Supporting Documents',
@@ -1040,11 +1040,11 @@ function ercore_field_group_info() {
   $field_group->group_name = 'group_ercore_us_d_data';
   $field_group->entity_type = 'user';
   $field_group->bundle = 'user';
-  $field_group->mode = 'default';
+  $field_group->mode = 'full';
   $field_group->parent_name = 'group_ercore_us_d_profile';
   $field_group->data = array(
     'label' => 'Data Collection',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_ercore_us_data_frequency',
       1 => 'field_ercore_us_data_submit_date',
@@ -1069,7 +1069,7 @@ function ercore_field_group_info() {
   $field_group->group_name = 'group_ercore_us_d_demo';
   $field_group->entity_type = 'user';
   $field_group->bundle = 'user';
-  $field_group->mode = 'default';
+  $field_group->mode = 'full';
   $field_group->parent_name = 'group_ercore_us_d_profile';
   $field_group->data = array(
     'label' => 'Demographics',
@@ -1099,7 +1099,7 @@ function ercore_field_group_info() {
   $field_group->group_name = 'group_ercore_us_d_epscor';
   $field_group->entity_type = 'user';
   $field_group->bundle = 'user';
-  $field_group->mode = 'default';
+  $field_group->mode = 'full';
   $field_group->parent_name = 'group_ercore_us_d_profile';
   $field_group->data = array(
     'label' => 'EPSCoR Involvement',
@@ -1137,7 +1137,7 @@ function ercore_field_group_info() {
   $field_group->group_name = 'group_ercore_us_d_info';
   $field_group->entity_type = 'user';
   $field_group->bundle = 'user';
-  $field_group->mode = 'default';
+  $field_group->mode = 'full';
   $field_group->parent_name = 'group_ercore_us_d_profile';
   $field_group->data = array(
     'label' => 'Contact Information',
@@ -1147,14 +1147,17 @@ function ercore_field_group_info() {
       1 => 'field_ercore_us_phone_personal',
       2 => 'field_ercore_us_phone_work',
       3 => 'field_ercore_us_pro_link',
+      4 => 'field_user_name',
+      5 => 'field_ercore_us_emp_id',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Contact Information',
       'instance_settings' => array(
-        'description' => '',
         'classes' => 'group-ercore-us-d-info field-group-tab',
+        'description' => '',
       ),
+      'formatter' => 'open',
     ),
   );
   $field_groups['group_ercore_us_d_info|user|user|full'] = $field_group;
@@ -1166,11 +1169,11 @@ function ercore_field_group_info() {
   $field_group->group_name = 'group_ercore_us_d_institution';
   $field_group->entity_type = 'user';
   $field_group->bundle = 'user';
-  $field_group->mode = 'default';
+  $field_group->mode = 'full';
   $field_group->parent_name = 'group_ercore_us_d_profile';
   $field_group->data = array(
     'label' => 'Institution',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_ercore_us_doctor_act',
       1 => 'field_ercore_us_masters_act',
@@ -1182,13 +1185,15 @@ function ercore_field_group_info() {
       7 => 'field_ercore_us_committees',
       8 => 'field_ercore_us_department',
       9 => 'field_ercore_us_inst_ref',
+      10 => 'field_ercore_programs',
+      11 => 'field_ercore_components',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-ercore-us-d-institution field-group-tab',
+        'classes' => '',
       ),
     ),
   );
@@ -1201,7 +1206,7 @@ function ercore_field_group_info() {
   $field_group->group_name = 'group_ercore_us_d_profile';
   $field_group->entity_type = 'user';
   $field_group->bundle = 'user';
-  $field_group->mode = 'default';
+  $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Profile',
@@ -1303,6 +1308,7 @@ function ercore_field_group_info() {
       2 => 'field_ercore_us_phone_work',
       3 => 'field_ercore_us_pro_link',
       4 => 'field_user_name',
+      5 => 'field_ercore_us_emp_id',
     ),
     'format_type' => 'accordion-item',
     'format_settings' => array(
@@ -1360,7 +1366,7 @@ function ercore_field_group_info() {
   $field_group->parent_name = 'group_ercore_us_f_profile';
   $field_group->data = array(
     'label' => 'Demographics',
-    'weight' => '26',
+    'weight' => '25',
     'children' => array(
       0 => 'field_ercore_us_disabilities',
       1 => 'field_ercore_us_ethnicity',
@@ -1391,7 +1397,7 @@ function ercore_field_group_info() {
   $field_group->parent_name = 'group_ercore_us_f_epscor';
   $field_group->data = array(
     'label' => 'Education',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'field_ercore_us_doctor_act',
       1 => 'field_ercore_us_masters_act',
@@ -1424,7 +1430,7 @@ function ercore_field_group_info() {
   $field_group->parent_name = 'group_ercore_us_f_profile';
   $field_group->data = array(
     'label' => 'EPSCoR Involvement',
-    'weight' => '27',
+    'weight' => '26',
     'children' => array(
       0 => 'field_ercore_us_160hours',
       1 => 'field_ercore_us_committees',
@@ -1498,12 +1504,12 @@ function ercore_field_group_info() {
     'label' => 'Profile',
     'weight' => '1',
     'children' => array(
-      0 => 'group_ercore_us_f_contact',
-      1 => 'group_ercore_us_f_demo',
-      2 => 'group_ercore_us_f_epscor',
-      3 => 'group_ercore_us_f_data',
-      4 => 'group_ercore_us_f_inst',
-      5 => 'group_ercore_us_f_account',
+      0 => 'group_ercore_us_f_account',
+      1 => 'group_ercore_us_f_contact',
+      2 => 'group_ercore_us_f_data',
+      3 => 'group_ercore_us_f_demo',
+      4 => 'group_ercore_us_f_epscor',
+      5 => 'group_ercore_us_f_inst',
     ),
     'format_type' => 'accordion',
     'format_settings' => array(
