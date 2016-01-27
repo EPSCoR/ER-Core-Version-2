@@ -4,10 +4,58 @@
   font-size: 2em;
   margin-top: 12px;
 }
+
 .list-row.rows-counted .counted {
   padding-left: 50px;
 }
+
 .view-ercore-external-engagements-information table caption {
   font-weight: bold;
   font-size: 1.2em;
+}
+
+table.table-b {
+  margin-bottom: 2em;
+}
+
+.ercore-table.table-b caption,
+.e-user-table caption {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.ercore-table td.no-hires {
+  background-color: #d8d8d8;
+  font-style: italic;
+}
+
+.ercore-table tr.rii-leadership-team td,
+.ercore-table tr.advisory-boards td {
+  font-weight: bold;
+}
+
+.collaboration-list .list-row {
+  margin-left: 25px;
+}
+
+p.range-display {
+  font-weight: bold;
+}
+p.data-link a {
+  font-weight: bold;
+  padding-left: 44px;
+  background-image: url("../images/xls.png");
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+.view .outputs .user-name,
+.view .outputs .title {
+  font-weight: bold;
+}
+.view .outputs .field-label-inline {
+  margin-left: 25px;
+  overflow: hidden;
+}
+.view .outputs .field-label {
+  margin-right: .5em;
 }

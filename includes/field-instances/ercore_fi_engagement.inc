@@ -3110,8 +3110,8 @@ $ercore_engagement_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ari_fac_t.
-  'field_ercore_ari_fac_t' => array(
+// INSTANCE: field_ercore_ee_ari_fac_t.
+  'field_ercore_ee_ari_fac_t' => array(
     'label' => 'ARI: Faculty - Total',
     'widget' => array(
       'weight' => '18',
@@ -3141,7 +3141,7 @@ $ercore_engagement_instances = array(
     ),
     'required' => 1,
     'description' => '',
-    'field_name' => 'field_ercore_ari_fac_t',
+    'field_name' => 'field_ercore_ee_ari_fac_t',
     'entity_type' => 'field_collection_item',
     'bundle' => 'field_ercore_ev_engagement',
     'deleted' => '0',

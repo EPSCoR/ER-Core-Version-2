@@ -19,12 +19,12 @@ function ercore_admin_permission() {
 /**
  * Implements hook_help().
  */
-function ercore_admin_help($path, $arg) {
-  switch ($path) {
-    case 'admin/help#ercore_admin':
-      return t("Testing.");
-  }
+/*function ercore_admin_help($path, $arg) {
+switch ($path) {
+case 'admin/help#ercore_admin':
+return t("No ERCore help available at this time.");
 }
+}*/
 
 /**
  * Implements hook_menu().
@@ -37,38 +37,38 @@ function ercore_admin_menu() {
     'access arguments' => array('access ercore admin content'),
     'type' => MENU_NORMAL_ITEM,
     'menu_name' => 'main-menu',
-    'file' => '/pages/ercore-reporting.inc',
+    'file' => 'pages/ercore-reporting.inc',
   );
   $items['ercore'] = array(
     'menu_name' => 'ercore_admin_menu',
     'title' => 'ERCore',
     'description' => 'ERCore is a Drupal project to assist in the collection,
-    display, and preparatio of EPSCoR grant data.',
+    display, and preparation of EPSCoR grant data.',
     'page callback' => 'system_admin_menu_block_page',
-    'access arguments' => array('access ercore admin content'),
+    'access arguments' => array('access ercore content'),
     'file' => 'system.admin.inc',
     'file path' => drupal_get_path('module', 'system'),
   );
   // ERCore Content Menu, accomplishments table views point here.
   $items['ercore/content'] = array(
-    //'menu_name' => 'ercore_admin_menu',
+    // 'menu_name' => 'ercore_admin_menu',.
     'title' => 'ERCore Content',
     'description' => 'All ERCore related content types that come with the
-    ER-Core module in populating the reporting tables are located in ERCore
+    ERCore module in populating the reporting tables are located in ERCore
     Content. ',
     'page callback' => 'system_admin_menu_block_page',
-    'access arguments' => array('access administration pages'),
+    'access arguments' => array('access ercore content'),
     'file' => 'system.admin.inc',
     'file path' => drupal_get_path('module', 'system'),
   );
   // Administration views point here.
   $items['ercore/views'] = array(
-   'title' => 'Administrative Views',
+    'title' => 'Administrative Views',
     'description' => 'At a glance ERCore generated reporting views related to
     NSF Reporting Tables are available here. In addition, other views such as
     flagged items for review are available in this menu flyout.',
     'page callback' => 'system_admin_menu_block_page',
-    'access arguments' => array('access administration pages'),
+    'access arguments' => array('access ercore admin content'),
     'file' => 'system.admin.inc',
     'file path' => drupal_get_path('module', 'system'),
   );
@@ -86,7 +86,7 @@ function ercore_admin_menu() {
     'description' => 'This page allows administrators to add new institutions.',
     'type' => MENU_NORMAL_ITEM,
     'page callback' => 'drupal_goto',
-    'page arguments' => array('node/add/er-institution'),
+    'page arguments' => array('node/add/ercore-institution'),
     'access arguments' => array('access ercore admin content'),
   );
   $items['ercore/actions/new-user'] = array(
@@ -110,42 +110,137 @@ function ercore_admin_menu() {
   $items['ercore/views/salary-support'] = array(
     'title' => 'NSF Table A - Salary Support',
     'description' => 'This view aims to help you determine where the Salary Support information is coming from.',
-    'type' => MENU_NORMAL_ITEM,
-    'page callback' => 'drupal_goto',
-    'page arguments' => array('reporting/salary-support'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nsf_table_a_callback'),
     'access arguments' => array('access ercore admin content'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'pages/ercore-table-a.inc',
+  );
+  $items['ercore/views/salary-support/download'] = array(
+    'title' => 'Salary Support Download',
+    'description' => 'Downloading Table A Excel file with arguments.',
+    'page callback' => 'ercore_table_a_download_callback',
+    'page arguments' => array(''),
+    'access arguments' => array('access ercore excel sheets'),
+    'type' => MENU_CALLBACK,
+    'file' => 'pages/ercore-table-a-download.inc',
+  );
+  $items['ercore/views/salary-support/download/%'] = array(
+    'title' => 'Salary Support Download',
+    'description' => 'Downloading Table A Excel file with arguments.',
+    'page callback' => 'ercore_table_a_download_callback',
+    'page arguments' => array(4),
+    'access arguments' => array('access ercore excel sheets'),
+    'type' => MENU_CALLBACK,
+    'file' => 'pages/ercore-table-a-download.inc',
   );
   $items['ercore/views/participants'] = array(
     'title' => 'NSF Table B - Participants',
     'description' => 'This view aims to help you determine where the Participant information is coming from.',
-    'type' => MENU_NORMAL_ITEM,
-    'page callback' => 'drupal_goto',
-    'page arguments' => array('reporting/participants'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nsf_table_b_callback'),
     'access arguments' => array('access ercore admin content'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'pages/ercore-table-b.inc',
+  );
+  $items['ercore/views/participants/download'] = array(
+    'title' => 'Participants Download',
+    'description' => 'Downloading Table B Excel file.',
+    'page callback' => 'ercore_table_b_download_callback',
+    'page arguments' => array(''),
+    'access arguments' => array('access ercore excel sheets'),
+    'type' => MENU_CALLBACK,
+    'file' => 'pages/ercore-table-b-download.inc',
+  );
+  $items['ercore/views/participants/download/%'] = array(
+    'title' => 'Participants Download',
+    'description' => 'Downloading Table B Excel file with arguments.',
+    'page callback' => 'ercore_table_b_download_callback',
+    'page arguments' => array(4),
+    'access arguments' => array('access ercore excel sheets'),
+    'type' => MENU_CALLBACK,
+    'file' => 'pages/ercore-table-b-download.inc',
   );
   $items['ercore/views/collaborations'] = array(
     'title' => 'NSF Table C - Collaborations',
     'description' => 'This view aims to help you determine where the Collaborator counts are coming from.',
-    'type' => MENU_NORMAL_ITEM,
-    'page callback' => 'drupal_goto',
-    'page arguments' => array('reporting/collaborations'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nsf_table_c_callback'),
     'access arguments' => array('access ercore admin content'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'pages/ercore-table-c.inc',
+  );
+  $items['ercore/views/collaborations/download'] = array(
+    'title' => 'Collaborations Download',
+    'description' => 'Downloading Table C Excel file.',
+    'page callback' => 'ercore_table_c_download_callback',
+    'page arguments' => array(''),
+    'access arguments' => array('access ercore excel sheets'),
+    'type' => MENU_CALLBACK,
+    'file' => 'pages/ercore-table-c-download.inc',
+  );
+  $items['ercore/views/collaborations/download/%'] = array(
+    'title' => 'Collaborations Download',
+    'description' => 'Downloading Table C Excel file with arguments.',
+    'page callback' => 'ercore_table_c_download_callback',
+    'page arguments' => array(4),
+    'access arguments' => array('access ercore excel sheets'),
+    'type' => MENU_CALLBACK,
+    'file' => 'pages/ercore-table-c-download.inc',
   );
   $items['ercore/views/external-engagement'] = array(
     'title' => 'NSF Table D - External Engagements',
     'description' => 'This view aims to help you determine where the External Engagement counts are coming from.',
-    'type' => MENU_NORMAL_ITEM,
-    'page callback' => 'drupal_goto',
-    'page arguments' => array('reporting/external-engagement'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nsf_table_d_callback'),
     'access arguments' => array('access ercore admin content'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'pages/ercore-table-d.inc',
+  );
+  $items['ercore/views/external-engagement/download'] = array(
+    'title' => 'External Engagements Download',
+    'description' => 'Downloading Table D Excel file with arguments.',
+    'page callback' => 'ercore_table_d_download_callback',
+    'page arguments' => array(''),
+    'access arguments' => array('access ercore excel sheets'),
+    'type' => MENU_CALLBACK,
+    'file' => '/pages/ercore-table-d-download.inc',
+  );
+  $items['ercore/views/external-engagement/download/%'] = array(
+    'title' => 'External Engagements Download',
+    'description' => 'Downloading Table D Excel file with arguments.',
+    'page callback' => 'ercore_table_d_download_callback',
+    'page arguments' => array(4),
+    'access arguments' => array('access ercore excel sheets'),
+    'type' => MENU_CALLBACK,
+    'file' => 'pages/ercore-table-d-download.inc',
   );
   $items['ercore/views/outputs'] = array(
     'title' => 'NSF Table E - Outputs',
     'description' => 'This view aims to help you determine where the Outputs counts are coming from.',
-    'type' => MENU_NORMAL_ITEM,
-    'page callback' => 'drupal_goto',
-    'page arguments' => array('reporting/outputs'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nsf_table_e_callback'),
     'access arguments' => array('access ercore admin content'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'pages/ercore-table-e.inc',
+  );
+  $items['ercore/views/outputs/download'] = array(
+    'title' => 'Outputs Download',
+    'description' => 'Downloading Table E Excel file with arguments.',
+    'page callback' => 'ercore_table_e_download_callback',
+    'page arguments' => array(''),
+    'access arguments' => array('access ercore excel sheets'),
+    'type' => MENU_CALLBACK,
+    'file' => 'pages/ercore-table-e-download.inc',
+  );
+  $items['ercore/views/outputs/download/%'] = array(
+    'title' => 'Outputs Download',
+    'description' => 'Downloading Table E Excel file with arguments.',
+    'page callback' => 'ercore_table_e_download_callback',
+    'page arguments' => array(4),
+    'access arguments' => array('access ercore excel sheets'),
+    'type' => MENU_CALLBACK,
+    'file' => 'pages/ercore-table-e-download.inc',
   );
 
   // Links to content views.
@@ -173,27 +268,37 @@ function ercore_admin_menu() {
       'access arguments' => array('access ercore content'),
     );
   }
-
   $items['ercore/reporting'] = array(
     'title' => 'Accomplishments',
     'description' => 'This page shows all categories of accomplishments (collaborations, grants & proposals, external engagements, etc) with the option of selecting by reporting year/period.',
     'type' => MENU_NORMAL_ITEM,
     'page callback' => 'drupal_goto',
     'page arguments' => array('reporting'),
-    'access arguments' => array('access ercore content'),
+    'access arguments' => array('access ercore admin content'),
   );
   $items['ercore/reporting/download'] = array(
     'title' => 'Download Reporting Tables',
-    'type' => MENU_NORMAL_ITEM,
-    'page callback' => 'drupal_goto',
-    'page arguments' => array('reporting/download'),
+    'description' => 'Downloading All NSF Tables without arguments.',
+    'page callback' => 'ercore_reporting_download_callback',
+    'page arguments' => array(''),
     'access arguments' => array('access ercore excel sheets'),
+    'type' => MENU_CALLBACK,
+    'file' => 'pages/ercore-reporting-download.inc',
+  );
+  $items['ercore/reporting/download/%'] = array(
+    'title' => 'Download Reporting Tables',
+    'description' => 'Downloading All NSF Tables with arguments.',
+    'page callback' => 'ercore_reporting_download_callback',
+    'page arguments' => array(3),
+    'access arguments' => array('access ercore excel sheets'),
+    'type' => MENU_CALLBACK,
+    'file' => 'pages/ercore-reporting-download.inc',
   );
   $items['ercore/guides'] = array(
     'title' => 'User Guides',
     'description' => 'Reference guides for ERCore administrators and users.',
     'page callback' => 'system_admin_menu_block_page',
-    'access arguments' => array('access administration pages'),
+    'access arguments' => array('access ercore content'),
     'file' => 'system.admin.inc',
     'file path' => drupal_get_path('module', 'system'),
   );
@@ -211,29 +316,17 @@ function ercore_admin_menu() {
     'type' => MENU_NORMAL_ITEM,
     'page callback' => 'ercore_user_guide_callback',
     'access arguments' => array('access ercore content'),
-    'file' => '/pages/ercore-user-guide.inc',
+    'file' => 'pages/ercore-user-guide.inc',
   );
   $items['ercore/participants'] = array(
     'title' => 'Participant Views',
     'description' => 'Views for administrating Participants.',
     'page callback' => 'system_admin_menu_block_page',
-    'access arguments' => array('access administration pages'),
+    'access arguments' => array('access ercore admin content'),
     'file' => 'system.admin.inc',
     'file path' => drupal_get_path('module', 'system'),
   );
   return $items;
-}
-
-/**
- * Constructs the epscor page.
- *
- * Our menu maps this function to the path 'epscor'.
- */
-function ercore_epscor_callback() {
-  return array(
-    '#markup' =>
-    t('Testing'),
-  );
 }
 
 /**
@@ -245,6 +338,20 @@ function ercore_admin_views_api($module, $api) {
   }
 }
 
+/**
+ * Implements hook_views_pre_execute().
+ */
+function ercore_admin_views_pre_execute(&$view) {
+  if ($view->name == 'ercore_export_table_b_institutions') {
+    // $view->args[0] = '2013-05--2014-05';.
+  }
+  if ($view->name == 'ercore_export_table_b_fields') {
+    if ($view->args[1] != '!1') {
+      $argument = $view->args[1];
+      $view->footer['area']->options['content'] = "*New Hires: This column is being filtered by the date range ($argument).";
+    }
+  }
+}
 
 /**
  * Implements hook_preprocess_user_profile().
@@ -253,15 +360,20 @@ function ercore_admin_preprocess_user_profile(&$vars) {
   if ($vars['elements']['#view_mode'] == 'user_institution') {
     $vars['theme_hook_suggestions'][] = 'user_profile__user_institution';
   }
+  if ($vars['elements']['#view_mode'] == 'institution') {
+    $vars['theme_hook_suggestions'][] = 'user_profile__institution';
+  }
 }
 
 /**
  * Implements hook_theme_registry_alter().
  */
-
 function ercore_admin_theme_registry_alter(&$theme_registry) {
   // Get the path to this module.
   $modulepath = drupal_get_path('module', 'ercore_admin');
+
+  $theme_registry['views_data_export_feed_icon']['function'] = 'ercore_views_data_export_feed_icon';
+  $theme_registry['views_data_export_feed_icon']['includes'][0] = $modulepath . '/includes/ercore_views_data_export.theme.inc';
 
   // Find all .tpl.php files in this module's folder recursively.
   $template_file_objects = drupal_find_theme_templates($theme_registry, '.tpl.php', $modulepath);
@@ -287,9 +399,41 @@ function ercore_admin_theme($existing, $type, $theme, $path) {
     'ercore_summary_table' => array(
       'variables' => array(
         'ranges' => array(),
-        'debug' => FALSE,
+        'default_form' => TRUE,
       ),
       'function' => 'ercore_summary_table',
+    ),
+    'ercore_table_a' => array(
+      'variables' => array(
+        'ranges' => array(),
+      ),
+      'function' => 'ercore_table_a',
+
+    ),
+    'ercore_table_b' => array(
+      'variables' => array(
+        'ranges' => array(),
+      ),
+      'function' => 'ercore_table_b',
+
+    ),
+    'ercore_table_c' => array(
+      'variables' => array(
+        'ranges' => array(),
+      ),
+      'function' => 'ercore_table_c',
+    ),
+    'ercore_table_d' => array(
+      'variables' => array(
+        'ranges' => array(),
+      ),
+      'function' => 'ercore_table_d',
+    ),
+    'ercore_table_e' => array(
+      'variables' => array(
+        'ranges' => array(),
+      ),
+      'function' => 'ercore_table_e',
     ),
   );
   return $theme;
@@ -298,10 +442,8 @@ function ercore_admin_theme($existing, $type, $theme, $path) {
 
 /**
  * Implements hook_form_alter().
- * Converts Summary views exposed filters to predefined format.
  */
 function ercore_admin_form_alter(&$form, &$form_state, $form_id) {
-
   if ($form_id == 'views_exposed_form') {
     if (strpos($form['#id'], 'ercore-summary-') !== FALSE) {
 
@@ -311,17 +453,3 @@ function ercore_admin_form_alter(&$form, &$form_state, $form_id) {
     }
   }
 }
-
-/*
- * Creates download links.
- */
-function ercore_download_link($label, $arg = "", $options = array()){
-  $options += array(
-    'html'=>true,
-    'attributes' => array('class' => 'download-link')
-  );
-  if (!$arg) $arg = arg(1);
-  if (!$label) $label = "Download this page";
-  return l(t($label), $GLOBALS['base_url'] . "/reporting/$arg/download", $options);
-}
-

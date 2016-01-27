@@ -20,7 +20,7 @@ $ercore_collaborator_definitions = array(
         ),
         'behaviors' => array(
           'views-select-list' => array(
-            'status' => 0,
+            'status' => 1,
           ),
         ),
       ),

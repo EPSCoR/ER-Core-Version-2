@@ -161,7 +161,7 @@ function ercore_field_group_info() {
       6 => 'field_ercore_ee_ari_stu_mn',
       7 => 'field_ercore_ee_ari_fac_mn',
       8 => 'field_ercore_ee_ari_stu_t',
-      9 => 'field_ercore_ari_fac_t',
+      9 => 'field_ercore_ee_ari_fac_t',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -198,7 +198,7 @@ function ercore_field_group_info() {
       6 => 'field_ercore_ee_ari_stu_mn',
       7 => 'field_ercore_ee_ari_fac_mn',
       8 => 'field_ercore_ee_ari_stu_t',
-      9 => 'field_ercore_ari_fac_t',
+      9 => 'field_ercore_ee_ari_fac_t',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -235,7 +235,7 @@ function ercore_field_group_info() {
       6 => 'field_ercore_ee_ari_stu_mn',
       7 => 'field_ercore_ee_ari_fac_mn',
       8 => 'field_ercore_ee_ari_stu_t',
-      9 => 'field_ercore_ari_fac_t',
+      9 => 'field_ercore_ee_ari_fac_t',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -839,7 +839,7 @@ function ercore_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Publication Information',
-    'weight' => '4',
+    'weight' => '6',
     'children' => array(
       0 => 'field_ercore_pb_ark',
       1 => 'field_ercore_pb_coll_title',
@@ -848,6 +848,7 @@ function ercore_field_group_info() {
       4 => 'field_ercore_pb_journal_pages',
       5 => 'field_ercore_pb_journal_volume',
       6 => 'field_ercore_pb_publisher',
+      7 => 'field_ercore_pb_issn',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1245,12 +1246,12 @@ function ercore_field_group_info() {
       1 => 'timezone',
       2 => 'picture',
     ),
-    'format_type' => 'accordion-item',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-ercore-us-f-account field-group-accordion-item',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
@@ -1310,15 +1311,14 @@ function ercore_field_group_info() {
       4 => 'field_user_name',
       5 => 'field_ercore_us_emp_id',
     ),
-    'format_type' => 'accordion-item',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'label' => 'Contact Information',
+      'formatter' => 'closed',
       'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => 'group-ercore-us-f-contact field-group-accordion-item',
         'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
       ),
-      'formatter' => 'open',
     ),
   );
   $field_groups['group_ercore_us_f_contact|user|user|form'] = $field_group;
@@ -1343,12 +1343,12 @@ function ercore_field_group_info() {
       4 => 'field_ercore_us_has_this_user',
       5 => 'field_ercore_us_data_type',
     ),
-    'format_type' => 'accordion-item',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-ercore-us-f-data field-group-accordion-item',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
@@ -1374,12 +1374,12 @@ function ercore_field_group_info() {
       3 => 'field_ercore_us_race',
       4 => 'field_ercore_us_veteran_status',
     ),
-    'format_type' => 'accordion-item',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-ercore-us-f-demo field-group-accordion-item',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
@@ -1397,7 +1397,7 @@ function ercore_field_group_info() {
   $field_group->parent_name = 'group_ercore_us_f_epscor';
   $field_group->data = array(
     'label' => 'Education',
-    'weight' => '10',
+    'weight' => '9',
     'children' => array(
       0 => 'field_ercore_us_doctor_act',
       1 => 'field_ercore_us_masters_act',
@@ -1409,12 +1409,13 @@ function ercore_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Education',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-ercore-us-f-ed field-group-fieldset',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'collapsible',
     ),
   );
   $field_groups['group_ercore_us_f_ed|user|user|form'] = $field_group;
@@ -1449,12 +1450,12 @@ function ercore_field_group_info() {
       14 => 'group_ercore_us_f_certs',
       15 => 'group_ercore_us_f_ed',
     ),
-    'format_type' => 'accordion-item',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-ercore-us-f-epscor field-group-accordion-item',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
@@ -1479,12 +1480,12 @@ function ercore_field_group_info() {
       2 => 'field_ercore_programs',
       3 => 'field_ercore_components',
     ),
-    'format_type' => 'accordion-item',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-ercore-us-f-inst field-group-accordion-item',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
@@ -1511,12 +1512,11 @@ function ercore_field_group_info() {
       4 => 'group_ercore_us_f_epscor',
       5 => 'group_ercore_us_f_inst',
     ),
-    'format_type' => 'accordion',
+    'format_type' => 'tabs',
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
-        'effect' => 'none',
-        'classes' => 'group-ercore-us-f-profile field-group-accordion',
+        'classes' => '',
       ),
     ),
   );

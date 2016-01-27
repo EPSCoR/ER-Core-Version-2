@@ -727,6 +727,72 @@ $ercore_publication_definitions = array(
     ),
   ),
 
+// FIELD: field_ercore_nsf.
+  'field_ercore_nsf' => array(
+    'entity_types' => array(),
+    'settings' => array(
+      'allowed_values' => array(
+        1 => 'Acknowledged',
+        0 => 'Not Acknowledged',
+      ),
+      'allowed_values_function' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'min' => '',
+      'max' => '',
+      'allowed_values_php' => '',
+    ),
+    'translatable' => '0',
+    'storage' => array(
+      'type' => 'field_sql_storage',
+      'settings' => array(),
+      'module' => 'field_sql_storage',
+      'active' => '1',
+      'details' => array(
+        'sql' => array(
+          'FIELD_LOAD_CURRENT' => array(
+            'field_data_field_ercore_nsf' => array(
+              'value' => 'field_ercore_nsf_value',
+            ),
+          ),
+          'FIELD_LOAD_REVISION' => array(
+            'field_revision_field_ercore_nsf' => array(
+              'value' => 'field_ercore_nsf_value',
+            ),
+          ),
+        ),
+      ),
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        'value',
+      ),
+    ),
+    'field_permissions' => array(
+      'type' => '0',
+    ),
+    'field_name' => 'field_ercore_nsf',
+    'type' => 'list_integer',
+    'module' => 'list',
+    'active' => '1',
+    'locked' => '0',
+    'cardinality' => '1',
+    'deleted' => '0',
+    'columns' => array(
+      'value' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+      ),
+    ),
+    'bundles' => array(
+      'node' => array(
+        'ercore_other_product',
+        'ercore_publication',
+      ),
+    ),
+  ),
+
 // FIELD: field_ercore_pb_peer_reviewed.
   'field_ercore_pb_peer_reviewed' => array(
     'type_name' => 'ercore_publication',
@@ -1487,6 +1553,77 @@ $ercore_publication_definitions = array(
       'description' => array(
         'description' => 'A description of the file.',
         'type' => 'text',
+        'not null' => FALSE,
+      ),
+    ),
+    'bundles' => array(
+      'node' => array(
+        'ercore_publication',
+      ),
+    ),
+  ),
+
+// FIELD: field_ercore_pb_issn.
+  'field_ercore_pb_issn' => array(
+    'translatable' => '0',
+    'entity_types' => array(),
+    'settings' => array(
+      'max_length' => '50',
+    ),
+    'storage' => array(
+      'type' => 'field_sql_storage',
+      'settings' => array(),
+      'module' => 'field_sql_storage',
+      'active' => '1',
+      'details' => array(
+        'sql' => array(
+          'FIELD_LOAD_CURRENT' => array(
+            'field_data_field_ercore_pb_issn' => array(
+              'value' => 'field_ercore_pb_issn_value',
+              'format' => 'field_ercore_pb_issn_format',
+            ),
+          ),
+          'FIELD_LOAD_REVISION' => array(
+            'field_revision_field_ercore_pb_issn' => array(
+              'value' => 'field_ercore_pb_issn_value',
+              'format' => 'field_ercore_pb_issn_format',
+            ),
+          ),
+        ),
+      ),
+    ),
+    'foreign keys' => array(
+      'format' => array(
+        'table' => 'filter_format',
+        'columns' => array(
+          'format' => 'format',
+        ),
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        'format',
+      ),
+    ),
+    'field_permissions' => array(
+      'type' => '0',
+    ),
+    'field_name' => 'field_ercore_pb_issn',
+    'type' => 'text',
+    'module' => 'text',
+    'active' => '1',
+    'locked' => '0',
+    'cardinality' => '1',
+    'deleted' => '0',
+    'columns' => array(
+      'value' => array(
+        'type' => 'varchar',
+        'length' => '50',
+        'not null' => FALSE,
+      ),
+      'format' => array(
+        'type' => 'varchar',
+        'length' => 255,
         'not null' => FALSE,
       ),
     ),

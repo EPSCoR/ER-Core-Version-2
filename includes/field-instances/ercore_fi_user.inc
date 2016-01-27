@@ -16,7 +16,7 @@ $ercore_user_instances = array(
       'settings' => array(),
     ),
     'settings' => array(
-      'user_register_form' => 1,
+      'user_register_form' => 0,
     ),
     'display' => array(
       'default' => array(
@@ -34,8 +34,8 @@ $ercore_user_instances = array(
         'module' => 'list',
       ),
     ),
-    'required' => 1,
-    'description' => "160 hours is equivalent to 4 weeks at 40 hours, 8 weeks at 20 hours, or\n      one person-month.",
+    'required' => 0,
+    'description' => "160 hours is equivalent to 4 weeks at 40 hours, 8 weeks at 20 hours, or one person-month.",
     'default_value_php' => '',
     'default_value_function' => '',
     'default_value' => NULL,
@@ -630,7 +630,7 @@ $ercore_user_instances = array(
     ),
     'settings' => array(
       'text_processing' => '0',
-      'user_register_form' => 1,
+      'user_register_form' => 0,
     ),
     'display' => array(
       'default' => array(
@@ -899,7 +899,7 @@ $ercore_user_instances = array(
       ),
     ),
     'required' => 0,
-    'description' => "Please describe your role and contribution to the project. Include\n      information about what you are doing, in which projects, who you are\n      working with, location, dates and your contribution.",
+    'description' => "Please describe your role and contribution to the project. Include information about what you are doing, in which projects, who you are working with, location, dates and your contribution.",
     'default_value' => NULL,
     'field_name' => 'field_ercore_us_description',
     'entity_type' => 'user',
@@ -916,7 +916,7 @@ $ercore_user_instances = array(
       'module' => 'select_or_other',
       'active' => 1,
       'settings' => array(
-        'available_options' => "None\nHearing Impairment\nVisual Impairment\nMobility/Orthopedic\n\n          Impairment",
+        'available_options' => "None\r\nHearing Impairment\r\nVisual Impairment\r\nMobility/Orthopedic\r\nImpairment",
         'available_options_php' => '',
         'other' => 'Other',
         'other_title' => '',
@@ -1028,7 +1028,7 @@ $ercore_user_instances = array(
         'module' => 'list',
       ),
     ),
-    'required' => 1,
+    'required' => 0,
     'description' => '',
     'default_value' => array(
       array(
@@ -1180,7 +1180,7 @@ $ercore_user_instances = array(
       ),
     ),
     'required' => 0,
-    'description' => "Enter the date that you were first hired by EPSCoR (if applicable).\n      This would be the date that you started getting paid.",
+    'description' => "Enter the date that you were first hired by EPSCoR (if applicable). This would be the date that you started getting paid.",
     'field_name' => 'field_ercore_us_hired_date',
     'entity_type' => 'user',
     'bundle' => 'user',
@@ -1245,7 +1245,7 @@ $ercore_user_instances = array(
       'settings' => array(),
     ),
     'settings' => array(
-      'user_register_form' => 1,
+      'user_register_form' => 0,
     ),
     'display' => array(
       'default' => array(
@@ -1263,7 +1263,7 @@ $ercore_user_instances = array(
         'module' => 'list',
       ),
     ),
-    'required' => 1,
+    'required' => 0,
     'description' => '',
     'default_value' => array(
       array(
@@ -1311,7 +1311,7 @@ $ercore_user_instances = array(
       ),
     ),
     'required' => 0,
-    'description' => "Provide a list of all funding sources that supported your participation\n      in EPSCoR.",
+    'description' => "Provide a list of all funding sources that supported your participation in EPSCoR.",
     'default_value' => NULL,
     'field_name' => 'field_ercore_us_funding_src',
     'entity_type' => 'user',
@@ -1387,7 +1387,7 @@ $ercore_user_instances = array(
       'default_value_code' => '',
       'default_value2' => 'same',
       'default_value_code2' => '',
-      'user_register_form' => 1,
+      'user_register_form' => 0,
     ),
     'display' => array(
       'default' => array(
@@ -1441,7 +1441,7 @@ $ercore_user_instances = array(
       'settings' => array(),
     ),
     'settings' => array(
-      'user_register_form' => 1,
+      'user_register_form' => 0,
     ),
     'display' => array(
       'default' => array(
@@ -1460,7 +1460,7 @@ $ercore_user_instances = array(
       ),
     ),
     'required' => 0,
-    'description' => "How many months of direct funding do you receive? Round up or down to\n      the nearest month of funding you are expected to receive.",
+    'description' => "How many months of direct funding do you receive? Round up or down to the nearest month of funding you are expected to receive.",
     'default_value' => NULL,
     'field_name' => 'field_ercore_us_months_of_effort',
     'entity_type' => 'user',
@@ -1517,7 +1517,7 @@ $ercore_user_instances = array(
       'settings' => array(),
     ),
     'settings' => array(
-      'user_register_form' => 1,
+      'user_register_form' => 0,
     ),
     'display' => array(
       'default' => array(
@@ -1535,7 +1535,7 @@ $ercore_user_instances = array(
         'module' => 'list',
       ),
     ),
-    'required' => 1,
+    'required' => 0,
     'description' => '',
     'default_value_php' => '',
     'default_value_function' => '',
@@ -1605,7 +1605,7 @@ $ercore_user_instances = array(
       ),
     ),
     'required' => 0,
-    'description' => "Please enter the date when you (officially) began participating in\n      EPSCoR. Click the \"show end date\" box to make the Participating End\n      Date widget appear. If you are currently participating, do not enter an\n      end date.",
+    'description' => "Please enter the date when you (officially) began participating in EPSCoR. Click the \"show end date\" box to make the Participating End Date widget appear. If you are currently participating, do not enter an\n      end date.",
     'field_name' => 'field_ercore_us_part_date',
     'entity_type' => 'user',
     'bundle' => 'user',
@@ -1642,7 +1642,7 @@ $ercore_user_instances = array(
       ),
     ),
     'required' => 0,
-    'description' => "How many months of effort will you commit to EPSCoR this year? Round up\n      or down to the nearest month of effort you are expected to participate in\n      EPSCoR research.",
+    'description' => "How many months of effort will you commit to EPSCoR this year? Round up or down to the nearest month of effort you are expected to participate in EPSCoR research.",
     'default_value' => NULL,
     'field_name' => 'field_ercore_us_person_month',
     'entity_type' => 'user',
@@ -1797,7 +1797,7 @@ $ercore_user_instances = array(
       'module' => 'select_or_other',
       'active' => 1,
       'settings' => array(
-        'available_options' => "Prefer not to respond|Prefer not to respond\nAmerican Indian or\n\n          Alaskan Native|American Indian or Alaskan Native\nAsian|Asian\n\n          Filipino|Filipino\nBlack or African American|Black or African\n          American\nPacific Islander|Pacific Islander\nNative\n          Hawaiian|Native Hawaiian\nWhite|White",
+        'available_options' => "Prefer not to respond|Prefer not to respond\r\nAmerican Indian or Alaskan Native|American Indian or Alaskan Native\r\nAsian|Asian\r\nFilipino|Filipino\r\nBlack or African American|Black or African American\r\nPacific Islander|Pacific Islander\r\nNative Hawaiian|Native Hawaiian\r\nWhite|White",
         'available_options_php' => '',
         'other' => 'Other',
         'other_title' => '',
@@ -2172,7 +2172,7 @@ $ercore_user_instances = array(
       ),
     ),
     'required' => 0,
-    'description' => "Please provide a brief description of type and frequency of the data you\n    will be collecting.",
+    'description' => "Please provide a brief description of type and frequency of the data you will be collecting.",
     'default_value' => NULL,
     'field_name' => 'field_ercore_us_data_type',
     'entity_type' => 'user',
@@ -2322,7 +2322,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_programs.
-  'field_ercore_programs' => array(
+  'field_ercore_us_programs' => array(
     'label' => 'Program',
     'widget' => array(
       'weight' => '4',
@@ -2368,7 +2368,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_components.
-  'field_ercore_components' => array(
+  'field_ercore_us_components' => array(
     'label' => 'Components',
     'widget' => array(
       'weight' => '3',

@@ -314,6 +314,7 @@ $ercore_other_product_definitions = array(
         'Educational aid',
         'Instrument or Equipment',
         'Other Invention',
+        'Website',
       ),
       'allowed_values_function' => '',
       'text_processing' => '0',
@@ -345,6 +346,9 @@ $ercore_other_product_definitions = array(
       'value' => array(
         'value',
       ),
+    ),
+    'field_permissions' => array(
+      'type' => '0',
     ),
     'field_name' => 'field_ercore_op_type',
     'type' => 'list_text',
@@ -422,6 +426,87 @@ $ercore_other_product_definitions = array(
       'value' => array(
         'type' => 'varchar',
         'length' => 255,
+        'not null' => FALSE,
+      ),
+    ),
+    'bundles' => array(
+      'node' => array(
+        'ercore_other_product',
+      ),
+    ),
+  ),
+
+// FIELD: field_ercore_op_website.
+  'field_ercore_op_website' => array(
+    'translatable' => '0',
+    'entity_types' => array(),
+    'settings' => array(
+      'attributes' => array(
+        'target' => 'default',
+        'class' => '',
+        'rel' => '',
+      ),
+      'url' => 0,
+      'title' => 'optional',
+      'title_value' => '',
+      'title_maxlength' => 128,
+      'enable_tokens' => 1,
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+    ),
+    'storage' => array(
+      'type' => 'field_sql_storage',
+      'settings' => array(),
+      'module' => 'field_sql_storage',
+      'active' => '1',
+      'details' => array(
+        'sql' => array(
+          'FIELD_LOAD_CURRENT' => array(
+            'field_data_field_ercore_op_website' => array(
+              'url' => 'field_ercore_op_website_url',
+              'title' => 'field_ercore_op_website_title',
+              'attributes' => 'field_ercore_op_website_attributes',
+            ),
+          ),
+          'FIELD_LOAD_REVISION' => array(
+            'field_revision_field_ercore_op_website' => array(
+              'url' => 'field_ercore_op_website_url',
+              'title' => 'field_ercore_op_website_title',
+              'attributes' => 'field_ercore_op_website_attributes',
+            ),
+          ),
+        ),
+      ),
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'field_permissions' => array(
+      'type' => '0',
+    ),
+    'field_name' => 'field_ercore_op_website',
+    'type' => 'link_field',
+    'module' => 'link',
+    'active' => '1',
+    'locked' => '0',
+    'cardinality' => '1',
+    'deleted' => '0',
+    'columns' => array(
+      'url' => array(
+        'type' => 'varchar',
+        'length' => 2048,
+        'not null' => FALSE,
+        'sortable' => TRUE,
+      ),
+      'title' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'sortable' => TRUE,
+      ),
+      'attributes' => array(
+        'type' => 'text',
+        'size' => 'medium',
         'not null' => FALSE,
       ),
     ),

@@ -9,7 +9,7 @@ $ercore_publication_instances = array(
   'field_ercore_pb_ark' => array(
     'label' => 'ARK',
     'widget' => array(
-      'weight' => '18',
+      'weight' => '19',
       'type' => 'text_textfield',
       'module' => 'text',
       'active' => 1,
@@ -25,20 +25,20 @@ $ercore_publication_instances = array(
       'default' => array(
         'label' => 'inline',
         'type' => 'text_default',
-        'weight' => '9',
+        'weight' => '12',
         'settings' => array(),
         'module' => 'text',
       ),
       'teaser' => array(
         'label' => 'above',
         'type' => 'hidden',
-        'weight' => '23',
+        'weight' => '25',
         'settings' => array(),
       ),
       'full' => array(
         'label' => 'inline',
         'type' => 'text_default',
-        'weight' => '9',
+        'weight' => '12',
         'settings' => array(),
         'module' => 'text',
       ),
@@ -72,21 +72,20 @@ $ercore_publication_instances = array(
       'default' => array(
         'label' => 'inline',
         'type' => 'text_default',
-        'weight' => '6',
+        'weight' => '8',
         'settings' => array(),
         'module' => 'text',
       ),
       'teaser' => array(
         'label' => 'above',
         'type' => 'hidden',
-        'weight' => '0',
+        'weight' => '11',
         'settings' => array(),
-        'module' => 'text',
       ),
       'full' => array(
         'label' => 'inline',
         'type' => 'text_default',
-        'weight' => '6',
+        'weight' => '8',
         'settings' => array(),
         'module' => 'text',
       ),
@@ -121,20 +120,20 @@ $ercore_publication_instances = array(
       'default' => array(
         'label' => 'inline',
         'type' => 'text_default',
-        'weight' => '8',
+        'weight' => '10',
         'settings' => array(),
         'module' => 'text',
       ),
       'teaser' => array(
         'label' => 'above',
         'type' => 'hidden',
-        'weight' => '20',
+        'weight' => '21',
         'settings' => array(),
       ),
       'full' => array(
         'label' => 'inline',
         'type' => 'text_default',
-        'weight' => '8',
+        'weight' => '10',
         'settings' => array(),
         'module' => 'text',
       ),
@@ -152,7 +151,7 @@ $ercore_publication_instances = array(
   'field_ercore_pb_epscor' => array(
     'label' => 'EPSCoR Acknowledged ',
     'widget' => array(
-      'weight' => '12',
+      'weight' => '14',
       'type' => 'options_buttons',
       'module' => 'options',
       'active' => 1,
@@ -168,20 +167,20 @@ $ercore_publication_instances = array(
       'default' => array(
         'label' => 'inline',
         'type' => 'list_default',
-        'weight' => '17',
+        'weight' => '19',
         'settings' => array(),
         'module' => 'list',
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'type' => 'hidden',
-        'weight' => '21',
+        'weight' => '23',
         'settings' => array(),
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'type' => 'list_default',
-        'weight' => '17',
+        'weight' => '19',
         'settings' => array(),
         'module' => 'list',
       ),
@@ -199,7 +198,7 @@ $ercore_publication_instances = array(
   'field_ercore_pb_citation' => array(
     'label' => 'Full Citation',
     'widget' => array(
-      'weight' => '13',
+      'weight' => '15',
       'type' => 'text_textfield',
       'module' => 'text',
       'active' => 1,
@@ -216,20 +215,20 @@ $ercore_publication_instances = array(
       'default' => array(
         'label' => 'above',
         'type' => 'text_default',
-        'weight' => '18',
+        'weight' => '20',
         'settings' => array(),
         'module' => 'text',
       ),
       'teaser' => array(
         'label' => 'above',
         'type' => 'hidden',
-        'weight' => '22',
+        'weight' => '24',
         'settings' => array(),
       ),
       'full' => array(
         'label' => 'above',
         'type' => 'text_default',
-        'weight' => '18',
+        'weight' => '20',
         'settings' => array(),
         'module' => 'text',
       ),
@@ -248,9 +247,7 @@ $ercore_publication_instances = array(
     'weight' => '52',
     'label' => 'Journal, Book, Magazine or Newspaper Name',
     'widget_type' => 'text_textfield',
-    'description' =>
-    'For Publication Types of Journal Article, Book, Conference Proceedings,
-      Magazine Article, and Newspaper Article.',
+    'description' => "For Publication Types of Journal Article, Book, Conference Proceedings,\n      Magazine Article, and Newspaper Article.",
     'default_value' => NULL,
     'widget' => array(
       'weight' => '12',
@@ -318,21 +315,20 @@ $ercore_publication_instances = array(
       'teaser' => array(
         'label' => 'inline',
         'type' => 'hidden',
-        'weight' => '11',
+        'weight' => '15',
         'settings' => array(),
-        'module' => 'text',
       ),
       'full' => array(
         'label' => 'inline',
         'type' => 'text_default',
-        'weight' => '7',
+        'weight' => '9',
         'settings' => array(),
         'module' => 'text',
       ),
       'default' => array(
         'label' => 'inline',
         'type' => 'text_default',
-        'weight' => '7',
+        'weight' => '9',
         'settings' => array(),
         'module' => 'text',
       ),
@@ -411,7 +407,7 @@ $ercore_publication_instances = array(
     'description' => '',
     'default_value' => NULL,
     'widget' => array(
-      'weight' => '14',
+      'weight' => '16',
       'type' => 'link_field',
       'module' => 'link',
       'active' => 0,
@@ -421,21 +417,20 @@ $ercore_publication_instances = array(
       'teaser' => array(
         'label' => 'inline',
         'type' => 'hidden',
-        'weight' => '12',
+        'weight' => '16',
         'settings' => array(),
-        'module' => 'link',
       ),
       'full' => array(
         'label' => 'inline',
         'type' => 'link_default',
-        'weight' => '19',
+        'weight' => '21',
         'settings' => array(),
         'module' => 'link',
       ),
       'default' => array(
         'label' => 'inline',
         'type' => 'link_default',
-        'weight' => '19',
+        'weight' => '21',
         'settings' => array(),
         'module' => 'link',
       ),
@@ -474,7 +469,7 @@ $ercore_publication_instances = array(
   'field_ercore_pb_nonepscor_auth' => array(
     'label' => 'Non-EPSCoR Authors',
     'widget' => array(
-      'weight' => '2',
+      'weight' => '3',
       'type' => 'text_textfield',
       'module' => 'text',
       'active' => 1,
@@ -518,15 +513,15 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_nsf.
-  'field_ercore_pb_nsf' => array(
+// INSTANCE: field_ercore_nsf.
+  'field_ercore_nsf' => array(
     'weight' => '12',
     'label' => 'NSF Acknowledgement',
     'widget_type' => 'optionwidgets_buttons',
     'description' => '',
     'default_value' => NULL,
     'widget' => array(
-      'weight' => '10',
+      'weight' => '12',
       'type' => 'options_select',
       'module' => 'options',
       'active' => 1,
@@ -536,21 +531,20 @@ $ercore_publication_instances = array(
       'teaser' => array(
         'label' => 'inline',
         'type' => 'hidden',
-        'weight' => '8',
+        'weight' => '13',
         'settings' => array(),
-        'module' => 'list',
       ),
       'full' => array(
         'label' => 'inline',
         'type' => 'list_default',
-        'weight' => '15',
+        'weight' => '17',
         'settings' => array(),
         'module' => 'list',
       ),
       'default' => array(
         'label' => 'inline',
         'type' => 'list_default',
-        'weight' => '15',
+        'weight' => '17',
         'settings' => array(),
         'module' => 'list',
       ),
@@ -578,7 +572,7 @@ $ercore_publication_instances = array(
     'description' => 'Is this publication peer-reviewed?',
     'default_value' => NULL,
     'widget' => array(
-      'weight' => '5',
+      'weight' => '7',
       'type' => 'options_buttons',
       'module' => 'options',
       'active' => 1,
@@ -588,21 +582,20 @@ $ercore_publication_instances = array(
       'full' => array(
         'label' => 'inline',
         'type' => 'list_default',
-        'weight' => '10',
+        'weight' => '13',
         'settings' => array(),
         'module' => 'list',
       ),
       'teaser' => array(
         'label' => 'inline',
         'type' => 'hidden',
-        'weight' => '10',
+        'weight' => '14',
         'settings' => array(),
-        'module' => 'list',
       ),
       'default' => array(
         'label' => 'inline',
         'type' => 'list_default',
-        'weight' => '10',
+        'weight' => '13',
         'settings' => array(),
         'module' => 'list',
       ),
@@ -626,7 +619,7 @@ $ercore_publication_instances = array(
   'field_ercore_pb_archived' => array(
     'label' => 'Is it being archived?',
     'widget' => array(
-      'weight' => '17',
+      'weight' => '19',
       'type' => 'options_buttons',
       'module' => 'options',
       'active' => 1,
@@ -639,21 +632,20 @@ $ercore_publication_instances = array(
       'default' => array(
         'label' => 'inline',
         'type' => 'list_default',
-        'weight' => '22',
+        'weight' => '24',
         'settings' => array(),
         'module' => 'list',
       ),
       'full' => array(
         'label' => 'inline',
         'type' => 'hidden',
-        'weight' => '22',
+        'weight' => '25',
         'settings' => array(),
-        'module' => 'list',
       ),
       'teaser' => array(
         'label' => 'inline',
         'type' => 'list_default',
-        'weight' => '22',
+        'weight' => '9',
         'settings' => array(),
         'module' => 'list',
       ),
@@ -675,7 +667,7 @@ $ercore_publication_instances = array(
   'field_ercore_pb_data' => array(
     'label' => 'Are you collecting Data?',
     'widget' => array(
-      'weight' => '16',
+      'weight' => '18',
       'type' => 'options_buttons',
       'module' => 'options',
       'active' => 1,
@@ -688,20 +680,20 @@ $ercore_publication_instances = array(
       'default' => array(
         'label' => 'inline',
         'type' => 'list_default',
-        'weight' => '21',
+        'weight' => '23',
         'settings' => array(),
         'module' => 'list',
       ),
       'teaser' => array(
         'label' => 'above',
         'type' => 'hidden',
-        'weight' => '18',
+        'weight' => '20',
         'settings' => array(),
       ),
       'full' => array(
         'label' => 'inline',
         'type' => 'list_default',
-        'weight' => '21',
+        'weight' => '23',
         'settings' => array(),
         'module' => 'list',
       ),
@@ -719,7 +711,7 @@ $ercore_publication_instances = array(
   'field_ercore_pb_arch_name' => array(
     'label' => 'What Archive?',
     'widget' => array(
-      'weight' => '18',
+      'weight' => '20',
       'type' => 'text_textfield',
       'module' => 'text',
       'active' => 1,
@@ -735,20 +727,20 @@ $ercore_publication_instances = array(
       'default' => array(
         'label' => 'inline',
         'type' => 'text_default',
-        'weight' => '23',
+        'weight' => '25',
         'settings' => array(),
         'module' => 'text',
       ),
       'teaser' => array(
         'label' => 'above',
         'type' => 'hidden',
-        'weight' => '15',
+        'weight' => '17',
         'settings' => array(),
       ),
       'full' => array(
         'label' => 'inline',
         'type' => 'text_default',
-        'weight' => '23',
+        'weight' => '24',
         'settings' => array(),
         'module' => 'text',
       ),
@@ -769,7 +761,7 @@ $ercore_publication_instances = array(
     'widget_type' => 'date_popup',
     'description' => '',
     'widget' => array(
-      'weight' => '8',
+      'weight' => '10',
       'type' => 'date_popup',
       'module' => 'date',
       'active' => 1,
@@ -788,7 +780,7 @@ $ercore_publication_instances = array(
       'default' => array(
         'label' => 'inline',
         'type' => 'date_default',
-        'weight' => '13',
+        'weight' => '16',
         'settings' => array(
           'format_type' => 'ercore_date_format_month_day_year',
           'fromto' => 'both',
@@ -803,7 +795,7 @@ $ercore_publication_instances = array(
       'teaser' => array(
         'label' => 'inline',
         'type' => 'date_default',
-        'weight' => '13',
+        'weight' => '8',
         'settings' => array(
           'format_type' => 'ercore_date_format_month_day_year',
           'fromto' => 'both',
@@ -818,7 +810,7 @@ $ercore_publication_instances = array(
       'full' => array(
         'label' => 'inline',
         'type' => 'date_default',
-        'weight' => '13',
+        'weight' => '16',
         'settings' => array(
           'format_type' => 'ercore_date_format_month_day_year',
           'fromto' => 'both',
@@ -849,7 +841,7 @@ $ercore_publication_instances = array(
   'field_ercore_pb_status' => array(
     'label' => 'Status',
     'widget' => array(
-      'weight' => '6',
+      'weight' => '8',
       'type' => 'options_select',
       'module' => 'options',
       'active' => 1,
@@ -863,21 +855,21 @@ $ercore_publication_instances = array(
       'default' => array(
         'label' => 'inline',
         'type' => 'list_default',
-        'weight' => '11',
+        'weight' => '14',
         'settings' => array(),
         'module' => 'list',
       ),
       'teaser' => array(
         'label' => 'inline',
         'type' => 'list_default',
-        'weight' => '11',
+        'weight' => '6',
         'settings' => array(),
         'module' => 'list',
       ),
       'full' => array(
         'label' => 'inline',
         'type' => 'list_default',
-        'weight' => '11',
+        'weight' => '14',
         'settings' => array(),
         'module' => 'list',
       ),
@@ -898,7 +890,7 @@ $ercore_publication_instances = array(
     'widget_type' => 'date_popup',
     'description' => '',
     'widget' => array(
-      'weight' => '7',
+      'weight' => '9',
       'type' => 'date_popup',
       'module' => 'date',
       'active' => 1,
@@ -917,7 +909,7 @@ $ercore_publication_instances = array(
       'full' => array(
         'label' => 'inline',
         'type' => 'date_default',
-        'weight' => '12',
+        'weight' => '15',
         'settings' => array(
           'format_type' => 'ercore_date_format_month_day_year',
           'fromto' => 'both',
@@ -932,7 +924,7 @@ $ercore_publication_instances = array(
       'teaser' => array(
         'label' => 'inline',
         'type' => 'date_default',
-        'weight' => '12',
+        'weight' => '7',
         'settings' => array(
           'format_type' => 'ercore_date_format_month_day_year',
           'fromto' => 'both',
@@ -947,7 +939,7 @@ $ercore_publication_instances = array(
       'default' => array(
         'label' => 'inline',
         'type' => 'date_default',
-        'weight' => '12',
+        'weight' => '15',
         'settings' => array(
           'format_type' => 'ercore_date_format_month_day_year',
           'fromto' => 'both',
@@ -978,7 +970,7 @@ $ercore_publication_instances = array(
   'field_ercore_pb_type' => array(
     'label' => 'Publication Type',
     'widget' => array(
-      'weight' => '3',
+      'weight' => '4',
       'type' => 'options_select',
       'module' => 'options',
       'active' => 1,
@@ -1040,20 +1032,20 @@ $ercore_publication_instances = array(
       'default' => array(
         'label' => 'inline',
         'type' => 'text_default',
-        'weight' => '5',
+        'weight' => '7',
         'settings' => array(),
         'module' => 'text',
       ),
       'teaser' => array(
         'label' => 'above',
         'type' => 'hidden',
-        'weight' => '16',
+        'weight' => '18',
         'settings' => array(),
       ),
       'full' => array(
         'label' => 'inline',
         'type' => 'text_default',
-        'weight' => '5',
+        'weight' => '6',
         'settings' => array(),
         'module' => 'text',
       ),
@@ -1070,13 +1062,12 @@ $ercore_publication_instances = array(
 // INSTANCE: field_ercore_pb_rii_support.
   'field_ercore_pb_rii_support' => array(
     'weight' => '4',
-    'label' =>
-    'What level of funding support did EPSCoR provide for this publication?',
+    'label' => 'What level of funding support did EPSCoR provide for this publication?',
     'widget_type' => 'optionwidgets_select',
     'description' => '',
     'default_value' => NULL,
     'widget' => array(
-      'weight' => '11',
+      'weight' => '13',
       'type' => 'options_select',
       'module' => 'options',
       'active' => 1,
@@ -1086,21 +1077,20 @@ $ercore_publication_instances = array(
       'teaser' => array(
         'label' => 'inline',
         'type' => 'hidden',
-        'weight' => '5',
+        'weight' => '12',
         'settings' => array(),
-        'module' => 'list',
       ),
       'full' => array(
         'label' => 'inline',
         'type' => 'list_default',
-        'weight' => '16',
+        'weight' => '18',
         'settings' => array(),
         'module' => 'list',
       ),
       'default' => array(
         'label' => 'inline',
         'type' => 'list_default',
-        'weight' => '16',
+        'weight' => '18',
         'settings' => array(),
         'module' => 'list',
       ),
@@ -1121,7 +1111,7 @@ $ercore_publication_instances = array(
   'field_ercore_pb_upload' => array(
     'label' => 'Upload File',
     'widget' => array(
-      'weight' => '15',
+      'weight' => '17',
       'type' => 'file_generic',
       'module' => 'file',
       'active' => 1,
@@ -1140,20 +1130,20 @@ $ercore_publication_instances = array(
       'default' => array(
         'label' => 'inline',
         'type' => 'file_default',
-        'weight' => '20',
+        'weight' => '22',
         'settings' => array(),
         'module' => 'file',
       ),
       'teaser' => array(
         'label' => 'above',
         'type' => 'hidden',
-        'weight' => '17',
+        'weight' => '19',
         'settings' => array(),
       ),
       'full' => array(
         'label' => 'inline',
         'type' => 'file_default',
-        'weight' => '20',
+        'weight' => '22',
         'settings' => array(),
         'module' => 'file',
       ),
@@ -1166,11 +1156,11 @@ $ercore_publication_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pb_organizer.
+// INSTANCE: field_ercore_organizer.
   'field_ercore_pb_organizer' => array(
     'label' => 'EPSCoR Author(s)',
     'widget' => array(
-      'weight' => '1',
+      'weight' => '2',
       'type' => 'entityreference_autocomplete',
       'module' => 'entityreference',
       'active' => 1,
@@ -1267,11 +1257,12 @@ $ercore_publication_instances = array(
     'bundle' => 'ercore_publication',
     'deleted' => '0',
   ),
-  // INSTANCE: field_ercore_programs.
-  'field_ercore_pb_programs' => array(
+
+// INSTANCE: field_ercore_programs.
+  'field_ercore_programs' => array(
     'label' => 'Program',
     'widget' => array(
-      'weight' => '4',
+      'weight' => '5',
       'type' => 'options_select',
       'module' => 'options',
       'active' => 1,
@@ -1289,7 +1280,7 @@ $ercore_publication_instances = array(
       'default' => array(
         'label' => 'inline',
         'type' => 'entityreference_label',
-        'weight' => '4',
+        'weight' => '5',
         'settings' => array(
           'link' => FALSE,
         ),
@@ -1305,10 +1296,10 @@ $ercore_publication_instances = array(
         'module' => 'entityreference',
       ),
       'teaser' => array(
-        'type' => 'hidden',
         'label' => 'above',
+        'type' => 'hidden',
+        'weight' => '10',
         'settings' => array(),
-        'weight' => 0,
       ),
     ),
     'required' => 0,
@@ -1319,6 +1310,53 @@ $ercore_publication_instances = array(
     'entityconnect_show_edit_icon' => '0',
     'default_value' => NULL,
     'field_name' => 'field_ercore_programs',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_publication',
+    'deleted' => '0',
+  ),
+
+// INSTANCE: field_ercore_pb_issn.
+  'field_ercore_pb_issn' => array(
+    'label' => 'ISSN/ISBN',
+    'widget' => array(
+      'weight' => '18',
+      'type' => 'text_textfield',
+      'module' => 'text',
+      'active' => 1,
+      'settings' => array(
+        'size' => '60',
+      ),
+    ),
+    'settings' => array(
+      'text_processing' => '0',
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'type' => 'text_default',
+        'weight' => '11',
+        'settings' => array(),
+        'module' => 'text',
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'type' => 'text_default',
+        'weight' => '11',
+        'settings' => array(),
+        'module' => 'text',
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'type' => 'hidden',
+        'weight' => '22',
+        'settings' => array(),
+      ),
+    ),
+    'required' => 0,
+    'description' => 'International Standard Serial Number / International Standard Book Number',
+    'default_value' => NULL,
+    'field_name' => 'field_ercore_pb_issn',
     'entity_type' => 'node',
     'bundle' => 'ercore_publication',
     'deleted' => '0',

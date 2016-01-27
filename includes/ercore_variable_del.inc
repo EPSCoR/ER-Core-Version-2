@@ -7,6 +7,7 @@
 // ERCore date formats.
 variable_del('date_format_ercore_date_format_day_name');
 variable_del('date_format_ercore_date_format_filter');
+variable_del('date_format_ercore_date_format_filter_admin');
 variable_del('date_format_ercore_date_format_month_day_year');
 variable_del('date_format_ercore_date_format_month_year');
 variable_del('date_format_ercore_date_format_time');

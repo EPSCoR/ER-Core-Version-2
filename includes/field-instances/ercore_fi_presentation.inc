@@ -13,7 +13,7 @@ $ercore_presentation_instances = array(
     'description' => 'Please provide the name of the event, where it was held, and any other significant identifying information.',
     'default_value' => NULL,
     'widget' => array(
-      'weight' => '6',
+      'weight' => '9',
       'type' => 'text_textarea',
       'module' => 'text',
       'active' => 1,
@@ -32,14 +32,14 @@ $ercore_presentation_instances = array(
       'full' => array(
         'label' => 'above',
         'type' => 'text_default',
-        'weight' => '5',
+        'weight' => '9',
         'settings' => array(),
         'module' => 'text',
       ),
       'default' => array(
         'label' => 'above',
         'type' => 'text_default',
-        'weight' => '4',
+        'weight' => '5',
         'settings' => array(),
         'module' => 'text',
       ),
@@ -63,7 +63,7 @@ $ercore_presentation_instances = array(
     'description' => 'Please enter the URL if your presentation is hosted online.',
     'default_value' => NULL,
     'widget' => array(
-      'weight' => '7',
+      'weight' => '10',
       'type' => 'link_field',
       'module' => 'link',
       'active' => 0,
@@ -80,14 +80,14 @@ $ercore_presentation_instances = array(
       'full' => array(
         'label' => 'inline',
         'type' => 'link_default',
-        'weight' => '4',
+        'weight' => '3',
         'settings' => array(),
         'module' => 'link',
       ),
       'default' => array(
         'label' => 'inline',
         'type' => 'link_default',
-        'weight' => '6',
+        'weight' => '9',
         'settings' => array(),
         'module' => 'link',
       ),
@@ -130,7 +130,7 @@ $ercore_presentation_instances = array(
     'description' => '',
     'widget' => array(
       'type' => 'date_popup',
-      'weight' => '1',
+      'weight' => '2',
       'module' => 'date',
       'active' => '1',
       'settings' => array(
@@ -205,55 +205,11 @@ $ercore_presentation_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ps_type.
-  'field_ercore_ps_type' => array(
-    'label' => 'Type of Presentation',
-    'widget' => array(
-      'weight' => '5',
-      'type' => 'options_buttons',
-      'module' => 'options',
-      'active' => 1,
-      'settings' => array(),
-    ),
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'type' => 'list_default',
-        'weight' => '3',
-        'settings' => array(),
-        'module' => 'list',
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'type' => 'hidden',
-        'weight' => '8',
-        'settings' => array(),
-      ),
-      'full' => array(
-        'label' => 'above',
-        'type' => 'list_default',
-        'weight' => '3',
-        'settings' => array(),
-        'module' => 'list',
-      ),
-    ),
-    'required' => 1,
-    'description' => '',
-    'default_value' => NULL,
-    'field_name' => 'field_ercore_ps_type',
-    'entity_type' => 'node',
-    'bundle' => 'ercore_presentation',
-    'deleted' => '0',
-  ),
-
 // INSTANCE: field_ercore_ps_upload.
   'field_ercore_ps_upload' => array(
     'label' => 'Upload File',
     'widget' => array(
-      'weight' => '8',
+      'weight' => '11',
       'type' => 'file_generic',
       'module' => 'file',
       'active' => 1,
@@ -272,7 +228,7 @@ $ercore_presentation_instances = array(
       'default' => array(
         'label' => 'inline',
         'type' => 'file_default',
-        'weight' => '7',
+        'weight' => '10',
         'settings' => array(),
         'module' => 'file',
       ),
@@ -285,7 +241,7 @@ $ercore_presentation_instances = array(
       'full' => array(
         'label' => 'above',
         'type' => 'file_default',
-        'weight' => '7',
+        'weight' => '11',
         'settings' => array(),
         'module' => 'file',
       ),
@@ -298,11 +254,11 @@ $ercore_presentation_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_ps_organizer.
-  'field_ercore_ps_organizer' => array(
+// INSTANCE: field_ercore_organizer.
+  'field_ercore_pt_organizer' => array(
     'label' => 'EPSCoR Presenter(s)',
     'widget' => array(
-      'weight' => '2',
+      'weight' => '3',
       'type' => 'entityreference_autocomplete',
       'module' => 'entityreference',
       'active' => 1,
@@ -401,7 +357,7 @@ $ercore_presentation_instances = array(
   'field_ercore_ps_others' => array(
     'label' => 'Non-EPSCoR Presenter(s)',
     'widget' => array(
-      'weight' => '3',
+      'weight' => '4',
       'type' => 'text_textfield',
       'module' => 'text',
       'active' => 1,
@@ -437,11 +393,12 @@ $ercore_presentation_instances = array(
     'bundle' => 'ercore_presentation',
     'deleted' => '0',
   ),
-  // INSTANCE: field_ercore_programs.
-  'field_ercore_ps_programs' => array(
-    'label' => 'Program',
+
+// INSTANCE: field_ercore_programs.
+  'field_ercore_programs' => array(
+    'label' => 'Project Team',
     'widget' => array(
-      'weight' => '4',
+      'weight' => '8',
       'type' => 'options_select',
       'module' => 'options',
       'active' => 1,
@@ -459,7 +416,7 @@ $ercore_presentation_instances = array(
       'default' => array(
         'label' => 'inline',
         'type' => 'entityreference_label',
-        'weight' => '4',
+        'weight' => '6',
         'settings' => array(
           'link' => FALSE,
         ),
@@ -468,7 +425,7 @@ $ercore_presentation_instances = array(
       'full' => array(
         'label' => 'inline',
         'type' => 'entityreference_label',
-        'weight' => '5',
+        'weight' => '8',
         'settings' => array(
           'link' => FALSE,
         ),
@@ -489,6 +446,166 @@ $ercore_presentation_instances = array(
     'entityconnect_show_edit_icon' => '0',
     'default_value' => NULL,
     'field_name' => 'field_ercore_programs',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_presentation',
+    'deleted' => '0',
+  ),
+
+// INSTANCE: field_ercore_ps_type.
+  'field_ercore_ps_type' => array(
+    'label' => 'Type of Presentation',
+    'widget' => array(
+      'weight' => '5',
+      'type' => 'options_buttons',
+      'module' => 'options',
+      'active' => 1,
+      'settings' => array(),
+    ),
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'type' => 'list_default',
+        'weight' => '3',
+        'settings' => array(),
+        'module' => 'list',
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'type' => 'list_default',
+        'weight' => '4',
+        'settings' => array(),
+        'module' => 'list',
+      ),
+    ),
+    'required' => 1,
+    'description' => '',
+    'default_value' => NULL,
+    'field_name' => 'field_ercore_ps_type',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_presentation',
+    'deleted' => '0',
+  ),
+
+// INSTANCE: field_ercore_goals.
+  'field_ercore_goals' => array(
+    'label' => 'Goals and Objectives',
+    'widget' => array(
+      'weight' => '7',
+      'type' => 'text_textfield',
+      'module' => 'text',
+      'active' => 1,
+      'settings' => array(
+        'size' => '60',
+      ),
+    ),
+    'settings' => array(
+      'text_processing' => '0',
+      'linkit' => array(
+        'enable' => 0,
+        'profile' => '',
+        'button_text' => 'Search',
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'type' => 'text_default',
+        'weight' => '7',
+        'settings' => array(),
+        'module' => 'text',
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'type' => 'text_default',
+        'weight' => '6',
+        'settings' => array(),
+        'module' => 'text',
+      ),
+    ),
+    'required' => 1,
+    'description' => '',
+    'default_value' => NULL,
+    'field_name' => 'field_ercore_goals',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_presentation',
+    'deleted' => '0',
+  ),
+
+// INSTANCE: field_ercore_nsf.
+  'field_ercore_nsf' => array(
+    'label' => 'NSF Acknowledgement',
+    'widget' => array(
+      'weight' => '12',
+      'type' => 'options_select',
+      'module' => 'options',
+      'active' => 1,
+      'settings' => array(),
+    ),
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'type' => 'list_default',
+        'weight' => '11',
+        'settings' => array(),
+        'module' => 'list',
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'type' => 'list_default',
+        'weight' => '10',
+        'settings' => array(),
+        'module' => 'list',
+      ),
+    ),
+    'required' => 0,
+    'description' => '',
+    'default_value' => NULL,
+    'field_name' => 'field_ercore_nsf',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_presentation',
+    'deleted' => '0',
+  ),
+
+// INSTANCE: field_ercore_ps_status.
+  'field_ercore_ps_status' => array(
+    'label' => 'Status',
+    'widget' => array(
+      'weight' => '6',
+      'type' => 'options_select',
+      'module' => 'options',
+      'active' => 1,
+      'settings' => array(),
+    ),
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'type' => 'list_default',
+        'weight' => '4',
+        'settings' => array(),
+        'module' => 'list',
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'type' => 'list_default',
+        'weight' => '5',
+        'settings' => array(),
+        'module' => 'list',
+      ),
+    ),
+    'required' => 1,
+    'description' => '',
+    'default_value' => NULL,
+    'field_name' => 'field_ercore_ps_status',
     'entity_type' => 'node',
     'bundle' => 'ercore_presentation',
     'deleted' => '0',

@@ -13,21 +13,21 @@
 function _ercore_installed_instances() {
   $t = get_t();
 
-  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_collaboration.inc";
-  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_collaborator.inc";
-  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_event.inc";
-  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_engagement.inc";
-  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_highlight.inc";
-  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_honor.inc";
-  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_institution.inc";
-  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_other_product.inc";
-  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_patent.inc";
-  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_presentation.inc";
-  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_proposal.inc";
-  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_publication.inc";
-  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_component.inc";
-  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_program.inc";
-  include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_user.inc";
+  include_once drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_collaboration.inc";
+  include_once drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_collaborator.inc";
+  include_once drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_event.inc";
+  include_once drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_engagement.inc";
+  include_once drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_highlight.inc";
+  include_once drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_honor.inc";
+  include_once drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_institution.inc";
+  include_once drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_other_product.inc";
+  include_once drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_patent.inc";
+  include_once drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_presentation.inc";
+  include_once drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_proposal.inc";
+  include_once drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_publication.inc";
+  include_once drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_component.inc";
+  include_once drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_program.inc";
+  include_once drupal_get_path('module', 'ercore') . "/includes/field-instances/ercore_fi_user.inc";
 
   $installed_instances = array();
   // Add Collaboration fields.

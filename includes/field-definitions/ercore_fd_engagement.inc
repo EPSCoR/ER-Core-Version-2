@@ -2967,8 +2967,8 @@ $ercore_engagement_definitions = array(
       ),
     ),
   ),
-// FIELD: field_ercore_ari_fac_t.
-  'field_ercore_ari_fac_t' => array(
+// FIELD: field_ercore_ee_ari_fac_t.
+  'field_ercore_ee_ari_fac_t' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -2999,13 +2999,13 @@ $ercore_engagement_definitions = array(
       'details' => array(
         'sql' => array(
           'FIELD_LOAD_CURRENT' => array(
-            'field_data_field_ercore_ari_fac_t' => array(
-              'value' => 'field_ercore_ari_fac_t_value',
+            'field_data_field_ercore_ee_ari_fac_t' => array(
+              'value' => 'field_ercore_ee_ari_fac_t_value',
             ),
           ),
           'FIELD_LOAD_REVISION' => array(
-            'field_revision_field_ercore_ari_fac_t' => array(
-              'value' => 'field_ercore_ari_fac_t_value',
+            'field_revision_field_ercore_ee_ari_fac_t' => array(
+              'value' => 'field_ercore_ee_ari_fac_t_value',
             ),
           ),
         ),
@@ -3016,7 +3016,7 @@ $ercore_engagement_definitions = array(
     'field_permissions' => array(
       'type' => '0',
     ),
-    'field_name' => 'field_ercore_ari_fac_t',
+    'field_name' => 'field_ercore_ee_ari_fac_t',
     'type' => 'computed',
     'module' => 'computed_field',
     'active' => '1',

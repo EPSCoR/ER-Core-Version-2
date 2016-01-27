@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * File for the ERCore Admin Guide Page.
+ * File for the ERCore Admin Actions.
  */
 
 /**

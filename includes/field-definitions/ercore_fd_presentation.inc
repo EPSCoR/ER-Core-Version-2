@@ -82,7 +82,7 @@ $ercore_presentation_definitions = array(
 
 // FIELD: field_ercore_ps_link.
   'field_ercore_ps_link' => array(
-    'type_name' => 'er_publication',
+    'type_name' => 'ercore_presentation',
     'entity_types' => array(),
     'settings' => array(
       'attributes' => array(
@@ -219,70 +219,6 @@ $ercore_presentation_definitions = array(
         'not null' => FALSE,
         'sortable' => TRUE,
         'views' => TRUE,
-      ),
-    ),
-    'bundles' => array(
-      'node' => array(
-        'ercore_presentation',
-      ),
-    ),
-  ),
-
-// FIELD: field_ercore_ps_type.
-  'field_ercore_ps_type' => array(
-    'translatable' => '0',
-    'entity_types' => array(),
-    'settings' => array(
-      'allowed_values' => array(
-        'Invited Speaker' => 'Invited Speaker',
-        'Presentation' => 'Presentation',
-        'Panel' => 'Panel',
-        'Poster' => 'Poster',
-        'Other' => 'Other',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'storage' => array(
-      'type' => 'field_sql_storage',
-      'settings' => array(),
-      'module' => 'field_sql_storage',
-      'active' => '1',
-      'details' => array(
-        'sql' => array(
-          'FIELD_LOAD_CURRENT' => array(
-            'field_data_field_ercore_ps_type' => array(
-              'value' => 'field_ercore_ps_type_value',
-            ),
-          ),
-          'FIELD_LOAD_REVISION' => array(
-            'field_revision_field_ercore_ps_type' => array(
-              'value' => 'field_ercore_ps_type_value',
-            ),
-          ),
-        ),
-      ),
-    ),
-    'foreign keys' => array(),
-    'indexes' => array(
-      'value' => array(
-        'value',
-      ),
-    ),
-    'field_permissions' => array(
-      'type' => '0',
-    ),
-    'field_name' => 'field_ercore_ps_type',
-    'type' => 'list_text',
-    'module' => 'list',
-    'active' => '1',
-    'locked' => '0',
-    'cardinality' => '1',
-    'deleted' => '0',
-    'columns' => array(
-      'value' => array(
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => FALSE,
       ),
     ),
     'bundles' => array(
@@ -444,6 +380,274 @@ $ercore_presentation_definitions = array(
         'not null' => FALSE,
       ),
       'format' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+    ),
+    'bundles' => array(
+      'node' => array(
+        'ercore_presentation',
+      ),
+    ),
+  ),
+
+// FIELD: field_ercore_ps_type.
+  'field_ercore_ps_type' => array(
+    'translatable' => '0',
+    'entity_types' => array(),
+    'settings' => array(
+      'allowed_values' => array(
+        'Invited Speaker' => 'Invited Speaker',
+        'Presentation' => 'Presentation',
+        'Panel' => 'Panel',
+        'Poster' => 'Poster',
+        'Other' => 'Other',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'storage' => array(
+      'type' => 'field_sql_storage',
+      'settings' => array(),
+      'module' => 'field_sql_storage',
+      'active' => '1',
+      'details' => array(
+        'sql' => array(
+          'FIELD_LOAD_CURRENT' => array(
+            'field_data_field_ercore_ps_type' => array(
+              'value' => 'field_ercore_ps_type_value',
+            ),
+          ),
+          'FIELD_LOAD_REVISION' => array(
+            'field_revision_field_ercore_ps_type' => array(
+              'value' => 'field_ercore_ps_type_value',
+            ),
+          ),
+        ),
+      ),
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        'value',
+      ),
+    ),
+    'field_permissions' => array(
+      'type' => '0',
+    ),
+    'field_name' => 'field_ercore_ps_type',
+    'type' => 'list_text',
+    'module' => 'list',
+    'active' => '1',
+    'locked' => '0',
+    'cardinality' => '1',
+    'deleted' => '0',
+    'columns' => array(
+      'value' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+    ),
+    'bundles' => array(
+      'node' => array(
+        'ercore_presentation',
+      ),
+    ),
+  ),
+
+// FIELD: field_ercore_goals.
+  'field_ercore_goals' => array(
+    'translatable' => '0',
+    'entity_types' => array(),
+    'settings' => array(
+      'max_length' => '255',
+    ),
+    'storage' => array(
+      'type' => 'field_sql_storage',
+      'settings' => array(),
+      'module' => 'field_sql_storage',
+      'active' => '1',
+      'details' => array(
+        'sql' => array(
+          'FIELD_LOAD_CURRENT' => array(
+            'field_data_field_ercore_goals' => array(
+              'value' => 'field_ercore_goals_value',
+              'format' => 'field_ercore_goals_format',
+            ),
+          ),
+          'FIELD_LOAD_REVISION' => array(
+            'field_revision_field_ercore_goals' => array(
+              'value' => 'field_ercore_goals_value',
+              'format' => 'field_ercore_goals_format',
+            ),
+          ),
+        ),
+      ),
+    ),
+    'foreign keys' => array(
+      'format' => array(
+        'table' => 'filter_format',
+        'columns' => array(
+          'format' => 'format',
+        ),
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        'format',
+      ),
+    ),
+    'field_permissions' => array(
+      'type' => '0',
+    ),
+    'field_name' => 'field_ercore_goals',
+    'type' => 'text',
+    'module' => 'text',
+    'active' => '1',
+    'locked' => '0',
+    'cardinality' => '1',
+    'deleted' => '0',
+    'columns' => array(
+      'value' => array(
+        'type' => 'varchar',
+        'length' => '255',
+        'not null' => FALSE,
+      ),
+      'format' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+    ),
+    'bundles' => array(
+      'node' => array(
+        'ercore_other_product',
+        'ercore_publication',
+        'ercore_proposal',
+        'ercore_presentation',
+        'ercore_patent',
+      ),
+    ),
+  ),
+
+// FIELD: field_ercore_nsf.
+  'field_ercore_nsf' => array(
+    'entity_types' => array(),
+    'settings' => array(
+      'allowed_values' => array(
+        1 => 'Acknowledged',
+        0 => 'Not Acknowledged',
+      ),
+      'allowed_values_function' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'min' => '',
+      'max' => '',
+      'allowed_values_php' => '',
+    ),
+    'translatable' => '0',
+    'storage' => array(
+      'type' => 'field_sql_storage',
+      'settings' => array(),
+      'module' => 'field_sql_storage',
+      'active' => '1',
+      'details' => array(
+        'sql' => array(
+          'FIELD_LOAD_CURRENT' => array(
+            'field_data_field_ercore_nsf' => array(
+              'value' => 'field_ercore_nsf_value',
+            ),
+          ),
+          'FIELD_LOAD_REVISION' => array(
+            'field_revision_field_ercore_nsf' => array(
+              'value' => 'field_ercore_nsf_value',
+            ),
+          ),
+        ),
+      ),
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        'value',
+      ),
+    ),
+    'field_permissions' => array(
+      'type' => '0',
+    ),
+    'field_name' => 'field_ercore_nsf',
+    'type' => 'list_integer',
+    'module' => 'list',
+    'active' => '1',
+    'locked' => '0',
+    'cardinality' => '1',
+    'deleted' => '0',
+    'columns' => array(
+      'value' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+      ),
+    ),
+    'bundles' => array(
+      'node' => array(
+        'ercore_other_product',
+        'ercore_publication',
+        'ercore_presentation',
+      ),
+    ),
+  ),
+
+// FIELD: field_ercore_ps_status.
+  'field_ercore_ps_status' => array(
+    'translatable' => '0',
+    'entity_types' => array(),
+    'settings' => array(
+      'allowed_values' => array(
+        2 => 'Submitted - Under Review',
+        1 => 'Accepted - Awaiting Presentation',
+        0 => 'Presented',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'storage' => array(
+      'type' => 'field_sql_storage',
+      'settings' => array(),
+      'module' => 'field_sql_storage',
+      'active' => '1',
+      'details' => array(
+        'sql' => array(
+          'FIELD_LOAD_CURRENT' => array(
+            'field_data_field_ercore_ps_status' => array(
+              'value' => 'field_ercore_ps_status_value',
+            ),
+          ),
+          'FIELD_LOAD_REVISION' => array(
+            'field_revision_field_ercore_ps_status' => array(
+              'value' => 'field_ercore_ps_status_value',
+            ),
+          ),
+        ),
+      ),
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        'value',
+      ),
+    ),
+    'field_permissions' => array(
+      'type' => '0',
+    ),
+    'field_name' => 'field_ercore_ps_status',
+    'type' => 'list_text',
+    'module' => 'list',
+    'active' => '1',
+    'locked' => '0',
+    'cardinality' => '1',
+    'deleted' => '0',
+    'columns' => array(
+      'value' => array(
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,

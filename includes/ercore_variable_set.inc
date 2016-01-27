@@ -4,10 +4,10 @@
  * Includes variables to be set on install.
  */
 
-
 // ERCore date formats.
 variable_set('date_format_ercore_date_format_day_name', 'l');
 variable_set('date_format_ercore_date_format_filter', 'Y-m-d');
+variable_set('date_format_ercore_date_format_filter_admin', 'Y-m');
 variable_set('date_format_ercore_date_format_month_day_year', 'F j, Y');
 variable_set('date_format_ercore_date_format_month_year', 'F Y');
 variable_set('date_format_ercore_date_format_month', 'm');
@@ -35,11 +35,11 @@ variable_set('ercore_summary_types', array(
   'ercore_proposal' => 'ercore_proposal',
   'ercore_publication' => 'ercore_publication',
 ));
-variable_set('ercore_grant_number','');
-variable_set('ercore_component_usage','1');
-variable_set('ercore_component_required','1');
-variable_set('ercore_program_usage','0');
-variable_set('ercore_program_required','0');
+variable_set('ercore_grant_number', '');
+variable_set('ercore_component_usage', '1');
+variable_set('ercore_component_required', '1');
+variable_set('ercore_program_usage', '0');
+variable_set('ercore_program_required', '0');
 
 // Set node type Admin variables.
 variable_set('additional_settings__active_tab_ercore_admin', 'edit-display');

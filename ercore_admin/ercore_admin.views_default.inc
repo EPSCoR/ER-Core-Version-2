@@ -14,9 +14,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'data_ercore_collaboration';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'ERCore, ERCore Data';
   $view->base_table = 'node';
-  $view->human_name = 'Data ERCore Collaboration';
+  $view->human_name = 'Data: ERCore Collaboration';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -25,7 +25,6 @@ function ercore_admin_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Collaborations';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -39,14 +38,29 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['footer']['area_text_custom']['content'] = 'collaborations';
-  /* Field: COUNT(Node Count) */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['group_type'] = 'count';
-  $handler->display->display_options['fields']['nid']['ui_name'] = 'Node Count';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Collaboration Dates */
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['id'] = 'field_ercore_cn_dates';
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['table'] = 'field_data_field_ercore_cn_dates';
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['field'] = 'field_ercore_cn_dates';
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['settings'] = array(
+    'format_type' => 'ercore_date_format_filter',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -62,46 +76,6 @@ function ercore_admin_views_default_views() {
     'ercore_collaboration' => 'ercore_collaboration',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Collaboration Dates - end date (field_ercore_cn_dates:value2) */
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['id'] = 'field_ercore_cn_dates_value2';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['table'] = 'field_data_field_ercore_cn_dates';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['field'] = 'field_ercore_cn_dates_value2';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['operator_id'] = 'field_ercore_cn_dates_value2_op';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['label'] = 'Start Date';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['operator'] = 'field_ercore_cn_dates_value2_op';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['identifier'] = 'field_ercore_cn_dates_value2';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Collaboration Dates -  start date (field_ercore_cn_dates) */
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['id'] = 'field_ercore_cn_dates_value';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['table'] = 'field_data_field_ercore_cn_dates';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['field'] = 'field_ercore_cn_dates_value';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['operator_id'] = 'field_ercore_cn_dates_value_op';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['label'] = 'End Date';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['operator'] = 'field_ercore_cn_dates_value_op';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['identifier'] = 'field_ercore_cn_dates_value';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['form_type'] = 'date_popup';
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'count');
@@ -112,9 +86,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'data_ercore_engagement';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'ERCore, ERCore Data';
   $view->base_table = 'field_collection_item';
-  $view->human_name = 'Data ERCore Engagement';
+  $view->human_name = 'Data: ERCore Engagement';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -123,7 +97,6 @@ function ercore_admin_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'External Engagements';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -148,14 +121,28 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['relationships']['field_ercore_ev_engagement_node']['table'] = 'field_collection_item';
   $handler->display->display_options['relationships']['field_ercore_ev_engagement_node']['field'] = 'field_ercore_ev_engagement_node';
   $handler->display->display_options['relationships']['field_ercore_ev_engagement_node']['required'] = TRUE;
-  /* Field: COUNT(Field collection item: Field collection item ID) */
-  $handler->display->display_options['fields']['item_id']['id'] = 'item_id';
-  $handler->display->display_options['fields']['item_id']['table'] = 'field_collection_item';
-  $handler->display->display_options['fields']['item_id']['field'] = 'item_id';
-  $handler->display->display_options['fields']['item_id']['group_type'] = 'count';
-  $handler->display->display_options['fields']['item_id']['label'] = '';
-  $handler->display->display_options['fields']['item_id']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['item_id']['separator'] = '';
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['relationship'] = 'field_ercore_ev_engagement_node';
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_ercore_ev_date']['id'] = 'field_ercore_ev_date';
+  $handler->display->display_options['fields']['field_ercore_ev_date']['table'] = 'field_data_field_ercore_ev_date';
+  $handler->display->display_options['fields']['field_ercore_ev_date']['field'] = 'field_ercore_ev_date';
+  $handler->display->display_options['fields']['field_ercore_ev_date']['relationship'] = 'field_ercore_ev_engagement_node';
+  $handler->display->display_options['fields']['field_ercore_ev_date']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ev_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ev_date']['settings'] = array(
+    'format_type' => 'ercore_date_format_filter',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  $handler->display->display_options['fields']['field_ercore_ev_date']['delta_offset'] = '0';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -172,50 +159,6 @@ function ercore_admin_views_default_views() {
     'ercore_event' => 'ercore_event',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Date - end date (field_ercore_ev_date:value2) */
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['id'] = 'field_ercore_ev_date_value2';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['table'] = 'field_data_field_ercore_ev_date';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['field'] = 'field_ercore_ev_date_value2';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['relationship'] = 'field_ercore_ev_engagement_node';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['expose']['operator_id'] = 'field_ercore_ev_date_value2_op';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['expose']['label'] = 'Start Date';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['expose']['operator'] = 'field_ercore_ev_date_value2_op';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['expose']['identifier'] = 'field_ercore_ev_date_value2';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Date -  start date (field_ercore_ev_date) */
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['id'] = 'field_ercore_ev_date_value';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['table'] = 'field_data_field_ercore_ev_date';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['field'] = 'field_ercore_ev_date_value';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['relationship'] = 'field_ercore_ev_engagement_node';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['expose']['operator_id'] = 'field_ercore_ev_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['expose']['label'] = 'End Date';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['expose']['operator'] = 'field_ercore_ev_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['expose']['identifier'] = 'field_ercore_ev_date_value';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['form_type'] = 'date_popup';
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'count');
@@ -226,9 +169,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'data_ercore_event';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'ERCore, ERCore Data';
   $view->base_table = 'node';
-  $view->human_name = 'Data ERCore Event';
+  $view->human_name = 'Data: ERCore Event';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -237,7 +180,6 @@ function ercore_admin_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Calendar Events';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -251,14 +193,26 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['footer']['area_text_custom']['content'] = 'calendar';
-  /* Field: COUNT(Node Count) */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['group_type'] = 'count';
-  $handler->display->display_options['fields']['nid']['ui_name'] = 'Node Count';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_ercore_ev_date']['id'] = 'field_ercore_ev_date';
+  $handler->display->display_options['fields']['field_ercore_ev_date']['table'] = 'field_data_field_ercore_ev_date';
+  $handler->display->display_options['fields']['field_ercore_ev_date']['field'] = 'field_ercore_ev_date';
+  $handler->display->display_options['fields']['field_ercore_ev_date']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ev_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ev_date']['settings'] = array(
+    'format_type' => 'ercore_date_format_filter',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  $handler->display->display_options['fields']['field_ercore_ev_date']['delta_offset'] = '0';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -274,46 +228,6 @@ function ercore_admin_views_default_views() {
     'ercore_event' => 'ercore_event',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Date - end date (field_ercore_ev_date:value2) */
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['id'] = 'field_ercore_ev_date_value2';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['table'] = 'field_data_field_ercore_ev_date';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['field'] = 'field_ercore_ev_date_value2';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['expose']['operator_id'] = 'field_ercore_ev_date_value2_op';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['expose']['label'] = 'Start Date';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['expose']['operator'] = 'field_ercore_ev_date_value2_op';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['expose']['identifier'] = 'field_ercore_ev_date_value2';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_ev_date_value2']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Date -  start date (field_ercore_ev_date) */
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['id'] = 'field_ercore_ev_date_value';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['table'] = 'field_data_field_ercore_ev_date';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['field'] = 'field_ercore_ev_date_value';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['expose']['operator_id'] = 'field_ercore_ev_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['expose']['label'] = 'End Date';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['expose']['operator'] = 'field_ercore_ev_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['expose']['identifier'] = 'field_ercore_ev_date_value';
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_ev_date_value']['form_type'] = 'date_popup';
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'count');
@@ -324,9 +238,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'data_ercore_highlight';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'ERCore, ERCore Data';
   $view->base_table = 'node';
-  $view->human_name = 'Data ERCore Highlight';
+  $view->human_name = 'Data: ERCore Highlight';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -335,7 +249,6 @@ function ercore_admin_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Highlights';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -349,14 +262,25 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['footer']['area_text_custom']['content'] = 'highlights';
-  /* Field: COUNT(Node Count) */
+  /* Field: Content: Date completed */
+  $handler->display->display_options['fields']['field_ercore_hi_date']['id'] = 'field_ercore_hi_date';
+  $handler->display->display_options['fields']['field_ercore_hi_date']['table'] = 'field_data_field_ercore_hi_date';
+  $handler->display->display_options['fields']['field_ercore_hi_date']['field'] = 'field_ercore_hi_date';
+  $handler->display->display_options['fields']['field_ercore_hi_date']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_hi_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_hi_date']['settings'] = array(
+    'format_type' => 'ercore_date_format_filter',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['group_type'] = 'count';
-  $handler->display->display_options['fields']['nid']['ui_name'] = 'Node Count';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -372,46 +296,6 @@ function ercore_admin_views_default_views() {
     'ercore_j_highlight' => 'ercore_j_highlight',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Date completed (field_ercore_hi_date) */
-  $handler->display->display_options['filters']['field_ercore_hi_date_value']['id'] = 'field_ercore_hi_date_value';
-  $handler->display->display_options['filters']['field_ercore_hi_date_value']['table'] = 'field_data_field_ercore_hi_date';
-  $handler->display->display_options['filters']['field_ercore_hi_date_value']['field'] = 'field_ercore_hi_date_value';
-  $handler->display->display_options['filters']['field_ercore_hi_date_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_ercore_hi_date_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_hi_date_value']['expose']['operator_id'] = 'field_ercore_hi_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_hi_date_value']['expose']['label'] = 'Start Date';
-  $handler->display->display_options['filters']['field_ercore_hi_date_value']['expose']['operator'] = 'field_ercore_hi_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_hi_date_value']['expose']['identifier'] = 'field_ercore_hi_date_value';
-  $handler->display->display_options['filters']['field_ercore_hi_date_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_hi_date_value']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Date completed (field_ercore_hi_date) */
-  $handler->display->display_options['filters']['field_ercore_hi_date_value_1']['id'] = 'field_ercore_hi_date_value_1';
-  $handler->display->display_options['filters']['field_ercore_hi_date_value_1']['table'] = 'field_data_field_ercore_hi_date';
-  $handler->display->display_options['filters']['field_ercore_hi_date_value_1']['field'] = 'field_ercore_hi_date_value';
-  $handler->display->display_options['filters']['field_ercore_hi_date_value_1']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_ercore_hi_date_value_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_hi_date_value_1']['expose']['operator_id'] = 'field_ercore_hi_date_value_1_op';
-  $handler->display->display_options['filters']['field_ercore_hi_date_value_1']['expose']['label'] = 'End Date';
-  $handler->display->display_options['filters']['field_ercore_hi_date_value_1']['expose']['operator'] = 'field_ercore_hi_date_value_1_op';
-  $handler->display->display_options['filters']['field_ercore_hi_date_value_1']['expose']['identifier'] = 'field_ercore_hi_date_value_1';
-  $handler->display->display_options['filters']['field_ercore_hi_date_value_1']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_hi_date_value_1']['form_type'] = 'date_popup';
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'count');
@@ -422,9 +306,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'data_ercore_honor';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'ERCore, ERCore Data';
   $view->base_table = 'node';
-  $view->human_name = 'Data ERCore Honor';
+  $view->human_name = 'Data: ERCore Honor';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -433,7 +317,6 @@ function ercore_admin_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Honors and Awards';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -447,14 +330,25 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['footer']['area_text_custom']['content'] = 'honors';
-  /* Field: COUNT(Node Count) */
+  /* Field: Content: Date Awarded */
+  $handler->display->display_options['fields']['field_ercore_hn_date']['id'] = 'field_ercore_hn_date';
+  $handler->display->display_options['fields']['field_ercore_hn_date']['table'] = 'field_data_field_ercore_hn_date';
+  $handler->display->display_options['fields']['field_ercore_hn_date']['field'] = 'field_ercore_hn_date';
+  $handler->display->display_options['fields']['field_ercore_hn_date']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_hn_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_hn_date']['settings'] = array(
+    'format_type' => 'ercore_date_format_filter',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['group_type'] = 'count';
-  $handler->display->display_options['fields']['nid']['ui_name'] = 'Node Count';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -469,46 +363,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'ercore_j_honor' => 'ercore_j_honor',
   );
-  /* Filter criterion: Content: Date Awarded (field_ercore_hn_date) */
-  $handler->display->display_options['filters']['field_ercore_hn_date_value']['id'] = 'field_ercore_hn_date_value';
-  $handler->display->display_options['filters']['field_ercore_hn_date_value']['table'] = 'field_data_field_ercore_hn_date';
-  $handler->display->display_options['filters']['field_ercore_hn_date_value']['field'] = 'field_ercore_hn_date_value';
-  $handler->display->display_options['filters']['field_ercore_hn_date_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_ercore_hn_date_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_hn_date_value']['expose']['operator_id'] = 'field_ercore_hn_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_hn_date_value']['expose']['label'] = 'Start Date';
-  $handler->display->display_options['filters']['field_ercore_hn_date_value']['expose']['operator'] = 'field_ercore_hn_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_hn_date_value']['expose']['identifier'] = 'field_ercore_hn_date_value';
-  $handler->display->display_options['filters']['field_ercore_hn_date_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_hn_date_value']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Date Awarded (field_ercore_hn_date) */
-  $handler->display->display_options['filters']['field_ercore_hn_date_value_1']['id'] = 'field_ercore_hn_date_value_1';
-  $handler->display->display_options['filters']['field_ercore_hn_date_value_1']['table'] = 'field_data_field_ercore_hn_date';
-  $handler->display->display_options['filters']['field_ercore_hn_date_value_1']['field'] = 'field_ercore_hn_date_value';
-  $handler->display->display_options['filters']['field_ercore_hn_date_value_1']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_ercore_hn_date_value_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_hn_date_value_1']['expose']['operator_id'] = 'field_ercore_hn_date_value_1_op';
-  $handler->display->display_options['filters']['field_ercore_hn_date_value_1']['expose']['label'] = 'End Date';
-  $handler->display->display_options['filters']['field_ercore_hn_date_value_1']['expose']['operator'] = 'field_ercore_hn_date_value_1_op';
-  $handler->display->display_options['filters']['field_ercore_hn_date_value_1']['expose']['identifier'] = 'field_ercore_hn_date_value_1';
-  $handler->display->display_options['filters']['field_ercore_hn_date_value_1']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_hn_date_value_1']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['type']['group'] = 1;
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'count');
@@ -519,9 +374,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'data_ercore_institution';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'ERCore, ERCore Data';
   $view->base_table = 'node';
-  $view->human_name = 'Data ERCore Institution';
+  $view->human_name = 'Data: ERCore Institution';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -530,7 +385,6 @@ function ercore_admin_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Institutions';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -544,14 +398,10 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['footer']['area_text_custom']['content'] = 'institutions';
-  /* Field: COUNT(Node Count) */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['group_type'] = 'count';
-  $handler->display->display_options['fields']['nid']['ui_name'] = 'Node Count';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -577,9 +427,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'data_ercore_other_product';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'ERCore, ERCore Data';
   $view->base_table = 'node';
-  $view->human_name = 'Data ERCore Other Research Products';
+  $view->human_name = 'Data: ERCore Other Research Products';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -588,12 +438,12 @@ function ercore_admin_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Other Research Products';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Footer: Global: Unfiltered text */
@@ -602,14 +452,27 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['footer']['area_text_custom']['content'] = 'other-research-products';
-  /* Field: COUNT(Node Count) */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['group_type'] = 'count';
-  $handler->display->display_options['fields']['nid']['ui_name'] = 'Node Count';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_ercore_op_date']['id'] = 'field_ercore_op_date';
+  $handler->display->display_options['fields']['field_ercore_op_date']['table'] = 'field_data_field_ercore_op_date';
+  $handler->display->display_options['fields']['field_ercore_op_date']['field'] = 'field_ercore_op_date';
+  $handler->display->display_options['fields']['field_ercore_op_date']['settings'] = array(
+    'format_type' => 'ercore_date_format_filter',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -625,46 +488,6 @@ function ercore_admin_views_default_views() {
     'ercore_other_product' => 'ercore_other_product',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Date (field_ercore_op_date) */
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['id'] = 'field_ercore_op_date_value';
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['table'] = 'field_data_field_ercore_op_date';
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['field'] = 'field_ercore_op_date_value';
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['expose']['operator_id'] = 'field_ercore_op_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['expose']['label'] = 'Start Date';
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['expose']['operator'] = 'field_ercore_op_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['expose']['identifier'] = 'field_ercore_op_date_value';
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Date (field_ercore_op_date) */
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['id'] = 'field_ercore_op_date_value_1';
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['table'] = 'field_data_field_ercore_op_date';
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['field'] = 'field_ercore_op_date_value';
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['expose']['operator_id'] = 'field_ercore_op_date_value_1_op';
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['expose']['label'] = 'End Date';
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['expose']['operator'] = 'field_ercore_op_date_value_1_op';
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['expose']['identifier'] = 'field_ercore_op_date_value_1';
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['form_type'] = 'date_popup';
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'count');
@@ -675,9 +498,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'data_ercore_participant';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'ERCore, ERCore Data';
   $view->base_table = 'users';
-  $view->human_name = 'Data ERCore Participant';
+  $view->human_name = 'Data: ERCore Participant';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -686,11 +509,12 @@ function ercore_admin_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Participants';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access user profiles';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'default';
@@ -706,18 +530,28 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
   $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
   $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['required'] = TRUE;
-  /* Field: COUNT(User: Uid) */
+  /* Field: User: Uid */
   $handler->display->display_options['fields']['uid']['id'] = 'uid';
   $handler->display->display_options['fields']['uid']['table'] = 'users';
   $handler->display->display_options['fields']['uid']['field'] = 'uid';
   $handler->display->display_options['fields']['uid']['group_type'] = 'count';
   $handler->display->display_options['fields']['uid']['label'] = '';
   $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
-  /* Sort criterion: User: Created date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'users';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Field: User: Participating Date(s) */
+  $handler->display->display_options['fields']['field_ercore_us_part_date']['id'] = 'field_ercore_us_part_date';
+  $handler->display->display_options['fields']['field_ercore_us_part_date']['table'] = 'field_data_field_ercore_us_part_date';
+  $handler->display->display_options['fields']['field_ercore_us_part_date']['field'] = 'field_ercore_us_part_date';
+  $handler->display->display_options['fields']['field_ercore_us_part_date']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_us_part_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_us_part_date']['settings'] = array(
+    'format_type' => 'ercore_date_format_filter',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
   /* Filter criterion: User: Active */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'users';
@@ -732,47 +566,6 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['uid_raw']['operator'] = '!=';
   $handler->display->display_options['filters']['uid_raw']['value']['value'] = '1';
   $handler->display->display_options['filters']['uid_raw']['group'] = 1;
-  /* Filter criterion: User: Participating Date(s) - end date (field_ercore_us_part_date:value2) */
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['id'] = 'field_ercore_us_part_date_value2';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['table'] = 'field_data_field_ercore_us_part_date';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['field'] = 'field_ercore_us_part_date_value2';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['expose']['operator_id'] = 'field_ercore_us_part_date_value2_op';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['expose']['label'] = 'Start Date';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['expose']['operator'] = 'field_ercore_us_part_date_value2_op';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['expose']['identifier'] = 'field_ercore_us_part_date_value2';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['form_type'] = 'date_popup';
-  /* Filter criterion: User: Participating Date(s) -  start date (field_ercore_us_part_date) */
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['id'] = 'field_ercore_us_part_date_value';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['table'] = 'field_data_field_ercore_us_part_date';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['field'] = 'field_ercore_us_part_date_value';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['expose']['operator_id'] = 'field_ercore_us_part_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['expose']['label'] = 'End Date';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['expose']['operator'] = 'field_ercore_us_part_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['expose']['identifier'] = 'field_ercore_us_part_date_value';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
   /* Filter criterion: Content: Participating (field_ercore_in_participating) */
   $handler->display->display_options['filters']['field_ercore_in_participating_value']['id'] = 'field_ercore_in_participating_value';
   $handler->display->display_options['filters']['field_ercore_in_participating_value']['table'] = 'field_data_field_ercore_in_participating';
@@ -781,6 +574,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['field_ercore_in_participating_value']['value'] = array(
     1 => '1',
   );
+  $handler->display->display_options['filters']['field_ercore_in_participating_value']['group'] = 1;
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'count');
@@ -790,9 +584,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'data_ercore_patent';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'ERCore, ERCore Data';
   $view->base_table = 'node';
-  $view->human_name = 'Data ERCore Patent';
+  $view->human_name = 'Data: ERCore Patent';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -801,7 +595,6 @@ function ercore_admin_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Patents';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -815,14 +608,25 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['footer']['area_text_custom']['content'] = 'patents';
-  /* Field: COUNT(Node Count) */
+  /* Field: Content: License Date */
+  $handler->display->display_options['fields']['field_ercore_pt_date']['id'] = 'field_ercore_pt_date';
+  $handler->display->display_options['fields']['field_ercore_pt_date']['table'] = 'field_data_field_ercore_pt_date';
+  $handler->display->display_options['fields']['field_ercore_pt_date']['field'] = 'field_ercore_pt_date';
+  $handler->display->display_options['fields']['field_ercore_pt_date']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_pt_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_pt_date']['settings'] = array(
+    'format_type' => 'ercore_date_format_filter',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['group_type'] = 'count';
-  $handler->display->display_options['fields']['nid']['ui_name'] = 'Node Count';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -842,42 +646,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['field_ercore_pt_date_value']['id'] = 'field_ercore_pt_date_value';
   $handler->display->display_options['filters']['field_ercore_pt_date_value']['table'] = 'field_data_field_ercore_pt_date';
   $handler->display->display_options['filters']['field_ercore_pt_date_value']['field'] = 'field_ercore_pt_date_value';
-  $handler->display->display_options['filters']['field_ercore_pt_date_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_ercore_pt_date_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_pt_date_value']['expose']['operator_id'] = 'field_ercore_pt_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_pt_date_value']['expose']['label'] = 'Start Date';
-  $handler->display->display_options['filters']['field_ercore_pt_date_value']['expose']['operator'] = 'field_ercore_pt_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_pt_date_value']['expose']['identifier'] = 'field_ercore_pt_date_value';
-  $handler->display->display_options['filters']['field_ercore_pt_date_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_pt_date_value']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: License Date (field_ercore_pt_date) */
-  $handler->display->display_options['filters']['field_ercore_pt_date_value_1']['id'] = 'field_ercore_pt_date_value_1';
-  $handler->display->display_options['filters']['field_ercore_pt_date_value_1']['table'] = 'field_data_field_ercore_pt_date';
-  $handler->display->display_options['filters']['field_ercore_pt_date_value_1']['field'] = 'field_ercore_pt_date_value';
-  $handler->display->display_options['filters']['field_ercore_pt_date_value_1']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_ercore_pt_date_value_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_pt_date_value_1']['expose']['operator_id'] = 'field_ercore_pt_date_value_1_op';
-  $handler->display->display_options['filters']['field_ercore_pt_date_value_1']['expose']['label'] = 'End Date';
-  $handler->display->display_options['filters']['field_ercore_pt_date_value_1']['expose']['operator'] = 'field_ercore_pt_date_value_1_op';
-  $handler->display->display_options['filters']['field_ercore_pt_date_value_1']['expose']['identifier'] = 'field_ercore_pt_date_value_1';
-  $handler->display->display_options['filters']['field_ercore_pt_date_value_1']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_pt_date_value_1']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_ercore_pt_date_value']['operator'] = 'not empty';
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'count');
@@ -888,9 +657,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'data_ercore_presentation';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'ERCore, ERCore Data';
   $view->base_table = 'node';
-  $view->human_name = 'Data ERCore Presentation';
+  $view->human_name = 'Data: ERCore Presentation';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -899,7 +668,6 @@ function ercore_admin_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Presentations';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -913,14 +681,25 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['footer']['area_text_custom']['content'] = 'presentations';
-  /* Field: COUNT(Node Count) */
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_ercore_ps_date']['id'] = 'field_ercore_ps_date';
+  $handler->display->display_options['fields']['field_ercore_ps_date']['table'] = 'field_data_field_ercore_ps_date';
+  $handler->display->display_options['fields']['field_ercore_ps_date']['field'] = 'field_ercore_ps_date';
+  $handler->display->display_options['fields']['field_ercore_ps_date']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ps_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ps_date']['settings'] = array(
+    'format_type' => 'ercore_date_format_filter',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['group_type'] = 'count';
-  $handler->display->display_options['fields']['nid']['ui_name'] = 'Node Count';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -936,50 +715,11 @@ function ercore_admin_views_default_views() {
     'ercore_presentation' => 'ercore_presentation',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Date (field_ercore_ps_date) */
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['id'] = 'field_ercore_ps_date_value';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['table'] = 'field_data_field_ercore_ps_date';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['field'] = 'field_ercore_ps_date_value';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['expose']['operator_id'] = 'field_ercore_ps_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['expose']['label'] = 'Start Date';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['expose']['operator'] = 'field_ercore_ps_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['expose']['identifier'] = 'field_ercore_ps_date_value';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Date (field_ercore_ps_date) */
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['id'] = 'field_ercore_ps_date_value_1';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['table'] = 'field_data_field_ercore_ps_date';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['field'] = 'field_ercore_ps_date_value';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['expose']['operator_id'] = 'field_ercore_ps_date_value_1_op';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['expose']['label'] = 'End Date';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['expose']['operator'] = 'field_ercore_ps_date_value_1_op';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['expose']['identifier'] = 'field_ercore_ps_date_value_1';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['form_type'] = 'date_popup';
   /* Filter criterion: Content: Type of Presentation (field_ercore_ps_type) */
   $handler->display->display_options['filters']['field_ercore_ps_type_value']['id'] = 'field_ercore_ps_type_value';
   $handler->display->display_options['filters']['field_ercore_ps_type_value']['table'] = 'field_data_field_ercore_ps_type';
   $handler->display->display_options['filters']['field_ercore_ps_type_value']['field'] = 'field_ercore_ps_type_value';
+  $handler->display->display_options['filters']['field_ercore_ps_type_value']['group'] = 1;
   $handler->display->display_options['filters']['field_ercore_ps_type_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ercore_ps_type_value']['expose']['operator_id'] = 'field_ercore_ps_type_value_op';
   $handler->display->display_options['filters']['field_ercore_ps_type_value']['expose']['label'] = 'Type';
@@ -1004,9 +744,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'data_ercore_proposal';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'ERCore, ERCore Data';
   $view->base_table = 'node';
-  $view->human_name = 'Data ERCore Proposals and Grants';
+  $view->human_name = 'Data: ERCore Proposals and Grants';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -1015,7 +755,6 @@ function ercore_admin_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Proposals and Grants';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -1029,14 +768,25 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['footer']['area_text_custom']['content'] = 'proposals';
-  /* Field: COUNT(Node Count) */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['group_type'] = 'count';
-  $handler->display->display_options['fields']['nid']['ui_name'] = 'Node Count';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
+  $handler->display->display_options['fields']['nid_1']['table'] = 'node';
+  $handler->display->display_options['fields']['nid_1']['field'] = 'nid';
+  /* Field: Content: Date Submitted */
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['id'] = 'field_ercore_pp_proposal_submit';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['table'] = 'field_data_field_ercore_pp_proposal_submit';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['field'] = 'field_ercore_pp_proposal_submit';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['settings'] = array(
+    'format_type' => 'ercore_date_format_filter',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -1052,48 +802,6 @@ function ercore_admin_views_default_views() {
     'ercore_proposal' => 'ercore_proposal',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Award Dates - end date (field_ercore_pp_proposal_date:value2) */
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['id'] = 'field_ercore_pp_proposal_date_value2';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['table'] = 'field_data_field_ercore_pp_proposal_date';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['field'] = 'field_ercore_pp_proposal_date_value2';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['expose']['operator_id'] = 'field_ercore_pp_proposal_date_value2_op';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['expose']['label'] = 'Start Date';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['expose']['operator'] = 'field_ercore_pp_proposal_date_value2_op';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['expose']['identifier'] = 'field_ercore_pp_proposal_date_value2';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Award Dates -  start date (field_ercore_pp_proposal_date) */
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['id'] = 'field_ercore_pp_proposal_date_value';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['table'] = 'field_data_field_ercore_pp_proposal_date';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['field'] = 'field_ercore_pp_proposal_date_value';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['expose']['operator_id'] = 'field_ercore_pp_proposal_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['expose']['label'] = 'Endt Date';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['expose']['operator'] = 'field_ercore_pp_proposal_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['expose']['identifier'] = 'field_ercore_pp_proposal_date_value';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['form_type'] = 'date_popup';
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'count');
@@ -1104,9 +812,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'data_ercore_publication';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'ERCore, ERCore Data';
   $view->base_table = 'node';
-  $view->human_name = 'Data ERCore Publications';
+  $view->human_name = 'Data: ERCore Publications';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -1115,7 +823,6 @@ function ercore_admin_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Publications';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -1129,14 +836,25 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['footer']['area_text_custom']['content'] = 'publications';
-  /* Field: COUNT(Node Count) */
+  /* Field: Content: Date of Publication */
+  $handler->display->display_options['fields']['field_ercore_pb_date']['id'] = 'field_ercore_pb_date';
+  $handler->display->display_options['fields']['field_ercore_pb_date']['table'] = 'field_data_field_ercore_pb_date';
+  $handler->display->display_options['fields']['field_ercore_pb_date']['field'] = 'field_ercore_pb_date';
+  $handler->display->display_options['fields']['field_ercore_pb_date']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_pb_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_pb_date']['settings'] = array(
+    'format_type' => 'ercore_date_format_filter',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['group_type'] = 'count';
-  $handler->display->display_options['fields']['nid']['ui_name'] = 'Node Count';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -1156,78 +874,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['field_ercore_pb_date_value']['id'] = 'field_ercore_pb_date_value';
   $handler->display->display_options['filters']['field_ercore_pb_date_value']['table'] = 'field_data_field_ercore_pb_date';
   $handler->display->display_options['filters']['field_ercore_pb_date_value']['field'] = 'field_ercore_pb_date_value';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_pb_date_value']['expose']['operator_id'] = 'field_ercore_pb_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value']['expose']['label'] = 'Start Date';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value']['expose']['operator'] = 'field_ercore_pb_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value']['expose']['identifier'] = 'field_ercore_pb_date_value';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_pb_date_value']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Date of Publication (field_ercore_pb_date) */
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['id'] = 'field_ercore_pb_date_value_1';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['table'] = 'field_data_field_ercore_pb_date';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['field'] = 'field_ercore_pb_date_value';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['expose']['operator_id'] = 'field_ercore_pb_date_value_1_op';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['expose']['label'] = 'End Date';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['expose']['operator'] = 'field_ercore_pb_date_value_1_op';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['expose']['identifier'] = 'field_ercore_pb_date_value_1';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Publication Type (field_ercore_pb_type) */
-  $handler->display->display_options['filters']['field_ercore_pb_type_value']['id'] = 'field_ercore_pb_type_value';
-  $handler->display->display_options['filters']['field_ercore_pb_type_value']['table'] = 'field_data_field_ercore_pb_type';
-  $handler->display->display_options['filters']['field_ercore_pb_type_value']['field'] = 'field_ercore_pb_type_value';
-  $handler->display->display_options['filters']['field_ercore_pb_type_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_pb_type_value']['expose']['operator_id'] = 'field_ercore_pb_type_value_op';
-  $handler->display->display_options['filters']['field_ercore_pb_type_value']['expose']['label'] = 'Type';
-  $handler->display->display_options['filters']['field_ercore_pb_type_value']['expose']['operator'] = 'field_ercore_pb_type_value_op';
-  $handler->display->display_options['filters']['field_ercore_pb_type_value']['expose']['identifier'] = 'field_ercore_pb_type_value';
-  $handler->display->display_options['filters']['field_ercore_pb_type_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  /* Filter criterion: Content: Status (field_ercore_pb_status) */
-  $handler->display->display_options['filters']['field_ercore_pb_status_value']['id'] = 'field_ercore_pb_status_value';
-  $handler->display->display_options['filters']['field_ercore_pb_status_value']['table'] = 'field_data_field_ercore_pb_status';
-  $handler->display->display_options['filters']['field_ercore_pb_status_value']['field'] = 'field_ercore_pb_status_value';
-  $handler->display->display_options['filters']['field_ercore_pb_status_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_pb_status_value']['expose']['operator_id'] = 'field_ercore_pb_status_value_op';
-  $handler->display->display_options['filters']['field_ercore_pb_status_value']['expose']['label'] = 'Status';
-  $handler->display->display_options['filters']['field_ercore_pb_status_value']['expose']['operator'] = 'field_ercore_pb_status_value_op';
-  $handler->display->display_options['filters']['field_ercore_pb_status_value']['expose']['identifier'] = 'field_ercore_pb_status_value';
-  $handler->display->display_options['filters']['field_ercore_pb_status_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
+  $handler->display->display_options['filters']['field_ercore_pb_date_value']['operator'] = 'not empty';
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'count');
@@ -1248,6 +895,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = '160 Hour Criteria';
+  $handler->display->display_options['css_class'] = 'e-user-table ercore-view';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore admin content';
@@ -1499,7 +1147,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['header']['area_text_custom']['content'] = '<div class="tabs">
 <h2 class="element-invisible">Collaboration Links</h2>
-<ul class="tabs primary">
+<ul class="tabs primary tabs--primary nav nav-tabs">
 <li><a href="/ercore/views/collaboration">Collaborating Institutions - Participating</a></li>
 <li class="active"><a href="/ercore/views/collaboration/non-participating">Collaborating Institutions - Non-participating</a></li>
 </ul>
@@ -1622,7 +1270,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['header']['area_text_custom']['content'] = '<div class="tabs">
 <h2 class="element-invisible">Collaboration Links</h2>
-<ul class="tabs primary">
+<ul class="tabs primary tabs--primary nav nav-tabs">
 <li class="active"><a href="/ercore/views/collaboration">Collaborating Institutions - Participating</a></li>
 <li><a href="/ercore/views/collaboration/non-participating">Collaborating Institutions - Non-participating</a></li>
 </ul>
@@ -1700,6 +1348,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['path'] = 'ercore/views/collaboration';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Collaborating Institutions';
+  $handler->display->display_options['menu']['description'] = 'Divided by Participating and Non-participating.';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'ercore_admin_menu';
   $handler->display->display_options['menu']['context'] = 0;
@@ -1711,7 +1360,7 @@ function ercore_admin_views_default_views() {
   $view->description = '';
   $view->tag = 'ERCore, ERCore Adminstration, Participants';
   $view->base_table = 'users';
-  $view->human_name = 'ERCore: Exporting Participants';
+  $view->human_name = 'ERCore: Participants Exporting';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -1855,9 +1504,559 @@ function ercore_admin_views_default_views() {
   $views['ercore_exporting_participants'] = $view;
 
   $view = new view();
+  $view->name = 'ercore_export_table_b_data_objects';
+  $view->description = '';
+  $view->tag = 'ERCore, ERCore Administration, NSF Tables, Table B';
+  $view->base_table = 'users';
+  $view->human_name = 'ERCore: NSF Table B: Data Objects';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['hide_admin_links'] = TRUE;
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_ercore_us_sen_role',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['group']['element_type'] = 'span';
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 1;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'field_ercore_us_sen_role' => array(
+      'element_type' => '',
+      'class' => '',
+      'label_element_type' => '',
+      'label_class' => '',
+    ),
+    'uid' => array(
+      'element_type' => '',
+      'class' => '',
+      'label_element_type' => '',
+      'label_class' => '',
+    ),
+    'field_ercore_us_gender' => array(
+      'element_type' => '',
+      'class' => '',
+      'label_element_type' => '',
+      'label_class' => '',
+    ),
+    'field_ercore_us_gender_1' => array(
+      'element_type' => '',
+      'class' => '',
+      'label_element_type' => '',
+      'label_class' => '',
+    ),
+    'field_ercore_us_race' => array(
+      'element_type' => '',
+      'class' => '',
+      'label_element_type' => '',
+      'label_class' => '',
+    ),
+    'field_ercore_us_ethnicity' => array(
+      'element_type' => '',
+      'class' => '',
+      'label_element_type' => '',
+      'label_class' => '',
+    ),
+    'field_ercore_us_race_1' => array(
+      'element_type' => '',
+      'class' => '',
+      'label_element_type' => '',
+      'label_class' => '',
+    ),
+    'field_ercore_us_disabilities' => array(
+      'element_type' => '',
+      'class' => '',
+      'label_element_type' => '',
+      'label_class' => '',
+    ),
+    'view' => array(
+      'element_type' => '',
+      'class' => '',
+      'label_element_type' => '',
+      'label_class' => '',
+    ),
+  );
+  /* Field: User: Most Senior Project Role */
+  $handler->display->display_options['fields']['field_ercore_us_sen_role']['id'] = 'field_ercore_us_sen_role';
+  $handler->display->display_options['fields']['field_ercore_us_sen_role']['table'] = 'field_data_field_ercore_us_sen_role';
+  $handler->display->display_options['fields']['field_ercore_us_sen_role']['field'] = 'field_ercore_us_sen_role';
+  $handler->display->display_options['fields']['field_ercore_us_sen_role']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_us_sen_role']['element_label_colon'] = FALSE;
+  /* Field: Male (Gender) */
+  $handler->display->display_options['fields']['field_ercore_us_gender']['id'] = 'field_ercore_us_gender';
+  $handler->display->display_options['fields']['field_ercore_us_gender']['table'] = 'field_data_field_ercore_us_gender';
+  $handler->display->display_options['fields']['field_ercore_us_gender']['field'] = 'field_ercore_us_gender';
+  $handler->display->display_options['fields']['field_ercore_us_gender']['ui_name'] = 'Male (Gender)';
+  $handler->display->display_options['fields']['field_ercore_us_gender']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_us_gender']['element_label_colon'] = FALSE;
+  /* Field: User: Race */
+  $handler->display->display_options['fields']['field_ercore_us_race']['id'] = 'field_ercore_us_race';
+  $handler->display->display_options['fields']['field_ercore_us_race']['table'] = 'field_data_field_ercore_us_race';
+  $handler->display->display_options['fields']['field_ercore_us_race']['field'] = 'field_ercore_us_race';
+  $handler->display->display_options['fields']['field_ercore_us_race']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_us_race']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_us_race']['type'] = 'text_plain';
+  /* Field: User: Ethnicity */
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['id'] = 'field_ercore_us_ethnicity';
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['table'] = 'field_data_field_ercore_us_ethnicity';
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['field'] = 'field_ercore_us_ethnicity';
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['label'] = 'Hispanic';
+  /* Field: User: Disabilities */
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['id'] = 'field_ercore_us_disabilities';
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['table'] = 'field_data_field_ercore_us_disabilities';
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['field'] = 'field_ercore_us_disabilities';
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['type'] = 'text_plain';
+  /* Field: User: Hired Date */
+  $handler->display->display_options['fields']['field_ercore_us_hired_date']['id'] = 'field_ercore_us_hired_date';
+  $handler->display->display_options['fields']['field_ercore_us_hired_date']['table'] = 'field_data_field_ercore_us_hired_date';
+  $handler->display->display_options['fields']['field_ercore_us_hired_date']['field'] = 'field_ercore_us_hired_date';
+  $handler->display->display_options['fields']['field_ercore_us_hired_date']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_us_hired_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_us_hired_date']['settings'] = array(
+    'format_type' => 'ercore_date_format_filter',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: User: EPSCoR Management Team */
+  $handler->display->display_options['fields']['field_ercore_us_leadership_team']['id'] = 'field_ercore_us_leadership_team';
+  $handler->display->display_options['fields']['field_ercore_us_leadership_team']['table'] = 'field_data_field_ercore_us_leadership_team';
+  $handler->display->display_options['fields']['field_ercore_us_leadership_team']['field'] = 'field_ercore_us_leadership_team';
+  /* Sort criterion: User: Most Senior Project Role (field_ercore_us_sen_role) */
+  $handler->display->display_options['sorts']['field_ercore_us_sen_role_value']['id'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['sorts']['field_ercore_us_sen_role_value']['table'] = 'field_data_field_ercore_us_sen_role';
+  $handler->display->display_options['sorts']['field_ercore_us_sen_role_value']['field'] = 'field_ercore_us_sen_role_value';
+  /* Contextual filter: User: Participating Institutions (field_ercore_us_inst_ref) */
+  $handler->display->display_options['arguments']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
+  $handler->display->display_options['arguments']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
+  $handler->display->display_options['arguments']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
+  $handler->display->display_options['arguments']['field_ercore_us_inst_ref_target_id']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_ercore_us_inst_ref_target_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ercore_us_inst_ref_target_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ercore_us_inst_ref_target_id']['summary_options']['items_per_page'] = '25';
+  /* Contextual filter: Global: Null */
+  $handler->display->display_options['arguments']['null']['id'] = 'null';
+  $handler->display->display_options['arguments']['null']['table'] = 'views';
+  $handler->display->display_options['arguments']['null']['field'] = 'null';
+  $handler->display->display_options['arguments']['null']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['null']['default_argument_options']['argument'] = '2013-05--2014-05';
+  $handler->display->display_options['arguments']['null']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['null']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['null']['summary_options']['items_per_page'] = '25';
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: User: Most Senior Project Role (field_ercore_us_sen_role) */
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['id'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['table'] = 'field_data_field_ercore_us_sen_role';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['field'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['value'] = array(
+    6 => '6',
+    7 => '7',
+  );
+
+  /* Display: Data Export */
+  $handler = $view->new_display('panel_pane', 'Data Export', 'panel_pane_1');
+  $views['ercore_export_table_b_data_objects'] = $view;
+
+  $view = new view();
+  $view->name = 'ercore_export_table_b_institutions';
+  $view->description = '';
+  $view->tag = 'ERCore, ERCore Administration, NSF Tables, Table B';
+  $view->base_table = 'node';
+  $view->human_name = 'ERCore: NSF Table B: Institutions';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Participant Demographics by University';
+  $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['row']['class'] = 'institution-row';
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 1;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'title' => array(
+      'element_type' => 'h2',
+      'class' => '',
+    ),
+  );
+  /* Relationship: Required Users */
+  $handler->display->display_options['relationships']['reverse_field_ercore_us_inst_ref_user']['id'] = 'reverse_field_ercore_us_inst_ref_user';
+  $handler->display->display_options['relationships']['reverse_field_ercore_us_inst_ref_user']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_ercore_us_inst_ref_user']['field'] = 'reverse_field_ercore_us_inst_ref_user';
+  $handler->display->display_options['relationships']['reverse_field_ercore_us_inst_ref_user']['ui_name'] = 'Required Users';
+  $handler->display->display_options['relationships']['reverse_field_ercore_us_inst_ref_user']['label'] = 'Required Users';
+  $handler->display->display_options['relationships']['reverse_field_ercore_us_inst_ref_user']['required'] = TRUE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Contextual filter: Global: Null */
+  $handler->display->display_options['arguments']['null']['id'] = 'null';
+  $handler->display->display_options['arguments']['null']['table'] = 'views';
+  $handler->display->display_options['arguments']['null']['field'] = 'null';
+  $handler->display->display_options['arguments']['null']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['null']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['null']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['null']['summary_options']['items_per_page'] = '25';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'ercore_institution' => 'ercore_institution',
+  );
+
+  /* Display: Data Export */
+  $handler = $view->new_display('panel_pane', 'Data Export', 'panel_pane_1');
+  $views['ercore_export_table_b_institutions'] = $view;
+
+  $view = new view();
+  $view->name = 'ercore_export_table_b_totals';
+  $view->description = '';
+  $view->tag = 'ERCore, ERCore Administration, NSF Tables, Table B';
+  $view->base_table = 'users';
+  $view->human_name = 'ERCore: NSF Table B: Totals';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'access ercore admin content';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_ercore_us_sen_role' => 'field_ercore_us_sen_role',
+    'field_user_name' => 'field_user_name',
+    'uid' => 'uid',
+    'field_ercore_us_gender' => 'field_ercore_us_gender',
+    'field_ercore_us_gender_1' => 'field_ercore_us_gender_1',
+    'field_ercore_us_race' => 'field_ercore_us_race',
+    'field_ercore_us_ethnicity' => 'field_ercore_us_ethnicity',
+    'field_ercore_us_race_1' => 'field_ercore_us_race_1',
+    'field_ercore_us_disabilities' => 'field_ercore_us_disabilities',
+    'field_ercore_us_hired_date' => 'field_ercore_us_hired_date',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_ercore_us_sen_role' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_user_name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'uid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_us_gender' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_us_gender_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_us_race' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_us_ethnicity' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_us_race_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_us_disabilities' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_us_hired_date' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* Field: User: Most Senior Project Role */
+  $handler->display->display_options['fields']['field_ercore_us_sen_role']['id'] = 'field_ercore_us_sen_role';
+  $handler->display->display_options['fields']['field_ercore_us_sen_role']['table'] = 'field_data_field_ercore_us_sen_role';
+  $handler->display->display_options['fields']['field_ercore_us_sen_role']['field'] = 'field_ercore_us_sen_role';
+  $handler->display->display_options['fields']['field_ercore_us_sen_role']['label'] = 'Senior Project Role';
+  $handler->display->display_options['fields']['field_ercore_us_sen_role']['element_label_colon'] = FALSE;
+  /* Field: User: User Name */
+  $handler->display->display_options['fields']['field_user_name']['id'] = 'field_user_name';
+  $handler->display->display_options['fields']['field_user_name']['table'] = 'field_data_field_user_name';
+  $handler->display->display_options['fields']['field_user_name']['field'] = 'field_user_name';
+  $handler->display->display_options['fields']['field_user_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_name']['click_sort_column'] = 'title';
+  $handler->display->display_options['fields']['field_user_name']['settings'] = array(
+    'format' => 'short_full',
+    'markup' => 0,
+    'output' => 'plain',
+    'multiple' => 'default',
+    'multiple_delimiter' => ', ',
+    'multiple_and' => 'text',
+    'multiple_delimiter_precedes_last' => 'never',
+    'multiple_el_al_min' => '3',
+    'multiple_el_al_first' => '1',
+  );
+  /* Field: Total Counted (uid) */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['ui_name'] = 'Total Counted (uid)';
+  $handler->display->display_options['fields']['uid']['label'] = 'Total Individuals';
+  $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
+  /* Field: Male (Gender) */
+  $handler->display->display_options['fields']['field_ercore_us_gender']['id'] = 'field_ercore_us_gender';
+  $handler->display->display_options['fields']['field_ercore_us_gender']['table'] = 'field_data_field_ercore_us_gender';
+  $handler->display->display_options['fields']['field_ercore_us_gender']['field'] = 'field_ercore_us_gender';
+  $handler->display->display_options['fields']['field_ercore_us_gender']['ui_name'] = 'Male (Gender)';
+  $handler->display->display_options['fields']['field_ercore_us_gender']['label'] = 'Male';
+  $handler->display->display_options['fields']['field_ercore_us_gender']['element_label_colon'] = FALSE;
+  /* Field: Female (Gender) */
+  $handler->display->display_options['fields']['field_ercore_us_gender_1']['id'] = 'field_ercore_us_gender_1';
+  $handler->display->display_options['fields']['field_ercore_us_gender_1']['table'] = 'field_data_field_ercore_us_gender';
+  $handler->display->display_options['fields']['field_ercore_us_gender_1']['field'] = 'field_ercore_us_gender';
+  $handler->display->display_options['fields']['field_ercore_us_gender_1']['ui_name'] = 'Female (Gender)';
+  $handler->display->display_options['fields']['field_ercore_us_gender_1']['label'] = 'Female';
+  $handler->display->display_options['fields']['field_ercore_us_gender_1']['element_label_colon'] = FALSE;
+  /* Field: User: Race */
+  $handler->display->display_options['fields']['field_ercore_us_race']['id'] = 'field_ercore_us_race';
+  $handler->display->display_options['fields']['field_ercore_us_race']['table'] = 'field_data_field_ercore_us_race';
+  $handler->display->display_options['fields']['field_ercore_us_race']['field'] = 'field_ercore_us_race';
+  $handler->display->display_options['fields']['field_ercore_us_race']['label'] = 'Black or African American';
+  $handler->display->display_options['fields']['field_ercore_us_race']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_us_race']['alter']['text'] = '1';
+  $handler->display->display_options['fields']['field_ercore_us_race']['empty'] = '0';
+  $handler->display->display_options['fields']['field_ercore_us_race']['type'] = 'text_plain';
+  /* Field: User: Ethnicity */
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['id'] = 'field_ercore_us_ethnicity';
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['table'] = 'field_data_field_ercore_us_ethnicity';
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['field'] = 'field_ercore_us_ethnicity';
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['label'] = 'Hispanic';
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['alter']['text'] = '1';
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['empty'] = '0';
+  /* Field: User: Race */
+  $handler->display->display_options['fields']['field_ercore_us_race_1']['id'] = 'field_ercore_us_race_1';
+  $handler->display->display_options['fields']['field_ercore_us_race_1']['table'] = 'field_data_field_ercore_us_race';
+  $handler->display->display_options['fields']['field_ercore_us_race_1']['field'] = 'field_ercore_us_race';
+  $handler->display->display_options['fields']['field_ercore_us_race_1']['label'] = 'Other Ethnic';
+  $handler->display->display_options['fields']['field_ercore_us_race_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_us_race_1']['alter']['text'] = '1';
+  $handler->display->display_options['fields']['field_ercore_us_race_1']['empty'] = '0';
+  $handler->display->display_options['fields']['field_ercore_us_race_1']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_us_race_1']['type'] = 'text_plain';
+  /* Field: User: Disabilities */
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['id'] = 'field_ercore_us_disabilities';
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['table'] = 'field_data_field_ercore_us_disabilities';
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['field'] = 'field_ercore_us_disabilities';
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['alter']['text'] = '1';
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['empty'] = '0';
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['type'] = 'text_plain';
+  /* Field: User: Hired Date */
+  $handler->display->display_options['fields']['field_ercore_us_hired_date']['id'] = 'field_ercore_us_hired_date';
+  $handler->display->display_options['fields']['field_ercore_us_hired_date']['table'] = 'field_data_field_ercore_us_hired_date';
+  $handler->display->display_options['fields']['field_ercore_us_hired_date']['field'] = 'field_ercore_us_hired_date';
+  $handler->display->display_options['fields']['field_ercore_us_hired_date']['settings'] = array(
+    'format_type' => 'ercore_date_format_filter',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: User: EPSCoR Management Team */
+  $handler->display->display_options['fields']['field_ercore_us_leadership_team']['id'] = 'field_ercore_us_leadership_team';
+  $handler->display->display_options['fields']['field_ercore_us_leadership_team']['table'] = 'field_data_field_ercore_us_leadership_team';
+  $handler->display->display_options['fields']['field_ercore_us_leadership_team']['field'] = 'field_ercore_us_leadership_team';
+  /* Sort criterion: User: Most Senior Project Role (field_ercore_us_sen_role) */
+  $handler->display->display_options['sorts']['field_ercore_us_sen_role_value']['id'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['sorts']['field_ercore_us_sen_role_value']['table'] = 'field_data_field_ercore_us_sen_role';
+  $handler->display->display_options['sorts']['field_ercore_us_sen_role_value']['field'] = 'field_ercore_us_sen_role_value';
+  /* Contextual filter: Global: Null */
+  $handler->display->display_options['arguments']['null']['id'] = 'null';
+  $handler->display->display_options['arguments']['null']['table'] = 'views';
+  $handler->display->display_options['arguments']['null']['field'] = 'null';
+  $handler->display->display_options['arguments']['null']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['null']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['null']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['null']['summary_options']['items_per_page'] = '25';
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: User: Most Senior Project Role (field_ercore_us_sen_role) */
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['id'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['table'] = 'field_data_field_ercore_us_sen_role';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['field'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['operator'] = 'not empty';
+  /* Filter criterion: User: Most Senior Project Role (field_ercore_us_sen_role) */
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value_1']['id'] = 'field_ercore_us_sen_role_value_1';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value_1']['table'] = 'field_data_field_ercore_us_sen_role';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value_1']['field'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value_1']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value_1']['value'] = array(
+    6 => '6',
+    7 => '7',
+  );
+  /* Filter criterion: User: EPSCoR Management Team (field_ercore_us_leadership_team) */
+  $handler->display->display_options['filters']['field_ercore_us_leadership_team_value']['id'] = 'field_ercore_us_leadership_team_value';
+  $handler->display->display_options['filters']['field_ercore_us_leadership_team_value']['table'] = 'field_data_field_ercore_us_leadership_team';
+  $handler->display->display_options['filters']['field_ercore_us_leadership_team_value']['field'] = 'field_ercore_us_leadership_team_value';
+  $handler->display->display_options['filters']['field_ercore_us_leadership_team_value']['value'] = array(
+    1 => '1',
+  );
+
+  /* Display: Data Export Leadership */
+  $handler = $view->new_display('panel_pane', 'Data Export Leadership', 'panel_pane_1');
+  $handler->display->display_options['enabled'] = FALSE;
+
+  /* Display: Data Export Boards */
+  $handler = $view->new_display('panel_pane', 'Data Export Boards', 'panel_pane_2');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: User: Most Senior Project Role (field_ercore_us_sen_role) */
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['id'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['table'] = 'field_data_field_ercore_us_sen_role';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['field'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['operator'] = 'not empty';
+  /* Filter criterion: User: Most Senior Project Role (field_ercore_us_sen_role) */
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value_1']['id'] = 'field_ercore_us_sen_role_value_1';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value_1']['table'] = 'field_data_field_ercore_us_sen_role';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value_1']['field'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value_1']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value_1']['value'] = array(
+    6 => '6',
+    7 => '7',
+  );
+  /* Filter criterion: User: Boards &amp; Committees (field_ercore_us_committees) */
+  $handler->display->display_options['filters']['field_ercore_us_committees_value']['id'] = 'field_ercore_us_committees_value';
+  $handler->display->display_options['filters']['field_ercore_us_committees_value']['table'] = 'field_data_field_ercore_us_committees';
+  $handler->display->display_options['filters']['field_ercore_us_committees_value']['field'] = 'field_ercore_us_committees_value';
+  $handler->display->display_options['filters']['field_ercore_us_committees_value']['operator'] = 'not empty';
+  $views['ercore_export_table_b_totals'] = $view;
+
+  $view = new view();
   $view->name = 'ercore_external_engagements_information';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'ERCore, External Engagement';
   $view->base_table = 'node';
   $view->human_name = 'ERCore: External Engagements - Information';
   $view->core = 7;
@@ -1867,9 +2066,10 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'ERCore: External Engagements Information';
+  $handler->display->display_options['css_class'] = 'ercore-view';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'access er admin content';
+  $handler->display->display_options['access']['perm'] = 'access ercore admin content';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -1940,6 +2140,8 @@ function ercore_admin_views_default_views() {
     'show_remaining_days' => 0,
     'show_repeat_rule' => 'show',
   );
+  $handler->display->display_options['fields']['field_ercore_ev_date']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_ercore_ev_date']['separator'] = '';
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
@@ -1954,7 +2156,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['exposed'] = TRUE;
   $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
-  $handler->display->display_options['filters']['status']['expose']['label'] = 'Events Published to Calendar';
+  $handler->display->display_options['filters']['status']['expose']['label'] = 'Published Events';
   $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
   $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
   $handler->display->display_options['filters']['status']['expose']['required'] = TRUE;
@@ -1965,6 +2167,7 @@ function ercore_admin_views_default_views() {
     5 => 0,
     6 => 0,
     7 => 0,
+    8 => 0,
     3 => 0,
   );
   /* Filter criterion: Content: Type */
@@ -2226,7 +2429,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['title'] = 'Participants with Incomplete Profiles';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'access user profiles';
+  $handler->display->display_options['access']['perm'] = 'access ercore admin content';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -2264,6 +2467,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
   $handler->display->display_options['header']['area']['content'] = '<p>This view includes those users with "Faculty" and "Student" role selected</p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* No results behavior: Global: Text area */
@@ -2271,7 +2475,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'All existing Student and Faculty profiles are complete.';
+  $handler->display->display_options['empty']['area']['content'] = 'All existing Student and Faculty profiles are associated with a participating institution.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
@@ -2357,9 +2561,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'ercore_summary_collaboration';
   $view->description = '';
-  $view->tag = 'ERCore, Collaboration';
+  $view->tag = 'ERCore, ERCore Summary, Collaboration';
   $view->base_table = 'node';
-  $view->human_name = 'ERCore: Summary of Collaborations';
+  $view->human_name = 'ERCore: Summary: Collaborations';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -2367,12 +2571,13 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Collaborations';
-  $handler->display->display_options['css_class'] = 'ercore-summary-page collaborations-page';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page collaborations-page ercore-view';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '15';
@@ -2515,20 +2720,15 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore excel sheets';
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
+  $handler->display->display_options['style_options']['attach_text'] = 'Download Collaborations Summary';
   $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['filename'] = '%view.xls';
   $handler->display->display_options['style_options']['parent_sort'] = 0;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Global: View result counter */
-  $handler->display->display_options['fields']['counter']['id'] = 'counter';
-  $handler->display->display_options['fields']['counter']['table'] = 'views';
-  $handler->display->display_options['fields']['counter']['field'] = 'counter';
-  $handler->display->display_options['fields']['counter']['label'] = '#';
-  $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
-  $handler->display->display_options['fields']['counter']['reverse'] = 0;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -2539,6 +2739,35 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Collaboration Dates */
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['id'] = 'field_ercore_cn_dates';
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['table'] = 'field_data_field_ercore_cn_dates';
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['field'] = 'field_ercore_cn_dates';
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = 'Abstract or Short Description';
+  /* Field: Field: Project Team */
+  $handler->display->display_options['fields']['field_ercore_programs']['id'] = 'field_ercore_programs';
+  $handler->display->display_options['fields']['field_ercore_programs']['table'] = 'field_data_field_ercore_programs';
+  $handler->display->display_options['fields']['field_ercore_programs']['field'] = 'field_ercore_programs';
+  $handler->display->display_options['fields']['field_ercore_programs']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_programs']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_ercore_programs']['delta_offset'] = '0';
   /* Field: Content: EPSCoR Organizer(s) */
   $handler->display->display_options['fields']['field_ercore_organizer']['id'] = 'field_ercore_organizer';
   $handler->display->display_options['fields']['field_ercore_organizer']['table'] = 'field_data_field_ercore_organizer';
@@ -2546,17 +2775,35 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_organizer']['label'] = 'Collaborators';
   $handler->display->display_options['fields']['field_ercore_organizer']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['field_ercore_organizer']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_organizer']['type'] = 'entityreference_entity_view';
   $handler->display->display_options['fields']['field_ercore_organizer']['settings'] = array(
-    'view_mode' => 'user_institution',
-    'links' => 0,
+    'link' => 0,
   );
   $handler->display->display_options['fields']['field_ercore_organizer']['delta_offset'] = '0';
-  /* Field: Content: Body */
-  $handler->display->display_options['fields']['body']['id'] = 'body';
-  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
-  $handler->display->display_options['fields']['body']['field'] = 'body';
-  $handler->display->display_options['fields']['body']['label'] = 'Abstract or Short Description';
+  /* Field: Content: EPSCoR Organizer(s) */
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['id'] = 'field_ercore_organizer_1';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['table'] = 'field_data_field_ercore_organizer';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['field'] = 'field_ercore_organizer';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['label'] = 'Institution(s)';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['type'] = 'entityreference_entity_view';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['settings'] = array(
+    'view_mode' => 'institution',
+    'links' => 0,
+  );
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['delta_offset'] = '0';
+  /* Field: Content: External Collaborators */
+  $handler->display->display_options['fields']['field_ercore_cn_collaborator']['id'] = 'field_ercore_cn_collaborator';
+  $handler->display->display_options['fields']['field_ercore_cn_collaborator']['table'] = 'field_data_field_ercore_cn_collaborator';
+  $handler->display->display_options['fields']['field_ercore_cn_collaborator']['field'] = 'field_ercore_cn_collaborator';
+  $handler->display->display_options['fields']['field_ercore_cn_collaborator']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_cn_collaborator']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_cn_collaborator']['type'] = 'field_collection_fields';
+  $handler->display->display_options['fields']['field_ercore_cn_collaborator']['settings'] = array(
+    'view_mode' => 'simplified',
+  );
+  $handler->display->display_options['fields']['field_ercore_cn_collaborator']['delta_offset'] = '0';
   $handler->display->display_options['path'] = 'collaborations/download';
   $handler->display->display_options['displays'] = array(
     'default' => 'default',
@@ -2567,9 +2814,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'ercore_summary_collaborators';
   $view->description = '';
-  $view->tag = 'ERCore, Collaboration';
+  $view->tag = 'ERCore, ERCore Summary, Collaboration';
   $view->base_table = 'node';
-  $view->human_name = 'ERCore: Summary of Collaborators';
+  $view->human_name = 'ERCore: Summary: Collaborators';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -2577,7 +2824,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'External Collaborators';
-  $handler->display->display_options['css_class'] = 'ercore-summary-page collaborators-page';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page collaborators-page ercore-view';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
@@ -2592,25 +2839,25 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'semanticviews_default';
   $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
   $handler->display->display_options['style_options']['row']['element_type'] = 'li';
-  $handler->display->display_options['style_options']['row']['class'] = 'list-row';
+  $handler->display->display_options['style_options']['row']['class'] = 'list-row person';
   $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
   $handler->display->display_options['row_options']['skip_blank'] = 1;
   $handler->display->display_options['row_options']['semantic_html'] = array(
     'field_ercore_cr_name' => array(
       'element_type' => 'span',
-      'class' => 'collaborator-name',
+      'class' => 'name',
     ),
     'title' => array(
       'element_type' => 'span',
-      'class' => 'collaboration-title',
+      'class' => 'title',
     ),
     'field_ercore_cr_inst_ref' => array(
       'element_type' => 'span',
-      'class' => 'collaborator-institution',
+      'class' => 'institution',
     ),
     'field_ercore_cr_dpt' => array(
       'element_type' => 'span',
-      'class' => 'collaborator-department',
+      'class' => 'department',
     ),
   );
   /* No results behavior: Global: Text area */
@@ -2632,12 +2879,16 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_cr_name']['field'] = 'field_ercore_cr_name';
   $handler->display->display_options['fields']['field_ercore_cr_name']['relationship'] = 'field_ercore_cn_collaborator_value';
   $handler->display->display_options['fields']['field_ercore_cr_name']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_cr_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_cr_name']['alter']['text'] = '[field_ercore_cr_name]: ';
   $handler->display->display_options['fields']['field_ercore_cr_name']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[title]: ';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
@@ -2657,7 +2908,10 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_cr_dpt']['field'] = 'field_ercore_cr_dpt';
   $handler->display->display_options['fields']['field_ercore_cr_dpt']['relationship'] = 'field_ercore_cn_collaborator_value';
   $handler->display->display_options['fields']['field_ercore_cr_dpt']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_cr_dpt']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_cr_dpt']['alter']['text'] = ' - [field_ercore_cr_dpt]';
   $handler->display->display_options['fields']['field_ercore_cr_dpt']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_cr_dpt']['hide_empty'] = TRUE;
   /* Sort criterion: Field collection item: Institution/Organization (field_ercore_cr_inst_ref) */
   $handler->display->display_options['sorts']['field_ercore_cr_inst_ref_target_id']['id'] = 'field_ercore_cr_inst_ref_target_id';
   $handler->display->display_options['sorts']['field_ercore_cr_inst_ref_target_id']['table'] = 'field_data_field_ercore_cr_inst_ref';
@@ -2711,7 +2965,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['relationship'] = 'field_ercore_cn_collaborator_value';
   $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['expose']['operator_id'] = 'field_ercore_cr_inst_ref_target_id_op';
-  $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['expose']['label'] = 'Institution/Organization';
+  $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['expose']['label'] = 'Institution';
   $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['expose']['operator'] = 'field_ercore_cr_inst_ref_target_id_op';
   $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['expose']['identifier'] = 'field_ercore_cr_inst_ref_target_id';
   $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['expose']['remember_roles'] = array(
@@ -2741,18 +2995,13 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['access']['perm'] = 'access ercore excel sheets';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
+  $handler->display->display_options['style_options']['attach_text'] = 'Download Collaborators Summary';
   $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['filename'] = '%view.xls';
   $handler->display->display_options['style_options']['parent_sort'] = 0;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Global: View result counter */
-  $handler->display->display_options['fields']['counter']['id'] = 'counter';
-  $handler->display->display_options['fields']['counter']['table'] = 'views';
-  $handler->display->display_options['fields']['counter']['field'] = 'counter';
-  $handler->display->display_options['fields']['counter']['label'] = '#';
-  $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -2766,6 +3015,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: EPSCoR Organizer(s) */
   $handler->display->display_options['fields']['field_ercore_organizer']['id'] = 'field_ercore_organizer';
   $handler->display->display_options['fields']['field_ercore_organizer']['table'] = 'field_data_field_ercore_organizer';
@@ -2775,38 +3025,30 @@ function ercore_admin_views_default_views() {
     'link' => 0,
   );
   $handler->display->display_options['fields']['field_ercore_organizer']['delta_offset'] = '0';
-  /* Field: Field collection item: Department */
-  $handler->display->display_options['fields']['field_ercore_cr_dpt']['id'] = 'field_ercore_cr_dpt';
-  $handler->display->display_options['fields']['field_ercore_cr_dpt']['table'] = 'field_data_field_ercore_cr_dpt';
-  $handler->display->display_options['fields']['field_ercore_cr_dpt']['field'] = 'field_ercore_cr_dpt';
-  $handler->display->display_options['fields']['field_ercore_cr_dpt']['relationship'] = 'field_ercore_cn_collaborator_value';
-  $handler->display->display_options['fields']['field_ercore_cr_dpt']['label'] = '';
-  $handler->display->display_options['fields']['field_ercore_cr_dpt']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_cr_dpt']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_cr_dpt']['alter']['text'] = ', [field_ercore_cr_dpt] ';
-  $handler->display->display_options['fields']['field_ercore_cr_dpt']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_cr_dpt']['hide_empty'] = TRUE;
-  /* Field: Field collection item: Institution/Organization */
-  $handler->display->display_options['fields']['field_ercore_cr_inst_ref']['id'] = 'field_ercore_cr_inst_ref';
-  $handler->display->display_options['fields']['field_ercore_cr_inst_ref']['table'] = 'field_data_field_ercore_cr_inst_ref';
-  $handler->display->display_options['fields']['field_ercore_cr_inst_ref']['field'] = 'field_ercore_cr_inst_ref';
-  $handler->display->display_options['fields']['field_ercore_cr_inst_ref']['relationship'] = 'field_ercore_cn_collaborator_value';
-  $handler->display->display_options['fields']['field_ercore_cr_inst_ref']['label'] = '';
-  $handler->display->display_options['fields']['field_ercore_cr_inst_ref']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_cr_inst_ref']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_cr_inst_ref']['alter']['text'] = '[field_ercore_cr_inst_ref][field_ercore_cr_dpt] ';
-  $handler->display->display_options['fields']['field_ercore_cr_inst_ref']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_cr_inst_ref']['settings'] = array(
-    'link' => 0,
-  );
   /* Field: Field collection item: Name of Collaborating Individual */
   $handler->display->display_options['fields']['field_ercore_cr_name']['id'] = 'field_ercore_cr_name';
   $handler->display->display_options['fields']['field_ercore_cr_name']['table'] = 'field_data_field_ercore_cr_name';
   $handler->display->display_options['fields']['field_ercore_cr_name']['field'] = 'field_ercore_cr_name';
   $handler->display->display_options['fields']['field_ercore_cr_name']['relationship'] = 'field_ercore_cn_collaborator_value';
   $handler->display->display_options['fields']['field_ercore_cr_name']['label'] = 'Collaborating Individual';
-  $handler->display->display_options['fields']['field_ercore_cr_name']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_cr_name']['alter']['text'] = '[field_ercore_cr_name], [field_ercore_cr_inst_ref]';
+  $handler->display->display_options['fields']['field_ercore_cr_name']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: Institution/Organization */
+  $handler->display->display_options['fields']['field_ercore_cr_inst_ref']['id'] = 'field_ercore_cr_inst_ref';
+  $handler->display->display_options['fields']['field_ercore_cr_inst_ref']['table'] = 'field_data_field_ercore_cr_inst_ref';
+  $handler->display->display_options['fields']['field_ercore_cr_inst_ref']['field'] = 'field_ercore_cr_inst_ref';
+  $handler->display->display_options['fields']['field_ercore_cr_inst_ref']['relationship'] = 'field_ercore_cn_collaborator_value';
+  $handler->display->display_options['fields']['field_ercore_cr_inst_ref']['label'] = 'Collaborating Institution';
+  $handler->display->display_options['fields']['field_ercore_cr_inst_ref']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_cr_inst_ref']['settings'] = array(
+    'link' => 0,
+  );
+  /* Field: Field collection item: Department */
+  $handler->display->display_options['fields']['field_ercore_cr_dpt']['id'] = 'field_ercore_cr_dpt';
+  $handler->display->display_options['fields']['field_ercore_cr_dpt']['table'] = 'field_data_field_ercore_cr_dpt';
+  $handler->display->display_options['fields']['field_ercore_cr_dpt']['field'] = 'field_ercore_cr_dpt';
+  $handler->display->display_options['fields']['field_ercore_cr_dpt']['relationship'] = 'field_ercore_cn_collaborator_value';
+  $handler->display->display_options['fields']['field_ercore_cr_dpt']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_cr_dpt']['hide_empty'] = TRUE;
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
@@ -2816,6 +3058,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_cn_dates']['id'] = 'field_ercore_cn_dates';
   $handler->display->display_options['fields']['field_ercore_cn_dates']['table'] = 'field_data_field_ercore_cn_dates';
   $handler->display->display_options['fields']['field_ercore_cn_dates']['field'] = 'field_ercore_cn_dates';
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_ercore_cn_dates']['settings'] = array(
     'format_type' => 'ercore_date_format_month_day_year',
     'fromto' => 'both',
@@ -2835,9 +3078,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'ercore_summary_engagement';
   $view->description = '';
-  $view->tag = 'ERCore, Engagements';
+  $view->tag = 'ERCore, ERCore Summary, Engagements';
   $view->base_table = 'node';
-  $view->human_name = 'ERCore: Summary of External Engagements';
+  $view->human_name = 'ERCore: Summary: External Engagements';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -2845,7 +3088,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'External Engagements';
-  $handler->display->display_options['css_class'] = 'ercore-summary-page engagements-page';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page engagements-page ercore-view';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
@@ -3017,29 +3260,25 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['access']['perm'] = 'access ercore excel sheets';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
+  $handler->display->display_options['style_options']['attach_text'] = 'Download External Engagements Summary';
   $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['filename'] = '%view.xls';
   $handler->display->display_options['style_options']['parent_sort'] = 0;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Global: View result counter */
-  $handler->display->display_options['fields']['counter']['id'] = 'counter';
-  $handler->display->display_options['fields']['counter']['table'] = 'views';
-  $handler->display->display_options['fields']['counter']['field'] = 'counter';
-  $handler->display->display_options['fields']['counter']['label'] = '#';
-  $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['label'] = 'Node ID';
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
@@ -3050,6 +3289,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_ev_date']['table'] = 'field_data_field_ercore_ev_date';
   $handler->display->display_options['fields']['field_ercore_ev_date']['field'] = 'field_ercore_ev_date';
   $handler->display->display_options['fields']['field_ercore_ev_date']['label'] = 'Event Start Date';
+  $handler->display->display_options['fields']['field_ercore_ev_date']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_ercore_ev_date']['settings'] = array(
     'format_type' => 'short',
     'fromto' => 'value',
@@ -3059,11 +3299,13 @@ function ercore_admin_views_default_views() {
     'show_remaining_days' => 0,
     'show_repeat_rule' => 'show',
   );
+  $handler->display->display_options['fields']['field_ercore_ev_date']['delta_offset'] = '0';
   /* Field: Content: Date */
   $handler->display->display_options['fields']['field_ercore_ev_date_1']['id'] = 'field_ercore_ev_date_1';
   $handler->display->display_options['fields']['field_ercore_ev_date_1']['table'] = 'field_data_field_ercore_ev_date';
   $handler->display->display_options['fields']['field_ercore_ev_date_1']['field'] = 'field_ercore_ev_date';
   $handler->display->display_options['fields']['field_ercore_ev_date_1']['label'] = 'Event End Date';
+  $handler->display->display_options['fields']['field_ercore_ev_date_1']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_ercore_ev_date_1']['settings'] = array(
     'format_type' => 'short',
     'fromto' => 'value2',
@@ -3073,6 +3315,7 @@ function ercore_admin_views_default_views() {
     'show_remaining_days' => 0,
     'show_repeat_rule' => 'show',
   );
+  $handler->display->display_options['fields']['field_ercore_ev_date_1']['delta_offset'] = '0';
   /* Field: Field collection item: ARI: Faculty - Female */
   $handler->display->display_options['fields']['field_ercore_ee_ari_fac_f']['id'] = 'field_ercore_ee_ari_fac_f';
   $handler->display->display_options['fields']['field_ercore_ee_ari_fac_f']['table'] = 'field_data_field_ercore_ee_ari_fac_f';
@@ -3088,10 +3331,10 @@ function ercore_admin_views_default_views() {
     'prefix_suffix' => 1,
   );
   /* Field: Field collection item: ARI: Faculty - Total */
-  $handler->display->display_options['fields']['field_ercore_ari_fac_t']['id'] = 'field_ercore_ari_fac_t';
-  $handler->display->display_options['fields']['field_ercore_ari_fac_t']['table'] = 'field_data_field_ercore_ari_fac_t';
-  $handler->display->display_options['fields']['field_ercore_ari_fac_t']['field'] = 'field_ercore_ari_fac_t';
-  $handler->display->display_options['fields']['field_ercore_ari_fac_t']['relationship'] = 'field_ercore_ev_engagement_value';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_t']['id'] = 'field_ercore_ee_ari_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_t']['table'] = 'field_data_field_ercore_ee_ari_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_t']['field'] = 'field_ercore_ee_ari_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_t']['relationship'] = 'field_ercore_ev_engagement_value';
   /* Field: Field collection item: ARI: Faculty - Undeclared */
   $handler->display->display_options['fields']['field_ercore_ee_ari_fac_u']['id'] = 'field_ercore_ee_ari_fac_u';
   $handler->display->display_options['fields']['field_ercore_ee_ari_fac_u']['table'] = 'field_data_field_ercore_ee_ari_fac_u';
@@ -3521,9 +3764,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'ercore_summary_event';
   $view->description = '';
-  $view->tag = 'ERCore, Events';
+  $view->tag = 'ERCore, ERCore Summary, Events';
   $view->base_table = 'node';
-  $view->human_name = 'ERCore: Summary of Events';
+  $view->human_name = 'ERCore: Summary: Events';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -3531,7 +3774,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Calendar Events';
-  $handler->display->display_options['css_class'] = 'ercore-summary-page events-page';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page events-page ercore-view';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
@@ -3581,13 +3824,6 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['ui_name'] = 'Event to User';
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['label'] = 'Event to User';
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['required'] = TRUE;
-  /* Relationship: User to Institution */
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['relationship'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['ui_name'] = 'User to Institution';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['label'] = 'User to Institution';
   /* Field: Global: View result counter */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';
   $handler->display->display_options['fields']['counter']['table'] = 'views';
@@ -3705,8 +3941,10 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['access']['perm'] = 'access ercore excel sheets';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
+  $handler->display->display_options['style_options']['attach_text'] = 'Download Events Summary';
   $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['filename'] = '%view.xls';
   $handler->display->display_options['style_options']['parent_sort'] = 0;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -3722,11 +3960,23 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Body */
-  $handler->display->display_options['fields']['body']['id'] = 'body';
-  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
-  $handler->display->display_options['fields']['body']['field'] = 'body';
-  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_ercore_ev_date']['id'] = 'field_ercore_ev_date';
+  $handler->display->display_options['fields']['field_ercore_ev_date']['table'] = 'field_data_field_ercore_ev_date';
+  $handler->display->display_options['fields']['field_ercore_ev_date']['field'] = 'field_ercore_ev_date';
+  $handler->display->display_options['fields']['field_ercore_ev_date']['label'] = 'Date(s)';
+  $handler->display->display_options['fields']['field_ercore_ev_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_ev_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'hide',
+  );
+  $handler->display->display_options['fields']['field_ercore_ev_date']['delta_offset'] = '0';
   /* Field: Content: EPSCoR Organizer(s) */
   $handler->display->display_options['fields']['field_ercore_organizer']['id'] = 'field_ercore_organizer';
   $handler->display->display_options['fields']['field_ercore_organizer']['table'] = 'field_data_field_ercore_organizer';
@@ -3736,6 +3986,31 @@ function ercore_admin_views_default_views() {
     'link' => 0,
   );
   $handler->display->display_options['fields']['field_ercore_organizer']['delta_offset'] = '0';
+  /* Field: Content: EPSCoR Organizer(s) */
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['id'] = 'field_ercore_organizer_1';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['table'] = 'field_data_field_ercore_organizer';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['field'] = 'field_ercore_organizer';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['label'] = 'Institution(s)';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['type'] = 'entityreference_entity_view';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['settings'] = array(
+    'view_mode' => 'institution',
+    'links' => 0,
+  );
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['delta_offset'] = '0';
+  /* Field: Content: Event Type */
+  $handler->display->display_options['fields']['field_ercore_ev_type']['id'] = 'field_ercore_ev_type';
+  $handler->display->display_options['fields']['field_ercore_ev_type']['table'] = 'field_data_field_ercore_ev_type';
+  $handler->display->display_options['fields']['field_ercore_ev_type']['field'] = 'field_ercore_ev_type';
+  $handler->display->display_options['fields']['field_ercore_ev_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ev_type']['type'] = 'select_or_other_formatter';
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['path'] = 'calendar/download';
   $handler->display->display_options['displays'] = array(
     'default' => 'default',
@@ -3746,9 +4021,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'ercore_summary_highlights';
   $view->description = '';
-  $view->tag = 'ERCore, Highlights';
+  $view->tag = 'ERCore, ERCore Summary, Highlights';
   $view->base_table = 'node';
-  $view->human_name = 'ERCore: Summary of Highlights';
+  $view->human_name = 'ERCore: Summary: Highlights';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -3756,7 +4031,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Highlights';
-  $handler->display->display_options['css_class'] = 'ercore-summary-page highlights-page';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page highlights-page ercore-view';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
@@ -3788,7 +4063,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['empty']['area_1']['table'] = 'views';
   $handler->display->display_options['empty']['area_1']['field'] = 'area';
   $handler->display->display_options['empty']['area_1']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area_1']['content'] = 'No Highlights have been created. <a href="/node/add/ercore-highlight/">Create a highlight</a>?';
+  $handler->display->display_options['empty']['area_1']['content'] = 'No Highlights have been created. <a href="/node/add/ercore-j-highlight/">Create a highlight</a>?';
   $handler->display->display_options['empty']['area_1']['format'] = 'filtered_html';
   /* Relationship: Highlight to User */
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['id'] = 'field_ercore_organizer_target_id';
@@ -3797,14 +4072,6 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['ui_name'] = 'Highlight to User';
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['label'] = 'Highlight to User';
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['required'] = TRUE;
-  /* Relationship: User to Institution */
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['relationship'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['ui_name'] = 'User to Institution';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['label'] = 'User to Institution';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['required'] = TRUE;
   /* Field: Global: View result counter */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';
   $handler->display->display_options['fields']['counter']['table'] = 'views';
@@ -3899,19 +4166,29 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore excel sheets';
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
+  $handler->display->display_options['style_options']['attach_text'] = 'Download Highlights Summary';
   $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['filename'] = '%view.xls';
   $handler->display->display_options['style_options']['parent_sort'] = 0;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = 'Node ID';
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: EPSCoR Organizer(s) */
   $handler->display->display_options['fields']['field_ercore_organizer']['id'] = 'field_ercore_organizer';
   $handler->display->display_options['fields']['field_ercore_organizer']['table'] = 'field_data_field_ercore_organizer';
@@ -3930,7 +4207,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_ercore_organizer_1']['type'] = 'entityreference_entity_view';
   $handler->display->display_options['fields']['field_ercore_organizer_1']['settings'] = array(
-    'view_mode' => 'user_institution',
+    'view_mode' => 'institution',
     'links' => 0,
   );
   $handler->display->display_options['fields']['field_ercore_organizer_1']['delta_offset'] = '0';
@@ -3938,13 +4215,15 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_hi_date']['id'] = 'field_ercore_hi_date';
   $handler->display->display_options['fields']['field_ercore_hi_date']['table'] = 'field_data_field_ercore_hi_date';
   $handler->display->display_options['fields']['field_ercore_hi_date']['field'] = 'field_ercore_hi_date';
+  $handler->display->display_options['fields']['field_ercore_hi_date']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_ercore_hi_date']['element_type'] = 'span';
   $handler->display->display_options['fields']['field_ercore_hi_date']['settings'] = array(
-    'format_type' => 'long',
+    'format_type' => 'short',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
     'multiple_to' => '',
+    'show_remaining_days' => 0,
     'show_repeat_rule' => 'show',
   );
   $handler->display->display_options['path'] = 'highlights/download';
@@ -3959,9 +4238,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'ercore_summary_honors';
   $view->description = '';
-  $view->tag = 'ERCore, Honors, Awards';
+  $view->tag = 'ERCore, ERCore Summary, Honors, Awards';
   $view->base_table = 'node';
-  $view->human_name = 'ERCore: Summary of Honors and Awards';
+  $view->human_name = 'ERCore: Summary: Honors and Awards';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -3969,12 +4248,14 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Honors and Awards';
-  $handler->display->display_options['css_class'] = 'ercore-summary-page honors-page';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page honors-page ercore-view';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'access ercore content';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '15';
@@ -3994,6 +4275,20 @@ function ercore_admin_views_default_views() {
       'class' => 'counted',
     ),
   );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No Honors and Awards have been created. <a href="/node/add/ercore-j-honor">Create an Honor or Award</a>?';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  /* Relationship: Highlight to User */
+  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['id'] = 'field_ercore_organizer_target_id';
+  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['table'] = 'field_data_field_ercore_organizer';
+  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['field'] = 'field_ercore_organizer_target_id';
+  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['ui_name'] = 'Highlight to User';
+  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['label'] = 'Highlight to User';
+  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['required'] = TRUE;
   /* Field: Global: View result counter */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';
   $handler->display->display_options['fields']['counter']['table'] = 'views';
@@ -4053,26 +4348,48 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['field_ercore_hn_date_value_1']['expose']['operator'] = 'field_ercore_hn_date_value_1_op';
   $handler->display->display_options['filters']['field_ercore_hn_date_value_1']['expose']['identifier'] = 'end-date';
   $handler->display->display_options['filters']['field_ercore_hn_date_value_1']['form_type'] = 'date_popup';
+  /* Filter criterion: User: Participating Institutions (field_ercore_us_inst_ref) */
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['relationship'] = 'field_ercore_organizer_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator_id'] = 'field_ercore_us_inst_ref_target_id_op';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['label'] = 'Institution';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator'] = 'field_ercore_us_inst_ref_target_id_op';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['identifier'] = 'field_ercore_us_inst_ref_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    3 => 0,
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'honors';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Honors & Awards';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'main-menu';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
 
   /* Display: Data export */
   $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
-  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
+  $handler->display->display_options['style_options']['attach_text'] = 'Download Honors and Awards Summary';
   $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['filename'] = '%view.xls';
   $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Global: View result counter */
-  $handler->display->display_options['fields']['counter']['id'] = 'counter';
-  $handler->display->display_options['fields']['counter']['table'] = 'views';
-  $handler->display->display_options['fields']['counter']['field'] = 'counter';
-  $handler->display->display_options['fields']['counter']['label'] = '#';
-  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -4084,6 +4401,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: EPSCoR Organizer(s) */
   $handler->display->display_options['fields']['field_ercore_organizer']['id'] = 'field_ercore_organizer';
   $handler->display->display_options['fields']['field_ercore_organizer']['table'] = 'field_data_field_ercore_organizer';
@@ -4093,16 +4411,31 @@ function ercore_admin_views_default_views() {
     'link' => 0,
   );
   $handler->display->display_options['fields']['field_ercore_organizer']['delta_offset'] = '0';
+  /* Field: Content: EPSCoR Organizer(s) */
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['id'] = 'field_ercore_organizer_1';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['table'] = 'field_data_field_ercore_organizer';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['field'] = 'field_ercore_organizer';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['label'] = 'Institution(s)';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['type'] = 'entityreference_entity_view';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['settings'] = array(
+    'view_mode' => 'institution',
+    'links' => 0,
+  );
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['delta_offset'] = '0';
   /* Field: Content: Date Awarded */
   $handler->display->display_options['fields']['field_ercore_hn_date']['id'] = 'field_ercore_hn_date';
   $handler->display->display_options['fields']['field_ercore_hn_date']['table'] = 'field_data_field_ercore_hn_date';
   $handler->display->display_options['fields']['field_ercore_hn_date']['field'] = 'field_ercore_hn_date';
+  $handler->display->display_options['fields']['field_ercore_hn_date']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_ercore_hn_date']['settings'] = array(
     'format_type' => 'short',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
     'multiple_to' => '',
+    'show_remaining_days' => 0,
     'show_repeat_rule' => 'show',
   );
   /* Field: Content: Body */
@@ -4121,9 +4454,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'ercore_summary_institutions';
   $view->description = '';
-  $view->tag = 'ERCore, Institutions';
+  $view->tag = 'ERCore, ERCore Summary, Institutions';
   $view->base_table = 'node';
-  $view->human_name = 'ERCore: Summary of Institutions';
+  $view->human_name = 'ERCore: Summary: Institutions';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -4131,14 +4464,13 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Institutions';
-  $handler->display->display_options['css_class'] = 'ercore-summary-page institutions-page';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page institutions-page ercore-view';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '50';
@@ -4205,6 +4537,19 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'No Institutions have been created. <a href="/node/add/ercore-institution/">Create an institution</a>?';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  /* Relationship: Collaborator to Institution Reverse */
+  $handler->display->display_options['relationships']['reverse_field_ercore_cr_inst_ref_field_collection_item']['id'] = 'reverse_field_ercore_cr_inst_ref_field_collection_item';
+  $handler->display->display_options['relationships']['reverse_field_ercore_cr_inst_ref_field_collection_item']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_ercore_cr_inst_ref_field_collection_item']['field'] = 'reverse_field_ercore_cr_inst_ref_field_collection_item';
+  $handler->display->display_options['relationships']['reverse_field_ercore_cr_inst_ref_field_collection_item']['ui_name'] = 'Collaborator to Institution Reverse';
+  $handler->display->display_options['relationships']['reverse_field_ercore_cr_inst_ref_field_collection_item']['label'] = 'Institution';
+  /* Relationship: Collaboration Node */
+  $handler->display->display_options['relationships']['field_ercore_cn_collaborator_node']['id'] = 'field_ercore_cn_collaborator_node';
+  $handler->display->display_options['relationships']['field_ercore_cn_collaborator_node']['table'] = 'field_collection_item';
+  $handler->display->display_options['relationships']['field_ercore_cn_collaborator_node']['field'] = 'field_ercore_cn_collaborator_node';
+  $handler->display->display_options['relationships']['field_ercore_cn_collaborator_node']['relationship'] = 'reverse_field_ercore_cr_inst_ref_field_collection_item';
+  $handler->display->display_options['relationships']['field_ercore_cn_collaborator_node']['ui_name'] = 'Collaboration Node';
+  $handler->display->display_options['relationships']['field_ercore_cn_collaborator_node']['label'] = 'Collaboration';
   /* Field: Global: View result counter */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';
   $handler->display->display_options['fields']['counter']['table'] = 'views';
@@ -4217,9 +4562,10 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['label'] = 'Institution';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Content: Type */
   $handler->display->display_options['fields']['field_ercore_in_type']['id'] = 'field_ercore_in_type';
   $handler->display->display_options['fields']['field_ercore_in_type']['table'] = 'field_data_field_ercore_in_type';
@@ -4245,20 +4591,32 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_in_participating']['group_columns'] = array(
     'value' => 'value',
   );
-  /* Field: COUNT(Content: Title) */
-  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
-  $handler->display->display_options['fields']['title_1']['table'] = 'node';
-  $handler->display->display_options['fields']['title_1']['field'] = 'title';
-  $handler->display->display_options['fields']['title_1']['relationship'] = 'reverse_field_ercore_cr_inst_ref_node';
-  $handler->display->display_options['fields']['title_1']['group_type'] = 'count';
-  $handler->display->display_options['fields']['title_1']['label'] = 'External Collaborations';
-  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title_1']['empty'] = 'None';
-  $handler->display->display_options['fields']['title_1']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['title_1']['separator'] = '';
-  $handler->display->display_options['fields']['title_1']['format_plural'] = TRUE;
-  $handler->display->display_options['fields']['title_1']['format_plural_singular'] = '1 Collaboration';
-  $handler->display->display_options['fields']['title_1']['format_plural_plural'] = '@count Collaborations';
+  /* Field: COUNT(DISTINCT Content: Nid) */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['relationship'] = 'field_ercore_cn_collaborator_node';
+  $handler->display->display_options['fields']['nid']['group_type'] = 'count_distinct';
+  $handler->display->display_options['fields']['nid']['label'] = 'Collaborations';
+  $handler->display->display_options['fields']['nid']['empty'] = 'None';
+  $handler->display->display_options['fields']['nid']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['nid']['separator'] = '';
+  $handler->display->display_options['fields']['nid']['format_plural'] = TRUE;
+  $handler->display->display_options['fields']['nid']['format_plural_singular'] = '1 Collaboration';
+  $handler->display->display_options['fields']['nid']['format_plural_plural'] = '@count Collaborations';
+  /* Field: COUNT(Field collection item: Name of Collaborating Individual) */
+  $handler->display->display_options['fields']['field_ercore_cr_name']['id'] = 'field_ercore_cr_name';
+  $handler->display->display_options['fields']['field_ercore_cr_name']['table'] = 'field_data_field_ercore_cr_name';
+  $handler->display->display_options['fields']['field_ercore_cr_name']['field'] = 'field_ercore_cr_name';
+  $handler->display->display_options['fields']['field_ercore_cr_name']['relationship'] = 'reverse_field_ercore_cr_inst_ref_field_collection_item';
+  $handler->display->display_options['fields']['field_ercore_cr_name']['group_type'] = 'count';
+  $handler->display->display_options['fields']['field_ercore_cr_name']['label'] = 'Collaborating Individuals';
+  $handler->display->display_options['fields']['field_ercore_cr_name']['empty'] = 'None';
+  $handler->display->display_options['fields']['field_ercore_cr_name']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_cr_name']['separator'] = ', ';
+  $handler->display->display_options['fields']['field_ercore_cr_name']['format_plural'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_cr_name']['format_plural_singular'] = '1 Individual';
+  $handler->display->display_options['fields']['field_ercore_cr_name']['format_plural_plural'] = '@count Individuals';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -4320,7 +4678,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
   $handler->display->display_options['filters']['title']['field'] = 'title';
-  $handler->display->display_options['filters']['title']['relationship'] = 'reverse_field_ercore_cr_inst_ref_node';
+  $handler->display->display_options['filters']['title']['relationship'] = 'field_ercore_cn_collaborator_node';
   $handler->display->display_options['filters']['title']['group'] = 1;
   $handler->display->display_options['filters']['title']['exposed'] = TRUE;
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
@@ -4347,6 +4705,58 @@ function ercore_admin_views_default_views() {
       'value' => '  ',
     ),
   );
+  /* Filter criterion: COUNT(Content: Participating (field_ercore_in_participating)) */
+  $handler->display->display_options['filters']['field_ercore_in_participating_value']['id'] = 'field_ercore_in_participating_value';
+  $handler->display->display_options['filters']['field_ercore_in_participating_value']['table'] = 'field_data_field_ercore_in_participating';
+  $handler->display->display_options['filters']['field_ercore_in_participating_value']['field'] = 'field_ercore_in_participating_value';
+  $handler->display->display_options['filters']['field_ercore_in_participating_value']['group_type'] = 'count';
+  $handler->display->display_options['filters']['field_ercore_in_participating_value']['operator'] = 'or';
+  $handler->display->display_options['filters']['field_ercore_in_participating_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_in_participating_value']['expose']['operator_id'] = 'field_ercore_in_participating_value_op';
+  $handler->display->display_options['filters']['field_ercore_in_participating_value']['expose']['label'] = 'Participating';
+  $handler->display->display_options['filters']['field_ercore_in_participating_value']['expose']['operator'] = 'field_ercore_in_participating_value_op';
+  $handler->display->display_options['filters']['field_ercore_in_participating_value']['expose']['identifier'] = 'field_ercore_in_participating_value';
+  $handler->display->display_options['filters']['field_ercore_in_participating_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_ercore_in_participating_value']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_in_participating_value']['group_info']['label'] = 'Participating';
+  $handler->display->display_options['filters']['field_ercore_in_participating_value']['group_info']['identifier'] = 'field_ercore_in_participating_value';
+  $handler->display->display_options['filters']['field_ercore_in_participating_value']['group_info']['group_items'] = array(
+    1 => array(
+      'title' => 'Participating',
+      'operator' => '=',
+      'value' => array(
+        'value' => 'Participating Institution',
+        'min' => '',
+        'max' => '',
+      ),
+    ),
+    2 => array(
+      'title' => 'Not Participant',
+      'operator' => '=',
+      'value' => array(
+        'value' => 'Non-participating Institution',
+        'min' => '',
+        'max' => '',
+      ),
+    ),
+    3 => array(
+      'title' => '',
+      'operator' => '<',
+      'value' => array(
+        'value' => '',
+        'min' => '',
+        'max' => '',
+      ),
+    ),
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -4368,18 +4778,13 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['access']['perm'] = 'access ercore excel sheets';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
+  $handler->display->display_options['style_options']['attach_text'] = 'Download Institutions Summary';
   $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['filename'] = '%view.xls';
   $handler->display->display_options['style_options']['parent_sort'] = 0;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Global: View result counter */
-  $handler->display->display_options['fields']['counter']['id'] = 'counter';
-  $handler->display->display_options['fields']['counter']['table'] = 'views';
-  $handler->display->display_options['fields']['counter']['field'] = 'counter';
-  $handler->display->display_options['fields']['counter']['label'] = '#';
-  $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -4393,11 +4798,13 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Institution Link */
   $handler->display->display_options['fields']['field_ercore_in_link_1']['id'] = 'field_ercore_in_link_1';
   $handler->display->display_options['fields']['field_ercore_in_link_1']['table'] = 'field_data_field_ercore_in_link';
   $handler->display->display_options['fields']['field_ercore_in_link_1']['field'] = 'field_ercore_in_link';
   $handler->display->display_options['fields']['field_ercore_in_link_1']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_ercore_in_link_1']['type'] = 'link_plain';
   /* Field: Content: Type */
   $handler->display->display_options['fields']['field_ercore_in_type']['id'] = 'field_ercore_in_type';
   $handler->display->display_options['fields']['field_ercore_in_type']['table'] = 'field_data_field_ercore_in_type';
@@ -4426,9 +4833,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'ercore_summary_other';
   $view->description = '';
-  $view->tag = 'ERCore, Other Products';
+  $view->tag = 'ERCore, ERCore Summary, Other Products';
   $view->base_table = 'node';
-  $view->human_name = 'ERCore: Summary of Other Research Products';
+  $view->human_name = 'ERCore: Summary: Other Research Products';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -4436,7 +4843,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Other Research Products';
-  $handler->display->display_options['css_class'] = 'ercore-summary-page other-products-page';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page other-products-page ercore-view';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
@@ -4477,14 +4884,6 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['ui_name'] = 'Research to User';
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['label'] = 'Research to User';
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['required'] = TRUE;
-  /* Relationship: User to Institution */
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['relationship'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['ui_name'] = 'User to Institution';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['label'] = 'User to Institution';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['required'] = TRUE;
   /* Field: Global: View result counter */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';
   $handler->display->display_options['fields']['counter']['table'] = 'views';
@@ -4522,11 +4921,13 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'ercore_other_product' => 'ercore_other_product',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Content: Date (field_ercore_op_date) */
   $handler->display->display_options['filters']['field_ercore_op_date_value']['id'] = 'field_ercore_op_date_value';
   $handler->display->display_options['filters']['field_ercore_op_date_value']['table'] = 'field_data_field_ercore_op_date';
   $handler->display->display_options['filters']['field_ercore_op_date_value']['field'] = 'field_ercore_op_date_value';
   $handler->display->display_options['filters']['field_ercore_op_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_ercore_op_date_value']['group'] = 1;
   $handler->display->display_options['filters']['field_ercore_op_date_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ercore_op_date_value']['expose']['operator_id'] = 'field_ercore_op_date_value_op';
   $handler->display->display_options['filters']['field_ercore_op_date_value']['expose']['label'] = 'Start Date';
@@ -4538,6 +4939,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['field_ercore_op_date_value_1']['table'] = 'field_data_field_ercore_op_date';
   $handler->display->display_options['filters']['field_ercore_op_date_value_1']['field'] = 'field_ercore_op_date_value';
   $handler->display->display_options['filters']['field_ercore_op_date_value_1']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['group'] = 1;
   $handler->display->display_options['filters']['field_ercore_op_date_value_1']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ercore_op_date_value_1']['expose']['operator_id'] = 'field_ercore_op_date_value_1_op';
   $handler->display->display_options['filters']['field_ercore_op_date_value_1']['expose']['label'] = 'End Date';
@@ -4549,6 +4951,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['relationship'] = 'field_ercore_organizer_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['group'] = 1;
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator_id'] = 'field_ercore_us_inst_ref_target_id_op';
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['label'] = 'Institution';
@@ -4561,6 +4964,27 @@ function ercore_admin_views_default_views() {
     5 => 0,
     6 => 0,
     7 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  /* Filter criterion: Content: Type (field_ercore_op_type) */
+  $handler->display->display_options['filters']['field_ercore_op_type_value']['id'] = 'field_ercore_op_type_value';
+  $handler->display->display_options['filters']['field_ercore_op_type_value']['table'] = 'field_data_field_ercore_op_type';
+  $handler->display->display_options['filters']['field_ercore_op_type_value']['field'] = 'field_ercore_op_type_value';
+  $handler->display->display_options['filters']['field_ercore_op_type_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_ercore_op_type_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_op_type_value']['expose']['operator_id'] = 'field_ercore_op_type_value_op';
+  $handler->display->display_options['filters']['field_ercore_op_type_value']['expose']['label'] = 'Type';
+  $handler->display->display_options['filters']['field_ercore_op_type_value']['expose']['operator'] = 'field_ercore_op_type_value_op';
+  $handler->display->display_options['filters']['field_ercore_op_type_value']['expose']['identifier'] = 'field_ercore_op_type_value';
+  $handler->display->display_options['filters']['field_ercore_op_type_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
     3 => 0,
   );
 
@@ -4581,18 +5005,13 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['access']['perm'] = 'access ercore excel sheets';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
+  $handler->display->display_options['style_options']['attach_text'] = 'Download Other Research Products Summary';
   $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['filename'] = '%view.xls';
   $handler->display->display_options['style_options']['parent_sort'] = 0;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Global: View result counter */
-  $handler->display->display_options['fields']['counter']['id'] = 'counter';
-  $handler->display->display_options['fields']['counter']['table'] = 'views';
-  $handler->display->display_options['fields']['counter']['field'] = 'counter';
-  $handler->display->display_options['fields']['counter']['label'] = '#';
-  $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -4606,6 +5025,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: EPSCoR Organizer(s) */
   $handler->display->display_options['fields']['field_ercore_organizer']['id'] = 'field_ercore_organizer';
   $handler->display->display_options['fields']['field_ercore_organizer']['table'] = 'field_data_field_ercore_organizer';
@@ -4620,22 +5040,36 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_organizer_1']['id'] = 'field_ercore_organizer_1';
   $handler->display->display_options['fields']['field_ercore_organizer_1']['table'] = 'field_data_field_ercore_organizer';
   $handler->display->display_options['fields']['field_ercore_organizer_1']['field'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['relationship'] = 'field_ercore_us_inst_ref_target_id';
   $handler->display->display_options['fields']['field_ercore_organizer_1']['label'] = 'Institutions';
   $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_ercore_organizer_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_ercore_organizer_1']['type'] = 'entityreference_entity_view';
   $handler->display->display_options['fields']['field_ercore_organizer_1']['settings'] = array(
-    'view_mode' => 'default',
+    'view_mode' => 'institution',
     'links' => 0,
   );
   $handler->display->display_options['fields']['field_ercore_organizer_1']['delta_offset'] = '0';
+  /* Field: Content: Non-EPSCoR Participant Research Product Creators */
+  $handler->display->display_options['fields']['field_ercore_op_non_epscor']['id'] = 'field_ercore_op_non_epscor';
+  $handler->display->display_options['fields']['field_ercore_op_non_epscor']['table'] = 'field_data_field_ercore_op_non_epscor';
+  $handler->display->display_options['fields']['field_ercore_op_non_epscor']['field'] = 'field_ercore_op_non_epscor';
+  $handler->display->display_options['fields']['field_ercore_op_non_epscor']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_op_non_epscor']['delta_offset'] = '0';
   /* Field: Content: EPSCoR Support */
   $handler->display->display_options['fields']['field_ercore_op_rii_support']['id'] = 'field_ercore_op_rii_support';
   $handler->display->display_options['fields']['field_ercore_op_rii_support']['table'] = 'field_data_field_ercore_op_rii_support';
   $handler->display->display_options['fields']['field_ercore_op_rii_support']['field'] = 'field_ercore_op_rii_support';
   $handler->display->display_options['fields']['field_ercore_op_rii_support']['element_label_colon'] = FALSE;
+  /* Field: Field: Project Team */
+  $handler->display->display_options['fields']['field_ercore_programs']['id'] = 'field_ercore_programs';
+  $handler->display->display_options['fields']['field_ercore_programs']['table'] = 'field_data_field_ercore_programs';
+  $handler->display->display_options['fields']['field_ercore_programs']['field'] = 'field_ercore_programs';
+  $handler->display->display_options['fields']['field_ercore_programs']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_programs']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_ercore_programs']['delta_offset'] = '0';
   /* Field: Content: Type */
   $handler->display->display_options['fields']['field_ercore_op_type']['id'] = 'field_ercore_op_type';
   $handler->display->display_options['fields']['field_ercore_op_type']['table'] = 'field_data_field_ercore_op_type';
@@ -4645,13 +5079,15 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_op_date']['id'] = 'field_ercore_op_date';
   $handler->display->display_options['fields']['field_ercore_op_date']['table'] = 'field_data_field_ercore_op_date';
   $handler->display->display_options['fields']['field_ercore_op_date']['field'] = 'field_ercore_op_date';
+  $handler->display->display_options['fields']['field_ercore_op_date']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_ercore_op_date']['element_type'] = 'span';
   $handler->display->display_options['fields']['field_ercore_op_date']['settings'] = array(
-    'format_type' => 'long',
+    'format_type' => 'short',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
     'multiple_to' => '',
+    'show_remaining_days' => 0,
     'show_repeat_rule' => 'show',
   );
   /* Field: Content: NSF Acknowledgement */
@@ -4659,12 +5095,16 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_nsf']['table'] = 'field_data_field_ercore_nsf';
   $handler->display->display_options['fields']['field_ercore_nsf']['field'] = 'field_ercore_nsf';
   $handler->display->display_options['fields']['field_ercore_nsf']['element_label_colon'] = FALSE;
-  /* Field: User: Description of Role and Contributions */
-  $handler->display->display_options['fields']['field_ercore_us_description']['id'] = 'field_ercore_us_description';
-  $handler->display->display_options['fields']['field_ercore_us_description']['table'] = 'field_data_field_ercore_us_description';
-  $handler->display->display_options['fields']['field_ercore_us_description']['field'] = 'field_ercore_us_description';
-  $handler->display->display_options['fields']['field_ercore_us_description']['relationship'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['fields']['field_ercore_us_description']['element_label_colon'] = FALSE;
+  /* Field: Content: Goals and Objectives */
+  $handler->display->display_options['fields']['field_ercore_goals']['id'] = 'field_ercore_goals';
+  $handler->display->display_options['fields']['field_ercore_goals']['table'] = 'field_data_field_ercore_goals';
+  $handler->display->display_options['fields']['field_ercore_goals']['field'] = 'field_ercore_goals';
+  $handler->display->display_options['fields']['field_ercore_goals']['element_label_colon'] = FALSE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['path'] = 'other-research-products/download';
   $handler->display->display_options['displays'] = array(
     'default' => 'default',
@@ -4675,9 +5115,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'ercore_summary_participants';
   $view->description = '';
-  $view->tag = 'ERCore, Participants';
+  $view->tag = 'ERCore, ERCore Summary, Participants';
   $view->base_table = 'users';
-  $view->human_name = 'ERCore: Summary of Participants';
+  $view->human_name = 'ERCore: Summary: Participants';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -4685,7 +5125,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Participants';
-  $handler->display->display_options['css_class'] = 'ercore-summary-page participants-page';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page participants-page ercore-view';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
@@ -4734,13 +5174,6 @@ function ercore_admin_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Relationship: User to Institution */
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['ui_name'] = 'User to Institution';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['label'] = 'User to Institution';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['required'] = TRUE;
   /* Field: Global: View result counter */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';
   $handler->display->display_options['fields']['counter']['table'] = 'views';
@@ -4807,7 +5240,7 @@ function ercore_admin_views_default_views() {
     3 => 0,
   );
   $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['form_type'] = 'date_popup';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['year_range'] = '-8:+3';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['year_range'] = '-25:+3';
   /* Filter criterion: User: Participating Date(s) -  start date (field_ercore_us_part_date) */
   $handler->display->display_options['filters']['field_ercore_us_part_date_value']['id'] = 'field_ercore_us_part_date_value';
   $handler->display->display_options['filters']['field_ercore_us_part_date_value']['table'] = 'field_data_field_ercore_us_part_date';
@@ -4829,7 +5262,7 @@ function ercore_admin_views_default_views() {
     3 => 0,
   );
   $handler->display->display_options['filters']['field_ercore_us_part_date_value']['form_type'] = 'date_popup';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['year_range'] = '-8:+3';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['year_range'] = '-25:+3';
   /* Filter criterion: User: Participating Institutions (field_ercore_us_inst_ref) */
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
@@ -4892,15 +5325,43 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['access']['perm'] = 'access ercore excel sheets';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
+  $handler->display->display_options['style_options']['attach_text'] = 'Download Participants Summary';
   $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['filename'] = '%view.xls';
   $handler->display->display_options['style_options']['parent_sort'] = 0;
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: User: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['label'] = 'User ID';
+  $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Field: User: E-mail */
+  $handler->display->display_options['fields']['mail']['id'] = 'mail';
+  $handler->display->display_options['fields']['mail']['table'] = 'users';
+  $handler->display->display_options['fields']['mail']['field'] = 'mail';
+  $handler->display->display_options['fields']['mail']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['mail']['link_to_user'] = '0';
+  /* Field: Name Components: Family */
+  $handler->display->display_options['fields']['field_user_name_family']['id'] = 'field_user_name_family';
+  $handler->display->display_options['fields']['field_user_name_family']['table'] = 'field_data_field_user_name';
+  $handler->display->display_options['fields']['field_user_name_family']['field'] = 'field_user_name_family';
+  $handler->display->display_options['fields']['field_user_name_family']['label'] = 'Last Name';
+  $handler->display->display_options['fields']['field_user_name_family']['element_label_colon'] = FALSE;
+  /* Field: Name Components: Given */
+  $handler->display->display_options['fields']['field_user_name_given']['id'] = 'field_user_name_given';
+  $handler->display->display_options['fields']['field_user_name_given']['table'] = 'field_data_field_user_name';
+  $handler->display->display_options['fields']['field_user_name_given']['field'] = 'field_user_name_given';
+  $handler->display->display_options['fields']['field_user_name_given']['label'] = 'First Name';
+  $handler->display->display_options['fields']['field_user_name_given']['element_label_colon'] = FALSE;
   /* Field: User: Participating Institutions */
   $handler->display->display_options['fields']['field_ercore_us_inst_ref']['id'] = 'field_ercore_us_inst_ref';
   $handler->display->display_options['fields']['field_ercore_us_inst_ref']['table'] = 'field_data_field_ercore_us_inst_ref';
@@ -4921,15 +5382,31 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_us_part_date']['id'] = 'field_ercore_us_part_date';
   $handler->display->display_options['fields']['field_ercore_us_part_date']['table'] = 'field_data_field_ercore_us_part_date';
   $handler->display->display_options['fields']['field_ercore_us_part_date']['field'] = 'field_ercore_us_part_date';
+  $handler->display->display_options['fields']['field_ercore_us_part_date']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_ercore_us_part_date']['settings'] = array(
-    'format_type' => 'long',
+    'format_type' => 'short',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
     'multiple_to' => '',
+    'show_remaining_days' => 0,
     'show_repeat_rule' => 'show',
   );
   $handler->display->display_options['fields']['field_ercore_us_part_date']['delta_offset'] = '0';
+  /* Field: User: Months of Effort This Year */
+  $handler->display->display_options['fields']['field_ercore_us_person_month']['id'] = 'field_ercore_us_person_month';
+  $handler->display->display_options['fields']['field_ercore_us_person_month']['table'] = 'field_data_field_ercore_us_person_month';
+  $handler->display->display_options['fields']['field_ercore_us_person_month']['field'] = 'field_ercore_us_person_month';
+  $handler->display->display_options['fields']['field_ercore_us_person_month']['element_label_colon'] = FALSE;
+  /* Field: User: Description of Role and Contributions */
+  $handler->display->display_options['fields']['field_ercore_us_description']['id'] = 'field_ercore_us_description';
+  $handler->display->display_options['fields']['field_ercore_us_description']['table'] = 'field_data_field_ercore_us_description';
+  $handler->display->display_options['fields']['field_ercore_us_description']['field'] = 'field_ercore_us_description';
+  /* Field: User: Funding Sources */
+  $handler->display->display_options['fields']['field_ercore_us_funding_src']['id'] = 'field_ercore_us_funding_src';
+  $handler->display->display_options['fields']['field_ercore_us_funding_src']['table'] = 'field_data_field_ercore_us_funding_src';
+  $handler->display->display_options['fields']['field_ercore_us_funding_src']['field'] = 'field_ercore_us_funding_src';
+  $handler->display->display_options['fields']['field_ercore_us_funding_src']['element_label_colon'] = FALSE;
   $handler->display->display_options['path'] = 'participants/download';
   $handler->display->display_options['displays'] = array(
     'default' => 'default',
@@ -4941,9 +5418,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'ercore_summary_patent';
   $view->description = '';
-  $view->tag = 'ERCore, Patents';
+  $view->tag = 'ERCore, ERCore Summary, Patents';
   $view->base_table = 'node';
-  $view->human_name = 'ERCore: Summary of Patents';
+  $view->human_name = 'ERCore: Summary: Patents';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -4951,7 +5428,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Patents';
-  $handler->display->display_options['css_class'] = 'ercore-summary-page patents-page';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page patents-page ercore-view';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
@@ -5110,11 +5587,19 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['access']['perm'] = 'access ercore excel sheets';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
+  $handler->display->display_options['style_options']['attach_text'] = 'Download Patents Summary';
   $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['filename'] = '%view.xls';
   $handler->display->display_options['style_options']['parent_sort'] = 0;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = 'Node ID';
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -5122,6 +5607,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: EPSCoR Organizer(s) */
   $handler->display->display_options['fields']['field_ercore_organizer']['id'] = 'field_ercore_organizer';
   $handler->display->display_options['fields']['field_ercore_organizer']['table'] = 'field_data_field_ercore_organizer';
@@ -5142,7 +5628,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_organizer_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_ercore_organizer_1']['type'] = 'entityreference_entity_view';
   $handler->display->display_options['fields']['field_ercore_organizer_1']['settings'] = array(
-    'view_mode' => 'user_institution',
+    'view_mode' => 'institution',
     'links' => 0,
   );
   $handler->display->display_options['fields']['field_ercore_organizer_1']['delta_offset'] = '0';
@@ -5150,8 +5636,9 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_pt_date']['id'] = 'field_ercore_pt_date';
   $handler->display->display_options['fields']['field_ercore_pt_date']['table'] = 'field_data_field_ercore_pt_date';
   $handler->display->display_options['fields']['field_ercore_pt_date']['field'] = 'field_ercore_pt_date';
+  $handler->display->display_options['fields']['field_ercore_pt_date']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_ercore_pt_date']['settings'] = array(
-    'format_type' => 'long',
+    'format_type' => 'short',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
@@ -5165,12 +5652,6 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_pt_link']['field'] = 'field_ercore_pt_link';
   $handler->display->display_options['fields']['field_ercore_pt_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_ercore_pt_link']['type'] = 'link_plain';
-  /* Field: User: Description of Role and Contributions */
-  $handler->display->display_options['fields']['field_ercore_us_description']['id'] = 'field_ercore_us_description';
-  $handler->display->display_options['fields']['field_ercore_us_description']['table'] = 'field_data_field_ercore_us_description';
-  $handler->display->display_options['fields']['field_ercore_us_description']['field'] = 'field_ercore_us_description';
-  $handler->display->display_options['fields']['field_ercore_us_description']['relationship'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['fields']['field_ercore_us_description']['element_label_colon'] = FALSE;
   $handler->display->display_options['path'] = 'patents/download';
   $handler->display->display_options['displays'] = array(
     'default' => 'default',
@@ -5181,9 +5662,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'ercore_summary_presentations';
   $view->description = '';
-  $view->tag = 'ERCore, Presentations';
+  $view->tag = 'ERCore, ERCore Summary, Presentations';
   $view->base_table = 'node';
-  $view->human_name = 'ERCore: Summary of Presentations';
+  $view->human_name = 'ERCore: Summary: Presentations';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -5191,7 +5672,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Presentations';
-  $handler->display->display_options['css_class'] = 'ercore-summary-page presentations-page';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page presentations-page ercore-view';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
@@ -5262,14 +5743,6 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['ui_name'] = 'Presenter to User';
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['label'] = 'Presenter to User';
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['required'] = TRUE;
-  /* Relationship: User to Institution */
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['relationship'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['ui_name'] = 'User to Institution';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['label'] = 'User to Institution';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['required'] = TRUE;
   /* Field: Global: View result counter */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';
   $handler->display->display_options['fields']['counter']['table'] = 'views';
@@ -5303,11 +5776,12 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_ps_date']['table'] = 'field_data_field_ercore_ps_date';
   $handler->display->display_options['fields']['field_ercore_ps_date']['field'] = 'field_ercore_ps_date';
   $handler->display->display_options['fields']['field_ercore_ps_date']['settings'] = array(
-    'format_type' => 'long',
+    'format_type' => 'medium',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
     'multiple_to' => '',
+    'show_remaining_days' => 0,
     'show_repeat_rule' => 'show',
   );
   /* Sort criterion: Content: Date (field_ercore_ps_date) */
@@ -5338,6 +5812,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['field_ercore_ps_date_value']['table'] = 'field_data_field_ercore_ps_date';
   $handler->display->display_options['filters']['field_ercore_ps_date_value']['field'] = 'field_ercore_ps_date_value';
   $handler->display->display_options['filters']['field_ercore_ps_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_ercore_ps_date_value']['group'] = 1;
   $handler->display->display_options['filters']['field_ercore_ps_date_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ercore_ps_date_value']['expose']['operator_id'] = 'field_ercore_ps_date_value_op';
   $handler->display->display_options['filters']['field_ercore_ps_date_value']['expose']['label'] = 'Start Date';
@@ -5349,26 +5824,19 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['table'] = 'field_data_field_ercore_ps_date';
   $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['field'] = 'field_ercore_ps_date_value';
   $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['group'] = 1;
   $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['expose']['operator_id'] = 'field_ercore_ps_date_value_1_op';
   $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['expose']['label'] = 'End Date';
   $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['expose']['operator'] = 'field_ercore_ps_date_value_1_op';
   $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['expose']['identifier'] = 'end-date';
   $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Type of Presentation (field_ercore_ps_type) */
-  $handler->display->display_options['filters']['field_ercore_ps_type_value']['id'] = 'field_ercore_ps_type_value';
-  $handler->display->display_options['filters']['field_ercore_ps_type_value']['table'] = 'field_data_field_ercore_ps_type';
-  $handler->display->display_options['filters']['field_ercore_ps_type_value']['field'] = 'field_ercore_ps_type_value';
-  $handler->display->display_options['filters']['field_ercore_ps_type_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_ps_type_value']['expose']['operator_id'] = 'field_ercore_ps_type_value_op';
-  $handler->display->display_options['filters']['field_ercore_ps_type_value']['expose']['label'] = 'Type';
-  $handler->display->display_options['filters']['field_ercore_ps_type_value']['expose']['operator'] = 'field_ercore_ps_type_value_op';
-  $handler->display->display_options['filters']['field_ercore_ps_type_value']['expose']['identifier'] = 'field_ercore_ps_type_value';
   /* Filter criterion: User: Participating Institutions (field_ercore_us_inst_ref) */
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['relationship'] = 'field_ercore_organizer_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['group'] = 1;
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator_id'] = 'field_ercore_us_inst_ref_target_id_op';
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['label'] = 'Institution';
@@ -5383,6 +5851,16 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
+  /* Filter criterion: Content: Type of Presentation (field_ercore_ps_type) */
+  $handler->display->display_options['filters']['field_ercore_ps_type_value']['id'] = 'field_ercore_ps_type_value';
+  $handler->display->display_options['filters']['field_ercore_ps_type_value']['table'] = 'field_data_field_ercore_ps_type';
+  $handler->display->display_options['filters']['field_ercore_ps_type_value']['field'] = 'field_ercore_ps_type_value';
+  $handler->display->display_options['filters']['field_ercore_ps_type_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_ercore_ps_type_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_ps_type_value']['expose']['operator_id'] = 'field_ercore_ps_type_value_op';
+  $handler->display->display_options['filters']['field_ercore_ps_type_value']['expose']['label'] = 'Type';
+  $handler->display->display_options['filters']['field_ercore_ps_type_value']['expose']['operator'] = 'field_ercore_ps_type_value_op';
+  $handler->display->display_options['filters']['field_ercore_ps_type_value']['expose']['identifier'] = 'field_ercore_ps_type_value';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -5401,24 +5879,45 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['access']['perm'] = 'access ercore excel sheets';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
+  $handler->display->display_options['style_options']['attach_text'] = 'Download Presentations Summary';
   $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['filename'] = '%view.xls';
   $handler->display->display_options['style_options']['parent_sort'] = 0;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Global: View result counter */
-  $handler->display->display_options['fields']['counter']['id'] = 'counter';
-  $handler->display->display_options['fields']['counter']['table'] = 'views';
-  $handler->display->display_options['fields']['counter']['field'] = 'counter';
-  $handler->display->display_options['fields']['counter']['label'] = '#';
-  $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['label'] = 'Node ID';
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = 'Brief Description';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_ercore_ps_date']['id'] = 'field_ercore_ps_date';
+  $handler->display->display_options['fields']['field_ercore_ps_date']['table'] = 'field_data_field_ercore_ps_date';
+  $handler->display->display_options['fields']['field_ercore_ps_date']['field'] = 'field_ercore_ps_date';
+  $handler->display->display_options['fields']['field_ercore_ps_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_ps_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
   /* Field: Content: EPSCoR Organizer(s) */
   $handler->display->display_options['fields']['field_ercore_organizer']['id'] = 'field_ercore_organizer';
   $handler->display->display_options['fields']['field_ercore_organizer']['table'] = 'field_data_field_ercore_organizer';
@@ -5436,45 +5935,57 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_ercore_organizer_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['type'] = 'entityreference_entity_view';
   $handler->display->display_options['fields']['field_ercore_organizer_1']['settings'] = array(
-    'link' => 0,
+    'view_mode' => 'institution',
+    'links' => 0,
   );
   $handler->display->display_options['fields']['field_ercore_organizer_1']['delta_offset'] = '0';
-  /* Field: Content: Type of Presentation */
-  $handler->display->display_options['fields']['field_ercore_ps_type']['id'] = 'field_ercore_ps_type';
-  $handler->display->display_options['fields']['field_ercore_ps_type']['table'] = 'field_data_field_ercore_ps_type';
-  $handler->display->display_options['fields']['field_ercore_ps_type']['field'] = 'field_ercore_ps_type';
-  $handler->display->display_options['fields']['field_ercore_ps_type']['element_label_colon'] = FALSE;
   /* Field: Content: Non-EPSCoR Authors */
   $handler->display->display_options['fields']['field_ercore_pb_nonepscor_auth']['id'] = 'field_ercore_pb_nonepscor_auth';
   $handler->display->display_options['fields']['field_ercore_pb_nonepscor_auth']['table'] = 'field_data_field_ercore_pb_nonepscor_auth';
   $handler->display->display_options['fields']['field_ercore_pb_nonepscor_auth']['field'] = 'field_ercore_pb_nonepscor_auth';
   $handler->display->display_options['fields']['field_ercore_pb_nonepscor_auth']['element_label_colon'] = FALSE;
-  /* Field: Content: Date */
-  $handler->display->display_options['fields']['field_ercore_ps_date']['id'] = 'field_ercore_ps_date';
-  $handler->display->display_options['fields']['field_ercore_ps_date']['table'] = 'field_data_field_ercore_ps_date';
-  $handler->display->display_options['fields']['field_ercore_ps_date']['field'] = 'field_ercore_ps_date';
-  $handler->display->display_options['fields']['field_ercore_ps_date']['settings'] = array(
-    'format_type' => 'long',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_repeat_rule' => 'show',
+  /* Field: Content: Type of Presentation */
+  $handler->display->display_options['fields']['field_ercore_ps_type']['id'] = 'field_ercore_ps_type';
+  $handler->display->display_options['fields']['field_ercore_ps_type']['table'] = 'field_data_field_ercore_ps_type';
+  $handler->display->display_options['fields']['field_ercore_ps_type']['field'] = 'field_ercore_ps_type';
+  $handler->display->display_options['fields']['field_ercore_ps_type']['element_label_colon'] = FALSE;
+  /* Field: Content: Status */
+  $handler->display->display_options['fields']['field_ercore_ps_status']['id'] = 'field_ercore_ps_status';
+  $handler->display->display_options['fields']['field_ercore_ps_status']['table'] = 'field_data_field_ercore_ps_status';
+  $handler->display->display_options['fields']['field_ercore_ps_status']['field'] = 'field_ercore_ps_status';
+  $handler->display->display_options['fields']['field_ercore_ps_status']['element_label_colon'] = FALSE;
+  /* Field: Content: Goals and Objectives */
+  $handler->display->display_options['fields']['field_ercore_goals']['id'] = 'field_ercore_goals';
+  $handler->display->display_options['fields']['field_ercore_goals']['table'] = 'field_data_field_ercore_goals';
+  $handler->display->display_options['fields']['field_ercore_goals']['field'] = 'field_ercore_goals';
+  $handler->display->display_options['fields']['field_ercore_goals']['element_label_colon'] = FALSE;
+  /* Field: Field: Project Team */
+  $handler->display->display_options['fields']['field_ercore_programs']['id'] = 'field_ercore_programs';
+  $handler->display->display_options['fields']['field_ercore_programs']['table'] = 'field_data_field_ercore_programs';
+  $handler->display->display_options['fields']['field_ercore_programs']['field'] = 'field_ercore_programs';
+  $handler->display->display_options['fields']['field_ercore_programs']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_programs']['settings'] = array(
+    'link' => 0,
   );
+  $handler->display->display_options['fields']['field_ercore_programs']['delta_offset'] = '0';
   /* Field: Content: What was the event where you presented? */
   $handler->display->display_options['fields']['field_ercore_ps_event']['id'] = 'field_ercore_ps_event';
   $handler->display->display_options['fields']['field_ercore_ps_event']['table'] = 'field_data_field_ercore_ps_event';
   $handler->display->display_options['fields']['field_ercore_ps_event']['field'] = 'field_ercore_ps_event';
+  $handler->display->display_options['fields']['field_ercore_ps_event']['label'] = 'What was the event?';
   $handler->display->display_options['fields']['field_ercore_ps_event']['element_label_colon'] = FALSE;
   /* Field: Content: Presentation Link */
   $handler->display->display_options['fields']['field_ercore_ps_link']['id'] = 'field_ercore_ps_link';
   $handler->display->display_options['fields']['field_ercore_ps_link']['table'] = 'field_data_field_ercore_ps_link';
   $handler->display->display_options['fields']['field_ercore_ps_link']['field'] = 'field_ercore_ps_link';
-  $handler->display->display_options['fields']['field_ercore_ps_link']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ps_link']['label'] = 'Presentation Link (URL - Title)';
+  $handler->display->display_options['fields']['field_ercore_ps_link']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_ps_link']['alter']['text'] = '[field_ercore_ps_link-url] - [field_ercore_ps_link-title]';
   $handler->display->display_options['fields']['field_ercore_ps_link']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_ercore_ps_link']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_ercore_ps_link']['type'] = 'link_url';
+  $handler->display->display_options['fields']['field_ercore_ps_link']['type'] = 'link_separate';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   $handler->display->display_options['path'] = 'presentations/download';
   $handler->display->display_options['displays'] = array(
@@ -5488,9 +5999,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'ercore_summary_proposal';
   $view->description = '';
-  $view->tag = 'ERCore, Proposals';
+  $view->tag = 'ERCore, ERCore Summary, Proposals';
   $view->base_table = 'node';
-  $view->human_name = 'ERCore: Summary of Proposals';
+  $view->human_name = 'ERCore: Summary: Proposals';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -5498,14 +6009,12 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Grants and Proposals';
-  $handler->display->display_options['css_class'] = 'ercore-summary-page proposals-page';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page proposals-page ercore-view';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'create er_proposal content';
+  $handler->display->display_options['access']['perm'] = 'access ercore content';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['distinct'] = TRUE;
-  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '15';
@@ -5539,14 +6048,6 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['ui_name'] = 'Proposal to User';
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['label'] = 'Proposal to User';
   $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['required'] = TRUE;
-  /* Relationship: User to Institution */
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['relationship'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['ui_name'] = 'User to Institution';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['label'] = 'User to Institution';
-  $handler->display->display_options['relationships']['field_ercore_us_inst_ref_target_id']['required'] = TRUE;
   /* Field: Global: View result counter */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';
   $handler->display->display_options['fields']['counter']['table'] = 'views';
@@ -5609,6 +6110,27 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['expose']['operator'] = 'field_ercore_pp_proposal_date_value_op';
   $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['expose']['identifier'] = 'end-date';
   $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['form_type'] = 'date_popup';
+  /* Filter criterion: User: Participating Institutions (field_ercore_us_inst_ref) */
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['relationship'] = 'field_ercore_organizer_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['group'] = 1;
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator_id'] = 'field_ercore_us_inst_ref_target_id_op';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['label'] = 'Institution';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator'] = 'field_ercore_us_inst_ref_target_id_op';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['identifier'] = 'field_ercore_us_inst_ref_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    3 => 0,
+  );
   /* Filter criterion: Content: Status (field_ercore_pp_proposal_status) */
   $handler->display->display_options['filters']['field_ercore_pp_proposal_status_value']['id'] = 'field_ercore_pp_proposal_status_value';
   $handler->display->display_options['filters']['field_ercore_pp_proposal_status_value']['table'] = 'field_data_field_ercore_pp_proposal_status';
@@ -5628,32 +6150,12 @@ function ercore_admin_views_default_views() {
     4 => 0,
     3 => 0,
   );
-  /* Filter criterion: User: Participating Institutions (field_ercore_us_inst_ref) */
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['relationship'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator_id'] = 'field_ercore_us_inst_ref_target_id_op';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['label'] = 'Institutions';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator'] = 'field_ercore_us_inst_ref_target_id_op';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['identifier'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    6 => 0,
-    7 => 0,
-    5 => 0,
-    4 => 0,
-    3 => 0,
-  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'proposals';
   $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Grants and Proposals';
+  $handler->display->display_options['menu']['title'] = 'Grants & Proposals';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['menu']['context'] = 0;
@@ -5665,34 +6167,88 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['title'] = 'Grants and Proposals*';
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'access er admin content';
+  $handler->display->display_options['access']['perm'] = 'access ercore excel sheets';
+  $handler->display->display_options['defaults']['query'] = FALSE;
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
+  $handler->display->display_options['style_options']['attach_text'] = 'Download Grants and Proposals Summary';
   $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['filename'] = '%view.xls';
   $handler->display->display_options['style_options']['parent_sort'] = 0;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = 'Node ID';
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Date Submitted */
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['id'] = 'field_ercore_pp_proposal_submit';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['table'] = 'field_data_field_ercore_pp_proposal_submit';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['field'] = 'field_ercore_pp_proposal_submit';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['settings'] = array(
-    'format_type' => 'riven_basemodules_date_format_month_day_year',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_repeat_rule' => 'show',
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: EPSCoR Organizer(s) */
+  $handler->display->display_options['fields']['field_ercore_organizer']['id'] = 'field_ercore_organizer';
+  $handler->display->display_options['fields']['field_ercore_organizer']['table'] = 'field_data_field_ercore_organizer';
+  $handler->display->display_options['fields']['field_ercore_organizer']['field'] = 'field_ercore_organizer';
+  $handler->display->display_options['fields']['field_ercore_organizer']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_organizer']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_organizer']['settings'] = array(
+    'link' => 0,
   );
+  $handler->display->display_options['fields']['field_ercore_organizer']['delta_offset'] = '0';
+  /* Field: Content: EPSCoR Organizer(s) */
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['id'] = 'field_ercore_organizer_1';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['table'] = 'field_data_field_ercore_organizer';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['field'] = 'field_ercore_organizer';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['label'] = 'Institution(s)';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['type'] = 'entityreference_entity_view';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['settings'] = array(
+    'view_mode' => 'institution',
+    'links' => 0,
+  );
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['delta_offset'] = '0';
+  /* Field: Content: Non-EPSCoR PI/Co-PI */
+  $handler->display->display_options['fields']['field_ercore_pp_other_pi']['id'] = 'field_ercore_pp_other_pi';
+  $handler->display->display_options['fields']['field_ercore_pp_other_pi']['table'] = 'field_data_field_ercore_pp_other_pi';
+  $handler->display->display_options['fields']['field_ercore_pp_other_pi']['field'] = 'field_ercore_pp_other_pi';
+  $handler->display->display_options['fields']['field_ercore_pp_other_pi']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_pp_other_pi']['delta_offset'] = '0';
+  /* Field: Content: Other EPSCoR Researchers */
+  $handler->display->display_options['fields']['field_ercore_pp_others']['id'] = 'field_ercore_pp_others';
+  $handler->display->display_options['fields']['field_ercore_pp_others']['table'] = 'field_data_field_ercore_pp_others';
+  $handler->display->display_options['fields']['field_ercore_pp_others']['field'] = 'field_ercore_pp_others';
+  $handler->display->display_options['fields']['field_ercore_pp_others']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_pp_others']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_pp_others']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_pp_others']['type'] = 'entityreference_entity_view';
+  $handler->display->display_options['fields']['field_ercore_pp_others']['settings'] = array(
+    'view_mode' => 'user_institution',
+    'links' => 0,
+  );
+  $handler->display->display_options['fields']['field_ercore_pp_others']['delta_offset'] = '0';
+  /* Field: Content: Salary Support */
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_paid']['id'] = 'field_ercore_pp_proposal_paid';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_paid']['table'] = 'field_data_field_ercore_pp_proposal_paid';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_paid']['field'] = 'field_ercore_pp_proposal_paid';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_paid']['element_label_colon'] = FALSE;
+  /* Field: Content: Funding Agency */
+  $handler->display->display_options['fields']['field_ercore_pp_support']['id'] = 'field_ercore_pp_support';
+  $handler->display->display_options['fields']['field_ercore_pp_support']['table'] = 'field_data_field_ercore_pp_support';
+  $handler->display->display_options['fields']['field_ercore_pp_support']['field'] = 'field_ercore_pp_support';
+  $handler->display->display_options['fields']['field_ercore_pp_support']['element_label_colon'] = FALSE;
   /* Field: Content: Amount Requested */
   $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['id'] = 'field_ercore_pp_award_req_dec';
   $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['table'] = 'field_data_field_ercore_pp_award_req_dec';
@@ -5704,16 +6260,42 @@ function ercore_admin_views_default_views() {
     'scale' => '0',
     'prefix_suffix' => 0,
   );
-  /* Field: Content: Award Dates */
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_date']['id'] = 'field_ercore_pp_proposal_date';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_date']['table'] = 'field_data_field_ercore_pp_proposal_date';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_date']['field'] = 'field_ercore_pp_proposal_date';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_date']['settings'] = array(
-    'format_type' => 'long',
+  /* Field: Content: Support Type */
+  $handler->display->display_options['fields']['field_ercore_pp_support_type']['id'] = 'field_ercore_pp_support_type';
+  $handler->display->display_options['fields']['field_ercore_pp_support_type']['table'] = 'field_data_field_ercore_pp_support_type';
+  $handler->display->display_options['fields']['field_ercore_pp_support_type']['field'] = 'field_ercore_pp_support_type';
+  $handler->display->display_options['fields']['field_ercore_pp_support_type']['element_label_colon'] = FALSE;
+  /* Field: Content: Status */
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_status']['id'] = 'field_ercore_pp_proposal_status';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_status']['table'] = 'field_data_field_ercore_pp_proposal_status';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_status']['field'] = 'field_ercore_pp_proposal_status';
+  /* Field: Content: Date Submitted */
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['id'] = 'field_ercore_pp_proposal_submit';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['table'] = 'field_data_field_ercore_pp_proposal_submit';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['field'] = 'field_ercore_pp_proposal_submit';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['settings'] = array(
+    'format_type' => 'short',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
     'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Award Dates */
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_date']['id'] = 'field_ercore_pp_proposal_date';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_date']['table'] = 'field_data_field_ercore_pp_proposal_date';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_date']['field'] = 'field_ercore_pp_proposal_date';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
     'show_repeat_rule' => 'show',
   );
   /* Field: Content: Award Amount */
@@ -5727,38 +6309,31 @@ function ercore_admin_views_default_views() {
     'scale' => '0',
     'prefix_suffix' => 0,
   );
-  /* Field: Content: EPSCoR Organizer(s) */
-  $handler->display->display_options['fields']['field_ercore_organizer']['id'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['table'] = 'field_data_field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['field'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['settings'] = array(
+  /* Field: Content: Location */
+  $handler->display->display_options['fields']['field_ercore_pp_location']['id'] = 'field_ercore_pp_location';
+  $handler->display->display_options['fields']['field_ercore_pp_location']['table'] = 'field_data_field_ercore_pp_location';
+  $handler->display->display_options['fields']['field_ercore_pp_location']['field'] = 'field_ercore_pp_location';
+  $handler->display->display_options['fields']['field_ercore_pp_location']['element_label_colon'] = FALSE;
+  /* Field: Content: Goals and Objectives */
+  $handler->display->display_options['fields']['field_ercore_goals']['id'] = 'field_ercore_goals';
+  $handler->display->display_options['fields']['field_ercore_goals']['table'] = 'field_data_field_ercore_goals';
+  $handler->display->display_options['fields']['field_ercore_goals']['field'] = 'field_ercore_goals';
+  $handler->display->display_options['fields']['field_ercore_goals']['element_label_colon'] = FALSE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = 'Brief Description';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  /* Field: Field: Project Team */
+  $handler->display->display_options['fields']['field_ercore_programs']['id'] = 'field_ercore_programs';
+  $handler->display->display_options['fields']['field_ercore_programs']['table'] = 'field_data_field_ercore_programs';
+  $handler->display->display_options['fields']['field_ercore_programs']['field'] = 'field_ercore_programs';
+  $handler->display->display_options['fields']['field_ercore_programs']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_programs']['settings'] = array(
     'link' => 0,
   );
-  /* Field: Content: EPSCoR Organizer(s) */
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['id'] = 'field_ercore_organizer_1';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['table'] = 'field_data_field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['field'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['label'] = 'Institution';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['type'] = 'entityreference_entity_view';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['settings'] = array(
-    'view_mode' => 'user_institution',
-    'links' => 0,
-  );
-  /* Field: Content: Other EPSCoR Researchers */
-  $handler->display->display_options['fields']['field_ercore_pp_others']['id'] = 'field_ercore_pp_others';
-  $handler->display->display_options['fields']['field_ercore_pp_others']['table'] = 'field_data_field_ercore_pp_others';
-  $handler->display->display_options['fields']['field_ercore_pp_others']['field'] = 'field_ercore_pp_others';
-  $handler->display->display_options['fields']['field_ercore_pp_others']['settings'] = array(
-    'link' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_pp_others']['delta_offset'] = '0';
-  /* Field: Content: Status */
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_status']['id'] = 'field_ercore_pp_proposal_status';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_status']['table'] = 'field_data_field_ercore_pp_proposal_status';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_status']['field'] = 'field_ercore_pp_proposal_status';
+  $handler->display->display_options['fields']['field_ercore_programs']['delta_offset'] = '0';
   $handler->display->display_options['path'] = 'proposals/download';
   $handler->display->display_options['displays'] = array(
     'default' => 'default',
@@ -5772,9 +6347,9 @@ function ercore_admin_views_default_views() {
   $view = new view();
   $view->name = 'ercore_summary_publication';
   $view->description = '';
-  $view->tag = 'ERCore, Publications';
+  $view->tag = 'ERCore, ERCore Summary, Publications';
   $view->base_table = 'node';
-  $view->human_name = 'ERCore: Summary of Publication';
+  $view->human_name = 'ERCore: Summary: Publication';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -5782,13 +6357,14 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Publications';
-  $handler->display->display_options['css_class'] = 'ercore-summary-page publications-page';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page publications-page ercore-view';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore content';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '15';
@@ -5823,6 +6399,13 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'No Publications have been created. <a href="/node/add/ercore-publication/">Create a publication</a>?';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  /* Relationship: Publication to User */
+  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['id'] = 'field_ercore_organizer_target_id';
+  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['table'] = 'field_data_field_ercore_organizer';
+  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['field'] = 'field_ercore_organizer_target_id';
+  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['ui_name'] = 'Publication to User';
+  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['label'] = 'Publication to User';
+  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['required'] = TRUE;
   /* Field: Global: View result counter */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';
   $handler->display->display_options['fields']['counter']['table'] = 'views';
@@ -5871,11 +6454,13 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'ercore_publication' => 'ercore_publication',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Content: Date of Publication (field_ercore_pb_date) */
   $handler->display->display_options['filters']['field_ercore_pb_date_value']['id'] = 'field_ercore_pb_date_value';
   $handler->display->display_options['filters']['field_ercore_pb_date_value']['table'] = 'field_data_field_ercore_pb_date';
   $handler->display->display_options['filters']['field_ercore_pb_date_value']['field'] = 'field_ercore_pb_date_value';
   $handler->display->display_options['filters']['field_ercore_pb_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_ercore_pb_date_value']['group'] = 1;
   $handler->display->display_options['filters']['field_ercore_pb_date_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ercore_pb_date_value']['expose']['operator_id'] = 'field_ercore_pb_date_value_op';
   $handler->display->display_options['filters']['field_ercore_pb_date_value']['expose']['label'] = 'Start Date';
@@ -5887,16 +6472,39 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['table'] = 'field_data_field_ercore_pb_date';
   $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['field'] = 'field_ercore_pb_date_value';
   $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['group'] = 1;
   $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['expose']['operator_id'] = 'field_ercore_pb_date_value_1_op';
   $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['expose']['label'] = 'End Date';
   $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['expose']['operator'] = 'field_ercore_pb_date_value_1_op';
   $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['expose']['identifier'] = 'end-date';
   $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['form_type'] = 'date_popup';
+  /* Filter criterion: User: Participating Institutions (field_ercore_us_inst_ref) */
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['relationship'] = 'field_ercore_organizer_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['group'] = 1;
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator_id'] = 'field_ercore_us_inst_ref_target_id_op';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['label'] = 'Institution';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator'] = 'field_ercore_us_inst_ref_target_id_op';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['identifier'] = 'field_ercore_us_inst_ref_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    3 => 0,
+  );
   /* Filter criterion: Content: Publication Type (field_ercore_pb_type) */
   $handler->display->display_options['filters']['field_ercore_pb_type_value']['id'] = 'field_ercore_pb_type_value';
   $handler->display->display_options['filters']['field_ercore_pb_type_value']['table'] = 'field_data_field_ercore_pb_type';
   $handler->display->display_options['filters']['field_ercore_pb_type_value']['field'] = 'field_ercore_pb_type_value';
+  $handler->display->display_options['filters']['field_ercore_pb_type_value']['group'] = 1;
   $handler->display->display_options['filters']['field_ercore_pb_type_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ercore_pb_type_value']['expose']['operator_id'] = 'field_ercore_pb_type_value_op';
   $handler->display->display_options['filters']['field_ercore_pb_type_value']['expose']['label'] = 'Type';
@@ -5920,18 +6528,13 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['access']['perm'] = 'access ercore excel sheets';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
+  $handler->display->display_options['style_options']['attach_text'] = 'Download Publications Summary';
   $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['filename'] = '%view.xls';
   $handler->display->display_options['style_options']['parent_sort'] = 0;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Global: View result counter */
-  $handler->display->display_options['fields']['counter']['id'] = 'counter';
-  $handler->display->display_options['fields']['counter']['table'] = 'views';
-  $handler->display->display_options['fields']['counter']['field'] = 'counter';
-  $handler->display->display_options['fields']['counter']['label'] = '#';
-  $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -5945,12 +6548,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Status */
-  $handler->display->display_options['fields']['field_ercore_pb_status']['id'] = 'field_ercore_pb_status';
-  $handler->display->display_options['fields']['field_ercore_pb_status']['table'] = 'field_data_field_ercore_pb_status';
-  $handler->display->display_options['fields']['field_ercore_pb_status']['field'] = 'field_ercore_pb_status';
-  $handler->display->display_options['fields']['field_ercore_pb_status']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_pb_status']['type'] = 'text_default';
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: EPSCoR Organizer(s) */
   $handler->display->display_options['fields']['field_ercore_organizer']['id'] = 'field_ercore_organizer';
   $handler->display->display_options['fields']['field_ercore_organizer']['table'] = 'field_data_field_ercore_organizer';
@@ -5960,21 +6558,54 @@ function ercore_admin_views_default_views() {
     'link' => 0,
   );
   $handler->display->display_options['fields']['field_ercore_organizer']['delta_offset'] = '0';
-  /* Field: Content: EPSCoR Organizer(s) (field_ercore_organizer:delta) */
-  $handler->display->display_options['fields']['delta']['id'] = 'delta';
-  $handler->display->display_options['fields']['delta']['table'] = 'field_data_field_ercore_organizer';
-  $handler->display->display_options['fields']['delta']['field'] = 'delta';
-  $handler->display->display_options['fields']['delta']['label'] = 'Author(s)';
-  $handler->display->display_options['fields']['delta']['element_label_colon'] = FALSE;
-  /* Field: Content: EPSCoR Support */
-  $handler->display->display_options['fields']['field_ercore_op_rii_support']['id'] = 'field_ercore_op_rii_support';
-  $handler->display->display_options['fields']['field_ercore_op_rii_support']['table'] = 'field_data_field_ercore_op_rii_support';
-  $handler->display->display_options['fields']['field_ercore_op_rii_support']['field'] = 'field_ercore_op_rii_support';
-  $handler->display->display_options['fields']['field_ercore_op_rii_support']['element_label_colon'] = FALSE;
+  /* Field: Content: EPSCoR Organizer(s) */
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['id'] = 'field_ercore_organizer_1';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['table'] = 'field_data_field_ercore_organizer';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['field'] = 'field_ercore_organizer';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['label'] = 'Institution(s)';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['type'] = 'entityreference_entity_view';
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['settings'] = array(
+    'view_mode' => 'institution',
+    'links' => 0,
+  );
+  $handler->display->display_options['fields']['field_ercore_organizer_1']['delta_offset'] = '0';
+  /* Field: Content: Non-EPSCoR Authors */
+  $handler->display->display_options['fields']['field_ercore_pb_nonepscor_auth']['id'] = 'field_ercore_pb_nonepscor_auth';
+  $handler->display->display_options['fields']['field_ercore_pb_nonepscor_auth']['table'] = 'field_data_field_ercore_pb_nonepscor_auth';
+  $handler->display->display_options['fields']['field_ercore_pb_nonepscor_auth']['field'] = 'field_ercore_pb_nonepscor_auth';
+  $handler->display->display_options['fields']['field_ercore_pb_nonepscor_auth']['element_label_colon'] = FALSE;
+  /* Field: Content: Publication Type */
+  $handler->display->display_options['fields']['field_ercore_pb_type']['id'] = 'field_ercore_pb_type';
+  $handler->display->display_options['fields']['field_ercore_pb_type']['table'] = 'field_data_field_ercore_pb_type';
+  $handler->display->display_options['fields']['field_ercore_pb_type']['field'] = 'field_ercore_pb_type';
+  $handler->display->display_options['fields']['field_ercore_pb_type']['element_label_colon'] = FALSE;
+  /* Field: Field: Project Team */
+  $handler->display->display_options['fields']['field_ercore_programs']['id'] = 'field_ercore_programs';
+  $handler->display->display_options['fields']['field_ercore_programs']['table'] = 'field_data_field_ercore_programs';
+  $handler->display->display_options['fields']['field_ercore_programs']['field'] = 'field_ercore_programs';
+  $handler->display->display_options['fields']['field_ercore_programs']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_programs']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_ercore_programs']['delta_offset'] = '0';
+  /* Field: Content: Peer Reviewed */
+  $handler->display->display_options['fields']['field_ercore_pb_peer_reviewed']['id'] = 'field_ercore_pb_peer_reviewed';
+  $handler->display->display_options['fields']['field_ercore_pb_peer_reviewed']['table'] = 'field_data_field_ercore_pb_peer_reviewed';
+  $handler->display->display_options['fields']['field_ercore_pb_peer_reviewed']['field'] = 'field_ercore_pb_peer_reviewed';
+  $handler->display->display_options['fields']['field_ercore_pb_peer_reviewed']['element_label_colon'] = FALSE;
+  /* Field: Content: Status */
+  $handler->display->display_options['fields']['field_ercore_pb_status']['id'] = 'field_ercore_pb_status';
+  $handler->display->display_options['fields']['field_ercore_pb_status']['table'] = 'field_data_field_ercore_pb_status';
+  $handler->display->display_options['fields']['field_ercore_pb_status']['field'] = 'field_ercore_pb_status';
+  $handler->display->display_options['fields']['field_ercore_pb_status']['element_label_colon'] = FALSE;
   /* Field: Content: Date Submitted */
   $handler->display->display_options['fields']['field_ercore_pb_submit_date']['id'] = 'field_ercore_pb_submit_date';
   $handler->display->display_options['fields']['field_ercore_pb_submit_date']['table'] = 'field_data_field_ercore_pb_submit_date';
   $handler->display->display_options['fields']['field_ercore_pb_submit_date']['field'] = 'field_ercore_pb_submit_date';
+  $handler->display->display_options['fields']['field_ercore_pb_submit_date']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_ercore_pb_submit_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_ercore_pb_submit_date']['settings'] = array(
     'format_type' => 'short',
@@ -5982,42 +6613,28 @@ function ercore_admin_views_default_views() {
     'multiple_number' => '',
     'multiple_from' => '',
     'multiple_to' => '',
+    'show_remaining_days' => 0,
     'show_repeat_rule' => 'show',
   );
   /* Field: Content: Date of Publication */
   $handler->display->display_options['fields']['field_ercore_pb_date']['id'] = 'field_ercore_pb_date';
   $handler->display->display_options['fields']['field_ercore_pb_date']['table'] = 'field_data_field_ercore_pb_date';
   $handler->display->display_options['fields']['field_ercore_pb_date']['field'] = 'field_ercore_pb_date';
+  $handler->display->display_options['fields']['field_ercore_pb_date']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_ercore_pb_date']['settings'] = array(
     'format_type' => 'short',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
     'multiple_to' => '',
+    'show_remaining_days' => 0,
     'show_repeat_rule' => 'show',
   );
-  /* Field: Content: Peer Reviewed */
-  $handler->display->display_options['fields']['field_ercore_pb_peer_reviewed']['id'] = 'field_ercore_pb_peer_reviewed';
-  $handler->display->display_options['fields']['field_ercore_pb_peer_reviewed']['table'] = 'field_data_field_ercore_pb_peer_reviewed';
-  $handler->display->display_options['fields']['field_ercore_pb_peer_reviewed']['field'] = 'field_ercore_pb_peer_reviewed';
-  $handler->display->display_options['fields']['field_ercore_pb_peer_reviewed']['element_label_colon'] = FALSE;
-  /* Field: Content: Non-EPSCoR Authors */
-  $handler->display->display_options['fields']['field_ercore_pb_nonepscor_auth']['id'] = 'field_ercore_pb_nonepscor_auth';
-  $handler->display->display_options['fields']['field_ercore_pb_nonepscor_auth']['table'] = 'field_data_field_ercore_pb_nonepscor_auth';
-  $handler->display->display_options['fields']['field_ercore_pb_nonepscor_auth']['field'] = 'field_ercore_pb_nonepscor_auth';
-  $handler->display->display_options['fields']['field_ercore_pb_nonepscor_auth']['element_label_colon'] = FALSE;
-  /* Field: Content: NSF Acknowledgement */
-  $handler->display->display_options['fields']['field_ercore_nsf']['id'] = 'field_ercore_nsf';
-  $handler->display->display_options['fields']['field_ercore_nsf']['table'] = 'field_data_field_ercore_nsf';
-  $handler->display->display_options['fields']['field_ercore_nsf']['field'] = 'field_ercore_nsf';
-  $handler->display->display_options['fields']['field_ercore_nsf']['element_label_colon'] = FALSE;
-  /* Field: Content: Internet Link */
-  $handler->display->display_options['fields']['field_ercore_pb_link']['id'] = 'field_ercore_pb_link';
-  $handler->display->display_options['fields']['field_ercore_pb_link']['table'] = 'field_data_field_ercore_pb_link';
-  $handler->display->display_options['fields']['field_ercore_pb_link']['field'] = 'field_ercore_pb_link';
-  $handler->display->display_options['fields']['field_ercore_pb_link']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_pb_link']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_ercore_pb_link']['type'] = 'link_url';
+  /* Field: Content: Journal, Book, Magazine or Newspaper Name */
+  $handler->display->display_options['fields']['field_ercore_pb_journal_name']['id'] = 'field_ercore_pb_journal_name';
+  $handler->display->display_options['fields']['field_ercore_pb_journal_name']['table'] = 'field_data_field_ercore_pb_journal_name';
+  $handler->display->display_options['fields']['field_ercore_pb_journal_name']['field'] = 'field_ercore_pb_journal_name';
+  $handler->display->display_options['fields']['field_ercore_pb_journal_name']['element_label_colon'] = FALSE;
   /* Field: Content: Volume */
   $handler->display->display_options['fields']['field_ercore_pb_journal_volume']['id'] = 'field_ercore_pb_journal_volume';
   $handler->display->display_options['fields']['field_ercore_pb_journal_volume']['table'] = 'field_data_field_ercore_pb_journal_volume';
@@ -6028,11 +6645,47 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_pb_journal_pages']['table'] = 'field_data_field_ercore_pb_journal_pages';
   $handler->display->display_options['fields']['field_ercore_pb_journal_pages']['field'] = 'field_ercore_pb_journal_pages';
   $handler->display->display_options['fields']['field_ercore_pb_journal_pages']['element_label_colon'] = FALSE;
-  /* Field: Content: Journal, Book, Magazine or Newspaper Name */
-  $handler->display->display_options['fields']['field_ercore_pb_journal_name']['id'] = 'field_ercore_pb_journal_name';
-  $handler->display->display_options['fields']['field_ercore_pb_journal_name']['table'] = 'field_data_field_ercore_pb_journal_name';
-  $handler->display->display_options['fields']['field_ercore_pb_journal_name']['field'] = 'field_ercore_pb_journal_name';
-  $handler->display->display_options['fields']['field_ercore_pb_journal_name']['element_label_colon'] = FALSE;
+  /* Field: Content: DOI */
+  $handler->display->display_options['fields']['field_ercore_pb_doi']['id'] = 'field_ercore_pb_doi';
+  $handler->display->display_options['fields']['field_ercore_pb_doi']['table'] = 'field_data_field_ercore_pb_doi';
+  $handler->display->display_options['fields']['field_ercore_pb_doi']['field'] = 'field_ercore_pb_doi';
+  $handler->display->display_options['fields']['field_ercore_pb_doi']['element_label_colon'] = FALSE;
+  /* Field: Content: ISSN/ISBN */
+  $handler->display->display_options['fields']['field_ercore_pb_issn']['id'] = 'field_ercore_pb_issn';
+  $handler->display->display_options['fields']['field_ercore_pb_issn']['table'] = 'field_data_field_ercore_pb_issn';
+  $handler->display->display_options['fields']['field_ercore_pb_issn']['field'] = 'field_ercore_pb_issn';
+  $handler->display->display_options['fields']['field_ercore_pb_issn']['element_label_colon'] = FALSE;
+  /* Field: Content: NSF Acknowledgement */
+  $handler->display->display_options['fields']['field_ercore_nsf']['id'] = 'field_ercore_nsf';
+  $handler->display->display_options['fields']['field_ercore_nsf']['table'] = 'field_data_field_ercore_nsf';
+  $handler->display->display_options['fields']['field_ercore_nsf']['field'] = 'field_ercore_nsf';
+  $handler->display->display_options['fields']['field_ercore_nsf']['element_label_colon'] = FALSE;
+  /* Field: Content: What level of funding support did EPSCoR provide for this publication? */
+  $handler->display->display_options['fields']['field_ercore_pb_rii_support']['id'] = 'field_ercore_pb_rii_support';
+  $handler->display->display_options['fields']['field_ercore_pb_rii_support']['table'] = 'field_data_field_ercore_pb_rii_support';
+  $handler->display->display_options['fields']['field_ercore_pb_rii_support']['field'] = 'field_ercore_pb_rii_support';
+  $handler->display->display_options['fields']['field_ercore_pb_rii_support']['label'] = 'What level of funding?';
+  $handler->display->display_options['fields']['field_ercore_pb_rii_support']['element_label_colon'] = FALSE;
+  /* Field: Content: Goals and Objectives */
+  $handler->display->display_options['fields']['field_ercore_goals']['id'] = 'field_ercore_goals';
+  $handler->display->display_options['fields']['field_ercore_goals']['table'] = 'field_data_field_ercore_goals';
+  $handler->display->display_options['fields']['field_ercore_goals']['field'] = 'field_ercore_goals';
+  $handler->display->display_options['fields']['field_ercore_goals']['element_label_colon'] = FALSE;
+  /* Field: Content: EPSCoR Support */
+  $handler->display->display_options['fields']['field_ercore_op_rii_support']['id'] = 'field_ercore_op_rii_support';
+  $handler->display->display_options['fields']['field_ercore_op_rii_support']['table'] = 'field_data_field_ercore_op_rii_support';
+  $handler->display->display_options['fields']['field_ercore_op_rii_support']['field'] = 'field_ercore_op_rii_support';
+  $handler->display->display_options['fields']['field_ercore_op_rii_support']['element_label_colon'] = FALSE;
+  /* Field: Content: Internet Link */
+  $handler->display->display_options['fields']['field_ercore_pb_link']['id'] = 'field_ercore_pb_link';
+  $handler->display->display_options['fields']['field_ercore_pb_link']['table'] = 'field_data_field_ercore_pb_link';
+  $handler->display->display_options['fields']['field_ercore_pb_link']['field'] = 'field_ercore_pb_link';
+  $handler->display->display_options['fields']['field_ercore_pb_link']['label'] = 'Internet Link (URL - Title)';
+  $handler->display->display_options['fields']['field_ercore_pb_link']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_pb_link']['alter']['text'] = '[field_ercore_pb_link-url] - [field_ercore_pb_link-title]';
+  $handler->display->display_options['fields']['field_ercore_pb_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_pb_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_ercore_pb_link']['type'] = 'link_separate';
   $handler->display->display_options['path'] = 'publications/download';
   $handler->display->display_options['displays'] = array(
     'default' => 'default',
@@ -6043,11 +6696,3093 @@ function ercore_admin_views_default_views() {
   $views['ercore_summary_publication'] = $view;
 
   $view = new view();
+  $view->name = 'ercore_table_c_display';
+  $view->description = '';
+  $view->tag = 'ERCore, ERCore Administration, NSF Tables, Table C';
+  $view->base_table = 'node';
+  $view->human_name = 'ERCore: NSF Table C: Display';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'NSF Table C: Collaborations';
+  $handler->display->display_options['css_class'] = 'collaboration-list ercore-view';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'title_1',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['group']['element_type'] = 'h2';
+  $handler->display->display_options['style_options']['group']['class'] = 'grouping';
+  $handler->display->display_options['style_options']['row']['class'] = 'list-row';
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 1;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'title' => array(
+      'element_type' => 'div',
+      'class' => 'title',
+    ),
+  );
+  /* Relationship: Collaborator */
+  $handler->display->display_options['relationships']['field_ercore_cn_collaborator_value']['id'] = 'field_ercore_cn_collaborator_value';
+  $handler->display->display_options['relationships']['field_ercore_cn_collaborator_value']['table'] = 'field_data_field_ercore_cn_collaborator';
+  $handler->display->display_options['relationships']['field_ercore_cn_collaborator_value']['field'] = 'field_ercore_cn_collaborator_value';
+  $handler->display->display_options['relationships']['field_ercore_cn_collaborator_value']['ui_name'] = 'Collaborator';
+  $handler->display->display_options['relationships']['field_ercore_cn_collaborator_value']['label'] = 'Collaborator';
+  $handler->display->display_options['relationships']['field_ercore_cn_collaborator_value']['required'] = TRUE;
+  $handler->display->display_options['relationships']['field_ercore_cn_collaborator_value']['delta'] = '-1';
+  /* Relationship: Collaborator to Institution */
+  $handler->display->display_options['relationships']['field_ercore_cr_inst_ref_target_id']['id'] = 'field_ercore_cr_inst_ref_target_id';
+  $handler->display->display_options['relationships']['field_ercore_cr_inst_ref_target_id']['table'] = 'field_data_field_ercore_cr_inst_ref';
+  $handler->display->display_options['relationships']['field_ercore_cr_inst_ref_target_id']['field'] = 'field_ercore_cr_inst_ref_target_id';
+  $handler->display->display_options['relationships']['field_ercore_cr_inst_ref_target_id']['relationship'] = 'field_ercore_cn_collaborator_value';
+  $handler->display->display_options['relationships']['field_ercore_cr_inst_ref_target_id']['ui_name'] = 'Collaborator to Institution';
+  $handler->display->display_options['relationships']['field_ercore_cr_inst_ref_target_id']['label'] = 'Institution';
+  $handler->display->display_options['relationships']['field_ercore_cr_inst_ref_target_id']['required'] = TRUE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['relationship'] = 'field_ercore_cr_inst_ref_target_id';
+  $handler->display->display_options['fields']['title_1']['label'] = '';
+  $handler->display->display_options['fields']['title_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
+  /* Field: Content: Rendered Node */
+  $handler->display->display_options['fields']['rendered_entity']['id'] = 'rendered_entity';
+  $handler->display->display_options['fields']['rendered_entity']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['rendered_entity']['field'] = 'rendered_entity';
+  $handler->display->display_options['fields']['rendered_entity']['label'] = '';
+  $handler->display->display_options['fields']['rendered_entity']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['rendered_entity']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['rendered_entity']['display'] = 'view';
+  $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'teaser_alternate';
+  $handler->display->display_options['fields']['rendered_entity']['bypass_access'] = 0;
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['sorts']['title']['relationship'] = 'field_ercore_cr_inst_ref_target_id';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['sorts']['title_1']['table'] = 'node';
+  $handler->display->display_options['sorts']['title_1']['field'] = 'title';
+  /* Contextual filter: Content: Collaboration Dates -  start date (field_ercore_cn_dates) */
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['id'] = 'field_ercore_cn_dates_value';
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['table'] = 'field_data_field_ercore_cn_dates';
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['field'] = 'field_ercore_cn_dates_value';
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['year_range'] = '-25:+3';
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['granularity_reset'] = 0;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'ercore_collaboration' => 'ercore_collaboration',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+
+  /* Display: Content pane */
+  $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $views['ercore_table_c_display'] = $view;
+
+  $view = new view();
+  $view->name = 'ercore_table_c_export';
+  $view->description = '';
+  $view->tag = 'ERCore, ERCore Administration, NSF Tables, Table C';
+  $view->base_table = 'field_collection_item';
+  $view->human_name = 'ERCore: NSF Table C: Export';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_ercore_in_type',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: External Institution */
+  $handler->display->display_options['relationships']['field_ercore_cr_inst_ref_target_id']['id'] = 'field_ercore_cr_inst_ref_target_id';
+  $handler->display->display_options['relationships']['field_ercore_cr_inst_ref_target_id']['table'] = 'field_data_field_ercore_cr_inst_ref';
+  $handler->display->display_options['relationships']['field_ercore_cr_inst_ref_target_id']['field'] = 'field_ercore_cr_inst_ref_target_id';
+  $handler->display->display_options['relationships']['field_ercore_cr_inst_ref_target_id']['ui_name'] = 'External Institution';
+  $handler->display->display_options['relationships']['field_ercore_cr_inst_ref_target_id']['label'] = 'External';
+  $handler->display->display_options['relationships']['field_ercore_cr_inst_ref_target_id']['required'] = TRUE;
+  /* Relationship: Field Collection Item to Collaboration */
+  $handler->display->display_options['relationships']['field_ercore_cn_collaborator_node']['id'] = 'field_ercore_cn_collaborator_node';
+  $handler->display->display_options['relationships']['field_ercore_cn_collaborator_node']['table'] = 'field_collection_item';
+  $handler->display->display_options['relationships']['field_ercore_cn_collaborator_node']['field'] = 'field_ercore_cn_collaborator_node';
+  $handler->display->display_options['relationships']['field_ercore_cn_collaborator_node']['ui_name'] = 'Field Collection Item to Collaboration';
+  $handler->display->display_options['relationships']['field_ercore_cn_collaborator_node']['label'] = 'Collaboration';
+  $handler->display->display_options['relationships']['field_ercore_cn_collaborator_node']['required'] = TRUE;
+  /* Field: Field collection item: Field collection item ID */
+  $handler->display->display_options['fields']['item_id']['id'] = 'item_id';
+  $handler->display->display_options['fields']['item_id']['table'] = 'field_collection_item';
+  $handler->display->display_options['fields']['item_id']['field'] = 'item_id';
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['relationship'] = 'field_ercore_cr_inst_ref_target_id';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['field_ercore_in_type']['id'] = 'field_ercore_in_type';
+  $handler->display->display_options['fields']['field_ercore_in_type']['table'] = 'field_data_field_ercore_in_type';
+  $handler->display->display_options['fields']['field_ercore_in_type']['field'] = 'field_ercore_in_type';
+  $handler->display->display_options['fields']['field_ercore_in_type']['relationship'] = 'field_ercore_cr_inst_ref_target_id';
+  $handler->display->display_options['fields']['field_ercore_in_type']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_in_type']['element_label_colon'] = FALSE;
+  /* Field: Content: Category */
+  $handler->display->display_options['fields']['field_ercore_in_category']['id'] = 'field_ercore_in_category';
+  $handler->display->display_options['fields']['field_ercore_in_category']['table'] = 'field_data_field_ercore_in_category';
+  $handler->display->display_options['fields']['field_ercore_in_category']['field'] = 'field_ercore_in_category';
+  $handler->display->display_options['fields']['field_ercore_in_category']['relationship'] = 'field_ercore_cr_inst_ref_target_id';
+  /* Contextual filter: Content: Category (field_ercore_in_category) */
+  $handler->display->display_options['arguments']['field_ercore_in_category_value']['id'] = 'field_ercore_in_category_value';
+  $handler->display->display_options['arguments']['field_ercore_in_category_value']['table'] = 'field_data_field_ercore_in_category';
+  $handler->display->display_options['arguments']['field_ercore_in_category_value']['field'] = 'field_ercore_in_category_value';
+  $handler->display->display_options['arguments']['field_ercore_in_category_value']['relationship'] = 'field_ercore_cr_inst_ref_target_id';
+  $handler->display->display_options['arguments']['field_ercore_in_category_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_ercore_in_category_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ercore_in_category_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ercore_in_category_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_ercore_in_category_value']['limit'] = '0';
+  /* Contextual filter: Content: Collaboration Dates -  start date (field_ercore_cn_dates) */
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['id'] = 'field_ercore_cn_dates_value';
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['table'] = 'field_data_field_ercore_cn_dates';
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['field'] = 'field_ercore_cn_dates_value';
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['relationship'] = 'field_ercore_cn_collaborator_node';
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['granularity_reset'] = 0;
+  /* Filter criterion: Field collection item: Institution/Organization (field_ercore_cr_inst_ref) */
+  $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['id'] = 'field_ercore_cr_inst_ref_target_id';
+  $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['table'] = 'field_data_field_ercore_cr_inst_ref';
+  $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['field'] = 'field_ercore_cr_inst_ref_target_id';
+  $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['value'] = array(
+    'min' => '',
+    'max' => '',
+    'value' => '',
+  );
+
+  /* Display: Content pane */
+  $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $views['ercore_table_c_export'] = $view;
+
+  $view = new view();
+  $view->name = 'ercore_table_d_display';
+  $view->description = '';
+  $view->tag = 'ERCore, ERCore Administration, Engagements, NSF Tables, Table D';
+  $view->base_table = 'field_collection_item';
+  $view->human_name = 'ERCore: NSF Table D: Display';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Total';
+  $handler->display->display_options['css_class'] = 'e-user-table ercore-view';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'nid' => 'nid',
+    'field_ercore_ee_ari_fac_t' => 'field_ercore_ee_ari_fac_t',
+    'field_ercore_ee_ari_stu_t' => 'field_ercore_ee_ari_stu_t',
+    'field_ercore_ee_pui_fac_t' => 'field_ercore_ee_pui_fac_t',
+    'field_ercore_ee_pui_stu_t' => 'field_ercore_ee_pui_stu_t',
+    'field_ercore_ee_msi_fac_t' => 'field_ercore_ee_msi_fac_t',
+    'field_ercore_ee_msi_stu_t' => 'field_ercore_ee_msi_stu_t',
+    'field_ercore_ee_k12i_tec_t' => 'field_ercore_ee_k12i_tec_t',
+    'field_ercore_ee_k12i_stud_t' => 'field_ercore_ee_k12i_stud_t',
+    'field_ercore_ee_k12i_stut_t' => 'field_ercore_ee_k12i_stut_t',
+    'field_ercore_ee_oth_t' => 'field_ercore_ee_oth_t',
+    'field_ercore_ee_t_t' => 'field_ercore_ee_t_t',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'nid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_ari_fac_t' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_ari_stu_t' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_pui_fac_t' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_pui_stu_t' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_msi_fac_t' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_msi_stu_t' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_k12i_tec_t' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_k12i_stud_t' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_k12i_stut_t' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_oth_t' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_t_t' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['caption'] = 'External Engagements: Totals';
+  $handler->display->display_options['style_options']['summary'] = 'Summary of External Engagement Data - Totals';
+  $handler->display->display_options['style_options']['empty_table'] = TRUE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No engagements of this type during this period.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  /* Relationship: Engagement to Node */
+  $handler->display->display_options['relationships']['field_ercore_ev_engagement_node']['id'] = 'field_ercore_ev_engagement_node';
+  $handler->display->display_options['relationships']['field_ercore_ev_engagement_node']['table'] = 'field_collection_item';
+  $handler->display->display_options['relationships']['field_ercore_ev_engagement_node']['field'] = 'field_ercore_ev_engagement_node';
+  $handler->display->display_options['relationships']['field_ercore_ev_engagement_node']['ui_name'] = 'Engagement to Node';
+  $handler->display->display_options['relationships']['field_ercore_ev_engagement_node']['label'] = 'Engagement Node';
+  $handler->display->display_options['relationships']['field_ercore_ev_engagement_node']['required'] = TRUE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['relationship'] = 'field_ercore_ev_engagement_node';
+  $handler->display->display_options['fields']['nid']['label'] = 'Edit';
+  $handler->display->display_options['fields']['nid']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['nid']['alter']['text'] = 'Edit [nid]';
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['link_to_node'] = TRUE;
+  /* Field: Field collection item: ARI: Faculty - Total */
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_t']['id'] = 'field_ercore_ee_ari_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_t']['table'] = 'field_data_field_ercore_ee_ari_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_t']['field'] = 'field_ercore_ee_ari_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_t']['label'] = 'ARI Fac';
+  /* Field: Field collection item: ARI: Students - Total */
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_t']['id'] = 'field_ercore_ee_ari_stu_t';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_t']['table'] = 'field_data_field_ercore_ee_ari_stu_t';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_t']['field'] = 'field_ercore_ee_ari_stu_t';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_t']['label'] = 'ARI Stu';
+  /* Field: Field collection item: UI: Faculty - Total */
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_t']['id'] = 'field_ercore_ee_pui_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_t']['table'] = 'field_data_field_ercore_ee_pui_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_t']['field'] = 'field_ercore_ee_pui_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_t']['label'] = 'UI Fac';
+  /* Field: Field collection item: UI: Students - Total */
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_t']['id'] = 'field_ercore_ee_pui_stu_t';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_t']['table'] = 'field_data_field_ercore_ee_pui_stu_t';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_t']['field'] = 'field_ercore_ee_pui_stu_t';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_t']['label'] = 'UI Stu';
+  /* Field: Field collection item: MSI: Faculty - Total */
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_t']['id'] = 'field_ercore_ee_msi_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_t']['table'] = 'field_data_field_ercore_ee_msi_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_t']['field'] = 'field_ercore_ee_msi_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_t']['label'] = 'MSI Fac';
+  /* Field: Field collection item: MSI: Students - Total */
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_t']['id'] = 'field_ercore_ee_msi_stu_t';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_t']['table'] = 'field_data_field_ercore_ee_msi_stu_t';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_t']['field'] = 'field_ercore_ee_msi_stu_t';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_t']['label'] = 'MSI Stu';
+  /* Field: Field collection item: K-12: Teachers - Total */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_t']['id'] = 'field_ercore_ee_k12i_tec_t';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_t']['table'] = 'field_data_field_ercore_ee_k12i_tec_t';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_t']['field'] = 'field_ercore_ee_k12i_tec_t';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_t']['label'] = 'K12 T';
+  /* Field: Field collection item: K-12: Students Reached Directly - Total */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_t']['id'] = 'field_ercore_ee_k12i_stud_t';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_t']['table'] = 'field_data_field_ercore_ee_k12i_stud_t';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_t']['field'] = 'field_ercore_ee_k12i_stud_t';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_t']['label'] = 'K12 SD';
+  /* Field: Field collection item: K-12: Students Reached via Teach. Training - Total */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_t']['id'] = 'field_ercore_ee_k12i_stut_t';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_t']['table'] = 'field_data_field_ercore_ee_k12i_stut_t';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_t']['field'] = 'field_ercore_ee_k12i_stut_t';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_t']['label'] = 'K12 ST';
+  /* Field: Field collection item: Other: Total */
+  $handler->display->display_options['fields']['field_ercore_ee_oth_t']['id'] = 'field_ercore_ee_oth_t';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_t']['table'] = 'field_data_field_ercore_ee_oth_t';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_t']['field'] = 'field_ercore_ee_oth_t';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_t']['label'] = 'Oth';
+  /* Field: Field collection item: Total */
+  $handler->display->display_options['fields']['field_ercore_ee_t_t']['id'] = 'field_ercore_ee_t_t';
+  $handler->display->display_options['fields']['field_ercore_ee_t_t']['table'] = 'field_data_field_ercore_ee_t_t';
+  $handler->display->display_options['fields']['field_ercore_ee_t_t']['field'] = 'field_ercore_ee_t_t';
+  /* Contextual filter: Content: Date -  start date (field_ercore_ev_date) */
+  $handler->display->display_options['arguments']['field_ercore_ev_date_value']['id'] = 'field_ercore_ev_date_value';
+  $handler->display->display_options['arguments']['field_ercore_ev_date_value']['table'] = 'field_data_field_ercore_ev_date';
+  $handler->display->display_options['arguments']['field_ercore_ev_date_value']['field'] = 'field_ercore_ev_date_value';
+  $handler->display->display_options['arguments']['field_ercore_ev_date_value']['relationship'] = 'field_ercore_ev_engagement_node';
+  $handler->display->display_options['arguments']['field_ercore_ev_date_value']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['field_ercore_ev_date_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ercore_ev_date_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ercore_ev_date_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_ercore_ev_date_value']['year_range'] = '-25:+3';
+  $handler->display->display_options['arguments']['field_ercore_ev_date_value']['granularity_reset'] = 0;
+
+  /* Display: Total */
+  $handler = $view->new_display('panel_pane', 'Total', 'panel_pane_1');
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: View area */
+  $handler->display->display_options['footer']['view']['id'] = 'view';
+  $handler->display->display_options['footer']['view']['table'] = 'views';
+  $handler->display->display_options['footer']['view']['field'] = 'view';
+  $handler->display->display_options['footer']['view']['label'] = 'Male';
+  $handler->display->display_options['footer']['view']['empty'] = TRUE;
+  $handler->display->display_options['footer']['view']['view_to_insert'] = 'ercore_table_d_display:panel_pane_2';
+  $handler->display->display_options['footer']['view']['inherit_arguments'] = TRUE;
+  /* Footer: Global: View area */
+  $handler->display->display_options['footer']['view_1']['id'] = 'view_1';
+  $handler->display->display_options['footer']['view_1']['table'] = 'views';
+  $handler->display->display_options['footer']['view_1']['field'] = 'view';
+  $handler->display->display_options['footer']['view_1']['label'] = 'Female';
+  $handler->display->display_options['footer']['view_1']['empty'] = TRUE;
+  $handler->display->display_options['footer']['view_1']['view_to_insert'] = 'ercore_table_d_display:panel_pane_3';
+  $handler->display->display_options['footer']['view_1']['inherit_arguments'] = TRUE;
+  /* Footer: Global: View area */
+  $handler->display->display_options['footer']['view_2']['id'] = 'view_2';
+  $handler->display->display_options['footer']['view_2']['table'] = 'views';
+  $handler->display->display_options['footer']['view_2']['field'] = 'view';
+  $handler->display->display_options['footer']['view_2']['label'] = 'Minority';
+  $handler->display->display_options['footer']['view_2']['empty'] = TRUE;
+  $handler->display->display_options['footer']['view_2']['view_to_insert'] = 'ercore_table_d_display:panel_pane_4';
+  $handler->display->display_options['footer']['view_2']['inherit_arguments'] = TRUE;
+
+  /* Display: Male */
+  $handler = $view->new_display('panel_pane', 'Male', 'panel_pane_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Male';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'nid' => 'nid',
+    'edit_node' => 'edit_node',
+    'field_ercore_ee_ari_fac_m' => 'field_ercore_ee_ari_fac_m',
+    'field_ercore_ee_ari_stu_m' => 'field_ercore_ee_ari_stu_m',
+    'field_ercore_ee_pui_fac_m' => 'field_ercore_ee_pui_fac_m',
+    'field_ercore_ee_pui_stu_m' => 'field_ercore_ee_pui_stu_m',
+    'field_ercore_ee_msi_fac_m' => 'field_ercore_ee_msi_fac_m',
+    'field_ercore_ee_msi_stu_m' => 'field_ercore_ee_msi_stu_m',
+    'field_ercore_ee_k12i_tec_m' => 'field_ercore_ee_k12i_tec_m',
+    'field_ercore_ee_k12i_stud_m' => 'field_ercore_ee_k12i_stud_m',
+    'field_ercore_ee_k12i_stut_m' => 'field_ercore_ee_k12i_stut_m',
+    'field_ercore_ee_oth_m' => 'field_ercore_ee_oth_m',
+    'field_ercore_ee_m_t_1' => 'field_ercore_ee_m_t_1',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'nid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_ari_fac_m' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_ari_stu_m' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_pui_fac_m' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_pui_stu_m' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_msi_fac_m' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_msi_stu_m' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_k12i_tec_m' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_k12i_stud_m' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_k12i_stut_m' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_oth_m' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_m_t_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['caption'] = 'External Engagements: Male';
+  $handler->display->display_options['style_options']['summary'] = 'Summary of External Engagement Data - Totals: Male';
+  $handler->display->display_options['style_options']['empty_table'] = TRUE;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['relationship'] = 'field_ercore_ev_engagement_node';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['relationship'] = 'field_ercore_ev_engagement_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = 'Edit';
+  $handler->display->display_options['fields']['edit_node']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['edit_node']['alter']['text'] = 'Edit [nid]';
+  $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['edit_node']['text'] = 'Edit';
+  /* Field: Field collection item: ARI: Faculty - Male */
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_m']['id'] = 'field_ercore_ee_ari_fac_m';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_m']['table'] = 'field_data_field_ercore_ee_ari_fac_m';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_m']['field'] = 'field_ercore_ee_ari_fac_m';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_m']['label'] = 'ARI: Fac';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_m']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: ARI: Students - Male */
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_m']['id'] = 'field_ercore_ee_ari_stu_m';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_m']['table'] = 'field_data_field_ercore_ee_ari_stu_m';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_m']['field'] = 'field_ercore_ee_ari_stu_m';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_m']['label'] = 'ARI Stu';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_m']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: UI: Faculty - Male */
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_m']['id'] = 'field_ercore_ee_pui_fac_m';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_m']['table'] = 'field_data_field_ercore_ee_pui_fac_m';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_m']['field'] = 'field_ercore_ee_pui_fac_m';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_m']['label'] = 'UI Fac';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_m']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: UI: Students - Male */
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_m']['id'] = 'field_ercore_ee_pui_stu_m';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_m']['table'] = 'field_data_field_ercore_ee_pui_stu_m';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_m']['field'] = 'field_ercore_ee_pui_stu_m';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_m']['label'] = 'UI Stu';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_m']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: MSI: Faculty - Male */
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_m']['id'] = 'field_ercore_ee_msi_fac_m';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_m']['table'] = 'field_data_field_ercore_ee_msi_fac_m';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_m']['field'] = 'field_ercore_ee_msi_fac_m';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_m']['label'] = 'MSI Fac';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_m']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: MSI: Students - Male */
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_m']['id'] = 'field_ercore_ee_msi_stu_m';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_m']['table'] = 'field_data_field_ercore_ee_msi_stu_m';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_m']['field'] = 'field_ercore_ee_msi_stu_m';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_m']['label'] = 'MSI Stu';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_m']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: K-12: Teachers - Male */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_m']['id'] = 'field_ercore_ee_k12i_tec_m';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_m']['table'] = 'field_data_field_ercore_ee_k12i_tec_m';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_m']['field'] = 'field_ercore_ee_k12i_tec_m';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_m']['label'] = 'K12 T';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_m']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: K-12: Students Reached Directly - Male */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_m']['id'] = 'field_ercore_ee_k12i_stud_m';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_m']['table'] = 'field_data_field_ercore_ee_k12i_stud_m';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_m']['field'] = 'field_ercore_ee_k12i_stud_m';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_m']['label'] = 'K12 SD';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_m']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: K-12: Students Reached via Teach. Training - Male */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_m']['id'] = 'field_ercore_ee_k12i_stut_m';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_m']['table'] = 'field_data_field_ercore_ee_k12i_stut_m';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_m']['field'] = 'field_ercore_ee_k12i_stut_m';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_m']['label'] = 'K12 ST';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_m']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: Other: Male */
+  $handler->display->display_options['fields']['field_ercore_ee_oth_m']['id'] = 'field_ercore_ee_oth_m';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_m']['table'] = 'field_data_field_ercore_ee_oth_m';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_m']['field'] = 'field_ercore_ee_oth_m';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_m']['label'] = 'Oth';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_m']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: Total - Male */
+  $handler->display->display_options['fields']['field_ercore_ee_m_t_1']['id'] = 'field_ercore_ee_m_t_1';
+  $handler->display->display_options['fields']['field_ercore_ee_m_t_1']['table'] = 'field_data_field_ercore_ee_m_t';
+  $handler->display->display_options['fields']['field_ercore_ee_m_t_1']['field'] = 'field_ercore_ee_m_t';
+  $handler->display->display_options['fields']['field_ercore_ee_m_t_1']['label'] = 'Total';
+
+  /* Display: Female */
+  $handler = $view->new_display('panel_pane', 'Female', 'panel_pane_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Female';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'nid' => 'nid',
+    'edit_node' => 'edit_node',
+    'field_ercore_ee_ari_fac_f' => 'field_ercore_ee_ari_fac_f',
+    'field_ercore_ee_ari_stu_f' => 'field_ercore_ee_ari_stu_f',
+    'field_ercore_ee_pui_fac_f' => 'field_ercore_ee_pui_fac_f',
+    'field_ercore_ee_pui_stu_f' => 'field_ercore_ee_pui_stu_f',
+    'field_ercore_ee_msi_fac_f' => 'field_ercore_ee_msi_fac_f',
+    'field_ercore_ee_msi_stu_f' => 'field_ercore_ee_msi_stu_f',
+    'field_ercore_ee_k12i_tec_f' => 'field_ercore_ee_k12i_tec_f',
+    'field_ercore_ee_k12i_stud_f' => 'field_ercore_ee_k12i_stud_f',
+    'field_ercore_ee_k12i_stut_f' => 'field_ercore_ee_k12i_stut_f',
+    'field_ercore_ee_oth_f' => 'field_ercore_ee_oth_f',
+    'field_ercore_ee_f_t' => 'field_ercore_ee_f_t',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'nid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_ari_fac_f' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_ari_stu_f' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_pui_fac_f' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_pui_stu_f' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_msi_fac_f' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_msi_stu_f' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_k12i_tec_f' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_k12i_stud_f' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_k12i_stut_f' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_oth_f' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_f_t' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['caption'] = 'External Engagements: Female';
+  $handler->display->display_options['style_options']['summary'] = 'Summary of External Engagement Data - Totals: Female';
+  $handler->display->display_options['style_options']['empty_table'] = TRUE;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['relationship'] = 'field_ercore_ev_engagement_node';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['relationship'] = 'field_ercore_ev_engagement_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = 'Edit';
+  $handler->display->display_options['fields']['edit_node']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['edit_node']['alter']['text'] = 'Edit [nid]';
+  $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['edit_node']['text'] = 'Edit';
+  /* Field: Field collection item: ARI: Faculty - Female */
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_f']['id'] = 'field_ercore_ee_ari_fac_f';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_f']['table'] = 'field_data_field_ercore_ee_ari_fac_f';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_f']['field'] = 'field_ercore_ee_ari_fac_f';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_f']['label'] = 'ARI Fac';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_f']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: ARI: Students - Female */
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_f']['id'] = 'field_ercore_ee_ari_stu_f';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_f']['table'] = 'field_data_field_ercore_ee_ari_stu_f';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_f']['field'] = 'field_ercore_ee_ari_stu_f';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_f']['label'] = 'ARI Stu';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_f']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: UI: Faculty - Female */
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_f']['id'] = 'field_ercore_ee_pui_fac_f';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_f']['table'] = 'field_data_field_ercore_ee_pui_fac_f';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_f']['field'] = 'field_ercore_ee_pui_fac_f';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_f']['label'] = 'UI Fac';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_f']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: UI: Students - Female */
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_f']['id'] = 'field_ercore_ee_pui_stu_f';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_f']['table'] = 'field_data_field_ercore_ee_pui_stu_f';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_f']['field'] = 'field_ercore_ee_pui_stu_f';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_f']['label'] = 'UI Stu';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_f']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: MSI: Faculty - Female */
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_f']['id'] = 'field_ercore_ee_msi_fac_f';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_f']['table'] = 'field_data_field_ercore_ee_msi_fac_f';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_f']['field'] = 'field_ercore_ee_msi_fac_f';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_f']['label'] = 'MSI Fac';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_f']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: MSI: Students - Female */
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_f']['id'] = 'field_ercore_ee_msi_stu_f';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_f']['table'] = 'field_data_field_ercore_ee_msi_stu_f';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_f']['field'] = 'field_ercore_ee_msi_stu_f';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_f']['label'] = 'MSI Stu';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_f']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: K-12: Teachers - Female */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_f']['id'] = 'field_ercore_ee_k12i_tec_f';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_f']['table'] = 'field_data_field_ercore_ee_k12i_tec_f';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_f']['field'] = 'field_ercore_ee_k12i_tec_f';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_f']['label'] = 'K12 T';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_f']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: K-12: Students Reached Directly - Female */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_f']['id'] = 'field_ercore_ee_k12i_stud_f';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_f']['table'] = 'field_data_field_ercore_ee_k12i_stud_f';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_f']['field'] = 'field_ercore_ee_k12i_stud_f';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_f']['label'] = 'K12 SD';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_f']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: K-12: Students Reached via Teach. Training - Female */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_f']['id'] = 'field_ercore_ee_k12i_stut_f';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_f']['table'] = 'field_data_field_ercore_ee_k12i_stut_f';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_f']['field'] = 'field_ercore_ee_k12i_stut_f';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_f']['label'] = 'K12 ST';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_f']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: Other: Female */
+  $handler->display->display_options['fields']['field_ercore_ee_oth_f']['id'] = 'field_ercore_ee_oth_f';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_f']['table'] = 'field_data_field_ercore_ee_oth_f';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_f']['field'] = 'field_ercore_ee_oth_f';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_f']['label'] = 'Oth';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_f']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: Total - Female */
+  $handler->display->display_options['fields']['field_ercore_ee_f_t']['id'] = 'field_ercore_ee_f_t';
+  $handler->display->display_options['fields']['field_ercore_ee_f_t']['table'] = 'field_data_field_ercore_ee_f_t';
+  $handler->display->display_options['fields']['field_ercore_ee_f_t']['field'] = 'field_ercore_ee_f_t';
+  $handler->display->display_options['fields']['field_ercore_ee_f_t']['label'] = 'Total';
+
+  /* Display: URM */
+  $handler = $view->new_display('panel_pane', 'URM', 'panel_pane_4');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Under-represented Minorities';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'nid' => 'nid',
+    'edit_node' => 'edit_node',
+    'field_ercore_ee_ari_fac_mn' => 'field_ercore_ee_ari_fac_mn',
+    'field_ercore_ee_ari_stu_mn' => 'field_ercore_ee_ari_stu_mn',
+    'field_ercore_ee_pui_fac_mn' => 'field_ercore_ee_pui_fac_mn',
+    'field_ercore_ee_pui_stu_mn' => 'field_ercore_ee_pui_stu_mn',
+    'field_ercore_ee_msi_fac_mn' => 'field_ercore_ee_msi_fac_mn',
+    'field_ercore_ee_msi_stu_mn' => 'field_ercore_ee_msi_stu_mn',
+    'field_ercore_ee_k12i_tec_mn' => 'field_ercore_ee_k12i_tec_mn',
+    'field_ercore_ee_k12i_stud_mn' => 'field_ercore_ee_k12i_stud_mn',
+    'field_ercore_ee_k12i_stut_mn' => 'field_ercore_ee_k12i_stut_mn',
+    'field_ercore_ee_oth_mn' => 'field_ercore_ee_oth_mn',
+    'field_ercore_ee_um_t' => 'field_ercore_ee_um_t',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'nid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_ari_fac_mn' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_ari_stu_mn' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_pui_fac_mn' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_pui_stu_mn' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_msi_fac_mn' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_msi_stu_mn' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_k12i_tec_mn' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_k12i_stud_mn' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_k12i_stut_mn' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_oth_mn' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_ee_um_t' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['caption'] = 'External Engagements: Under-represented Minorities';
+  $handler->display->display_options['style_options']['summary'] = 'Summary of External Engagement Data - Totals: Under-represented Minorities';
+  $handler->display->display_options['style_options']['empty_table'] = TRUE;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['relationship'] = 'field_ercore_ev_engagement_node';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['relationship'] = 'field_ercore_ev_engagement_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = 'Edit';
+  $handler->display->display_options['fields']['edit_node']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['edit_node']['alter']['text'] = 'Edit [nid]';
+  $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['edit_node']['text'] = 'Edit';
+  /* Field: Field collection item: ARI: Faculty - Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_mn']['id'] = 'field_ercore_ee_ari_fac_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_mn']['table'] = 'field_data_field_ercore_ee_ari_fac_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_mn']['field'] = 'field_ercore_ee_ari_fac_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_mn']['label'] = 'ARI Fac';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_mn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: ARI: Student - Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_mn']['id'] = 'field_ercore_ee_ari_stu_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_mn']['table'] = 'field_data_field_ercore_ee_ari_stu_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_mn']['field'] = 'field_ercore_ee_ari_stu_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_mn']['label'] = 'ARI Stu';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_mn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: UI: Faculty - Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_mn']['id'] = 'field_ercore_ee_pui_fac_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_mn']['table'] = 'field_data_field_ercore_ee_pui_fac_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_mn']['field'] = 'field_ercore_ee_pui_fac_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_mn']['label'] = 'UI Fac';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_mn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: UI: Student - Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_mn']['id'] = 'field_ercore_ee_pui_stu_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_mn']['table'] = 'field_data_field_ercore_ee_pui_stu_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_mn']['field'] = 'field_ercore_ee_pui_stu_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_mn']['label'] = 'UI Stu';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_mn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: MSI: Faculty - Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_mn']['id'] = 'field_ercore_ee_msi_fac_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_mn']['table'] = 'field_data_field_ercore_ee_msi_fac_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_mn']['field'] = 'field_ercore_ee_msi_fac_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_mn']['label'] = 'MSI Fac';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_mn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: MSI: Student - Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_mn']['id'] = 'field_ercore_ee_msi_stu_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_mn']['table'] = 'field_data_field_ercore_ee_msi_stu_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_mn']['field'] = 'field_ercore_ee_msi_stu_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_mn']['label'] = 'MSI Stu';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_mn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: K-12: Teachers - Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_mn']['id'] = 'field_ercore_ee_k12i_tec_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_mn']['table'] = 'field_data_field_ercore_ee_k12i_tec_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_mn']['field'] = 'field_ercore_ee_k12i_tec_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_mn']['label'] = 'K12 T';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_mn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: K-12: Students Reached Directly - Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_mn']['id'] = 'field_ercore_ee_k12i_stud_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_mn']['table'] = 'field_data_field_ercore_ee_k12i_stud_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_mn']['field'] = 'field_ercore_ee_k12i_stud_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_mn']['label'] = 'K12 SD';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_mn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: K-12: Students Reached via Teach. Training - Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_mn']['id'] = 'field_ercore_ee_k12i_stut_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_mn']['table'] = 'field_data_field_ercore_ee_k12i_stut_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_mn']['field'] = 'field_ercore_ee_k12i_stut_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_mn']['label'] = 'K12 ST';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_mn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: Other: Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_oth_mn']['id'] = 'field_ercore_ee_oth_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_mn']['table'] = 'field_data_field_ercore_ee_oth_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_mn']['field'] = 'field_ercore_ee_oth_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_mn']['label'] = 'Oth';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_mn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: Total - Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_um_t']['id'] = 'field_ercore_ee_um_t';
+  $handler->display->display_options['fields']['field_ercore_ee_um_t']['table'] = 'field_data_field_ercore_ee_um_t';
+  $handler->display->display_options['fields']['field_ercore_ee_um_t']['field'] = 'field_ercore_ee_um_t';
+  $handler->display->display_options['fields']['field_ercore_ee_um_t']['label'] = 'Total';
+  $views['ercore_table_d_display'] = $view;
+
+  $view = new view();
+  $view->name = 'ercore_table_d_export';
+  $view->description = '';
+  $view->tag = 'ERCore, ERCore Administration, Engagements, NSF Tables, Table D';
+  $view->base_table = 'field_collection_item';
+  $view->human_name = 'ERCore: NSF Table D: Export';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Total';
+  $handler->display->display_options['css_class'] = 'e-user-table ercore-view';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['row']['element_type'] = '';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Engagement to Node */
+  $handler->display->display_options['relationships']['field_ercore_ev_engagement_node']['id'] = 'field_ercore_ev_engagement_node';
+  $handler->display->display_options['relationships']['field_ercore_ev_engagement_node']['table'] = 'field_collection_item';
+  $handler->display->display_options['relationships']['field_ercore_ev_engagement_node']['field'] = 'field_ercore_ev_engagement_node';
+  $handler->display->display_options['relationships']['field_ercore_ev_engagement_node']['ui_name'] = 'Engagement to Node';
+  $handler->display->display_options['relationships']['field_ercore_ev_engagement_node']['label'] = 'Engagement Node';
+  $handler->display->display_options['relationships']['field_ercore_ev_engagement_node']['required'] = TRUE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['relationship'] = 'field_ercore_ev_engagement_node';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: ARI: Faculty - Total */
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_t']['id'] = 'field_ercore_ee_ari_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_t']['table'] = 'field_data_field_ercore_ee_ari_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_t']['field'] = 'field_ercore_ee_ari_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_t']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_t']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: ARI: Students - Total */
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_t']['id'] = 'field_ercore_ee_ari_stu_t';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_t']['table'] = 'field_data_field_ercore_ee_ari_stu_t';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_t']['field'] = 'field_ercore_ee_ari_stu_t';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_t']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_t']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: UI: Faculty - Total */
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_t']['id'] = 'field_ercore_ee_pui_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_t']['table'] = 'field_data_field_ercore_ee_pui_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_t']['field'] = 'field_ercore_ee_pui_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_t']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_t']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: UI: Students - Total */
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_t']['id'] = 'field_ercore_ee_pui_stu_t';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_t']['table'] = 'field_data_field_ercore_ee_pui_stu_t';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_t']['field'] = 'field_ercore_ee_pui_stu_t';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_t']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_t']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: MSI: Faculty - Total */
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_t']['id'] = 'field_ercore_ee_msi_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_t']['table'] = 'field_data_field_ercore_ee_msi_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_t']['field'] = 'field_ercore_ee_msi_fac_t';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_t']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_t']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: MSI: Students - Total */
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_t']['id'] = 'field_ercore_ee_msi_stu_t';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_t']['table'] = 'field_data_field_ercore_ee_msi_stu_t';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_t']['field'] = 'field_ercore_ee_msi_stu_t';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_t']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_t']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: K-12: Teachers - Total */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_t']['id'] = 'field_ercore_ee_k12i_tec_t';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_t']['table'] = 'field_data_field_ercore_ee_k12i_tec_t';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_t']['field'] = 'field_ercore_ee_k12i_tec_t';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_t']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_t']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: K-12: Students Reached Directly - Total */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_t']['id'] = 'field_ercore_ee_k12i_stud_t';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_t']['table'] = 'field_data_field_ercore_ee_k12i_stud_t';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_t']['field'] = 'field_ercore_ee_k12i_stud_t';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_t']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_t']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: K-12: Students Reached via Teach. Training - Total */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_t']['id'] = 'field_ercore_ee_k12i_stut_t';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_t']['table'] = 'field_data_field_ercore_ee_k12i_stut_t';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_t']['field'] = 'field_ercore_ee_k12i_stut_t';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_t']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_t']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: Other: Total */
+  $handler->display->display_options['fields']['field_ercore_ee_oth_t']['id'] = 'field_ercore_ee_oth_t';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_t']['table'] = 'field_data_field_ercore_ee_oth_t';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_t']['field'] = 'field_ercore_ee_oth_t';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_t']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_t']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: Total */
+  $handler->display->display_options['fields']['field_ercore_ee_t_t']['id'] = 'field_ercore_ee_t_t';
+  $handler->display->display_options['fields']['field_ercore_ee_t_t']['table'] = 'field_data_field_ercore_ee_t_t';
+  $handler->display->display_options['fields']['field_ercore_ee_t_t']['field'] = 'field_ercore_ee_t_t';
+  $handler->display->display_options['fields']['field_ercore_ee_t_t']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_t_t']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: ARI: Faculty - Female */
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_f']['id'] = 'field_ercore_ee_ari_fac_f';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_f']['table'] = 'field_data_field_ercore_ee_ari_fac_f';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_f']['field'] = 'field_ercore_ee_ari_fac_f';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_f']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_f']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_f']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: ARI: Faculty - Male */
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_m']['id'] = 'field_ercore_ee_ari_fac_m';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_m']['table'] = 'field_data_field_ercore_ee_ari_fac_m';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_m']['field'] = 'field_ercore_ee_ari_fac_m';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_m']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_m']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_m']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: ARI: Students - Female */
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_f']['id'] = 'field_ercore_ee_ari_stu_f';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_f']['table'] = 'field_data_field_ercore_ee_ari_stu_f';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_f']['field'] = 'field_ercore_ee_ari_stu_f';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_f']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_f']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_f']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: ARI: Students - Male */
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_m']['id'] = 'field_ercore_ee_ari_stu_m';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_m']['table'] = 'field_data_field_ercore_ee_ari_stu_m';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_m']['field'] = 'field_ercore_ee_ari_stu_m';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_m']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_m']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_m']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: K-12: Students Reached Directly - Female */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_f']['id'] = 'field_ercore_ee_k12i_stud_f';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_f']['table'] = 'field_data_field_ercore_ee_k12i_stud_f';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_f']['field'] = 'field_ercore_ee_k12i_stud_f';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_f']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_f']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_f']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: K-12: Students Reached Directly - Male */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_m']['id'] = 'field_ercore_ee_k12i_stud_m';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_m']['table'] = 'field_data_field_ercore_ee_k12i_stud_m';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_m']['field'] = 'field_ercore_ee_k12i_stud_m';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_m']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_m']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_m']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: K-12: Students Reached via Teach. Training - Female */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_f']['id'] = 'field_ercore_ee_k12i_stut_f';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_f']['table'] = 'field_data_field_ercore_ee_k12i_stut_f';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_f']['field'] = 'field_ercore_ee_k12i_stut_f';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_f']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_f']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_f']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: K-12: Students Reached via Teach. Training - Male */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_m']['id'] = 'field_ercore_ee_k12i_stut_m';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_m']['table'] = 'field_data_field_ercore_ee_k12i_stut_m';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_m']['field'] = 'field_ercore_ee_k12i_stut_m';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_m']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_m']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_m']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: K-12: Teachers - Female */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_f']['id'] = 'field_ercore_ee_k12i_tec_f';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_f']['table'] = 'field_data_field_ercore_ee_k12i_tec_f';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_f']['field'] = 'field_ercore_ee_k12i_tec_f';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_f']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_f']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_f']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: K-12: Teachers - Male */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_m']['id'] = 'field_ercore_ee_k12i_tec_m';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_m']['table'] = 'field_data_field_ercore_ee_k12i_tec_m';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_m']['field'] = 'field_ercore_ee_k12i_tec_m';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_m']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_m']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_m']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: MSI: Faculty - Female */
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_f']['id'] = 'field_ercore_ee_msi_fac_f';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_f']['table'] = 'field_data_field_ercore_ee_msi_fac_f';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_f']['field'] = 'field_ercore_ee_msi_fac_f';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_f']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_f']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_f']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: MSI: Faculty - Male */
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_m']['id'] = 'field_ercore_ee_msi_fac_m';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_m']['table'] = 'field_data_field_ercore_ee_msi_fac_m';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_m']['field'] = 'field_ercore_ee_msi_fac_m';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_m']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_m']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_m']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: MSI: Students - Female */
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_f']['id'] = 'field_ercore_ee_msi_stu_f';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_f']['table'] = 'field_data_field_ercore_ee_msi_stu_f';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_f']['field'] = 'field_ercore_ee_msi_stu_f';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_f']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_f']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_f']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: MSI: Students - Male */
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_m']['id'] = 'field_ercore_ee_msi_stu_m';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_m']['table'] = 'field_data_field_ercore_ee_msi_stu_m';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_m']['field'] = 'field_ercore_ee_msi_stu_m';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_m']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_m']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_m']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: Other: Female */
+  $handler->display->display_options['fields']['field_ercore_ee_oth_f']['id'] = 'field_ercore_ee_oth_f';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_f']['table'] = 'field_data_field_ercore_ee_oth_f';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_f']['field'] = 'field_ercore_ee_oth_f';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_f']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_f']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_oth_f']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: Other: Male */
+  $handler->display->display_options['fields']['field_ercore_ee_oth_m']['id'] = 'field_ercore_ee_oth_m';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_m']['table'] = 'field_data_field_ercore_ee_oth_m';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_m']['field'] = 'field_ercore_ee_oth_m';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_m']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_m']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_oth_m']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: Total - Female */
+  $handler->display->display_options['fields']['field_ercore_ee_f_t']['id'] = 'field_ercore_ee_f_t';
+  $handler->display->display_options['fields']['field_ercore_ee_f_t']['table'] = 'field_data_field_ercore_ee_f_t';
+  $handler->display->display_options['fields']['field_ercore_ee_f_t']['field'] = 'field_ercore_ee_f_t';
+  $handler->display->display_options['fields']['field_ercore_ee_f_t']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_f_t']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: Total - Male */
+  $handler->display->display_options['fields']['field_ercore_ee_m_t']['id'] = 'field_ercore_ee_m_t';
+  $handler->display->display_options['fields']['field_ercore_ee_m_t']['table'] = 'field_data_field_ercore_ee_m_t';
+  $handler->display->display_options['fields']['field_ercore_ee_m_t']['field'] = 'field_ercore_ee_m_t';
+  $handler->display->display_options['fields']['field_ercore_ee_m_t']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_m_t']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: UI: Faculty - Female */
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_f']['id'] = 'field_ercore_ee_pui_fac_f';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_f']['table'] = 'field_data_field_ercore_ee_pui_fac_f';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_f']['field'] = 'field_ercore_ee_pui_fac_f';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_f']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_f']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_f']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: UI: Faculty - Male */
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_m']['id'] = 'field_ercore_ee_pui_fac_m';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_m']['table'] = 'field_data_field_ercore_ee_pui_fac_m';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_m']['field'] = 'field_ercore_ee_pui_fac_m';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_m']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_m']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_m']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: UI: Students - Female */
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_f']['id'] = 'field_ercore_ee_pui_stu_f';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_f']['table'] = 'field_data_field_ercore_ee_pui_stu_f';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_f']['field'] = 'field_ercore_ee_pui_stu_f';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_f']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_f']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_f']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: UI: Students - Male */
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_m']['id'] = 'field_ercore_ee_pui_stu_m';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_m']['table'] = 'field_data_field_ercore_ee_pui_stu_m';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_m']['field'] = 'field_ercore_ee_pui_stu_m';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_m']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_m']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_m']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: ARI: Faculty - Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_mn']['id'] = 'field_ercore_ee_ari_fac_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_mn']['table'] = 'field_data_field_ercore_ee_ari_fac_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_mn']['field'] = 'field_ercore_ee_ari_fac_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_mn']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_mn']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_ari_fac_mn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: ARI: Student - Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_mn']['id'] = 'field_ercore_ee_ari_stu_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_mn']['table'] = 'field_data_field_ercore_ee_ari_stu_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_mn']['field'] = 'field_ercore_ee_ari_stu_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_mn']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_mn']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_ari_stu_mn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: K-12: Students Reached Directly - Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_mn']['id'] = 'field_ercore_ee_k12i_stud_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_mn']['table'] = 'field_data_field_ercore_ee_k12i_stud_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_mn']['field'] = 'field_ercore_ee_k12i_stud_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_mn']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_mn']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stud_mn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: K-12: Students Reached via Teach. Training - Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_mn']['id'] = 'field_ercore_ee_k12i_stut_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_mn']['table'] = 'field_data_field_ercore_ee_k12i_stut_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_mn']['field'] = 'field_ercore_ee_k12i_stut_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_mn']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_mn']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_stut_mn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: K-12: Teachers - Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_mn']['id'] = 'field_ercore_ee_k12i_tec_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_mn']['table'] = 'field_data_field_ercore_ee_k12i_tec_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_mn']['field'] = 'field_ercore_ee_k12i_tec_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_mn']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_mn']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_k12i_tec_mn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: MSI: Faculty - Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_mn']['id'] = 'field_ercore_ee_msi_fac_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_mn']['table'] = 'field_data_field_ercore_ee_msi_fac_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_mn']['field'] = 'field_ercore_ee_msi_fac_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_mn']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_mn']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_msi_fac_mn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: MSI: Student - Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_mn']['id'] = 'field_ercore_ee_msi_stu_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_mn']['table'] = 'field_data_field_ercore_ee_msi_stu_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_mn']['field'] = 'field_ercore_ee_msi_stu_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_mn']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_mn']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_msi_stu_mn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: Other: Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_oth_mn']['id'] = 'field_ercore_ee_oth_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_mn']['table'] = 'field_data_field_ercore_ee_oth_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_mn']['field'] = 'field_ercore_ee_oth_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_mn']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_oth_mn']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_oth_mn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: Total - Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_um_t']['id'] = 'field_ercore_ee_um_t';
+  $handler->display->display_options['fields']['field_ercore_ee_um_t']['table'] = 'field_data_field_ercore_ee_um_t';
+  $handler->display->display_options['fields']['field_ercore_ee_um_t']['field'] = 'field_ercore_ee_um_t';
+  $handler->display->display_options['fields']['field_ercore_ee_um_t']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_um_t']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: UI: Faculty - Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_mn']['id'] = 'field_ercore_ee_pui_fac_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_mn']['table'] = 'field_data_field_ercore_ee_pui_fac_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_mn']['field'] = 'field_ercore_ee_pui_fac_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_mn']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_mn']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_pui_fac_mn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: UI: Student - Under-represented Minority */
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_mn']['id'] = 'field_ercore_ee_pui_stu_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_mn']['table'] = 'field_data_field_ercore_ee_pui_stu_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_mn']['field'] = 'field_ercore_ee_pui_stu_mn';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_mn']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_mn']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_ee_pui_stu_mn']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Contextual filter: Content: Date -  start date (field_ercore_ev_date) */
+  $handler->display->display_options['arguments']['field_ercore_ev_date_value']['id'] = 'field_ercore_ev_date_value';
+  $handler->display->display_options['arguments']['field_ercore_ev_date_value']['table'] = 'field_data_field_ercore_ev_date';
+  $handler->display->display_options['arguments']['field_ercore_ev_date_value']['field'] = 'field_ercore_ev_date_value';
+  $handler->display->display_options['arguments']['field_ercore_ev_date_value']['relationship'] = 'field_ercore_ev_engagement_node';
+  $handler->display->display_options['arguments']['field_ercore_ev_date_value']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['field_ercore_ev_date_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ercore_ev_date_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ercore_ev_date_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_ercore_ev_date_value']['year_range'] = '-25:+3';
+  $handler->display->display_options['arguments']['field_ercore_ev_date_value']['granularity_reset'] = 0;
+
+  /* Display: Total */
+  $handler = $view->new_display('panel_pane', 'Total', 'panel_pane_1');
+  $views['ercore_table_d_export'] = $view;
+
+  $view = new view();
+  $view->name = 'ercore_table_e_patents';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'ERCore: NSF Table E: Patents';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['style_options']['row']['class'] = 'list-row outputs';
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 1;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'title' => array(
+      'element_type' => 'div',
+      'class' => 'patent title',
+    ),
+    'field_ercore_pt_provisional' => array(
+      'element_type' => 'div',
+      'class' => 'patent-date provisional field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+  );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No Patents pending during this period.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Provisional Date */
+  $handler->display->display_options['fields']['field_ercore_pt_provisional']['id'] = 'field_ercore_pt_provisional';
+  $handler->display->display_options['fields']['field_ercore_pt_provisional']['table'] = 'field_data_field_ercore_pt_provisional';
+  $handler->display->display_options['fields']['field_ercore_pt_provisional']['field'] = 'field_ercore_pt_provisional';
+  $handler->display->display_options['fields']['field_ercore_pt_provisional']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_day_year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Contextual filter: Content: Provisional Date (field_ercore_pt_provisional) */
+  $handler->display->display_options['arguments']['field_ercore_pt_provisional_value']['id'] = 'field_ercore_pt_provisional_value';
+  $handler->display->display_options['arguments']['field_ercore_pt_provisional_value']['table'] = 'field_data_field_ercore_pt_provisional';
+  $handler->display->display_options['arguments']['field_ercore_pt_provisional_value']['field'] = 'field_ercore_pt_provisional_value';
+  $handler->display->display_options['arguments']['field_ercore_pt_provisional_value']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_ercore_pt_provisional_value']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['field_ercore_pt_provisional_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ercore_pt_provisional_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ercore_pt_provisional_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_ercore_pt_provisional_value']['year_range'] = '-25:+3';
+  $handler->display->display_options['arguments']['field_ercore_pt_provisional_value']['granularity_reset'] = 0;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'ercore_patent' => 'ercore_patent',
+  );
+  /* Filter criterion: Content: Provisional Date (field_ercore_pt_provisional) */
+  $handler->display->display_options['filters']['field_ercore_pt_provisional_value']['id'] = 'field_ercore_pt_provisional_value';
+  $handler->display->display_options['filters']['field_ercore_pt_provisional_value']['table'] = 'field_data_field_ercore_pt_provisional';
+  $handler->display->display_options['filters']['field_ercore_pt_provisional_value']['field'] = 'field_ercore_pt_provisional_value';
+  $handler->display->display_options['filters']['field_ercore_pt_provisional_value']['operator'] = 'not empty';
+
+  /* Display: Pending */
+  $handler = $view->new_display('panel_pane', 'Pending', 'panel_pane_1');
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<h2>Patents</h2>
+<h3>Pending</h3>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: View area */
+  $handler->display->display_options['footer']['view']['id'] = 'view';
+  $handler->display->display_options['footer']['view']['table'] = 'views';
+  $handler->display->display_options['footer']['view']['field'] = 'view';
+  $handler->display->display_options['footer']['view']['label'] = 'Awarded';
+  $handler->display->display_options['footer']['view']['empty'] = TRUE;
+  $handler->display->display_options['footer']['view']['view_to_insert'] = 'ercore_table_e_patents:panel_pane_2';
+  $handler->display->display_options['footer']['view']['inherit_arguments'] = TRUE;
+  /* Footer: Global: View area */
+  $handler->display->display_options['footer']['view_1']['id'] = 'view_1';
+  $handler->display->display_options['footer']['view_1']['table'] = 'views';
+  $handler->display->display_options['footer']['view_1']['field'] = 'view';
+  $handler->display->display_options['footer']['view_1']['label'] = 'Licensed';
+  $handler->display->display_options['footer']['view_1']['view_to_insert'] = 'ercore_table_e_patents:panel_pane_3';
+  $handler->display->display_options['footer']['view_1']['inherit_arguments'] = TRUE;
+
+  /* Display: Awarded */
+  $handler = $view->new_display('panel_pane', 'Awarded', 'panel_pane_2');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['style_options']['row']['class'] = 'list-row outputs';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 1;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'title' => array(
+      'element_type' => 'div',
+      'class' => 'patent title',
+    ),
+    'field_ercore_pt_award' => array(
+      'element_type' => 'div',
+      'class' => 'patent-date awarded field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+  );
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<h3>Awarded</h3>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No Patents awarded during this period.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Award Date */
+  $handler->display->display_options['fields']['field_ercore_pt_award']['id'] = 'field_ercore_pt_award';
+  $handler->display->display_options['fields']['field_ercore_pt_award']['table'] = 'field_data_field_ercore_pt_award';
+  $handler->display->display_options['fields']['field_ercore_pt_award']['field'] = 'field_ercore_pt_award';
+  $handler->display->display_options['fields']['field_ercore_pt_award']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_day_year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Award Date (field_ercore_pt_award) */
+  $handler->display->display_options['arguments']['field_ercore_pt_award_value']['id'] = 'field_ercore_pt_award_value';
+  $handler->display->display_options['arguments']['field_ercore_pt_award_value']['table'] = 'field_data_field_ercore_pt_award';
+  $handler->display->display_options['arguments']['field_ercore_pt_award_value']['field'] = 'field_ercore_pt_award_value';
+  $handler->display->display_options['arguments']['field_ercore_pt_award_value']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_ercore_pt_award_value']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['field_ercore_pt_award_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ercore_pt_award_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ercore_pt_award_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_ercore_pt_award_value']['year_range'] = '-25:+3';
+  $handler->display->display_options['arguments']['field_ercore_pt_award_value']['granularity_reset'] = 0;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'ercore_patent' => 'ercore_patent',
+  );
+  /* Filter criterion: Content: Award Date (field_ercore_pt_award) */
+  $handler->display->display_options['filters']['field_ercore_pt_award_value']['id'] = 'field_ercore_pt_award_value';
+  $handler->display->display_options['filters']['field_ercore_pt_award_value']['table'] = 'field_data_field_ercore_pt_award';
+  $handler->display->display_options['filters']['field_ercore_pt_award_value']['field'] = 'field_ercore_pt_award_value';
+  $handler->display->display_options['filters']['field_ercore_pt_award_value']['operator'] = 'not empty';
+
+  /* Display: Licensed */
+  $handler = $view->new_display('panel_pane', 'Licensed', 'panel_pane_3');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['style_options']['row']['class'] = 'list-row outputs';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 1;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'title' => array(
+      'element_type' => 'div',
+      'class' => 'patent title',
+    ),
+    'field_ercore_pt_date' => array(
+      'element_type' => 'div',
+      'class' => 'patent-date license field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+  );
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<h3>Licensed</h3>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No Patents licensed during this period.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: License Date */
+  $handler->display->display_options['fields']['field_ercore_pt_date']['id'] = 'field_ercore_pt_date';
+  $handler->display->display_options['fields']['field_ercore_pt_date']['table'] = 'field_data_field_ercore_pt_date';
+  $handler->display->display_options['fields']['field_ercore_pt_date']['field'] = 'field_ercore_pt_date';
+  $handler->display->display_options['fields']['field_ercore_pt_date']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_day_year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: License Date (field_ercore_pt_date) */
+  $handler->display->display_options['arguments']['field_ercore_pt_date_value']['id'] = 'field_ercore_pt_date_value';
+  $handler->display->display_options['arguments']['field_ercore_pt_date_value']['table'] = 'field_data_field_ercore_pt_date';
+  $handler->display->display_options['arguments']['field_ercore_pt_date_value']['field'] = 'field_ercore_pt_date_value';
+  $handler->display->display_options['arguments']['field_ercore_pt_date_value']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_ercore_pt_date_value']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['field_ercore_pt_date_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ercore_pt_date_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ercore_pt_date_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_ercore_pt_date_value']['year_range'] = '-25:+3';
+  $handler->display->display_options['arguments']['field_ercore_pt_date_value']['granularity_reset'] = 0;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'ercore_patent' => 'ercore_patent',
+  );
+  /* Filter criterion: Content: Licensed (field_ercore_pt_licensed) */
+  $handler->display->display_options['filters']['field_ercore_pt_licensed_value']['id'] = 'field_ercore_pt_licensed_value';
+  $handler->display->display_options['filters']['field_ercore_pt_licensed_value']['table'] = 'field_data_field_ercore_pt_licensed';
+  $handler->display->display_options['filters']['field_ercore_pt_licensed_value']['field'] = 'field_ercore_pt_licensed_value';
+  $handler->display->display_options['filters']['field_ercore_pt_licensed_value']['value'] = array(
+    1 => '1',
+  );
+  $views['ercore_table_e_patents'] = $view;
+
+  $view = new view();
+  $view->name = 'ercore_table_e_proposals';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'ERCore: NSF Table E: Proposals';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['style_options']['row']['class'] = 'list-row outputs';
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 1;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'title' => array(
+      'element_type' => 'div',
+      'class' => 'proposal title',
+    ),
+    'field_ercore_pp_proposal_submit' => array(
+      'element_type' => 'div',
+      'class' => 'submitted-date proposal field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'field_ercore_pp_award_req_dec' => array(
+      'element_type' => 'div',
+      'class' => 'amount-requested proposal field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+  );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No Proposals submitted during this period.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Date Submitted */
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['id'] = 'field_ercore_pp_proposal_submit';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['table'] = 'field_data_field_ercore_pp_proposal_submit';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['field'] = 'field_ercore_pp_proposal_submit';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_day_year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Amount Requested */
+  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['id'] = 'field_ercore_pp_award_req_dec';
+  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['table'] = 'field_data_field_ercore_pp_award_req_dec';
+  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['field'] = 'field_ercore_pp_award_req_dec';
+  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['settings'] = array(
+    'thousand_separator' => ',',
+    'decimal_separator' => '.',
+    'scale' => '0',
+    'prefix_suffix' => 1,
+  );
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Contextual filter: Content: Date Submitted (field_ercore_pp_proposal_submit) */
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_submit_value']['id'] = 'field_ercore_pp_proposal_submit_value';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_submit_value']['table'] = 'field_data_field_ercore_pp_proposal_submit';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_submit_value']['field'] = 'field_ercore_pp_proposal_submit_value';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_submit_value']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_submit_value']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_submit_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_submit_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_submit_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_submit_value']['year_range'] = '-25:+3';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_submit_value']['granularity_reset'] = 0;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'ercore_proposal' => 'ercore_proposal',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Date Submitted (field_ercore_pp_proposal_submit) */
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_submit_value']['id'] = 'field_ercore_pp_proposal_submit_value';
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_submit_value']['table'] = 'field_data_field_ercore_pp_proposal_submit';
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_submit_value']['field'] = 'field_ercore_pp_proposal_submit_value';
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_submit_value']['operator'] = 'not empty';
+
+  /* Display: Submitted */
+  $handler = $view->new_display('panel_pane', 'Submitted', 'panel_pane_1');
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<h2>Proposals and Grants</h2>
+<h3>Submitted</h3>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: View area */
+  $handler->display->display_options['footer']['view']['id'] = 'view';
+  $handler->display->display_options['footer']['view']['table'] = 'views';
+  $handler->display->display_options['footer']['view']['field'] = 'view';
+  $handler->display->display_options['footer']['view']['label'] = 'Pending';
+  $handler->display->display_options['footer']['view']['empty'] = TRUE;
+  $handler->display->display_options['footer']['view']['view_to_insert'] = 'ercore_table_e_proposals:panel_pane_2';
+  $handler->display->display_options['footer']['view']['inherit_arguments'] = TRUE;
+  /* Footer: Global: View area */
+  $handler->display->display_options['footer']['view_1']['id'] = 'view_1';
+  $handler->display->display_options['footer']['view_1']['table'] = 'views';
+  $handler->display->display_options['footer']['view_1']['field'] = 'view';
+  $handler->display->display_options['footer']['view_1']['label'] = 'Awarded';
+  $handler->display->display_options['footer']['view_1']['view_to_insert'] = 'ercore_table_e_proposals:panel_pane_4';
+  $handler->display->display_options['footer']['view_1']['inherit_arguments'] = TRUE;
+
+  /* Display: Pending */
+  $handler = $view->new_display('panel_pane', 'Pending', 'panel_pane_2');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['style_options']['row']['class'] = 'list-row outputs';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 1;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'title' => array(
+      'element_type' => 'div',
+      'class' => 'proposal title',
+    ),
+    'field_ercore_pp_proposal_pending' => array(
+      'element_type' => 'div',
+      'class' => 'proposal date-pending field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'field_ercore_pp_award_req_dec' => array(
+      'element_type' => 'div',
+      'class' => 'amount-requested proposal field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+  );
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<h3>Pending</h3>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No Proposals pending during this period.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Date of Pending Notification */
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_pending']['id'] = 'field_ercore_pp_proposal_pending';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_pending']['table'] = 'field_data_field_ercore_pp_proposal_pending';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_pending']['field'] = 'field_ercore_pp_proposal_pending';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_pending']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_day_year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Amount Requested */
+  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['id'] = 'field_ercore_pp_award_req_dec';
+  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['table'] = 'field_data_field_ercore_pp_award_req_dec';
+  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['field'] = 'field_ercore_pp_award_req_dec';
+  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['settings'] = array(
+    'thousand_separator' => ',',
+    'decimal_separator' => '.',
+    'scale' => '0',
+    'prefix_suffix' => 1,
+  );
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Date of Pending Notification (field_ercore_pp_proposal_pending) */
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_pending_value']['id'] = 'field_ercore_pp_proposal_pending_value';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_pending_value']['table'] = 'field_data_field_ercore_pp_proposal_pending';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_pending_value']['field'] = 'field_ercore_pp_proposal_pending_value';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_pending_value']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_pending_value']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_pending_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_pending_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_pending_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_pending_value']['year_range'] = '-25:+3';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_pending_value']['granularity_reset'] = 0;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'ercore_proposal' => 'ercore_proposal',
+  );
+
+  /* Display: Awarded */
+  $handler = $view->new_display('panel_pane', 'Awarded', 'panel_pane_4');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['style_options']['row']['class'] = 'list-row outputs';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 1;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'title' => array(
+      'element_type' => 'div',
+      'class' => 'proposal title',
+    ),
+    'field_ercore_pp_proposal_date' => array(
+      'element_type' => 'div',
+      'class' => 'award-date proposal field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'field_ercore_pp_award_req_dec' => array(
+      'element_type' => 'div',
+      'class' => 'amount-requested proposal field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+  );
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<h3>Awarded</h3>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No Proposals awarded during this period.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['hide_empty'] = TRUE;
+  /* Field: Content: Award Dates */
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_date']['id'] = 'field_ercore_pp_proposal_date';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_date']['table'] = 'field_data_field_ercore_pp_proposal_date';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_date']['field'] = 'field_ercore_pp_proposal_date';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_date']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_date']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_day_year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Amount Requested */
+  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['id'] = 'field_ercore_pp_award_req_dec';
+  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['table'] = 'field_data_field_ercore_pp_award_req_dec';
+  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['field'] = 'field_ercore_pp_award_req_dec';
+  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['settings'] = array(
+    'thousand_separator' => ',',
+    'decimal_separator' => '.',
+    'scale' => '0',
+    'prefix_suffix' => 1,
+  );
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Award Dates -  start date (field_ercore_pp_proposal_date) */
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_date_value']['id'] = 'field_ercore_pp_proposal_date_value';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_date_value']['table'] = 'field_data_field_ercore_pp_proposal_date';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_date_value']['field'] = 'field_ercore_pp_proposal_date_value';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_date_value']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_date_value']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_date_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_date_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_date_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_date_value']['year_range'] = '-25:+3';
+  $handler->display->display_options['arguments']['field_ercore_pp_proposal_date_value']['granularity_reset'] = 0;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'ercore_proposal' => 'ercore_proposal',
+  );
+  $views['ercore_table_e_proposals'] = $view;
+
+  $view = new view();
+  $view->name = 'ercore_table_e_publications';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'ERCore: NSF Table E: Publications';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_ercore_pb_rii_support',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['style_options']['row']['class'] = 'list-row outputs';
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 1;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'title' => array(
+      'element_type' => 'div',
+      'class' => 'publication title',
+    ),
+    'field_ercore_pb_date' => array(
+      'element_type' => 'div',
+      'class' => 'publicaiton-date field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+  );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No Publications published during this period.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Date of Publication */
+  $handler->display->display_options['fields']['field_ercore_pb_date']['id'] = 'field_ercore_pb_date';
+  $handler->display->display_options['fields']['field_ercore_pb_date']['table'] = 'field_data_field_ercore_pb_date';
+  $handler->display->display_options['fields']['field_ercore_pb_date']['field'] = 'field_ercore_pb_date';
+  $handler->display->display_options['fields']['field_ercore_pb_date']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_day_year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: What level of funding support did EPSCoR provide for this publication? */
+  $handler->display->display_options['fields']['field_ercore_pb_rii_support']['id'] = 'field_ercore_pb_rii_support';
+  $handler->display->display_options['fields']['field_ercore_pb_rii_support']['table'] = 'field_data_field_ercore_pb_rii_support';
+  $handler->display->display_options['fields']['field_ercore_pb_rii_support']['field'] = 'field_ercore_pb_rii_support';
+  $handler->display->display_options['fields']['field_ercore_pb_rii_support']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_pb_rii_support']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_pb_rii_support']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_pb_rii_support']['alter']['text'] = '[field_ercore_pb_rii_support] RII Support';
+  $handler->display->display_options['fields']['field_ercore_pb_rii_support']['element_label_colon'] = FALSE;
+  /* Sort criterion: Content: What level of funding support did EPSCoR provide for this publication? (field_ercore_pb_rii_support) */
+  $handler->display->display_options['sorts']['field_ercore_pb_rii_support_value']['id'] = 'field_ercore_pb_rii_support_value';
+  $handler->display->display_options['sorts']['field_ercore_pb_rii_support_value']['table'] = 'field_data_field_ercore_pb_rii_support';
+  $handler->display->display_options['sorts']['field_ercore_pb_rii_support_value']['field'] = 'field_ercore_pb_rii_support_value';
+  $handler->display->display_options['sorts']['field_ercore_pb_rii_support_value']['order'] = 'DESC';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Contextual filter: Content: Date of Publication (field_ercore_pb_date) */
+  $handler->display->display_options['arguments']['field_ercore_pb_date_value']['id'] = 'field_ercore_pb_date_value';
+  $handler->display->display_options['arguments']['field_ercore_pb_date_value']['table'] = 'field_data_field_ercore_pb_date';
+  $handler->display->display_options['arguments']['field_ercore_pb_date_value']['field'] = 'field_ercore_pb_date_value';
+  $handler->display->display_options['arguments']['field_ercore_pb_date_value']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['field_ercore_pb_date_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ercore_pb_date_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ercore_pb_date_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_ercore_pb_date_value']['year_range'] = '-25:+3';
+  $handler->display->display_options['arguments']['field_ercore_pb_date_value']['granularity_reset'] = 0;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'ercore_publication' => 'ercore_publication',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Date of Publication (field_ercore_pb_date) */
+  $handler->display->display_options['filters']['field_ercore_pb_date_value']['id'] = 'field_ercore_pb_date_value';
+  $handler->display->display_options['filters']['field_ercore_pb_date_value']['table'] = 'field_data_field_ercore_pb_date';
+  $handler->display->display_options['filters']['field_ercore_pb_date_value']['field'] = 'field_ercore_pb_date_value';
+  $handler->display->display_options['filters']['field_ercore_pb_date_value']['operator'] = 'not empty';
+  /* Filter criterion: Content: What level of funding support did EPSCoR provide for this publication? (field_ercore_pb_rii_support) */
+  $handler->display->display_options['filters']['field_ercore_pb_rii_support_value']['id'] = 'field_ercore_pb_rii_support_value';
+  $handler->display->display_options['filters']['field_ercore_pb_rii_support_value']['table'] = 'field_data_field_ercore_pb_rii_support';
+  $handler->display->display_options['filters']['field_ercore_pb_rii_support_value']['field'] = 'field_ercore_pb_rii_support_value';
+  $handler->display->display_options['filters']['field_ercore_pb_rii_support_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_ercore_pb_rii_support_value']['value'] = array(
+    2 => '2',
+  );
+
+  /* Display: Primary and Partial */
+  $handler = $view->new_display('panel_pane', 'Primary and Partial', 'panel_pane_1');
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<h2>Publications</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $views['ercore_table_e_publications'] = $view;
+
+  $view = new view();
+  $view->name = 'ercore_table_e_users';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'users';
+  $view->human_name = 'ERCore: NSF Table E: Users';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'access user profiles';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['style_options']['row']['class'] = 'outputs list-row';
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 1;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'view_user' => array(
+      'element_type' => 'div',
+      'class' => 'user-name last-first',
+    ),
+    'field_ercore_us_hired_date' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs hired field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'field_ercore_us_gender' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs gender field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'field_ercore_us_race' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs race field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'field_ercore_us_disabilities' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs disabilities field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+  );
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<h2>Participants</h2>
+<h3>New Hires</h3>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<p>No Post Docs participated in this period.</p>';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  /* Field: User: User Name */
+  $handler->display->display_options['fields']['field_user_name']['id'] = 'field_user_name';
+  $handler->display->display_options['fields']['field_user_name']['table'] = 'field_data_field_user_name';
+  $handler->display->display_options['fields']['field_user_name']['field'] = 'field_user_name';
+  $handler->display->display_options['fields']['field_user_name']['label'] = '';
+  $handler->display->display_options['fields']['field_user_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_user_name']['alter']['text'] = '[field_user_name-family], [field_user_name-given] [field_user_name-middle]';
+  $handler->display->display_options['fields']['field_user_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_name']['click_sort_column'] = 'title';
+  $handler->display->display_options['fields']['field_user_name']['settings'] = array(
+    'format' => 'default',
+    'markup' => 0,
+    'output' => 'plain',
+    'multiple' => 'default',
+    'multiple_delimiter' => ', ',
+    'multiple_and' => 'text',
+    'multiple_delimiter_precedes_last' => 'never',
+    'multiple_el_al_min' => '3',
+    'multiple_el_al_first' => '1',
+  );
+  /* Field: User: Link */
+  $handler->display->display_options['fields']['view_user']['id'] = 'view_user';
+  $handler->display->display_options['fields']['view_user']['table'] = 'users';
+  $handler->display->display_options['fields']['view_user']['field'] = 'view_user';
+  $handler->display->display_options['fields']['view_user']['label'] = '';
+  $handler->display->display_options['fields']['view_user']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['view_user']['alter']['text'] = '[field_user_name]';
+  $handler->display->display_options['fields']['view_user']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['view_user']['text'] = 'Link';
+  /* Field: User: Hired Date */
+  $handler->display->display_options['fields']['field_ercore_us_hired_date']['id'] = 'field_ercore_us_hired_date';
+  $handler->display->display_options['fields']['field_ercore_us_hired_date']['table'] = 'field_data_field_ercore_us_hired_date';
+  $handler->display->display_options['fields']['field_ercore_us_hired_date']['field'] = 'field_ercore_us_hired_date';
+  $handler->display->display_options['fields']['field_ercore_us_hired_date']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_day_year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: User: Gender */
+  $handler->display->display_options['fields']['field_ercore_us_gender']['id'] = 'field_ercore_us_gender';
+  $handler->display->display_options['fields']['field_ercore_us_gender']['table'] = 'field_data_field_ercore_us_gender';
+  $handler->display->display_options['fields']['field_ercore_us_gender']['field'] = 'field_ercore_us_gender';
+  /* Field: User: Race */
+  $handler->display->display_options['fields']['field_ercore_us_race']['id'] = 'field_ercore_us_race';
+  $handler->display->display_options['fields']['field_ercore_us_race']['table'] = 'field_data_field_ercore_us_race';
+  $handler->display->display_options['fields']['field_ercore_us_race']['field'] = 'field_ercore_us_race';
+  /* Field: User: Disabilities */
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['id'] = 'field_ercore_us_disabilities';
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['table'] = 'field_data_field_ercore_us_disabilities';
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['field'] = 'field_ercore_us_disabilities';
+  /* Sort criterion: Name Components: Family */
+  $handler->display->display_options['sorts']['field_user_name_family']['id'] = 'field_user_name_family';
+  $handler->display->display_options['sorts']['field_user_name_family']['table'] = 'field_data_field_user_name';
+  $handler->display->display_options['sorts']['field_user_name_family']['field'] = 'field_user_name_family';
+  /* Contextual filter: User: Hired Date (field_ercore_us_hired_date) */
+  $handler->display->display_options['arguments']['field_ercore_us_hired_date_value']['id'] = 'field_ercore_us_hired_date_value';
+  $handler->display->display_options['arguments']['field_ercore_us_hired_date_value']['table'] = 'field_data_field_ercore_us_hired_date';
+  $handler->display->display_options['arguments']['field_ercore_us_hired_date_value']['field'] = 'field_ercore_us_hired_date_value';
+  $handler->display->display_options['arguments']['field_ercore_us_hired_date_value']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_ercore_us_hired_date_value']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['field_ercore_us_hired_date_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ercore_us_hired_date_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ercore_us_hired_date_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_ercore_us_hired_date_value']['year_range'] = '-25:+3';
+  $handler->display->display_options['arguments']['field_ercore_us_hired_date_value']['granularity_reset'] = 0;
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: User: The user ID */
+  $handler->display->display_options['filters']['uid_raw']['id'] = 'uid_raw';
+  $handler->display->display_options['filters']['uid_raw']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_raw']['field'] = 'uid_raw';
+  $handler->display->display_options['filters']['uid_raw']['operator'] = '!=';
+  $handler->display->display_options['filters']['uid_raw']['value']['value'] = '1';
+  /* Filter criterion: User: Most Senior Project Role (field_ercore_us_sen_role) */
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['id'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['table'] = 'field_data_field_ercore_us_sen_role';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['field'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['value'] = array(
+    0 => '0',
+  );
+
+  /* Display: New Hire */
+  $handler = $view->new_display('panel_pane', 'New Hire', 'panel_pane_1');
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: View area */
+  $handler->display->display_options['footer']['view']['id'] = 'view';
+  $handler->display->display_options['footer']['view']['table'] = 'views';
+  $handler->display->display_options['footer']['view']['field'] = 'view';
+  $handler->display->display_options['footer']['view']['label'] = 'Post Doc';
+  $handler->display->display_options['footer']['view']['empty'] = TRUE;
+  $handler->display->display_options['footer']['view']['view_to_insert'] = 'ercore_table_e_users:panel_pane_2';
+  $handler->display->display_options['footer']['view']['inherit_arguments'] = TRUE;
+  /* Footer: Global: View area */
+  $handler->display->display_options['footer']['view_1']['id'] = 'view_1';
+  $handler->display->display_options['footer']['view_1']['table'] = 'views';
+  $handler->display->display_options['footer']['view_1']['field'] = 'view';
+  $handler->display->display_options['footer']['view_1']['label'] = 'Grad Student';
+  $handler->display->display_options['footer']['view_1']['empty'] = TRUE;
+  $handler->display->display_options['footer']['view_1']['view_to_insert'] = 'ercore_table_e_users:panel_pane_3';
+  $handler->display->display_options['footer']['view_1']['inherit_arguments'] = TRUE;
+  /* Footer: Global: View area */
+  $handler->display->display_options['footer']['view_2']['id'] = 'view_2';
+  $handler->display->display_options['footer']['view_2']['table'] = 'views';
+  $handler->display->display_options['footer']['view_2']['field'] = 'view';
+  $handler->display->display_options['footer']['view_2']['label'] = 'Undergrad';
+  $handler->display->display_options['footer']['view_2']['empty'] = TRUE;
+  $handler->display->display_options['footer']['view_2']['view_to_insert'] = 'ercore_table_e_users:panel_pane_4';
+  $handler->display->display_options['footer']['view_2']['inherit_arguments'] = TRUE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<p>No Faculty Hired in this period.</p>';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+
+  /* Display: post doc */
+  $handler = $view->new_display('panel_pane', 'post doc', 'panel_pane_2');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['style_options']['row']['class'] = 'outputs list-row';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 1;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'view_user' => array(
+      'element_type' => 'div',
+      'class' => 'user-name last-first',
+    ),
+    'field_ercore_us_part_date' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs participating-dates field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'field_ercore_us_gender' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs gender field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'field_ercore_us_race' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs race field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'field_ercore_us_disabilities' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs disabilities field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+  );
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<h3>Post Docs Involved</h3>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<p>No Post Docs participated in this period.</p>';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: User: User Name */
+  $handler->display->display_options['fields']['field_user_name']['id'] = 'field_user_name';
+  $handler->display->display_options['fields']['field_user_name']['table'] = 'field_data_field_user_name';
+  $handler->display->display_options['fields']['field_user_name']['field'] = 'field_user_name';
+  $handler->display->display_options['fields']['field_user_name']['label'] = '';
+  $handler->display->display_options['fields']['field_user_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_user_name']['alter']['text'] = '[field_user_name-family], [field_user_name-given] [field_user_name-middle]';
+  $handler->display->display_options['fields']['field_user_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_name']['click_sort_column'] = 'title';
+  $handler->display->display_options['fields']['field_user_name']['settings'] = array(
+    'format' => 'default',
+    'markup' => 0,
+    'output' => 'plain',
+    'multiple' => 'default',
+    'multiple_delimiter' => ', ',
+    'multiple_and' => 'text',
+    'multiple_delimiter_precedes_last' => 'never',
+    'multiple_el_al_min' => '3',
+    'multiple_el_al_first' => '1',
+  );
+  /* Field: User: Link */
+  $handler->display->display_options['fields']['view_user']['id'] = 'view_user';
+  $handler->display->display_options['fields']['view_user']['table'] = 'users';
+  $handler->display->display_options['fields']['view_user']['field'] = 'view_user';
+  $handler->display->display_options['fields']['view_user']['label'] = '';
+  $handler->display->display_options['fields']['view_user']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['view_user']['alter']['text'] = '[field_user_name]';
+  $handler->display->display_options['fields']['view_user']['element_label_colon'] = FALSE;
+  /* Field: User: Participating Date(s) */
+  $handler->display->display_options['fields']['field_ercore_us_part_date']['id'] = 'field_ercore_us_part_date';
+  $handler->display->display_options['fields']['field_ercore_us_part_date']['table'] = 'field_data_field_ercore_us_part_date';
+  $handler->display->display_options['fields']['field_ercore_us_part_date']['field'] = 'field_ercore_us_part_date';
+  $handler->display->display_options['fields']['field_ercore_us_part_date']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_day_year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: User: Gender */
+  $handler->display->display_options['fields']['field_ercore_us_gender']['id'] = 'field_ercore_us_gender';
+  $handler->display->display_options['fields']['field_ercore_us_gender']['table'] = 'field_data_field_ercore_us_gender';
+  $handler->display->display_options['fields']['field_ercore_us_gender']['field'] = 'field_ercore_us_gender';
+  /* Field: User: Race */
+  $handler->display->display_options['fields']['field_ercore_us_race']['id'] = 'field_ercore_us_race';
+  $handler->display->display_options['fields']['field_ercore_us_race']['table'] = 'field_data_field_ercore_us_race';
+  $handler->display->display_options['fields']['field_ercore_us_race']['field'] = 'field_ercore_us_race';
+  /* Field: User: Disabilities */
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['id'] = 'field_ercore_us_disabilities';
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['table'] = 'field_data_field_ercore_us_disabilities';
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['field'] = 'field_ercore_us_disabilities';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: User: Participating Date(s) -  start date (field_ercore_us_part_date) */
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['id'] = 'field_ercore_us_part_date_value';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['table'] = 'field_data_field_ercore_us_part_date';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['field'] = 'field_ercore_us_part_date_value';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['year_range'] = '-25:+3';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['granularity_reset'] = 0;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: User: The user ID */
+  $handler->display->display_options['filters']['uid_raw']['id'] = 'uid_raw';
+  $handler->display->display_options['filters']['uid_raw']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_raw']['field'] = 'uid_raw';
+  $handler->display->display_options['filters']['uid_raw']['operator'] = '!=';
+  $handler->display->display_options['filters']['uid_raw']['value']['value'] = '1';
+  /* Filter criterion: User: Most Senior Project Role (field_ercore_us_sen_role) */
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['id'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['table'] = 'field_data_field_ercore_us_sen_role';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['field'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['value'] = array(
+    3 => '3',
+  );
+
+  /* Display: grad student */
+  $handler = $view->new_display('panel_pane', 'grad student', 'panel_pane_3');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['style_options']['row']['class'] = 'outputs list-row';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 1;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'field_user_name' => array(
+      'element_type' => 'div',
+      'class' => '',
+    ),
+    'view_user' => array(
+      'element_type' => 'div',
+      'class' => 'user-name last-first',
+    ),
+    'field_ercore_us_masters_act' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs grad graduate field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'field_ercore_us_gender' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs gender field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'field_ercore_us_race' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs race field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'field_ercore_us_disabilities' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs disabilities field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+  );
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<h3>Graduate Students Graduated</h3>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<p>No Graduate Students graduated in this period.</p>';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: User: User Name */
+  $handler->display->display_options['fields']['field_user_name']['id'] = 'field_user_name';
+  $handler->display->display_options['fields']['field_user_name']['table'] = 'field_data_field_user_name';
+  $handler->display->display_options['fields']['field_user_name']['field'] = 'field_user_name';
+  $handler->display->display_options['fields']['field_user_name']['label'] = '';
+  $handler->display->display_options['fields']['field_user_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_user_name']['alter']['text'] = '[field_user_name-family], [field_user_name-given] [field_user_name-middle]';
+  $handler->display->display_options['fields']['field_user_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_name']['click_sort_column'] = 'title';
+  $handler->display->display_options['fields']['field_user_name']['settings'] = array(
+    'format' => 'default',
+    'markup' => 0,
+    'output' => 'plain',
+    'multiple' => 'default',
+    'multiple_delimiter' => ', ',
+    'multiple_and' => 'text',
+    'multiple_delimiter_precedes_last' => 'never',
+    'multiple_el_al_min' => '3',
+    'multiple_el_al_first' => '1',
+  );
+  /* Field: User: Link */
+  $handler->display->display_options['fields']['view_user']['id'] = 'view_user';
+  $handler->display->display_options['fields']['view_user']['table'] = 'users';
+  $handler->display->display_options['fields']['view_user']['field'] = 'view_user';
+  $handler->display->display_options['fields']['view_user']['label'] = '';
+  $handler->display->display_options['fields']['view_user']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['view_user']['alter']['text'] = '[field_user_name]';
+  $handler->display->display_options['fields']['view_user']['element_label_colon'] = FALSE;
+  /* Field: User: Actual Masters Graduation Date */
+  $handler->display->display_options['fields']['field_ercore_us_masters_act']['id'] = 'field_ercore_us_masters_act';
+  $handler->display->display_options['fields']['field_ercore_us_masters_act']['table'] = 'field_data_field_ercore_us_masters_act';
+  $handler->display->display_options['fields']['field_ercore_us_masters_act']['field'] = 'field_ercore_us_masters_act';
+  $handler->display->display_options['fields']['field_ercore_us_masters_act']['label'] = 'Graduation Date (Masters)';
+  $handler->display->display_options['fields']['field_ercore_us_masters_act']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_day_year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: User: Gender */
+  $handler->display->display_options['fields']['field_ercore_us_gender']['id'] = 'field_ercore_us_gender';
+  $handler->display->display_options['fields']['field_ercore_us_gender']['table'] = 'field_data_field_ercore_us_gender';
+  $handler->display->display_options['fields']['field_ercore_us_gender']['field'] = 'field_ercore_us_gender';
+  /* Field: User: Race */
+  $handler->display->display_options['fields']['field_ercore_us_race']['id'] = 'field_ercore_us_race';
+  $handler->display->display_options['fields']['field_ercore_us_race']['table'] = 'field_data_field_ercore_us_race';
+  $handler->display->display_options['fields']['field_ercore_us_race']['field'] = 'field_ercore_us_race';
+  /* Field: User: Disabilities */
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['id'] = 'field_ercore_us_disabilities';
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['table'] = 'field_data_field_ercore_us_disabilities';
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['field'] = 'field_ercore_us_disabilities';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: User: Actual Masters Graduation Date (field_ercore_us_masters_act) */
+  $handler->display->display_options['arguments']['field_ercore_us_masters_act_value']['id'] = 'field_ercore_us_masters_act_value';
+  $handler->display->display_options['arguments']['field_ercore_us_masters_act_value']['table'] = 'field_data_field_ercore_us_masters_act';
+  $handler->display->display_options['arguments']['field_ercore_us_masters_act_value']['field'] = 'field_ercore_us_masters_act_value';
+  $handler->display->display_options['arguments']['field_ercore_us_masters_act_value']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_ercore_us_masters_act_value']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['field_ercore_us_masters_act_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ercore_us_masters_act_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ercore_us_masters_act_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_ercore_us_masters_act_value']['year_range'] = '-25:+3';
+  $handler->display->display_options['arguments']['field_ercore_us_masters_act_value']['granularity_reset'] = 0;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: User: The user ID */
+  $handler->display->display_options['filters']['uid_raw']['id'] = 'uid_raw';
+  $handler->display->display_options['filters']['uid_raw']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_raw']['field'] = 'uid_raw';
+  $handler->display->display_options['filters']['uid_raw']['operator'] = '!=';
+  $handler->display->display_options['filters']['uid_raw']['value']['value'] = '1';
+  /* Filter criterion: User: Most Senior Project Role (field_ercore_us_sen_role) */
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['id'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['table'] = 'field_data_field_ercore_us_sen_role';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['field'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['value'] = array(
+    4 => '4',
+  );
+
+  /* Display: under-graduate */
+  $handler = $view->new_display('panel_pane', 'under-graduate', 'panel_pane_4');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['style_options']['row']['class'] = 'outputs list-row';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 1;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'field_user_name' => array(
+      'element_type' => 'div',
+      'class' => 'user-name last-first',
+    ),
+    'field_ercore_us_under_act' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs under-grad graduate field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'field_ercore_us_gender' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs gender field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'field_ercore_us_race' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs race field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'field_ercore_us_disabilities' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs disabilities field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'view_user' => array(
+      'element_type' => 'div',
+      'class' => 'user-name last-first',
+    ),
+  );
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<h3>Undergraduate Students Graduated</h3>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<p>No Undergraduate Students graduated in this period.</p>';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: User: User Name */
+  $handler->display->display_options['fields']['field_user_name']['id'] = 'field_user_name';
+  $handler->display->display_options['fields']['field_user_name']['table'] = 'field_data_field_user_name';
+  $handler->display->display_options['fields']['field_user_name']['field'] = 'field_user_name';
+  $handler->display->display_options['fields']['field_user_name']['label'] = '';
+  $handler->display->display_options['fields']['field_user_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_user_name']['alter']['text'] = '[field_user_name-family], [field_user_name-given] [field_user_name-middle]';
+  $handler->display->display_options['fields']['field_user_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_name']['click_sort_column'] = 'title';
+  $handler->display->display_options['fields']['field_user_name']['settings'] = array(
+    'format' => 'default',
+    'markup' => 0,
+    'output' => 'plain',
+    'multiple' => 'default',
+    'multiple_delimiter' => ', ',
+    'multiple_and' => 'text',
+    'multiple_delimiter_precedes_last' => 'never',
+    'multiple_el_al_min' => '3',
+    'multiple_el_al_first' => '1',
+  );
+  /* Field: User: Link */
+  $handler->display->display_options['fields']['view_user']['id'] = 'view_user';
+  $handler->display->display_options['fields']['view_user']['table'] = 'users';
+  $handler->display->display_options['fields']['view_user']['field'] = 'view_user';
+  $handler->display->display_options['fields']['view_user']['label'] = '';
+  $handler->display->display_options['fields']['view_user']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['view_user']['alter']['text'] = '[field_user_name]';
+  $handler->display->display_options['fields']['view_user']['element_label_colon'] = FALSE;
+  /* Field: User: Actual Undergraduate Graduation Date */
+  $handler->display->display_options['fields']['field_ercore_us_under_act']['id'] = 'field_ercore_us_under_act';
+  $handler->display->display_options['fields']['field_ercore_us_under_act']['table'] = 'field_data_field_ercore_us_under_act';
+  $handler->display->display_options['fields']['field_ercore_us_under_act']['field'] = 'field_ercore_us_under_act';
+  $handler->display->display_options['fields']['field_ercore_us_under_act']['label'] = 'Graduation Date (Undergraduate)';
+  $handler->display->display_options['fields']['field_ercore_us_under_act']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_day_year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: User: Gender */
+  $handler->display->display_options['fields']['field_ercore_us_gender']['id'] = 'field_ercore_us_gender';
+  $handler->display->display_options['fields']['field_ercore_us_gender']['table'] = 'field_data_field_ercore_us_gender';
+  $handler->display->display_options['fields']['field_ercore_us_gender']['field'] = 'field_ercore_us_gender';
+  /* Field: User: Race */
+  $handler->display->display_options['fields']['field_ercore_us_race']['id'] = 'field_ercore_us_race';
+  $handler->display->display_options['fields']['field_ercore_us_race']['table'] = 'field_data_field_ercore_us_race';
+  $handler->display->display_options['fields']['field_ercore_us_race']['field'] = 'field_ercore_us_race';
+  /* Field: User: Disabilities */
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['id'] = 'field_ercore_us_disabilities';
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['table'] = 'field_data_field_ercore_us_disabilities';
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['field'] = 'field_ercore_us_disabilities';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: User: Actual Undergraduate Graduation Date (field_ercore_us_under_act) */
+  $handler->display->display_options['arguments']['field_ercore_us_under_act_value']['id'] = 'field_ercore_us_under_act_value';
+  $handler->display->display_options['arguments']['field_ercore_us_under_act_value']['table'] = 'field_data_field_ercore_us_under_act';
+  $handler->display->display_options['arguments']['field_ercore_us_under_act_value']['field'] = 'field_ercore_us_under_act_value';
+  $handler->display->display_options['arguments']['field_ercore_us_under_act_value']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_ercore_us_under_act_value']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['field_ercore_us_under_act_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ercore_us_under_act_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ercore_us_under_act_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_ercore_us_under_act_value']['year_range'] = '-25:+3';
+  $handler->display->display_options['arguments']['field_ercore_us_under_act_value']['granularity_reset'] = 0;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: User: The user ID */
+  $handler->display->display_options['filters']['uid_raw']['id'] = 'uid_raw';
+  $handler->display->display_options['filters']['uid_raw']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_raw']['field'] = 'uid_raw';
+  $handler->display->display_options['filters']['uid_raw']['operator'] = '!=';
+  $handler->display->display_options['filters']['uid_raw']['value']['value'] = '1';
+  /* Filter criterion: User: Most Senior Project Role (field_ercore_us_sen_role) */
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['id'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['table'] = 'field_data_field_ercore_us_sen_role';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['field'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['value'] = array(
+    5 => '5',
+  );
+  $views['ercore_table_e_users'] = $view;
+
+  $view = new view();
   $view->name = 'ercore_users';
   $view->description = '';
   $view->tag = 'ERCore, ERCore Administration, Users';
   $view->base_table = 'users';
-  $view->human_name = 'ERCore: Users';
+  $view->human_name = 'ERCore: Participants';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -6055,7 +9790,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Participant Activity';
-  $handler->display->display_options['css_class'] = 'row';
+  $handler->display->display_options['css_class'] = 'row ercore-view';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore admin content';
@@ -6065,39 +9800,38 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['columns'] = array(
-    'name' => 'name',
-    'field_er_fname' => 'field_er_fname',
-    'field_er_lname' => 'field_er_lname',
-    'field_er_description' => 'field_er_description',
-    'created' => 'created',
-    'field_er_participating_date' => 'field_er_participating_date',
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'name',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
   );
-  $handler->display->display_options['style_options']['default'] = 'field_er_lname';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'type' => 'type',
+    'timestamp' => 'timestamp',
+    'created' => 'created',
+    'name' => 'name',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
-    'name' => array(
-      'sortable' => 1,
+    'title' => array(
+      'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_er_fname' => array(
-      'sortable' => 1,
+    'type' => array(
+      'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_er_lname' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_er_description' => array(
-      'sortable' => 1,
+    'timestamp' => array(
+      'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
@@ -6110,12 +9844,15 @@ function ercore_admin_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_er_participating_date' => array(
+    'name' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
   );
+  $handler->display->display_options['style_options']['summary'] = 'User Content Sorted by User';
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
@@ -6136,6 +9873,14 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['label'] = 'Profile Created';
   $handler->display->display_options['fields']['created']['date_format'] = 'short';
+  /* Sort criterion: Name Components: Family */
+  $handler->display->display_options['sorts']['field_user_name_family']['id'] = 'field_user_name_family';
+  $handler->display->display_options['sorts']['field_user_name_family']['table'] = 'field_data_field_user_name';
+  $handler->display->display_options['sorts']['field_user_name_family']['field'] = 'field_user_name_family';
+  /* Sort criterion: Name Components: Given */
+  $handler->display->display_options['sorts']['field_user_name_given']['id'] = 'field_user_name_given';
+  $handler->display->display_options['sorts']['field_user_name_given']['table'] = 'field_data_field_user_name';
+  $handler->display->display_options['sorts']['field_user_name_given']['field'] = 'field_user_name_given';
   /* Filter criterion: User: Active */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'users';
@@ -6153,7 +9898,7 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   /* Display: Participant Activity */
   $handler = $view->new_display('page', 'Participant Activity', 'page_3');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
-  $handler->display->display_options['css_class'] = 'e-user-table';
+  $handler->display->display_options['css_class'] = 'e-user-table ercore-view';
   $handler->display->display_options['display_description'] = 'Table of Participant Activity';
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['use_ajax'] = TRUE;
@@ -6178,6 +9923,7 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'users';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['required'] = TRUE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -6196,8 +9942,9 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   $handler->display->display_options['fields']['timestamp']['table'] = 'node_revision';
   $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['relationship'] = 'uid';
-  $handler->display->display_options['fields']['timestamp']['label'] = 'Last Updated date';
+  $handler->display->display_options['fields']['timestamp']['label'] = 'Last Updated';
   $handler->display->display_options['fields']['timestamp']['date_format'] = 'time ago';
+  $handler->display->display_options['fields']['timestamp']['second_date_format'] = 'ercore_date_format_filter';
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
@@ -6211,18 +9958,7 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['label'] = '';
-  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['defaults']['sorts'] = FALSE;
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: User: Active */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'users';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = '1';
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   $handler->display->display_options['path'] = 'ercore/participants/activity';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Participant Activity';
@@ -6238,7 +9974,7 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   $view->description = '';
   $view->tag = 'ERCore, ERCore Administration, Users';
   $view->base_table = 'users';
-  $view->human_name = 'ERCore: User Activity';
+  $view->human_name = 'ERCore: Participant Activity';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -6246,7 +9982,7 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Participant Activity';
-  $handler->display->display_options['css_class'] = 'row';
+  $handler->display->display_options['css_class'] = 'row ercore-view';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore admin content';
@@ -6315,6 +10051,10 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['label'] = 'Profile Created';
   $handler->display->display_options['fields']['created']['date_format'] = 'short';
+  /* Sort criterion: User: Last access */
+  $handler->display->display_options['sorts']['access']['id'] = 'access';
+  $handler->display->display_options['sorts']['access']['table'] = 'users';
+  $handler->display->display_options['sorts']['access']['field'] = 'access';
   /* Filter criterion: User: Active */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'users';
@@ -6360,7 +10100,7 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Data Collection Information';
-  $handler->display->display_options['css_class'] = 'e-user-table';
+  $handler->display->display_options['css_class'] = 'e-user-table ercore-view';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore admin content';

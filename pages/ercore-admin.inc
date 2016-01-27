@@ -24,7 +24,7 @@ function ercore_settings_callback() {
   $form['help_description'] = array(
     '#type' => 'item',
     '#title' => 'Notice:',
-    '#markup' => t("You may want to take a look at ERCore's <a href='/epscor'>
+    '#markup' => t("You may want to take a look at ERCore's <a href='/ercore'>
 documentation</a>."),
   );
 
@@ -75,7 +75,7 @@ documentation</a>."),
     '#type' => 'checkbox',
     '#title' => t('Use Components Taxonomy'),
     '#default_value' => $component_usage,
-    );
+  );
   $form['ercore_component_required'] = array(
     '#type' => 'checkbox',
     '#title' => t('Require Component taxonomy fields'),

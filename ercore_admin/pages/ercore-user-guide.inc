@@ -14,7 +14,7 @@ function ercore_user_guide_callback() {
     '#markup' =>
     t('<h2>Introduction</h2>
 <p>This guide has been developed for first time users of the EPSCoR Core
-Reporting site (ER-Core).  This site has been developed using Drupal 7, an
+Reporting site (ERCore).  This site has been developed using Drupal 7, an
 open-source content management system. Whether you are a developer, tester,
 administrator or an end user, we all need to get familiar with Drupal first.
 In addition, this guide also introduces important terms used by the NSF EPSCoR
@@ -37,10 +37,10 @@ the top left hand side of the home page. <em>This varies by site.</em></li>
 				<li><em>Most Senior Project Role:</em> use the drop down to select one
 				role which best represents your primary role with EPSCoR</li>
 				<li><em>If you are a Student Mentoring Plan Sign Off Date:</em> enter
-				the month and year your advisor signed off on your mentoring plan.</li>
+				the month and year your adviser signed off on your mentoring plan.</li>
 				<li><em>Please select which project component(s) you will participate
 				in:</em> The items in this selection are determined in the
-				customization step of installing the ER-Core module. If a component you
+				customization step of installing the ERCore module. If a component you
 				will be working on is not listed, contact your director. Otherwise,
 				check those components you will be involved with.</li>
 				</ul>
@@ -102,7 +102,7 @@ entries will be submitted to NSF.</p>
 <h3>EPSCoR Involvement</h3>
 <h4>Most Senior Project Role <em>(Required)</em></h4>
 <ul><li>Select the one position type that best describes your involvement with
-EPSCoR.  This list is defined by NSF Fastlane. If a position type is not listed
+EPSCoR.  This list is defined by NSF Fast-lane. If a position type is not listed
 that better defines your involvement, select the Other option.</li></ul>
 <h4>EPSCoR Leadership Team <em>(Required)</em></h4>
 <ul><li>Select the option that best fits your role.</li></ul>
@@ -128,7 +128,7 @@ would be the date that you started getting paid.</li></ul>
 down, select how many months of direct funding you receive. Round up or down to
 the nearest month of funding you are expected to receive.</li></ul>
 <h4>Do you participate in EPSCoR research more than 160 hours per year</h4>
-<p>This ties into NSF Fastlane and refers to whether or not you put in more
+<p>This ties into NSF Fast-lane and refers to whether or not you put in more
 than 160 hours of effort in a year to this EPSCoR grant, whether you are paid
 or not</p>
 <ul>
@@ -548,7 +548,7 @@ or you can click a day on a mini-calendar.</dd>
 that Defines these Terms</h2>
 <p>The following are a few key terms used in EPSCoR reporting, which may or may
 not be defined by NSF, yet must be and have been defined by the ERCore
-collaborative group in order for the Drupal ER-Core to properly handle this data.
+collaborative group in order for the Drupal ERCore to properly handle this data.
 EPSCoR administrators must understand the ERCore criterion in order to have
 confidence in the data and manage it properly.</p>
 <dd>
@@ -649,12 +649,12 @@ following criteria must be met:
   user\'s start date be less than 365 days</li>
   </ol>
 </dd>
-<dt>Project Start Date (ER-Core)</dt>
+<dt>Project Start Date (ERCore)</dt>
 <dd>The start date is set by administration after the installation of the
 ERCore in the <a href="/admin/config/ercore/admin">ERCore Reporting Module
 Settings</a> page. This is also listed on the Drupal Configuration page.  It is
 arbitrarily set and can be changed at any point.</dd>
-<dt>Reporting Period (ER-Core)</dt>
+<dt>Reporting Period (ERCore)</dt>
 <dd>The Reporting Period uses the Year of the Start Date, plus a month
 (arbitrarily set by site administration), and the first day of that month. The
 Reporting Period starting month is set in the

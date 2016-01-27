@@ -32,9 +32,7 @@ function _ercore_node_types() {
       'title_label' => $t("Title"),
       'body_label' => $t("Description of collaboration"),
       'description' =>
-      $t("A collaboration is a set of activities leading to a definable
-        outcome such as shared use of data, presentation of results,
-        publications, patents, outreach, etc."),
+      $t("A collaboration is a set of activities leading to a definable outcome such as shared use of data, presentation of results, publications, patents, outreach, etc."),
       'custom' => TRUE,
     ),
    // Type ERCore Event.
@@ -79,10 +77,7 @@ function _ercore_node_types() {
       'title_label' => $t("Title"),
       'body_label' => $t("Brief Description of the Institution"),
       'description' =>
-      $t("Use this form to add an affiliated institution with the EPSCoR
-        project. A person may belong to several institutions, and may
-        collaborate from one of many. Enter the institutions that are
-        appropriate for the project."),
+      $t("Use this form to add an affiliated institution with the EPSCoR project. A person may belong to several institutions, and may collaborate from one of many. Enter the institutions that are appropriate for the project."),
       'custom' => TRUE,
     ),
     // Type ERCore Other Products.
@@ -93,9 +88,7 @@ function _ercore_node_types() {
       'title_label' => $t("Title"),
       'body_label' => NULL,
       'description' =>
-      $t("Use this form to report on other research products such as Data or
-        Databases, Physical Collection, Audio or Video products, Software,
-        Educational aids, Instruments or Equipment or Other Inventions."),
+      $t("Use this form to report on other research products such as Data or Databases, Physical Collection, Audio or Video products, Software, Educational aids, Instruments or Equipment or Other Inventions."),
       'custom' => TRUE,
     ),
     // Type ERCore Patent.
@@ -117,8 +110,7 @@ function _ercore_node_types() {
       'title_label' => $t("Title"),
       'body_label' => $t("Brief Description of the presentation"),
       'description' =>
-      $t("Use this form to report on presentations given by you on EPSCoR
-        related research."),
+      $t("Use this form to report on presentations given by you on EPSCoR related research."),
       'custom' => TRUE,
     ),
     // Type ERCore Proposal or Grant.
@@ -129,8 +121,7 @@ function _ercore_node_types() {
       'title_label' => $t("Title"),
       'body_label' => $t("Brief Description of the proposed work"),
       'description' =>
-      $t("Use this form to report on the proposals you have submitted and
-        grants either awarded or declined."),
+      $t("Use this form to report on the proposals you have submitted and grants either awarded or declined."),
       'custom' => TRUE,
     ),
     // Type ERCore Publication.
@@ -141,9 +132,7 @@ function _ercore_node_types() {
       'title_label' => $t("Title"),
       'body_label' => $t("Abstract"),
       'description' =>
-      $t("Publications are journal articles, text books, monographs, chapters
-        in books, conference proceedings, technical reports, abstracts, or
-        other formal written documents, in both print and electronic media."),
+      $t("Publications are journal articles, text books, monographs, chapters in books, conference proceedings, technical reports, abstracts, or other formal written documents, in both print and electronic media."),
       'custom' => TRUE,
     ),
   // End or node_type array follows.

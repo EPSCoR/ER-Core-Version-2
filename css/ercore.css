@@ -26,7 +26,8 @@
 .field-name-field-ercore-cn-collaborator .field-item + .field-item {
   margin-top: 12px;
 }
-.field-name-field-ercore-organizer .field-item {
+.field-name-field-ercore-organizer .field-item,
+.field-collection-item-field-ercore-cn-collaborator .content {
   padding-left: 25px;
 }
 .field-name-field-ercore-organizer .field-item + .field-item {

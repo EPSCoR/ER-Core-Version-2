@@ -27,8 +27,8 @@ $ercore_collaboration_instances = array(
     'settings' => array(
       'default_value' => 'now',
       'default_value_code' => '',
-      'default_value2' => 'same',
-      'default_value_code2' => '',
+      'default_value2' => 'strtotime',
+      'default_value_code2' => '+ 1 year',
       'user_register_form' => FALSE,
     ),
     'display' => array(

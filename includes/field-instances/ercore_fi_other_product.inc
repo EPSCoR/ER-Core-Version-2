@@ -9,7 +9,7 @@ $ercore_other_product_instances = array(
   'field_ercore_op_non_epscor' => array(
     'label' => 'Non-EPSCoR Participant Research Product Creators',
     'widget' => array(
-      'weight' => '4',
+      'weight' => '2',
       'type' => 'text_textfield',
       'module' => 'text',
       'active' => 1,
@@ -82,14 +82,14 @@ $ercore_other_product_instances = array(
       'full' => array(
         'label' => 'hidden',
         'type' => 'text_default',
-        'weight' => '6',
+        'weight' => '8',
         'settings' => array(),
         'module' => 'text',
       ),
       'default' => array(
         'label' => 'hidden',
         'type' => 'text_default',
-        'weight' => '6',
+        'weight' => '8',
         'settings' => array(),
         'module' => 'text',
       ),
@@ -141,7 +141,7 @@ $ercore_other_product_instances = array(
       'default' => array(
         'label' => 'inline',
         'type' => 'list_default',
-        'weight' => '5',
+        'weight' => '6',
         'settings' => array(),
         'module' => 'list',
       ),
@@ -250,7 +250,7 @@ $ercore_other_product_instances = array(
     'description' => '',
     'default_value' => NULL,
     'widget' => array(
-      'weight' => '5',
+      'weight' => '4',
       'type' => 'options_buttons',
       'module' => 'options',
       'active' => 1,
@@ -338,11 +338,11 @@ $ercore_other_product_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_op_organizer.
+// INSTANCE: field_ercore_organizer.
   'field_ercore_op_organizer' => array(
     'label' => 'EPSCoR Participant Research Creator(s)',
     'widget' => array(
-      'weight' => '-3',
+      'weight' => '1',
       'type' => 'entityreference_autocomplete',
       'module' => 'entityreference',
       'active' => 1,
@@ -439,11 +439,12 @@ $ercore_other_product_instances = array(
     'bundle' => 'ercore_other_product',
     'deleted' => '0',
   ),
-  // INSTANCE: field_ercore_programs.
-  'field_ercore_op_programs' => array(
-    'label' => 'Program',
+
+// INSTANCE: field_ercore_programs.
+  'field_ercore_programs' => array(
+    'label' => 'Project Team',
     'widget' => array(
-      'weight' => '4',
+      'weight' => '3',
       'type' => 'options_select',
       'module' => 'options',
       'active' => 1,
@@ -461,7 +462,7 @@ $ercore_other_product_instances = array(
       'default' => array(
         'label' => 'inline',
         'type' => 'entityreference_label',
-        'weight' => '4',
+        'weight' => '5',
         'settings' => array(
           'link' => FALSE,
         ),
@@ -470,7 +471,7 @@ $ercore_other_product_instances = array(
       'full' => array(
         'label' => 'inline',
         'type' => 'entityreference_label',
-        'weight' => '5',
+        'weight' => '6',
         'settings' => array(
           'link' => FALSE,
         ),
@@ -495,4 +496,75 @@ $ercore_other_product_instances = array(
     'bundle' => 'ercore_other_product',
     'deleted' => '0',
   ),
+
+// INSTANCE: field_ercore_op_website.
+  'field_ercore_op_website' => array(
+    'label' => 'Website URL',
+    'widget' => array(
+      'weight' => '5',
+      'type' => 'link_field',
+      'module' => 'link',
+      'active' => 0,
+      'settings' => array(),
+    ),
+    'settings' => array(
+      'absolute_url' => 1,
+      'validate_url' => 1,
+      'url' => 0,
+      'title' => 'optional',
+      'title_value' => '',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => '128',
+      'enable_tokens' => 0,
+      'display' => array(
+        'url_cutoff' => '80',
+      ),
+      'attributes' => array(
+        'target' => 'default',
+        'rel' => '',
+        'configurable_class' => 0,
+        'class' => '',
+        'configurable_title' => 0,
+        'title' => '',
+      ),
+      'rel_remove' => 'default',
+      'linkit' => array(
+        'enable' => 0,
+        'profile' => '',
+        'button_text' => 'Search',
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'type' => 'link_default',
+        'weight' => '7',
+        'settings' => array(),
+        'module' => 'link',
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'type' => 'link_default',
+        'weight' => '7',
+        'settings' => array(),
+        'module' => 'link',
+      ),
+      'teaser' => array(
+        'type' => 'hidden',
+        'label' => 'above',
+        'settings' => array(),
+        'weight' => 0,
+      ),
+    ),
+    'required' => 0,
+    'description' => '',
+    'default_value' => NULL,
+    'field_name' => 'field_ercore_op_website',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_other_product',
+    'deleted' => '0',
+  ),
+
+
 );

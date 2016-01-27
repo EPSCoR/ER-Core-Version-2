@@ -18,12 +18,12 @@ administrators may customize the Core to meet jurisdictional needs. This
 document aims to describe the various tasks, views, operations, and procedures
 that an administrator may need to know about in order to properly administer the
 site.</p><p>You may also be interested in the more general
-<a href="epscor/guides/user">ESCoR User Guide</a> which talks more about how
+<a href="/ercore/guides/user">ESCoR User Guide</a> which talks more about how
 researchers should enter data into the system.</p>
   <h2>Post-Installation Guide/Jurisdictional Customizations</h2>
     <p><strong>These are steps that should be taken immediately after installing
     the EPSCoR Reporting package. These customizations will help make the system
-    a better fit your juristiction.</strong></p>
+    a better fit your jurisdiction.</strong></p>
     <h3>Project Components</h3>
      <p>Change the list of Project Components (Taxonomy) (which may also be
      known as "teams").  Use the "Add term" button to add a new component.
@@ -63,8 +63,8 @@ researchers should enter data into the system.</p>
   to flag users whom should receive email notifications regarding researcher
   data collection events.</p>
   <p>We suggest that you create an account for your Data Repository Manager,
-  then flag this person\'s account to recieve the notifications. Other users
-  may also be flagged to recieve these notifications using the same procedure.
+  then flag this person\'s account to receive the notifications. Other users
+  may also be flagged to receive these notifications using the same procedure.
   </p>
    <p>In order to flag the user, you must first navigate to their user profile.
    You can find the user profile of someone in the system by navigating to the
@@ -95,7 +95,7 @@ researchers should enter data into the system.</p>
    <code>/sites/all/libraries/PHPExcel/changelog.txt</code></p>
     <p>You can then navigate to the EPSCoR Settings page to see if the library
     was detected.</p>
-  <h3>(Optional) Cutomize the list of Event Types</h3>
+  <h3>(Optional) Customize the list of Event Types</h3>
   <p>Some states may wish to customize the <strong>Event Types Field</strong>
   which label calendar events.</p>
   <h4>Notice: The available values should be of the form:</h4>

@@ -5,6 +5,7 @@
  */
 
 $ercore_event_instances = array(
+
 // INSTANCE: field_ercore_ev_date.
   'field_ercore_ev_date' => array(
     'label' => 'Date',
@@ -16,7 +17,7 @@ $ercore_event_instances = array(
       'settings' => array(
         'input_format' => 'm/d/Y - g:i:sa',
         'input_format_custom' => '',
-        'year_range' => '-3:+3',
+        'year_range' => '-3:+6',
         'increment' => '15',
         'label_position' => 'above',
         'text_parts' => array(),
@@ -27,7 +28,7 @@ $ercore_event_instances = array(
     'settings' => array(
       'default_value' => 'blank',
       'default_value_code' => '',
-      'default_value2' => 'strtotime',
+      'default_value2' => 'blank',
       'default_value_code2' => 'blank',
       'user_register_form' => FALSE,
     ),

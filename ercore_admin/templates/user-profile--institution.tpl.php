@@ -34,35 +34,4 @@
  * @ingroup themeable
  */
 ?>
-<?php
-if (isset($user_profile['field_user_name'][0])) {
-  $name = '<span class="collaborator-name">' . $user_profile['field_user_name'][0]['#markup'] . '</span>';
-}
-else {
-  $name = 'Collaborator name not available.';
-}
-if (isset($user_profile['field_ercore_us_inst_ref'])) {
-  $institutions = $user_profile['field_ercore_us_inst_ref'];
-  $count = count($institutions['#items']);
-  $list = array();
-
-  $i = 0;
-  for (;;) {
-    if ($i >= $count) {
-      break;
-    }
-    $list[$i] = $institutions[$i]['#markup'];
-    $i++;
-  }
-  $institution_list = implode(', ', $list);
-}
-else {
-  $institution_list = 'Institution name not available';
-}
-if (isset($user_profile['field_ercore_us_department'][0])) {
-  $dept = ' - ' . $user_profile['field_ercore_us_department'][0]['#markup'];
-}
-else {
-  $dept = NULL;
-}
-print $name . ': ' . $institution_list . $dept;
+<?php print render($user_profile); ?>
