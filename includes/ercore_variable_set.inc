@@ -35,7 +35,7 @@ variable_set('ercore_summary_types', array(
   'ercore_proposal' => 'ercore_proposal',
   'ercore_publication' => 'ercore_publication',
 ));
-variable_set('ercore_grant_number', 'Grant number not set');
+variable_set('ercore_grant_number', '');
 variable_set('ercore_component_usage', '1');
 variable_set('ercore_component_required', '1');
 variable_set('ercore_program_usage', '0');
@@ -55,7 +55,7 @@ variable_set('menu_options_ercore_admin', array(
 variable_set('menu_parent_ercore_admin', 'ercore_admin_menu:0');
 variable_set('pathauto_node_ercore_admin_pattern',
   '[node:menu-link:parent:url:path]/[node:title]');
-variable_set('comment_ercore_event', 0);
+variable_set('comment_ercore_admin', 0);
 variable_set('field_bundle_settings_node__ercore_admin', array(
     'view_modes' =>
       array(
@@ -877,3 +877,48 @@ variable_set('field_bundle_settings_user__user', array(
 );
 variable_set('pathauto_user_pattern', 'users/[user:name]');
 variable_set('realname_pattern', '[user:name-field-user-name:formatter-full]');
+
+variable_set('user_mail_register_admin_created_body', '[user:name],
+
+A site administrator at [site:name] has created an account for you. You may now log in by clicking this link or copying and pasting it to your browser:
+
+[user:one-time-login-url]
+
+This link can only be used once to log in and will lead you to a page where you can set your password.
+
+After setting your password, you will be able to log in at [site:login-url] in the future using:
+
+username: [user:name-raw]
+password: Your password
+
+--  [site:name] team');
+variable_set('user_mail_register_no_approval_required_body','[user:name],
+
+Thank you for registering at [site:name]. You may now log in by clicking this link or copying and pasting it to your browser:
+
+[user:one-time-login-url]
+
+This link can only be used once to log in and will lead you to a page where you can set your password.
+
+After setting your password, you will be able to log in at [site:login-url] in the future using:
+
+username: [user:name-raw]
+password: Your password
+
+--  [site:name] team');
+variable_set('user_mail_status_activated_body','[user:name],
+
+Your account at [site:name] has been activated.
+
+You may now log in by clicking this link or copying and pasting it into your browser:
+
+[user:one-time-login-url]
+
+This link can only be used once to log in and will lead you to a page where you can set your password.
+
+After setting your password, you will be able to log in at [site:login-url] in the future using:
+
+username: [user:name-raw]
+password: Your password
+
+--  [site:name] team');

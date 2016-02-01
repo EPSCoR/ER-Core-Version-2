@@ -1,0 +1,10 @@
+name = Example ERCore
+description = Modifications to this ERCore install's use of the ERCore module.
+package = ERCore
+core = 7.x
+
+version = "7.x-1.0"
+core = "7.x"
+project = "ERCore"
+
+dependencies[] = ercore

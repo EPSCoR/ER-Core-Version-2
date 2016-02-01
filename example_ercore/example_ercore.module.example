@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Module file for Example ERCore module .
+ */
+
+/**
+ * Implements hook_form_alter().
+ */
+function example_ercore_form_user_profile_form_alter(&$form, &$form_state, $form_id) {
+  // Makes ERCore field RCR optional in this installation.
+  $form['field_ercore_us_rcr_in_person']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+    ),
+    'optional' => array(
+      ':input[name="field_ercore_us_rcr_bool[und]"]' => array('checked' => TRUE),
+    ),
+  );
+}
