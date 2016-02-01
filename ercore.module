@@ -1148,3 +1148,33 @@ function ercore_field_group_build_pre_render_alter(&$element) {
     );
   }
 }
+
+/**
+ * Implements hook_block_info().
+ */
+function ercore_block_info() {
+  $blocks = array();
+  $blocks['ercore_grant_block'] = array(
+    'info' => t('ERCore Grant Block'),
+  );
+  return $blocks;
+}
+/**
+ * Implements hook_block_view().
+ */
+function ercore_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'ercore_grant_block':
+      $block['subject'] = '';
+      $block['content'] = _ercore_grant_block();
+      break;
+  }
+  return $block;
+}
+function _ercore_grant_block() {
+  $grant = variable_get('ercore_grant_number');
+  $output = t("<p class='grant'>This material is based upon work supported by the National Science Foundation under Grant Number <em>$grant</em>.<br />
+Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</p>");
+  return $output;
+}

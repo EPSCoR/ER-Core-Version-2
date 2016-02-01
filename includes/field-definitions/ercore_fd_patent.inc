@@ -5,8 +5,8 @@
  */
 
 $ercore_patent_definitions = array(
-  // FIELD: field_ercore_pt_description.
-  'field_ercore_pt_description' => array(
+// FIELD: field_ercore_pt_description.
+  'pt_field_ercore_pt_description' => array(
     'entity_types' => array(),
     'settings' => array(
       'user_role_field' => array(
@@ -88,7 +88,7 @@ $ercore_patent_definitions = array(
   ),
 
 // FIELD: field_ercore_pt_disclosure.
-  'field_ercore_pt_disclosure' => array(
+  'pt_field_ercore_pt_disclosure' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -159,7 +159,7 @@ $ercore_patent_definitions = array(
   ),
 
 // FIELD: field_ercore_pt_filing.
-  'field_ercore_pt_filing' => array(
+  'pt_field_ercore_pt_filing' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -230,7 +230,7 @@ $ercore_patent_definitions = array(
   ),
 
 // FIELD: field_ercore_pt_link.
-  'field_ercore_pt_link' => array(
+  'pt_field_ercore_pt_link' => array(
     'entity_types' => array(),
     'settings' => array(
       'attributes' => array(
@@ -313,7 +313,7 @@ $ercore_patent_definitions = array(
   ),
 
 // FIELD: field_ercore_pt_award.
-  'field_ercore_pt_award' => array(
+  'pt_field_ercore_pt_award' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -384,7 +384,7 @@ $ercore_patent_definitions = array(
   ),
 
 // FIELD: field_ercore_pt_date.
-  'field_ercore_pt_date' => array(
+  'pt_field_ercore_pt_date' => array(
     'entity_types' => array(),
     'settings' => array(
       'granularity' => array(
@@ -455,7 +455,7 @@ $ercore_patent_definitions = array(
   ),
 
 // FIELD: field_ercore_pt_licensed.
-  'field_ercore_pt_licensed' => array(
+  'pt_field_ercore_pt_licensed' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -515,7 +515,7 @@ $ercore_patent_definitions = array(
   ),
 
 // FIELD: field_ercore_pt_licensee.
-  'field_ercore_pt_licensee' => array(
+  'pt_field_ercore_pt_licensee' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -589,7 +589,7 @@ $ercore_patent_definitions = array(
   ),
 
 // FIELD: field_ercore_pt_provisional.
-  'field_ercore_pt_provisional' => array(
+  'pt_field_ercore_pt_provisional' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(

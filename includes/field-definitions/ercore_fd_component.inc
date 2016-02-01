@@ -6,7 +6,7 @@
 
 $ercore_component_definitions = array(
 // FIELD: field_ercore_cmp_core.
-  'field_ercore_cmp_core' => array(
+  'cp_field_ercore_cmp_core' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(

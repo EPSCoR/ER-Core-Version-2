@@ -6,7 +6,7 @@
 
 $ercore_other_product_instances = array(
 // INSTANCE: field_ercore_op_non_epscor.
-  'field_ercore_op_non_epscor' => array(
+  'op_field_ercore_op_non_epscor' => array(
     'label' => 'Non-EPSCoR Participant Research Product Creators',
     'widget' => array(
       'weight' => '2',
@@ -54,7 +54,7 @@ $ercore_other_product_instances = array(
   ),
 
 // INSTANCE: field_ercore_op_description.
-  'field_ercore_op_description' => array(
+  'op_field_ercore_op_description' => array(
     'weight' => '2',
     'label' => 'Description',
     'widget_type' => 'text_textarea',
@@ -106,7 +106,7 @@ $ercore_other_product_instances = array(
   ),
 
 // INSTANCE: field_ercore_nsf.
-  'field_ercore_nsf' => array(
+  'op_field_ercore_nsf' => array(
     'weight' => '1',
     'label' => 'NSF Acknowledgement',
     'widget_type' => 'optionwidgets_buttons',
@@ -161,7 +161,7 @@ $ercore_other_product_instances = array(
   ),
 
 // INSTANCE: field_ercore_op_date.
-  'field_ercore_op_date' => array(
+  'op_field_ercore_op_date' => array(
     'weight' => '-2',
     'label' => 'Date',
     'widget_type' => 'date_popup',
@@ -243,7 +243,7 @@ $ercore_other_product_instances = array(
   ),
 
 // INSTANCE: field_ercore_op_type.
-  'field_ercore_op_type' => array(
+  'op_field_ercore_op_type' => array(
     'weight' => '-3',
     'label' => 'Type',
     'widget_type' => 'optionwidgets_buttons',
@@ -291,7 +291,7 @@ $ercore_other_product_instances = array(
   ),
 
 // INSTANCE: field_ercore_op_rii_support.
-  'field_ercore_op_rii_support' => array(
+  'op_field_ercore_op_rii_support' => array(
     'weight' => '0',
     'label' => 'EPSCoR Support',
     'widget_type' => 'optionwidgets_select',
@@ -339,7 +339,7 @@ $ercore_other_product_instances = array(
   ),
 
 // INSTANCE: field_ercore_organizer.
-  'field_ercore_op_organizer' => array(
+  'op_field_ercore_organizer' => array(
     'label' => 'EPSCoR Participant Research Creator(s)',
     'widget' => array(
       'weight' => '1',
@@ -440,65 +440,8 @@ $ercore_other_product_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_programs.
-  'field_ercore_programs' => array(
-    'label' => 'Project Team',
-    'widget' => array(
-      'weight' => '3',
-      'type' => 'options_select',
-      'module' => 'options',
-      'active' => 1,
-      'settings' => array(),
-    ),
-    'settings' => array(
-      'behaviors' => array(
-        'taxonomy-index' => array(
-          'status' => TRUE,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'type' => 'entityreference_label',
-        'weight' => '5',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'module' => 'entityreference',
-      ),
-      'full' => array(
-        'label' => 'inline',
-        'type' => 'entityreference_label',
-        'weight' => '6',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'module' => 'entityreference',
-      ),
-      'teaser' => array(
-        'type' => 'hidden',
-        'label' => 'above',
-        'settings' => array(),
-        'weight' => 0,
-      ),
-    ),
-    'required' => 0,
-    'description' => '',
-    'entityconnect_unload_add' => '1',
-    'entityconnect_unload_edit' => '1',
-    'entityconnect_show_add_icon' => '0',
-    'entityconnect_show_edit_icon' => '0',
-    'default_value' => NULL,
-    'field_name' => 'field_ercore_programs',
-    'entity_type' => 'node',
-    'bundle' => 'ercore_other_product',
-    'deleted' => '0',
-  ),
-
 // INSTANCE: field_ercore_op_website.
-  'field_ercore_op_website' => array(
+  'op_field_ercore_op_website' => array(
     'label' => 'Website URL',
     'widget' => array(
       'weight' => '5',
@@ -565,6 +508,4 @@ $ercore_other_product_instances = array(
     'bundle' => 'ercore_other_product',
     'deleted' => '0',
   ),
-
-
 );

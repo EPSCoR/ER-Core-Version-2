@@ -6,7 +6,7 @@
 
 $ercore_collaboration_instances = array(
 // INSTANCE: field_ercore_cn_dates.
-  'field_ercore_cn_dates' => array(
+  'cn_field_ercore_cn_dates' => array(
     'label' => 'Collaboration Dates',
     'widget' => array(
       'weight' => '7',
@@ -87,7 +87,7 @@ $ercore_collaboration_instances = array(
   ),
 
 // INSTANCE: field_ercore_cn_collaborator.
-  'field_ercore_cn_collaborator' => array(
+  'cn_field_ercore_cn_collaborator' => array(
     'label' => 'External Collaborators',
     'widget' => array(
       'weight' => '5',
@@ -138,7 +138,7 @@ $ercore_collaboration_instances = array(
   ),
 
 // INSTANCE: field_ercore_organizer.
-  'field_ercore_organizer' => array(
+  'cn_field_ercore_organizer' => array(
     'label' => 'EPSCoR Collaborator(s)',
     'widget' => array(
       'weight' => '4',
@@ -236,7 +236,7 @@ $ercore_collaboration_instances = array(
   ),
 
 // INSTANCE: field_ercore_components.
-  'field_ercore_components' => array(
+  'cn_field_ercore_components' => array(
     'label' => 'Components',
     'widget' => array(
       'weight' => '6',
@@ -293,7 +293,7 @@ $ercore_collaboration_instances = array(
   ),
 
 // INSTANCE: field_ercore_programs.
-  'field_ercore_programs' => array(
+  'cn_field_ercore_programs' => array(
     'label' => 'Program',
     'widget' => array(
       'weight' => '2',

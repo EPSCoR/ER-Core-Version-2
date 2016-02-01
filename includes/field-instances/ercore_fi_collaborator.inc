@@ -6,7 +6,7 @@
 
 $ercore_collaborator_instances = array(
 // INSTANCE: field_ercore_cr_inst_ref.
-  'field_ercore_cr_inst_ref' => array(
+  'cr_field_ercore_cr_inst_ref' => array(
     'label' => 'Institution/Organization',
     'widget' => array(
       'weight' => '7',
@@ -68,7 +68,7 @@ $ercore_collaborator_instances = array(
   ),
 
 // INSTANCE: field_ercore_cr_name.
-  'field_ercore_cr_name' => array(
+  'cr_field_ercore_cr_name' => array(
     'label' => 'Name of Collaborating Individual',
     'widget' => array(
       'weight' => '5',
@@ -115,7 +115,7 @@ $ercore_collaborator_instances = array(
   ),
 
 // INSTANCE: field_ercore_cr_dpt.
-  'field_ercore_cr_dpt' => array(
+  'cr_field_ercore_cr_dpt' => array(
     'label' => 'Department',
     'widget' => array(
       'weight' => '8',

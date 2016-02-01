@@ -5,8 +5,8 @@
  */
 
 $ercore_patent_instances = array(
-  // INSTANCE: field_ercore_pt_description.
-  'field_ercore_pt_description' => array(
+// INSTANCE: field_ercore_pt_description.
+  'pt_field_ercore_pt_description' => array(
     'weight' => '4',
     'label' => 'Description',
     'widget_type' => 'text_textarea',
@@ -55,7 +55,7 @@ $ercore_patent_instances = array(
   ),
 
 // INSTANCE: field_ercore_pt_disclosure.
-  'field_ercore_pt_disclosure' => array(
+  'pt_field_ercore_pt_disclosure' => array(
     'label' => 'Disclosure Date',
     'widget' => array(
       'weight' => '4',
@@ -127,7 +127,7 @@ $ercore_patent_instances = array(
   ),
 
 // INSTANCE: field_ercore_pt_filing.
-  'field_ercore_pt_filing' => array(
+  'pt_field_ercore_pt_filing' => array(
     'label' => 'Filing Date',
     'widget' => array(
       'weight' => '6',
@@ -199,7 +199,7 @@ $ercore_patent_instances = array(
   ),
 
 // INSTANCE: field_ercore_pt_link.
-  'field_ercore_pt_link' => array(
+  'pt_field_ercore_pt_link' => array(
     'weight' => '-3',
     'label' => 'Link',
     'widget_type' => 'link',
@@ -265,7 +265,7 @@ $ercore_patent_instances = array(
   ),
 
 // INSTANCE: field_ercore_pt_award.
-  'field_ercore_pt_award' => array(
+  'pt_field_ercore_pt_award' => array(
     'label' => 'Award Date',
     'widget' => array(
       'weight' => '7',
@@ -337,7 +337,7 @@ $ercore_patent_instances = array(
   ),
 
 // INSTANCE: field_ercore_pt_date.
-  'field_ercore_pt_date' => array(
+  'pt_field_ercore_pt_date' => array(
     'weight' => '2',
     'label' => 'License Date',
     'widget_type' => 'date_popup',
@@ -419,7 +419,7 @@ $ercore_patent_instances = array(
   ),
 
 // INSTANCE: field_ercore_pt_licensed.
-  'field_ercore_pt_licensed' => array(
+  'pt_field_ercore_pt_licensed' => array(
     'label' => 'Licensed',
     'widget' => array(
       'weight' => '8',
@@ -467,7 +467,7 @@ $ercore_patent_instances = array(
   ),
 
 // INSTANCE: field_ercore_pt_licensee.
-  'field_ercore_pt_licensee' => array(
+  'pt_field_ercore_pt_licensee' => array(
     'label' => 'Licensee',
     'widget' => array(
       'type' => 'entityreference_autocomplete',
@@ -518,7 +518,7 @@ $ercore_patent_instances = array(
   ),
 
 // INSTANCE: field_ercore_pt_provisional.
-  'field_ercore_pt_provisional' => array(
+  'pt_field_ercore_pt_provisional' => array(
     'label' => 'Provisional Date',
     'widget' => array(
       'weight' => '5',
@@ -589,8 +589,8 @@ $ercore_patent_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_pt_organizer.
-  'field_ercore_pt_organizer' => array(
+// INSTANCE: field_ercore_organizer.
+  'pt_field_ercore_organizer' => array(
     'label' => 'EPSCoR Organizer(s)',
     'widget' => array(
       'weight' => '-3',
@@ -691,8 +691,9 @@ $ercore_patent_instances = array(
     'bundle' => 'ercore_patent',
     'deleted' => '0',
   ),
-  // INSTANCE: field_ercore_programs.
-  'field_ercore_pt_programs' => array(
+
+// INSTANCE: field_ercore_programs.
+  'pt_field_ercore_programs' => array(
     'label' => 'Program',
     'widget' => array(
       'weight' => '4',

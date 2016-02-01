@@ -2759,15 +2759,6 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = 'Abstract or Short Description';
-  /* Field: Field: Project Team */
-  $handler->display->display_options['fields']['field_ercore_programs']['id'] = 'field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['table'] = 'field_data_field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['field'] = 'field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_programs']['settings'] = array(
-    'link' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_programs']['delta_offset'] = '0';
   /* Field: Content: EPSCoR Organizer(s) */
   $handler->display->display_options['fields']['field_ercore_organizer']['id'] = 'field_ercore_organizer';
   $handler->display->display_options['fields']['field_ercore_organizer']['table'] = 'field_data_field_ercore_organizer';
@@ -5061,15 +5052,6 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_op_rii_support']['table'] = 'field_data_field_ercore_op_rii_support';
   $handler->display->display_options['fields']['field_ercore_op_rii_support']['field'] = 'field_ercore_op_rii_support';
   $handler->display->display_options['fields']['field_ercore_op_rii_support']['element_label_colon'] = FALSE;
-  /* Field: Field: Project Team */
-  $handler->display->display_options['fields']['field_ercore_programs']['id'] = 'field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['table'] = 'field_data_field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['field'] = 'field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_programs']['settings'] = array(
-    'link' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_programs']['delta_offset'] = '0';
   /* Field: Content: Type */
   $handler->display->display_options['fields']['field_ercore_op_type']['id'] = 'field_ercore_op_type';
   $handler->display->display_options['fields']['field_ercore_op_type']['table'] = 'field_data_field_ercore_op_type';
@@ -5961,15 +5943,6 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_goals']['table'] = 'field_data_field_ercore_goals';
   $handler->display->display_options['fields']['field_ercore_goals']['field'] = 'field_ercore_goals';
   $handler->display->display_options['fields']['field_ercore_goals']['element_label_colon'] = FALSE;
-  /* Field: Field: Project Team */
-  $handler->display->display_options['fields']['field_ercore_programs']['id'] = 'field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['table'] = 'field_data_field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['field'] = 'field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_programs']['settings'] = array(
-    'link' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_programs']['delta_offset'] = '0';
   /* Field: Content: What was the event where you presented? */
   $handler->display->display_options['fields']['field_ercore_ps_event']['id'] = 'field_ercore_ps_event';
   $handler->display->display_options['fields']['field_ercore_ps_event']['table'] = 'field_data_field_ercore_ps_event';
@@ -6325,15 +6298,6 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = 'Brief Description';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
-  /* Field: Field: Project Team */
-  $handler->display->display_options['fields']['field_ercore_programs']['id'] = 'field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['table'] = 'field_data_field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['field'] = 'field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_programs']['settings'] = array(
-    'link' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_programs']['delta_offset'] = '0';
   $handler->display->display_options['path'] = 'proposals/download';
   $handler->display->display_options['displays'] = array(
     'default' => 'default',
@@ -6582,15 +6546,6 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_pb_type']['table'] = 'field_data_field_ercore_pb_type';
   $handler->display->display_options['fields']['field_ercore_pb_type']['field'] = 'field_ercore_pb_type';
   $handler->display->display_options['fields']['field_ercore_pb_type']['element_label_colon'] = FALSE;
-  /* Field: Field: Project Team */
-  $handler->display->display_options['fields']['field_ercore_programs']['id'] = 'field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['table'] = 'field_data_field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['field'] = 'field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_programs']['settings'] = array(
-    'link' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_programs']['delta_offset'] = '0';
   /* Field: Content: Peer Reviewed */
   $handler->display->display_options['fields']['field_ercore_pb_peer_reviewed']['id'] = 'field_ercore_pb_peer_reviewed';
   $handler->display->display_options['fields']['field_ercore_pb_peer_reviewed']['table'] = 'field_data_field_ercore_pb_peer_reviewed';

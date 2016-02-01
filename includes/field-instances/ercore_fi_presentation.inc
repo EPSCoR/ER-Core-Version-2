@@ -6,14 +6,14 @@
 
 $ercore_presentation_instances = array(
 // INSTANCE: field_ercore_ps_event.
-  'field_ercore_ps_event' => array(
+  'ps_field_ercore_ps_event' => array(
     'weight' => '-10',
     'label' => 'What was the event where you presented?',
     'widget_type' => 'text_textarea',
     'description' => 'Please provide the name of the event, where it was held, and any other significant identifying information.',
     'default_value' => NULL,
     'widget' => array(
-      'weight' => '9',
+      'weight' => '8',
       'type' => 'text_textarea',
       'module' => 'text',
       'active' => 1,
@@ -56,14 +56,14 @@ $ercore_presentation_instances = array(
   ),
 
 // INSTANCE: field_ercore_ps_link.
-  'field_ercore_ps_link' => array(
+  'ps_field_ercore_ps_link' => array(
     'weight' => '-9',
     'label' => 'Presentation Link',
     'widget_type' => 'link',
     'description' => 'Please enter the URL if your presentation is hosted online.',
     'default_value' => NULL,
     'widget' => array(
-      'weight' => '10',
+      'weight' => '9',
       'type' => 'link_field',
       'module' => 'link',
       'active' => 0,
@@ -123,14 +123,14 @@ $ercore_presentation_instances = array(
   ),
 
 // INSTANCE: field_ercore_ps_date.
-  'field_ercore_ps_date' => array(
+  'ps_field_ercore_ps_date' => array(
     'weight' => '-11',
     'label' => 'Date',
     'widget_type' => 'date_popup',
     'description' => '',
     'widget' => array(
       'type' => 'date_popup',
-      'weight' => '2',
+      'weight' => '1',
       'module' => 'date',
       'active' => '1',
       'settings' => array(
@@ -206,10 +206,10 @@ $ercore_presentation_instances = array(
   ),
 
 // INSTANCE: field_ercore_ps_upload.
-  'field_ercore_ps_upload' => array(
+  'ps_field_ercore_ps_upload' => array(
     'label' => 'Upload File',
     'widget' => array(
-      'weight' => '11',
+      'weight' => '10',
       'type' => 'file_generic',
       'module' => 'file',
       'active' => 1,
@@ -254,110 +254,11 @@ $ercore_presentation_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_organizer.
-  'field_ercore_pt_organizer' => array(
-    'label' => 'EPSCoR Presenter(s)',
-    'widget' => array(
-      'weight' => '3',
-      'type' => 'entityreference_autocomplete',
-      'module' => 'entityreference',
-      'active' => 1,
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'size' => '60',
-        'path' => '',
-      ),
-    ),
-    'settings' => array(
-      'nodeaccess_userreference' => array(
-        'referenced' => array(
-          'view' => 'view',
-          'update' => 'update',
-          'delete' => 'delete',
-          'deny_view' => 0,
-          'deny_update' => 0,
-          'deny_delete' => 0,
-        ),
-        'referenced_published' => '1',
-        'create' => array(
-          'article' => 0,
-          'page' => 0,
-          'ercore_admin' => 0,
-          'ercore_event' => 0,
-          'ercore_collaboration' => 0,
-          'ercore_j_highlight' => 0,
-          'ercore_j_honor' => 0,
-          'ercore_institution' => 0,
-          'ercore_other_product' => 0,
-          'ercore_patent' => 0,
-          'ercore_presentation' => 0,
-          'ercore_proposal' => 0,
-          'ercore_publication' => 0,
-        ),
-        'author' => array(
-          'view' => 'view',
-          'update' => 'update',
-          'delete' => 'delete',
-        ),
-        'author_published' => '1',
-        'all' => array(
-          'view' => 'view',
-        ),
-        'all_published' => '0',
-        'unused' => '0',
-        'views' => array(
-          'view' => '',
-          'view_args' => '',
-        ),
-        'priority' => '0',
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'type' => 'entityreference_label',
-        'weight' => '1',
-        'settings' => array(
-          'link' => 1,
-        ),
-        'module' => 'entityreference',
-      ),
-      'teaser' => array(
-        'type' => 'hidden',
-        'label' => 'above',
-        'settings' => array(),
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'type' => 'entityreference_label',
-        'weight' => '1',
-        'settings' => array(
-          'link' => 1,
-        ),
-        'module' => 'entityreference',
-      ),
-    ),
-    'required' => 1,
-    'description' => '',
-    'default_value' => NULL,
-    'default_value_function' => '',
-    'entityconnect_unload_add' => '1',
-    'entityconnect_unload_edit' => '1',
-    'entityconnect_show_add_icon' => '0',
-    'entityconnect_show_edit_icon' => '0',
-    'field_name' => 'field_ercore_organizer',
-    'entity_type' => 'node',
-    'bundle' => 'ercore_presentation',
-    'deleted' => '0',
-  ),
-
 // INSTANCE: field_ercore_ps_others.
-  'field_ercore_ps_others' => array(
+  'ps_field_ercore_ps_others' => array(
     'label' => 'Non-EPSCoR Presenter(s)',
     'widget' => array(
-      'weight' => '4',
+      'weight' => '3',
       'type' => 'text_textfield',
       'module' => 'text',
       'active' => 1,
@@ -394,65 +295,8 @@ $ercore_presentation_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_programs.
-  'field_ercore_programs' => array(
-    'label' => 'Project Team',
-    'widget' => array(
-      'weight' => '8',
-      'type' => 'options_select',
-      'module' => 'options',
-      'active' => 1,
-      'settings' => array(),
-    ),
-    'settings' => array(
-      'behaviors' => array(
-        'taxonomy-index' => array(
-          'status' => TRUE,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'type' => 'entityreference_label',
-        'weight' => '6',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'module' => 'entityreference',
-      ),
-      'full' => array(
-        'label' => 'inline',
-        'type' => 'entityreference_label',
-        'weight' => '8',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'module' => 'entityreference',
-      ),
-      'teaser' => array(
-        'type' => 'hidden',
-        'label' => 'above',
-        'settings' => array(),
-        'weight' => 0,
-      ),
-    ),
-    'required' => 0,
-    'description' => '',
-    'entityconnect_unload_add' => '1',
-    'entityconnect_unload_edit' => '1',
-    'entityconnect_show_add_icon' => '0',
-    'entityconnect_show_edit_icon' => '0',
-    'default_value' => NULL,
-    'field_name' => 'field_ercore_programs',
-    'entity_type' => 'node',
-    'bundle' => 'ercore_presentation',
-    'deleted' => '0',
-  ),
-
 // INSTANCE: field_ercore_ps_type.
-  'field_ercore_ps_type' => array(
+  'ps_field_ercore_ps_type' => array(
     'label' => 'Type of Presentation',
     'widget' => array(
       'weight' => '5',
@@ -490,7 +334,7 @@ $ercore_presentation_instances = array(
   ),
 
 // INSTANCE: field_ercore_goals.
-  'field_ercore_goals' => array(
+  'ps_field_ercore_goals' => array(
     'label' => 'Goals and Objectives',
     'widget' => array(
       'weight' => '7',
@@ -535,46 +379,8 @@ $ercore_presentation_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_nsf.
-  'field_ercore_nsf' => array(
-    'label' => 'NSF Acknowledgement',
-    'widget' => array(
-      'weight' => '12',
-      'type' => 'options_select',
-      'module' => 'options',
-      'active' => 1,
-      'settings' => array(),
-    ),
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'type' => 'list_default',
-        'weight' => '11',
-        'settings' => array(),
-        'module' => 'list',
-      ),
-      'full' => array(
-        'label' => 'inline',
-        'type' => 'list_default',
-        'weight' => '10',
-        'settings' => array(),
-        'module' => 'list',
-      ),
-    ),
-    'required' => 0,
-    'description' => '',
-    'default_value' => NULL,
-    'field_name' => 'field_ercore_nsf',
-    'entity_type' => 'node',
-    'bundle' => 'ercore_presentation',
-    'deleted' => '0',
-  ),
-
 // INSTANCE: field_ercore_ps_status.
-  'field_ercore_ps_status' => array(
+  'ps_field_ercore_ps_status' => array(
     'label' => 'Status',
     'widget' => array(
       'weight' => '6',
@@ -606,6 +412,95 @@ $ercore_presentation_instances = array(
     'description' => '',
     'default_value' => NULL,
     'field_name' => 'field_ercore_ps_status',
+    'entity_type' => 'node',
+    'bundle' => 'ercore_presentation',
+    'deleted' => '0',
+  ),
+
+// INSTANCE: field_ercore_organizer.
+  'ps_field_ercore_organizer' => array(
+    'label' => 'EPSCoR Presenter(s)',
+    'widget' => array(
+      'weight' => '2',
+      'type' => 'entityreference_autocomplete',
+      'module' => 'entityreference',
+      'active' => 1,
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'size' => '60',
+        'path' => '',
+      ),
+    ),
+    'settings' => array(
+      'nodeaccess_userreference' => array(
+        'referenced' => array(
+          'view' => 0,
+          'update' => 0,
+          'delete' => 0,
+          'deny_view' => 0,
+          'deny_update' => 0,
+          'deny_delete' => 0,
+        ),
+        'referenced_published' => '0',
+        'create' => array(
+          'article' => 0,
+          'page' => 0,
+          'ercore_admin' => 0,
+          'ercore_event' => 0,
+          'ercore_collaboration' => 0,
+          'ercore_j_highlight' => 0,
+          'ercore_j_honor' => 0,
+          'ercore_institution' => 0,
+          'ercore_other_product' => 0,
+          'ercore_patent' => 0,
+          'ercore_presentation' => 0,
+          'ercore_proposal' => 0,
+          'ercore_publication' => 0,
+        ),
+        'author' => array(
+          'view' => 0,
+          'update' => 0,
+          'delete' => 0,
+        ),
+        'author_published' => '0',
+        'all' => array(
+          'view' => 0,
+        ),
+        'all_published' => '0',
+        'unused' => '0',
+        'views' => array(
+          'view' => '',
+          'view_args' => '',
+        ),
+        'priority' => '0',
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'type' => 'entityreference_label',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'module' => 'entityreference',
+        'weight' => 11,
+      ),
+      'full' => array(
+        'type' => 'hidden',
+        'label' => 'above',
+        'settings' => array(),
+        'weight' => 0,
+      ),
+    ),
+    'required' => 1,
+    'description' => '',
+    'entityconnect_unload_add' => '1',
+    'entityconnect_unload_edit' => '1',
+    'entityconnect_show_add_icon' => '0',
+    'entityconnect_show_edit_icon' => '0',
+    'default_value' => NULL,
+    'field_name' => 'field_ercore_organizer',
     'entity_type' => 'node',
     'bundle' => 'ercore_presentation',
     'deleted' => '0',

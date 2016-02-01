@@ -6,7 +6,7 @@
 
 $ercore_component_instances = array(
 // INSTANCE: field_ercore_cmp_core.
-  'field_ercore_cmp_core' => array(
+  'cp_field_ercore_cmp_core' => array(
     'label' => 'Core Component',
     'widget' => array(
       'weight' => '1',

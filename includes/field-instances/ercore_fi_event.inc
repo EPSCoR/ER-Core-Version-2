@@ -5,9 +5,8 @@
  */
 
 $ercore_event_instances = array(
-
 // INSTANCE: field_ercore_ev_date.
-  'field_ercore_ev_date' => array(
+  'ev_field_ercore_ev_date' => array(
     'label' => 'Date',
     'widget' => array(
       'weight' => '1',
@@ -88,7 +87,7 @@ $ercore_event_instances = array(
   ),
 
 // INSTANCE: field_ercore_organizer.
-  'field_ercore_ev_organizer' => array(
+  'ev_field_ercore_organizer' => array(
     'label' => 'EPSCoR Organizer(s)',
     'widget' => array(
       'weight' => '2',
@@ -191,7 +190,7 @@ $ercore_event_instances = array(
   ),
 
 // INSTANCE: field_ercore_ev_url.
-  'field_ercore_ev_url' => array(
+  'ev_field_ercore_ev_url' => array(
     'label' => 'Event Link',
     'widget' => array(
       'weight' => '6',
@@ -256,7 +255,7 @@ $ercore_event_instances = array(
   ),
 
 // INSTANCE: field_ercore_ev_type.
-  'field_ercore_ev_type' => array(
+  'ev_field_ercore_ev_type' => array(
     'label' => 'Event Type',
     'widget' => array(
       'weight' => '3',
@@ -311,7 +310,7 @@ $ercore_event_instances = array(
   ),
 
 // INSTANCE: field_ercore_ev_reminders.
-  'field_ercore_ev_reminders' => array(
+  'ev_field_ercore_ev_reminders' => array(
     'weight' => '4',
     'label' => 'Will this event be attended by non-EPSCoR participants',
     'widget_type' => 'optionwidgets_onoff',
@@ -366,7 +365,7 @@ $ercore_event_instances = array(
   ),
 
 // INSTANCE: field_ercore_ev_document.
-  'field_ercore_ev_document' => array(
+  'ev_field_ercore_ev_document' => array(
     'label' => 'Attach Document(s)',
     'widget' => array(
       'weight' => '7',
@@ -415,7 +414,7 @@ $ercore_event_instances = array(
   ),
 
 // INSTANCE: field_ercore_ev_location.
-  'field_ercore_ev_location' => array(
+  'ev_field_ercore_ev_location' => array(
     'label' => 'Location/Address',
     'widget' => array(
       'weight' => '9',
@@ -462,7 +461,7 @@ $ercore_event_instances = array(
   ),
 
 // INSTANCE: field_ercore_ev_room.
-  'field_ercore_ev_room' => array(
+  'ev_field_ercore_ev_room' => array(
     'label' => 'Building (Room Number)',
     'widget' => array(
       'weight' => '10',
@@ -509,7 +508,7 @@ $ercore_event_instances = array(
   ),
 
 // INSTANCE: field_ercore_ev_engagement.
-  'field_ercore_ev_engagement' => array(
+  'ev_field_ercore_ev_engagement' => array(
     'label' => 'External Engagement',
     'widget' => array(
       'weight' => '11',
@@ -566,7 +565,7 @@ $ercore_event_instances = array(
   ),
 
 // INSTANCE: field_ercore_programs.
-  'field_ercore_ev_programs' => array(
+  'ev_field_ercore_programs' => array(
     'label' => 'Program',
     'widget' => array(
       'weight' => '5',

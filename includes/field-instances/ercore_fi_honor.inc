@@ -5,8 +5,8 @@
  */
 
 $ercore_honor_instances = array(
-  // INSTANCE: field_ercore_hn_date.
-  'field_ercore_hn_date' => array(
+// INSTANCE: field_ercore_hn_date.
+  'hn_field_ercore_hn_date' => array(
     'label' => 'Date Awarded',
     'widget' => array(
       'weight' => '-1',
@@ -86,8 +86,8 @@ $ercore_honor_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_hn_organizer.
-  'field_ercore_hn_organizer' => array(
+// INSTANCE: field_ercore_organizer.
+  'hn_field_ercore_organizer' => array(
     'label' => 'EPSCoR Researcher(s)',
     'widget' => array(
       'weight' => '-3',
@@ -188,8 +188,9 @@ $ercore_honor_instances = array(
     'bundle' => 'ercore_j_honor',
     'deleted' => '0',
   ),
-  // INSTANCE: field_ercore_programs.
-  'field_ercore_hn_programs' => array(
+
+// INSTANCE: field_ercore_programs.
+  'hn_field_ercore_programs' => array(
     'label' => 'Program',
     'widget' => array(
       'weight' => '4',

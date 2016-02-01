@@ -6,7 +6,7 @@
 
 $ercore_institution_instances = array(
 // INSTANCE: field_ercore_in_abbr.
-  'field_ercore_in_abbr' => array(
+  'in_field_ercore_in_abbr' => array(
     'label' => 'Abbreviation',
     'widget' => array(
       'weight' => '1',
@@ -53,7 +53,7 @@ $ercore_institution_instances = array(
   ),
 
 // INSTANCE: field_ercore_in_category.
-  'field_ercore_in_category' => array(
+  'in_field_ercore_in_category' => array(
     'weight' => '-1',
     'label' => 'Category',
     'widget_type' => 'optionwidgets_buttons',
@@ -106,7 +106,7 @@ $ercore_institution_instances = array(
   ),
 
 // INSTANCE: field_ercore_in_country.
-  'field_ercore_in_country' => array(
+  'in_field_ercore_in_country' => array(
     'label' => 'Country',
     'widget' => array(
       'weight' => '2',
@@ -153,7 +153,7 @@ $ercore_institution_instances = array(
   ),
 
 // INSTANCE: field_ercore_in_link.
-  'field_ercore_in_link' => array(
+  'in_field_ercore_in_link' => array(
     'label' => 'Institution Link',
     'widget' => array(
       'weight' => '6',
@@ -216,7 +216,7 @@ $ercore_institution_instances = array(
   ),
 
 // INSTANCE: field_ercore_in_participating.
-  'field_ercore_in_participating' => array(
+  'in_field_ercore_in_participating' => array(
     'label' => 'Participating',
     'widget' => array(
       'weight' => '5',
@@ -267,7 +267,7 @@ $ercore_institution_instances = array(
   ),
 
 // INSTANCE: field_ercore_in_type.
-  'field_ercore_in_type' => array(
+  'in_field_ercore_in_type' => array(
     'weight' => '-2',
     'label' => 'Type',
     'widget_type' => 'optionwidgets_select',

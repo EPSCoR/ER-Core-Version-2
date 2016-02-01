@@ -5,8 +5,8 @@
  */
 
 $ercore_institution_definitions = array(
-  // FIELD: field_ercore_in_abbr.
-  'field_ercore_in_abbr' => array(
+// FIELD: field_ercore_in_abbr.
+  'in_field_ercore_in_abbr' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -86,7 +86,7 @@ $ercore_institution_definitions = array(
   ),
 
 // FIELD: field_ercore_in_category.
-  'field_ercore_in_category' => array(
+  'in_field_ercore_in_category' => array(
     'type_name' => 'ercore_institution',
     'entity_types' => array(),
     'settings' => array(
@@ -156,7 +156,7 @@ $ercore_institution_definitions = array(
   ),
 
 // FIELD: field_ercore_in_country.
-  'field_ercore_in_country' => array(
+  'in_field_ercore_in_country' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -235,7 +235,7 @@ $ercore_institution_definitions = array(
   ),
 
 // FIELD: field_ercore_in_link.
-  'field_ercore_in_link' => array(
+  'in_field_ercore_in_link' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -324,7 +324,7 @@ $ercore_institution_definitions = array(
   ),
 
 // FIELD: field_ercore_in_participating.
-  'field_ercore_in_participating' => array(
+  'in_field_ercore_in_participating' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -393,7 +393,7 @@ $ercore_institution_definitions = array(
   ),
 
 // FIELD: field_ercore_in_type.
-  'field_ercore_in_type' => array(
+  'in_field_ercore_in_type' => array(
     'type_name' => 'ercore_institution',
     'entity_types' => array(),
     'settings' => array(

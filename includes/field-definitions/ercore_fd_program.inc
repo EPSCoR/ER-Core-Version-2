@@ -6,7 +6,7 @@
 
 $ercore_program_definitions = array(
 // FIELD: field_ercore_prg_abbr.
-  'field_ercore_prg_abbr' => array(
+  'pg_field_ercore_prg_abbr' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(

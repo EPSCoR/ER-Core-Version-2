@@ -6,7 +6,7 @@
 
 $ercore_program_instances = array(
 // INSTANCE: field_ercore_prg_abbr.
-  'field_ercore_prg_abbr' => array(
+  'pg_field_ercore_prg_abbr' => array(
     'label' => 'Program Abbreviation',
     'widget' => array(
       'weight' => '1',

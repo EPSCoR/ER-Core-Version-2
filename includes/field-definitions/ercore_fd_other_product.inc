@@ -5,8 +5,8 @@
  */
 
 $ercore_other_product_definitions = array(
-  // FIELD: field_ercore_op_non_epscor.
-  'field_ercore_op_non_epscor' => array(
+// FIELD: field_ercore_op_non_epscor.
+  'op_field_ercore_op_non_epscor' => array(
     'entity_types' => array(),
     'settings' => array(
       'max_length' => '255',
@@ -80,7 +80,7 @@ $ercore_other_product_definitions = array(
   ),
 
 // FIELD: field_ercore_op_description.
-  'field_ercore_op_description' => array(
+  'op_field_ercore_op_description' => array(
     'type_name' => 'er_user_profile',
     'entity_types' => array(),
     'settings' => array(
@@ -164,7 +164,7 @@ $ercore_other_product_definitions = array(
   ),
 
 // FIELD: field_ercore_nsf.
-  'field_ercore_nsf' => array(
+  'op_field_ercore_nsf' => array(
     'entity_types' => array(),
     'settings' => array(
       'allowed_values' => array(
@@ -224,13 +224,12 @@ $ercore_other_product_definitions = array(
     'bundles' => array(
       'node' => array(
         'ercore_other_product',
-        'ercore_publication',
       ),
     ),
   ),
 
 // FIELD: field_ercore_op_date.
-  'field_ercore_op_date' => array(
+  'op_field_ercore_op_date' => array(
     'type_name' => 'ercore_other_product',
     'entity_types' => array(),
     'settings' => array(
@@ -302,7 +301,7 @@ $ercore_other_product_definitions = array(
   ),
 
 // FIELD: field_ercore_op_type.
-  'field_ercore_op_type' => array(
+  'op_field_ercore_op_type' => array(
     'type_name' => 'ercore_other_product',
     'entity_types' => array(),
     'settings' => array(
@@ -372,7 +371,7 @@ $ercore_other_product_definitions = array(
   ),
 
 // FIELD: field_ercore_op_rii_support.
-  'field_ercore_op_rii_support' => array(
+  'op_field_ercore_op_rii_support' => array(
     'type_name' => 'er_publication',
     'entity_types' => array(),
     'settings' => array(
@@ -437,7 +436,7 @@ $ercore_other_product_definitions = array(
   ),
 
 // FIELD: field_ercore_op_website.
-  'field_ercore_op_website' => array(
+  'op_field_ercore_op_website' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(

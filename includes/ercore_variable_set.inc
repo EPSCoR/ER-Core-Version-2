@@ -35,7 +35,7 @@ variable_set('ercore_summary_types', array(
   'ercore_proposal' => 'ercore_proposal',
   'ercore_publication' => 'ercore_publication',
 ));
-variable_set('ercore_grant_number', '');
+variable_set('ercore_grant_number', 'Grant number not set');
 variable_set('ercore_component_usage', '1');
 variable_set('ercore_component_required', '1');
 variable_set('ercore_program_usage', '0');

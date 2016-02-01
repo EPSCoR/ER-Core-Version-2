@@ -6,7 +6,7 @@
 
 $ercore_publication_definitions = array(
 // FIELD: field_ercore_pb_ark.
-  'field_ercore_pb_ark' => array(
+  'pb_field_ercore_pb_ark' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -77,7 +77,7 @@ $ercore_publication_definitions = array(
   ),
 
 // FIELD: field_ercore_pb_coll_title.
-  'field_ercore_pb_coll_title' => array(
+  'pb_field_ercore_pb_coll_title' => array(
     'type_name' => 'ercore_book',
     'entity_types' => array(),
     'settings' => array(
@@ -152,7 +152,7 @@ $ercore_publication_definitions = array(
   ),
 
 // FIELD: field_ercore_pb_doi.
-  'field_ercore_pb_doi' => array(
+  'pb_field_ercore_pb_doi' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -223,7 +223,7 @@ $ercore_publication_definitions = array(
   ),
 
 // FIELD: field_ercore_pb_epscor.
-  'field_ercore_pb_epscor' => array(
+  'pb_field_ercore_pb_epscor' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -283,7 +283,7 @@ $ercore_publication_definitions = array(
   ),
 
 // FIELD: field_ercore_pb_citation.
-  'field_ercore_pb_citation' => array(
+  'pb_field_ercore_pb_citation' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -354,7 +354,7 @@ $ercore_publication_definitions = array(
   ),
 
 // FIELD: field_ercore_pb_journal_name.
-  'field_ercore_pb_journal_name' => array(
+  'pb_field_ercore_pb_journal_name' => array(
     'type_name' => 'ercore_publication',
     'entity_types' => array(),
     'settings' => array(
@@ -429,7 +429,7 @@ $ercore_publication_definitions = array(
   ),
 
 // FIELD: field_ercore_pb_journal_pages.
-  'field_ercore_pb_journal_pages' => array(
+  'pb_field_ercore_pb_journal_pages' => array(
     'type_name' => 'ercore_publication',
     'entity_types' => array(),
     'settings' => array(
@@ -501,7 +501,7 @@ $ercore_publication_definitions = array(
   ),
 
 // FIELD: field_ercore_pb_journal_volume.
-  'field_ercore_pb_journal_volume' => array(
+  'pb_field_ercore_pb_journal_volume' => array(
     'type_name' => 'ercore_publication',
     'entity_types' => array(),
     'settings' => array(
@@ -573,7 +573,7 @@ $ercore_publication_definitions = array(
   ),
 
 // FIELD: field_ercore_pb_link.
-  'field_ercore_pb_link' => array(
+  'pb_field_ercore_pb_link' => array(
     'type_name' => 'ercore_publication',
     'entity_types' => array(),
     'settings' => array(
@@ -657,7 +657,7 @@ $ercore_publication_definitions = array(
   ),
 
 // FIELD: field_ercore_pb_nonepscor_auth.
-  'field_ercore_pb_nonepscor_auth' => array(
+  'pb_field_ercore_pb_nonepscor_auth' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -727,74 +727,8 @@ $ercore_publication_definitions = array(
     ),
   ),
 
-// FIELD: field_ercore_nsf.
-  'field_ercore_nsf' => array(
-    'entity_types' => array(),
-    'settings' => array(
-      'allowed_values' => array(
-        1 => 'Acknowledged',
-        0 => 'Not Acknowledged',
-      ),
-      'allowed_values_function' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'min' => '',
-      'max' => '',
-      'allowed_values_php' => '',
-    ),
-    'translatable' => '0',
-    'storage' => array(
-      'type' => 'field_sql_storage',
-      'settings' => array(),
-      'module' => 'field_sql_storage',
-      'active' => '1',
-      'details' => array(
-        'sql' => array(
-          'FIELD_LOAD_CURRENT' => array(
-            'field_data_field_ercore_nsf' => array(
-              'value' => 'field_ercore_nsf_value',
-            ),
-          ),
-          'FIELD_LOAD_REVISION' => array(
-            'field_revision_field_ercore_nsf' => array(
-              'value' => 'field_ercore_nsf_value',
-            ),
-          ),
-        ),
-      ),
-    ),
-    'foreign keys' => array(),
-    'indexes' => array(
-      'value' => array(
-        'value',
-      ),
-    ),
-    'field_permissions' => array(
-      'type' => '0',
-    ),
-    'field_name' => 'field_ercore_nsf',
-    'type' => 'list_integer',
-    'module' => 'list',
-    'active' => '1',
-    'locked' => '0',
-    'cardinality' => '1',
-    'deleted' => '0',
-    'columns' => array(
-      'value' => array(
-        'type' => 'int',
-        'not null' => FALSE,
-      ),
-    ),
-    'bundles' => array(
-      'node' => array(
-        'ercore_other_product',
-        'ercore_publication',
-      ),
-    ),
-  ),
-
 // FIELD: field_ercore_pb_peer_reviewed.
-  'field_ercore_pb_peer_reviewed' => array(
+  'pb_field_ercore_pb_peer_reviewed' => array(
     'type_name' => 'ercore_publication',
     'entity_types' => array(),
     'settings' => array(
@@ -860,7 +794,7 @@ $ercore_publication_definitions = array(
   ),
 
 // FIELD: field_ercore_pb_archived.
-  'field_ercore_pb_archived' => array(
+  'pb_field_ercore_pb_archived' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -923,7 +857,7 @@ $ercore_publication_definitions = array(
   ),
 
 // FIELD: field_ercore_pb_data.
-  'field_ercore_pb_data' => array(
+  'pb_field_ercore_pb_data' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -985,7 +919,7 @@ $ercore_publication_definitions = array(
   ),
 
 // FIELD: field_ercore_pb_arch_name.
-  'field_ercore_pb_arch_name' => array(
+  'pb_field_ercore_pb_arch_name' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -1057,7 +991,7 @@ $ercore_publication_definitions = array(
   ),
 
 // FIELD: field_ercore_pb_date.
-  'field_ercore_pb_date' => array(
+  'pb_field_ercore_pb_date' => array(
     'type_name' => 'ercore_publication',
     'entity_types' => array(),
     'settings' => array(
@@ -1129,7 +1063,7 @@ $ercore_publication_definitions = array(
   ),
 
 // FIELD: field_ercore_pb_status.
-  'field_ercore_pb_status' => array(
+  'pb_field_ercore_pb_status' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -1191,7 +1125,7 @@ $ercore_publication_definitions = array(
   ),
 
 // FIELD: field_ercore_pb_submit_date.
-  'field_ercore_pb_submit_date' => array(
+  'pb_field_ercore_pb_submit_date' => array(
     'type_name' => 'ercore_publication',
     'entity_types' => array(),
     'settings' => array(
@@ -1263,7 +1197,7 @@ $ercore_publication_definitions = array(
   ),
 
 // FIELD: field_ercore_pb_type.
-  'field_ercore_pb_type' => array(
+  'pb_field_ercore_pb_type' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -1331,7 +1265,7 @@ $ercore_publication_definitions = array(
   ),
 
 // FIELD: field_ercore_pb_publisher.
-  'field_ercore_pb_publisher' => array(
+  'pb_field_ercore_pb_publisher' => array(
     'type_name' => 'ercore_book',
     'entity_types' => array(),
     'settings' => array(
@@ -1406,7 +1340,7 @@ $ercore_publication_definitions = array(
   ),
 
 // FIELD: field_ercore_pb_rii_support.
-  'field_ercore_pb_rii_support' => array(
+  'pb_field_ercore_pb_rii_support' => array(
     'type_name' => 'ercore_publication',
     'entity_types' => array(),
     'settings' => array(
@@ -1471,7 +1405,7 @@ $ercore_publication_definitions = array(
   ),
 
 // FIELD: field_ercore_pb_upload.
-  'field_ercore_pb_upload' => array(
+  'pb_field_ercore_pb_upload' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(
@@ -1564,7 +1498,7 @@ $ercore_publication_definitions = array(
   ),
 
 // FIELD: field_ercore_pb_issn.
-  'field_ercore_pb_issn' => array(
+  'pb_field_ercore_pb_issn' => array(
     'translatable' => '0',
     'entity_types' => array(),
     'settings' => array(

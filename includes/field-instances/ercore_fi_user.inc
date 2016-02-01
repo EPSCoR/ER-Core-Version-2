@@ -6,7 +6,7 @@
 
 $ercore_user_instances = array(
 // INSTANCE: field_ercore_us_160hours.
-  'field_ercore_us_160hours' => array(
+  'us_field_ercore_us_160hours' => array(
     'label' => 'Do you participate in EPSCoR activities more than 160 hours per year?',
     'widget' => array(
       'weight' => '19',
@@ -35,7 +35,7 @@ $ercore_user_instances = array(
       ),
     ),
     'required' => 0,
-    'description' => "160 hours is equivalent to 4 weeks at 40 hours, 8 weeks at 20 hours, or one person-month.",
+    'description' => '160 hours is equivalent to 4 weeks at 40 hours, 8 weeks at 20 hours, or one person-month.',
     'default_value_php' => '',
     'default_value_function' => '',
     'default_value' => NULL,
@@ -46,7 +46,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_doctor_act.
-  'field_ercore_us_doctor_act' => array(
+  'us_field_ercore_us_doctor_act' => array(
     'label' => 'Actual Doctoral Completion Date',
     'widget' => array(
       'weight' => '15',
@@ -112,7 +112,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_masters_act.
-  'field_ercore_us_masters_act' => array(
+  'us_field_ercore_us_masters_act' => array(
     'label' => 'Actual Masters Graduation Date',
     'widget' => array(
       'weight' => '12',
@@ -178,7 +178,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_under_act.
-  'field_ercore_us_under_act' => array(
+  'us_field_ercore_us_under_act' => array(
     'label' => 'Actual Undergraduate Graduation Date',
     'widget' => array(
       'weight' => '10',
@@ -244,7 +244,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_additional_doc.
-  'field_ercore_us_additional_doc' => array(
+  'us_field_ercore_us_additional_doc' => array(
     'label' => 'Please upload your RCR certificate.',
     'widget' => array(
       'weight' => '15',
@@ -288,7 +288,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_address.
-  'field_ercore_us_address' => array(
+  'us_field_ercore_us_address' => array(
     'label' => 'Work Address',
     'widget' => array(
       'weight' => '5',
@@ -329,7 +329,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_advisor.
-  'field_ercore_us_advisor' => array(
+  'us_field_ercore_us_advisor' => array(
     'label' => 'Advisor',
     'widget' => array(
       'weight' => '16',
@@ -370,7 +370,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_doctor_ant.
-  'field_ercore_us_doctor_ant' => array(
+  'us_field_ercore_us_doctor_ant' => array(
     'label' => 'Anticipated Doctorate Completion Date',
     'widget' => array(
       'weight' => '13',
@@ -436,7 +436,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_masters_ant.
-  'field_ercore_us_masters_ant' => array(
+  'us_field_ercore_us_masters_ant' => array(
     'label' => 'Anticipated Masters Graduation Date',
     'widget' => array(
       'weight' => '11',
@@ -502,7 +502,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_under_ant.
-  'field_ercore_us_under_ant' => array(
+  'us_field_ercore_us_under_ant' => array(
     'label' => 'Anticipated Undergraduate Graduation Date',
     'widget' => array(
       'weight' => '9',
@@ -568,7 +568,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_collect_data.
-  'field_ercore_us_collect_data' => array(
+  'us_field_ercore_us_collect_data' => array(
     'label' => 'Collecting Data?',
     'widget' => array(
       'weight' => '1',
@@ -610,7 +610,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_committees.
-  'field_ercore_us_committees' => array(
+  'us_field_ercore_us_committees' => array(
     'label' => 'Boards & Committees',
     'widget' => array(
       'weight' => '13',
@@ -658,7 +658,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_data_frequency.
-  'field_ercore_us_data_frequency' => array(
+  'us_field_ercore_us_data_frequency' => array(
     'label' => 'Data Frequency',
     'widget' => array(
       'weight' => '3',
@@ -702,7 +702,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_data_submit_date.
-  'field_ercore_us_data_submit_date' => array(
+  'us_field_ercore_us_data_submit_date' => array(
     'label' => 'Data Repository Submission',
     'widget' => array(
       'weight' => '4',
@@ -769,7 +769,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_data_url.
-  'field_ercore_us_data_url' => array(
+  'us_field_ercore_us_data_url' => array(
     'label' => 'Data URL',
     'widget' => array(
       'weight' => '7',
@@ -826,7 +826,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_department.
-  'field_ercore_us_department' => array(
+  'us_field_ercore_us_department' => array(
     'label' => 'Department',
     'widget' => array(
       'weight' => '2',
@@ -867,7 +867,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_description.
-  'field_ercore_us_description' => array(
+  'us_field_ercore_us_description' => array(
     'label' => 'Description of Role and Contributions',
     'widget' => array(
       'weight' => '21',
@@ -899,7 +899,7 @@ $ercore_user_instances = array(
       ),
     ),
     'required' => 0,
-    'description' => "Please describe your role and contribution to the project. Include information about what you are doing, in which projects, who you are working with, location, dates and your contribution.",
+    'description' => 'Please describe your role and contribution to the project. Include information about what you are doing, in which projects, who you are working with, location, dates and your contribution.',
     'default_value' => NULL,
     'field_name' => 'field_ercore_us_description',
     'entity_type' => 'user',
@@ -908,7 +908,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_disabilities.
-  'field_ercore_us_disabilities' => array(
+  'us_field_ercore_us_disabilities' => array(
     'label' => 'Disabilities',
     'widget' => array(
       'weight' => '12',
@@ -960,7 +960,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_ethnicity.
-  'field_ercore_us_ethnicity' => array(
+  'us_field_ercore_us_ethnicity' => array(
     'label' => 'Ethnicity',
     'widget' => array(
       'weight' => '11',
@@ -1000,7 +1000,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_fac_support.
-  'field_ercore_us_fac_support' => array(
+  'us_field_ercore_us_fac_support' => array(
     'label' => "Do you or anyone in your research group receive salary support from\n      EPSCoR?",
     'widget' => array(
       'weight' => '8',
@@ -1042,7 +1042,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_gender.
-  'field_ercore_us_gender' => array(
+  'us_field_ercore_us_gender' => array(
     'label' => 'Gender',
     'widget' => array(
       'weight' => '9',
@@ -1082,7 +1082,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_has_this_user.
-  'field_ercore_us_has_this_user' => array(
+  'us_field_ercore_us_has_this_user' => array(
     'label' => 'Have you been put in touch with the Data Manager?',
     'widget' => array(
       'weight' => '5',
@@ -1122,7 +1122,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_hired_date.
-  'field_ercore_us_hired_date' => array(
+  'us_field_ercore_us_hired_date' => array(
     'label' => 'Hired Date',
     'widget' => array(
       'weight' => '15',
@@ -1180,7 +1180,7 @@ $ercore_user_instances = array(
       ),
     ),
     'required' => 0,
-    'description' => "Enter the date that you were first hired by EPSCoR (if applicable). This would be the date that you started getting paid.",
+    'description' => 'Enter the date that you were first hired by EPSCoR (if applicable). This would be the date that you started getting paid.',
     'field_name' => 'field_ercore_us_hired_date',
     'entity_type' => 'user',
     'bundle' => 'user',
@@ -1188,7 +1188,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_inst_ref.
-  'field_ercore_us_inst_ref' => array(
+  'us_field_ercore_us_inst_ref' => array(
     'label' => 'Participating Institutions',
     'widget' => array(
       'weight' => '1',
@@ -1235,7 +1235,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_leadership_team.
-  'field_ercore_us_leadership_team' => array(
+  'us_field_ercore_us_leadership_team' => array(
     'label' => 'EPSCoR Management Team',
     'widget' => array(
       'weight' => '6',
@@ -1279,7 +1279,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_funding_src.
-  'field_ercore_us_funding_src' => array(
+  'us_field_ercore_us_funding_src' => array(
     'label' => 'Funding Sources',
     'widget' => array(
       'weight' => '18',
@@ -1311,7 +1311,7 @@ $ercore_user_instances = array(
       ),
     ),
     'required' => 0,
-    'description' => "Provide a list of all funding sources that supported your participation in EPSCoR.",
+    'description' => 'Provide a list of all funding sources that supported your participation in EPSCoR.',
     'default_value' => NULL,
     'field_name' => 'field_ercore_us_funding_src',
     'entity_type' => 'user',
@@ -1320,7 +1320,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_mnt_up.
-  'field_ercore_us_mnt_up' => array(
+  'us_field_ercore_us_mnt_up' => array(
     'label' => 'Please upload your mentoring plan',
     'widget' => array(
       'weight' => '17',
@@ -1364,7 +1364,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_ment_signoff.
-  'field_ercore_us_ment_signoff' => array(
+  'us_field_ercore_us_ment_signoff' => array(
     'label' => 'Mentoring Plan Sign Off Date',
     'widget' => array(
       'weight' => '16',
@@ -1431,7 +1431,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_months_of_effort.
-  'field_ercore_us_months_of_effort' => array(
+  'us_field_ercore_us_months_of_effort' => array(
     'label' => 'Months of Direct Funding',
     'widget' => array(
       'weight' => '17',
@@ -1460,7 +1460,7 @@ $ercore_user_instances = array(
       ),
     ),
     'required' => 0,
-    'description' => "How many months of direct funding do you receive? Round up or down to the nearest month of funding you are expected to receive.",
+    'description' => 'How many months of direct funding do you receive? Round up or down to the nearest month of funding you are expected to receive.',
     'default_value' => NULL,
     'field_name' => 'field_ercore_us_months_of_effort',
     'entity_type' => 'user',
@@ -1469,7 +1469,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_sen_role.
-  'field_ercore_us_sen_role' => array(
+  'us_field_ercore_us_sen_role' => array(
     'label' => 'Most Senior Project Role',
     'widget' => array(
       'weight' => '5',
@@ -1507,7 +1507,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_paid.
-  'field_ercore_us_paid' => array(
+  'us_field_ercore_us_paid' => array(
     'label' => 'Are you paid by the EPSCoR grant?',
     'widget' => array(
       'weight' => '16',
@@ -1547,7 +1547,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_part_date.
-  'field_ercore_us_part_date' => array(
+  'us_field_ercore_us_part_date' => array(
     'label' => 'Participating Date(s)',
     'widget' => array(
       'weight' => '14',
@@ -1613,7 +1613,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_person_month.
-  'field_ercore_us_person_month' => array(
+  'us_field_ercore_us_person_month' => array(
     'label' => 'Months of Effort This Year',
     'widget' => array(
       'weight' => '20',
@@ -1642,7 +1642,7 @@ $ercore_user_instances = array(
       ),
     ),
     'required' => 0,
-    'description' => "How many months of effort will you commit to EPSCoR this year? Round up or down to the nearest month of effort you are expected to participate in EPSCoR research.",
+    'description' => 'How many months of effort will you commit to EPSCoR this year? Round up or down to the nearest month of effort you are expected to participate in EPSCoR research.',
     'default_value' => NULL,
     'field_name' => 'field_ercore_us_person_month',
     'entity_type' => 'user',
@@ -1651,7 +1651,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_phone_personal.
-  'field_ercore_us_phone_personal' => array(
+  'us_field_ercore_us_phone_personal' => array(
     'label' => 'Phone (mobile)',
     'widget' => array(
       'weight' => '3',
@@ -1692,7 +1692,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_phone_work.
-  'field_ercore_us_phone_work' => array(
+  'us_field_ercore_us_phone_work' => array(
     'label' => 'Phone (work)',
     'widget' => array(
       'weight' => '4',
@@ -1733,7 +1733,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_pro_link.
-  'field_ercore_us_pro_link' => array(
+  'us_field_ercore_us_pro_link' => array(
     'label' => 'Professional Link',
     'widget' => array(
       'weight' => '6',
@@ -1789,7 +1789,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_race.
-  'field_ercore_us_race' => array(
+  'us_field_ercore_us_race' => array(
     'label' => 'Race',
     'widget' => array(
       'weight' => '13',
@@ -1837,7 +1837,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_rcr_bool.
-  'field_ercore_us_rcr_bool' => array(
+  'us_field_ercore_us_rcr_bool' => array(
     'label' => 'I have completed the RCR training',
     'widget' => array(
       'weight' => '12',
@@ -1879,7 +1879,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_rcr_in_person.
-  'field_ercore_us_rcr_in_person' => array(
+  'us_field_ercore_us_rcr_in_person' => array(
     'label' => 'RCR In-person',
     'widget' => array(
       'weight' => '10',
@@ -1945,7 +1945,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_rcr_inperson_ul.
-  'field_ercore_us_rcr_inperson_ul' => array(
+  'us_field_ercore_us_rcr_inperson_ul' => array(
     'label' => 'RCR In-person Upload',
     'widget' => array(
       'weight' => '11',
@@ -1989,7 +1989,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_rcr_online.
-  'field_ercore_us_rcr_online' => array(
+  'us_field_ercore_us_rcr_online' => array(
     'label' => 'RCR Online',
     'widget' => array(
       'weight' => '12',
@@ -2055,7 +2055,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_rcr_online_up.
-  'field_ercore_us_rcr_online_up' => array(
+  'us_field_ercore_us_rcr_online_up' => array(
     'label' => 'RCR Online Upload',
     'widget' => array(
       'weight' => '13',
@@ -2099,7 +2099,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_supervisor.
-  'field_ercore_us_supervisor' => array(
+  'us_field_ercore_us_supervisor' => array(
     'label' => 'Supervisor',
     'widget' => array(
       'weight' => '9',
@@ -2140,7 +2140,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_data_type.
-  'field_ercore_us_data_type' => array(
+  'us_field_ercore_us_data_type' => array(
     'label' => 'Description of Data',
     'widget' => array(
       'weight' => '2',
@@ -2172,7 +2172,7 @@ $ercore_user_instances = array(
       ),
     ),
     'required' => 0,
-    'description' => "Please provide a brief description of type and frequency of the data you will be collecting.",
+    'description' => 'Please provide a brief description of type and frequency of the data you will be collecting.',
     'default_value' => NULL,
     'field_name' => 'field_ercore_us_data_type',
     'entity_type' => 'user',
@@ -2181,7 +2181,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_veteran_status.
-  'field_ercore_us_veteran_status' => array(
+  'us_field_ercore_us_veteran_status' => array(
     'label' => 'Veteran',
     'widget' => array(
       'weight' => '14',
@@ -2225,7 +2225,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_user_name.
-  'field_user_name' => array(
+  'us_field_user_name' => array(
     'label' => 'User Name',
     'widget' => array(
       'weight' => '1',
@@ -2322,7 +2322,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_programs.
-  'field_ercore_us_programs' => array(
+  'us_field_ercore_programs' => array(
     'label' => 'Program',
     'widget' => array(
       'weight' => '4',
@@ -2368,7 +2368,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_components.
-  'field_ercore_us_components' => array(
+  'us_field_ercore_components' => array(
     'label' => 'Components',
     'widget' => array(
       'weight' => '3',
@@ -2414,7 +2414,7 @@ $ercore_user_instances = array(
   ),
 
 // INSTANCE: field_ercore_us_emp_id.
-  'field_ercore_us_emp_id' => array(
+  'us_field_ercore_us_emp_id' => array(
     'label' => 'Employee ID',
     'widget' => array(
       'weight' => '2',

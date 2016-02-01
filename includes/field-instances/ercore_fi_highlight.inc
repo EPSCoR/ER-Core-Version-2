@@ -6,7 +6,7 @@
 
 $ercore_highlight_instances = array(
 // INSTANCE: field_ercore_hi_date.
-  'field_ercore_hi_date' => array(
+  'hi_field_ercore_hi_date' => array(
     'label' => 'Date completed',
     'widget' => array(
       'weight' => '2',
@@ -87,7 +87,7 @@ $ercore_highlight_instances = array(
   ),
 
 // INSTANCE: field_ercore_hi_image.
-  'field_ercore_hi_image' => array(
+  'hi_field_ercore_hi_image' => array(
     'label' => 'Image',
     'widget' => array(
       'weight' => '6',
@@ -151,7 +151,7 @@ $ercore_highlight_instances = array(
   ),
 
 // INSTANCE: field_ercore_organizer.
-  'field_ercore_hi_organizer' => array(
+  'hi_field_ercore_organizer' => array(
     'label' => 'EPSCoR Organizer(s)',
     'widget' => array(
       'weight' => '1',
@@ -254,7 +254,7 @@ $ercore_highlight_instances = array(
   ),
 
 // INSTANCE: field_ercore_programs.
-  'field_ercore_hi_programs' => array(
+  'hi_field_ercore_programs' => array(
     'label' => 'Program',
     'widget' => array(
       'weight' => '4',
@@ -311,7 +311,7 @@ $ercore_highlight_instances = array(
   ),
 
 // INSTANCE: field_ercore_components.
-  'field_ercore_hi_components' => array(
+  'hi_field_ercore_components' => array(
     'label' => 'Components',
     'widget' => array(
       'weight' => '3',
