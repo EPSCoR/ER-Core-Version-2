@@ -94,6 +94,8 @@ function ercore_menu_alter(&$items) {
     'page callback' => '_ercore_callback_node_add_page',
     'access callback' => '_node_add_access',
   );
+  // Change the permission on the "Manage display" tab.
+  $items['user/%user/display']['access arguments'] = array('admin_display_suite');
 }
 
 /**
@@ -905,20 +907,22 @@ function ercore_minority_count(&$form, &$form_state) {
 }
 
 /**
- * @param integer $male
- *  Male attendee integer value.
- * @param integer $female
- *  Female attendee integer value.
- * @param integer $undeclared
- *  Undeclared attendee integer value.
- * @param $minority
- *  Under-represented Minority attendee integer value.
+ * Custom validation function for engagement field validation.
+ *
+ * @param int $male
+ *   Male attendee integer value.
+ * @param int $female
+ *   Female attendee integer value.
+ * @param int $undeclared
+ *   Undeclared attendee integer value.
+ * @param int $minority
+ *   Under-represented Minority attendee integer value.
  */
 function ercore_minority_count_compare(&$male, &$female, &$undeclared, &$minority) {
   $attendees = $male + $female + $undeclared;
   if ($minority <= $attendees) {
-   return TRUE;
- }
+    return TRUE;
+  }
   else {
     return FALSE;
   }
@@ -1305,8 +1309,9 @@ function ercore_block_view($delta = '') {
  * Generates block array for NSF Block.
  */
 function _ercore_grant_block() {
-  $grant = variable_get('ercore_grant_number');
-  $output = t("<p class='grant'>This material is based upon work supported by the National Science Foundation under Grant Number <em>$grant</em>.<br />
-Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</p>");
+  $grant_number = variable_get('ercore_grant_number');
+  $grant = '<p><span class="grant-number"> ' . t('This material is based upon work supported by the National Science Foundation under Grant Number ') .  '<em>' . $grant_number . '</em>.</span><br />';
+  $opinion = t('Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.') . '</p>';
+  $output =  $grant . $opinion;
   return $output;
 }

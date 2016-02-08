@@ -1,0 +1,11 @@
+name = ERCore (DS) Display Suite
+description = Basic displya settings for ERCore
+
+package = ERCore
+core = 7.x
+
+dependencies[] = ds
+dependencies[] = ercore
+
+;stylesheets[all][] = css/ercore_ds.css
+;scripts[] = js/ercore_ds.js

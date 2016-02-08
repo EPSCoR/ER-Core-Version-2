@@ -892,7 +892,7 @@ username: [user:name-raw]
 password: Your password
 
 --  [site:name] team');
-variable_set('user_mail_register_no_approval_required_body','[user:name],
+variable_set('user_mail_register_no_approval_required_body', '[user:name],
 
 Thank you for registering at [site:name]. You may now log in by clicking this link or copying and pasting it to your browser:
 
@@ -906,7 +906,7 @@ username: [user:name-raw]
 password: Your password
 
 --  [site:name] team');
-variable_set('user_mail_status_activated_body','[user:name],
+variable_set('user_mail_status_activated_body', '[user:name],
 
 Your account at [site:name] has been activated.
 
