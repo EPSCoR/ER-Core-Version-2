@@ -797,6 +797,132 @@ function ercore_form_user_register_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ercore_form_field_collection_item_form_alter(&$form, &$form_state, $form_id) {
+  if ($form['#entity']->field_name = 'field_ercore_ev_engagement') {
+    $form['#validate'][] = 'ercore_minority_count';
+
+  }
+}
+
+/**
+ * Custom field validation for minority counts.
+ */
+function ercore_minority_count(&$form, &$form_state) {
+  if ($form_state['input']['field_ercore_ee_ari_stu_mn']['und'][0]['value'] != 0) {
+    $ari_stu_mn = $form_state['input']['field_ercore_ee_ari_stu_mn']['und'][0]['value'];
+    $ari_stu_m = $form_state['input']['field_ercore_ee_ari_stu_m']['und'][0]['value'];
+    $ari_stu_f = $form_state['input']['field_ercore_ee_ari_stu_f']['und'][0]['value'];
+    $ari_stu_u = $form_state['input']['field_ercore_ee_ari_stu_u']['und'][0]['value'];
+    if (ercore_minority_count_compare($ari_stu_m, $ari_stu_f, $ari_stu_u, $ari_stu_mn) == FALSE) {
+      form_set_error('field_ercore_ee_ari_stu_mn', t('Academic Research Institutions (ARI): The ARI: Students - Under-represented Minority value cannot be more than ARI: Students - Male, ARI: Students - Female, and ARI: Students - Undeclared values combined.'));
+    }
+  }
+  if ($form_state['input']['field_ercore_ee_ari_fac_mn']['und'][0]['value'] != 0) {
+    $ari_fac_mn = $form_state['input']['field_ercore_ee_ari_fac_mn']['und'][0]['value'];
+    $ari_fac_m = $form_state['input']['field_ercore_ee_ari_fac_m']['und'][0]['value'];
+    $ari_fac_f = $form_state['input']['field_ercore_ee_ari_fac_f']['und'][0]['value'];
+    $ari_fac_u = $form_state['input']['field_ercore_ee_ari_fac_u']['und'][0]['value'];
+    if (ercore_minority_count_compare($ari_fac_m, $ari_fac_f, $ari_fac_u, $ari_fac_mn) == FALSE) {
+      form_set_error('field_ercore_ee_ari_fac_mn', t('Academic Research Institutions (ARI): The ARI: Faculty - Under-represented Minority value cannot be more than ARI: Faculty - Male, ARI: Faculty - Female, and ARI: Faculty - Undeclared values combined.'));
+    }
+  }
+  if ($form_state['input']['field_ercore_ee_pui_stu_mn']['und'][0]['value'] != 0) {
+    $pui_stu_mn = $form_state['input']['field_ercore_ee_pui_stu_mn']['und'][0]['value'];
+    $pui_stu_m = $form_state['input']['field_ercore_ee_pui_stu_m']['und'][0]['value'];
+    $pui_stu_f = $form_state['input']['field_ercore_ee_pui_stu_f']['und'][0]['value'];
+    $pui_stu_u = $form_state['input']['field_ercore_ee_pui_stu_u']['und'][0]['value'];
+    if (ercore_minority_count_compare($pui_stu_m, $pui_stu_f, $pui_stu_u, $pui_stu_mn) == FALSE) {
+      form_set_error('field_ercore_ee_pui_stu_mn', t('Primary Undergraduate Institutions (UI): The UI: Students - Under-represented Minority value cannot be more than UI: Students - Male, UI: Students - Female, and UI: Students - Undeclared values combined.'));
+    }
+  }
+  if ($form_state['input']['field_ercore_ee_pui_fac_mn']['und'][0]['value'] != 0) {
+    $pui_fac_mn = $form_state['input']['field_ercore_ee_pui_fac_mn']['und'][0]['value'];
+    $pui_fac_m = $form_state['input']['field_ercore_ee_pui_fac_m']['und'][0]['value'];
+    $pui_fac_f = $form_state['input']['field_ercore_ee_pui_fac_f']['und'][0]['value'];
+    $pui_fac_u = $form_state['input']['field_ercore_ee_pui_fac_u']['und'][0]['value'];
+    if (ercore_minority_count_compare($pui_fac_m, $pui_fac_f, $pui_fac_u, $pui_fac_mn) == FALSE) {
+      form_set_error('field_ercore_ee_pui_fac_mn', t('Primary Undergraduate Institutions (UI): The UI: Faculty - Under-represented Minority value cannot be more than UI: Faculty - Male, UI: Faculty - Female, and UI: Faculty - Undeclared values combined.'));
+    }
+  }
+  if ($form_state['input']['field_ercore_ee_msi_stu_mn']['und'][0]['value'] != 0) {
+    $msi_stu_mn = $form_state['input']['field_ercore_ee_msi_stu_mn']['und'][0]['value'];
+    $msi_stu_m = $form_state['input']['field_ercore_ee_msi_stu_m']['und'][0]['value'];
+    $msi_stu_f = $form_state['input']['field_ercore_ee_msi_stu_f']['und'][0]['value'];
+    $msi_stu_u = $form_state['input']['field_ercore_ee_msi_stu_u']['und'][0]['value'];
+    if (ercore_minority_count_compare($msi_stu_m, $msi_stu_f, $msi_stu_u, $msi_stu_mn) == FALSE) {
+      form_set_error('field_ercore_ee_msi_stu_mn', t('Minority Serving Institutions (MSI): The MSI: Students - Under-represented Minority value cannot be more than MSI: Students - Male, MSI: Students - Female, and MSI: Students - Undeclared values combined.'));
+    }
+  }
+  if ($form_state['input']['field_ercore_ee_msi_fac_mn']['und'][0]['value'] != 0) {
+    $msi_fac_mn = $form_state['input']['field_ercore_ee_msi_fac_mn']['und'][0]['value'];
+    $msi_fac_m = $form_state['input']['field_ercore_ee_msi_fac_m']['und'][0]['value'];
+    $msi_fac_f = $form_state['input']['field_ercore_ee_msi_fac_f']['und'][0]['value'];
+    $msi_fac_u = $form_state['input']['field_ercore_ee_msi_fac_u']['und'][0]['value'];
+    if (ercore_minority_count_compare($msi_fac_m, $msi_fac_f, $msi_fac_u, $msi_fac_mn) == FALSE) {
+      form_set_error('field_ercore_ee_msi_fac_mn', t('Minority Serving Institutions (MSI): The MSI: Faculty - Under-represented Minority value cannot be more than MSI: Faculty - Male, MSI: Faculty - Female, and MSI: Faculty - Undeclared values combined.'));
+    }
+  }
+  if ($form_state['input']['field_ercore_ee_k12i_stud_mn']['und'][0]['value'] != 0) {
+    $k12i_stud_mn = $form_state['input']['field_ercore_ee_k12i_stud_mn']['und'][0]['value'];
+    $k12i_stud_m = $form_state['input']['field_ercore_ee_k12i_stud_m']['und'][0]['value'];
+    $k12i_stud_f = $form_state['input']['field_ercore_ee_k12i_stud_f']['und'][0]['value'];
+    $k12i_stud_u = $form_state['input']['field_ercore_ee_k12i_stud_u']['und'][0]['value'];
+    if (ercore_minority_count_compare($k12i_stud_m, $k12i_stud_f, $k12i_stud_u, $k12i_stud_mn) == FALSE) {
+      form_set_error('field_ercore_ee_k12i_stud_mn', t('K-12 Institutions (K-12): The K-12: Students Reached Directly (RD) - Under-represented Minority value cannot be more than K-12 (RD): Students - Male, K-12 (RD): Students - Female, and K-12 (RD): Students - Undeclared values combined.'));
+    }
+  }
+  if ($form_state['input']['field_ercore_ee_k12i_stut_mn']['und'][0]['value'] != 0) {
+    $k12i_stut_mn = $form_state['input']['field_ercore_ee_k12i_stut_mn']['und'][0]['value'];
+    $k12i_stut_m = $form_state['input']['field_ercore_ee_k12i_stut_m']['und'][0]['value'];
+    $k12i_stut_f = $form_state['input']['field_ercore_ee_k12i_stut_f']['und'][0]['value'];
+    $k12i_stut_u = $form_state['input']['field_ercore_ee_k12i_stut_u']['und'][0]['value'];
+    if (ercore_minority_count_compare($k12i_stut_m, $k12i_stut_f, $k12i_stut_u, $k12i_stut_mn) == FALSE) {
+      form_set_error('field_ercore_ee_k12i_stut_mn', t('K-12 Institutions (K-12): The K-12: Students Reached via Teach. (RT) - Under-represented Minority value cannot be more than K-12 (RT): Students - Male, K-12 (RT): Students - Female, and K-12 (RT): Students - Undeclared values combined.'));
+    }
+  }
+  if ($form_state['input']['field_ercore_ee_k12i_tec_mn']['und'][0]['value'] != 0) {
+    $k12i_tec_mn = $form_state['input']['field_ercore_ee_k12i_tec_mn']['und'][0]['value'];
+    $k12i_tec_m = $form_state['input']['field_ercore_ee_k12i_tec_m']['und'][0]['value'];
+    $k12i_tec_f = $form_state['input']['field_ercore_ee_k12i_tec_f']['und'][0]['value'];
+    $k12i_tec_u = $form_state['input']['field_ercore_ee_k12i_tec_u']['und'][0]['value'];
+    if (ercore_minority_count_compare($k12i_tec_m, $k12i_tec_f, $k12i_tec_u, $k12i_tec_mn) == FALSE) {
+      form_set_error('field_ercore_ee_k12i_tec_mn', t('K-12 Institutions (K-12): The K-12: Teachers - Under-represented Minority value cannot be more than K-12: Teachers - Male, K-12: Teachers - Female, and K-12: Teachers - Undeclared values combined.'));
+    }
+  }
+  if ($form_state['input']['field_ercore_ee_oth_mn']['und'][0]['value'] != 0) {
+    $oth_mn = $form_state['input']['field_ercore_ee_oth_mn']['und'][0]['value'];
+    $oth_m = $form_state['input']['field_ercore_ee_oth_m']['und'][0]['value'];
+    $oth_f = $form_state['input']['field_ercore_ee_oth_f']['und'][0]['value'];
+    $oth_u = $form_state['input']['field_ercore_ee_oth_u']['und'][0]['value'];
+    if (ercore_minority_count_compare($oth_m, $oth_f, $oth_u, $oth_mn) == FALSE) {
+      form_set_error('field_ercore_ee_oth_mn', t('Other: Under-represented Minority value cannot be more than Other: Male, Other: Female, and Other: Undeclared values combined.'));
+    }
+  }
+}
+
+/**
+ * @param integer $male
+ *  Male attendee integer value.
+ * @param integer $female
+ *  Female attendee integer value.
+ * @param integer $undeclared
+ *  Undeclared attendee integer value.
+ * @param $minority
+ *  Under-represented Minority attendee integer value.
+ */
+function ercore_minority_count_compare(&$male, &$female, &$undeclared, &$minority) {
+  $attendees = $male + $female + $undeclared;
+  if ($minority <= $attendees) {
+   return TRUE;
+ }
+  else {
+    return FALSE;
+  }
+}
+
+/**
  * Implements hook_permission().
  */
 function ercore_permission() {
@@ -1147,4 +1273,38 @@ function ercore_field_group_build_pre_render_alter(&$element) {
       '#id' => 'group_ercore_pb_info',
     );
   }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function ercore_block_info() {
+  $blocks = array();
+  $blocks['ercore_grant_block'] = array(
+    'info' => t('ERCore Grant Block'),
+  );
+  return $blocks;
+}
+/**
+ * Implements hook_block_view().
+ */
+function ercore_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'ercore_grant_block':
+      $block['subject'] = '';
+      $block['content'] = _ercore_grant_block();
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Generates block array for NSF Block.
+ */
+function _ercore_grant_block() {
+  $grant = variable_get('ercore_grant_number');
+  $output = t("<p class='grant'>This material is based upon work supported by the National Science Foundation under Grant Number <em>$grant</em>.<br />
+Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</p>");
+  return $output;
 }
