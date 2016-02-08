@@ -7,6 +7,7 @@
 $ercore_engagement_definitions = array(
 // FIELD: field_ercore_ee_ari_fac_f.
   'ee_field_ercore_ee_ari_fac_f' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -63,6 +64,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_ari_fac_m.
   'ee_field_ercore_ee_ari_fac_m' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -119,6 +121,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_ari_fac_u.
   'ee_field_ercore_ee_ari_fac_u' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -175,6 +178,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_ari_stu_f.
   'ee_field_ercore_ee_ari_stu_f' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -231,6 +235,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_ari_stu_m.
   'ee_field_ercore_ee_ari_stu_m' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -287,6 +292,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_ari_stu_u.
   'ee_field_ercore_ee_ari_stu_u' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -427,6 +433,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_estimated.
   'ee_field_ercore_ee_estimated' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'allowed_values' => array(
@@ -491,6 +498,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_k12i_stud_f.
   'ee_field_ercore_ee_k12i_stud_f' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -547,6 +555,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_k12i_stud_m.
   'ee_field_ercore_ee_k12i_stud_m' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -603,6 +612,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_k12i_stud_u.
   'ee_field_ercore_ee_k12i_stud_u' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -659,6 +669,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_k12i_stut_f.
   'ee_field_ercore_ee_k12i_stut_f' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -715,6 +726,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_k12i_stut_m.
   'ee_field_ercore_ee_k12i_stut_m' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -771,6 +783,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_k12i_stut_u.
   'ee_field_ercore_ee_k12i_stut_u' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -827,6 +840,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_k12i_tec_f.
   'ee_field_ercore_ee_k12i_tec_f' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -883,6 +897,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_k12i_tec_m.
   'ee_field_ercore_ee_k12i_tec_m' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -939,6 +954,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_k12i_tec_u.
   'ee_field_ercore_ee_k12i_tec_u' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -995,6 +1011,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_msi_fac_f.
   'ee_field_ercore_ee_msi_fac_f' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -1051,6 +1068,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_msi_fac_m.
   'ee_field_ercore_ee_msi_fac_m' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -1107,6 +1125,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_msi_fac_u.
   'ee_field_ercore_ee_msi_fac_u' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -1163,6 +1182,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_msi_stu_f.
   'ee_field_ercore_ee_msi_stu_f' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -1219,6 +1239,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_msi_stu_m.
   'ee_field_ercore_ee_msi_stu_m' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -1275,6 +1296,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_msi_stu_u.
   'ee_field_ercore_ee_msi_stu_u' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -1331,6 +1353,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_oth_f.
   'ee_field_ercore_ee_oth_f' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -1387,6 +1410,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_oth_m.
   'ee_field_ercore_ee_oth_m' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -1443,6 +1467,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_oth_u.
   'ee_field_ercore_ee_oth_u' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -1499,6 +1524,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_pui_fac_f.
   'ee_field_ercore_ee_pui_fac_f' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -1555,6 +1581,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_pui_fac_m.
   'ee_field_ercore_ee_pui_fac_m' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -1611,6 +1638,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_pui_fac_u.
   'ee_field_ercore_ee_pui_fac_u' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -1667,6 +1695,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_pui_stu_f.
   'ee_field_ercore_ee_pui_stu_f' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -1723,6 +1752,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_pui_stu_m.
   'ee_field_ercore_ee_pui_stu_m' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
@@ -1779,6 +1809,7 @@ $ercore_engagement_definitions = array(
   ),
 // FIELD: field_ercore_ee_pui_stu_u.
   'ee_field_ercore_ee_pui_stu_u' => array(
+    'type_name' => 'er_engagement',
     'entity_types' => array(),
     'settings' => array(
       'prefix' => '',
