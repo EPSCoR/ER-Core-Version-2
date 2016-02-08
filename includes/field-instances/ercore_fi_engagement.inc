@@ -150,7 +150,7 @@ $ercore_engagement_instances = array(
     'weight' => '78',
     'label' => 'ARI: Faculty - Undeclared',
     'widget_type' => 'number',
-    'description' => "Undeclared means that the person's gender is unknown.",
+    'description' => "Undeclared means that the person's gender was not specified.",
     'default_value' => array(
       array(
         'value' => '0',
@@ -360,7 +360,7 @@ $ercore_engagement_instances = array(
     'weight' => '73',
     'label' => 'ARI: Students - Undeclared',
     'widget_type' => 'number',
-    'description' => "Undeclared means that the person's gender is unknown.",
+    'description' => "Undeclared means that the person's gender was not specified.",
     'default_value' => array(
       array(
         'value' => '0',
@@ -682,7 +682,7 @@ $ercore_engagement_instances = array(
     'weight' => '75',
     'label' => 'K-12: Students Reached Directly - Undeclared',
     'widget_type' => 'number',
-    'description' => "Undeclared means that the person's gender is unknown.",
+    'description' => "Undeclared means that the person's gender was not specified.",
     'default_value' => array(
       array(
         'value' => '0',
@@ -892,7 +892,7 @@ $ercore_engagement_instances = array(
     'weight' => '80',
     'label' => 'K-12: Students Reached via Teach. Training - Undeclared',
     'widget_type' => 'number',
-    'description' => "Undeclared means that the person's gender is unknown.",
+    'description' => "Undeclared means that the person's gender was not specified.",
     'default_value' => array(
       array(
         'value' => '0',
@@ -1102,7 +1102,7 @@ $ercore_engagement_instances = array(
     'weight' => '70',
     'label' => 'K-12: Teachers - Undeclared',
     'widget_type' => 'number',
-    'description' => "Undeclared means that the person's gender is unknown.",
+    'description' => "Undeclared means that the person's gender was not specified.",
     'default_value' => array(
       array(
         'value' => '0',
@@ -1312,7 +1312,7 @@ $ercore_engagement_instances = array(
     'weight' => '75',
     'label' => 'MSI: Faculty - Undeclared',
     'widget_type' => 'number',
-    'description' => "Undeclared means that the person's gender is unknown.",
+    'description' => "Undeclared means that the person's gender was not specified.",
     'default_value' => array(
       array(
         'value' => '0',
@@ -1522,7 +1522,7 @@ $ercore_engagement_instances = array(
     'weight' => '70',
     'label' => 'MSI: Students - Undeclared',
     'widget_type' => 'number',
-    'description' => "Undeclared means that the person's gender is unknown.",
+    'description' => "Undeclared means that the person's gender was not specified.",
     'default_value' => array(
       array(
         'value' => '0',
@@ -1662,7 +1662,7 @@ $ercore_engagement_instances = array(
     'weight' => '71',
     'label' => 'Other: Male',
     'widget_type' => 'number',
-    'description' => "Underrepresented minorities include <strong>ONLY</strong> Alaska Natives, Native Americans, African Americans, Hispanics, Native Hawaiians and other Pacific Islanders, and Persons with Disabilities.\t\t\t\t\t\t\t\t\r\n",
+    'description' => '',
     'default_value' => array(
       array(
         'value' => '0',
@@ -1732,7 +1732,7 @@ $ercore_engagement_instances = array(
     'weight' => '70',
     'label' => 'Other: Undeclared',
     'widget_type' => 'number',
-    'description' => "Undeclared means that the person's gender is unknown.",
+    'description' => "Undeclared means that the person's gender was not specified.",
     'default_value' => array(
       array(
         'value' => '0',
@@ -1942,7 +1942,7 @@ $ercore_engagement_instances = array(
     'weight' => '78',
     'label' => 'UI: Faculty - Undeclared',
     'widget_type' => 'number',
-    'description' => "Undeclared means that the person's gender is unknown.",
+    'description' => "Undeclared means that the person's gender was not specified.",
     'default_value' => array(
       array(
         'value' => '0',
@@ -2152,7 +2152,7 @@ $ercore_engagement_instances = array(
     'weight' => '73',
     'label' => 'UI: Students - Undeclared',
     'widget_type' => 'number',
-    'description' => "Undeclared means that the person's gender is unknown.",
+    'description' => "Undeclared means that the person's gender was not specified.",
     'default_value' => array(
       array(
         'value' => '0',
@@ -2261,7 +2261,7 @@ $ercore_engagement_instances = array(
       ),
     ),
     'required' => 1,
-    'description' => '',
+    'description' => "Underrepresented minorities include <strong>ONLY</strong> Alaska Natives, Native Americans, African Americans, Hispanics, Native Hawaiians and other Pacific Islanders, and Persons with Disabilities.\t\t\t\t\t\t\t\t\r\n",
     'default_value' => array(
       array(
         'value' => '0',
@@ -2317,7 +2317,7 @@ $ercore_engagement_instances = array(
       ),
     ),
     'required' => 1,
-    'description' => '',
+    'description' => "Underrepresented minorities include <strong>ONLY</strong> Alaska Natives, Native Americans, African Americans, Hispanics, Native Hawaiians and other Pacific Islanders, and Persons with Disabilities.\t\t\t\t\t\t\t\t\r\n",
     'default_value' => array(
       array(
         'value' => '0',
@@ -2373,7 +2373,7 @@ $ercore_engagement_instances = array(
       ),
     ),
     'required' => 1,
-    'description' => '',
+    'description' => "Underrepresented minorities include <strong>ONLY</strong> Alaska Natives, Native Americans, African Americans, Hispanics, Native Hawaiians and other Pacific Islanders, and Persons with Disabilities.\t\t\t\t\t\t\t\t\r\n",
     'default_value' => array(
       array(
         'value' => '0',
@@ -2429,7 +2429,7 @@ $ercore_engagement_instances = array(
       ),
     ),
     'required' => 1,
-    'description' => '',
+    'description' => "Underrepresented minorities include <strong>ONLY</strong> Alaska Natives, Native Americans, African Americans, Hispanics, Native Hawaiians and other Pacific Islanders, and Persons with Disabilities.\t\t\t\t\t\t\t\t\r\n",
     'default_value' => array(
       array(
         'value' => '0',
@@ -2485,7 +2485,7 @@ $ercore_engagement_instances = array(
       ),
     ),
     'required' => 1,
-    'description' => '',
+    'description' => "Underrepresented minorities include <strong>ONLY</strong> Alaska Natives, Native Americans, African Americans, Hispanics, Native Hawaiians and other Pacific Islanders, and Persons with Disabilities.\t\t\t\t\t\t\t\t\r\n",
     'default_value' => array(
       array(
         'value' => '0',
@@ -2541,7 +2541,7 @@ $ercore_engagement_instances = array(
       ),
     ),
     'required' => 1,
-    'description' => '',
+    'description' => "Underrepresented minorities include <strong>ONLY</strong> Alaska Natives, Native Americans, African Americans, Hispanics, Native Hawaiians and other Pacific Islanders, and Persons with Disabilities.\t\t\t\t\t\t\t\t\r\n",
     'default_value' => array(
       array(
         'value' => '0',
@@ -2597,7 +2597,7 @@ $ercore_engagement_instances = array(
       ),
     ),
     'required' => 1,
-    'description' => '',
+    'description' => "Underrepresented minorities include <strong>ONLY</strong> Alaska Natives, Native Americans, African Americans, Hispanics, Native Hawaiians and other Pacific Islanders, and Persons with Disabilities.\t\t\t\t\t\t\t\t\r\n",
     'default_value' => array(
       array(
         'value' => '0',
@@ -2653,7 +2653,7 @@ $ercore_engagement_instances = array(
       ),
     ),
     'required' => 1,
-    'description' => '',
+    'description' => "Underrepresented minorities include <strong>ONLY</strong> Alaska Natives, Native Americans, African Americans, Hispanics, Native Hawaiians and other Pacific Islanders, and Persons with Disabilities.\t\t\t\t\t\t\t\t\r\n",
     'default_value' => array(
       array(
         'value' => '0',
@@ -2709,7 +2709,7 @@ $ercore_engagement_instances = array(
       ),
     ),
     'required' => 1,
-    'description' => '',
+    'description' => "Underrepresented minorities include <strong>ONLY</strong> Alaska Natives, Native Americans, African Americans, Hispanics, Native Hawaiians and other Pacific Islanders, and Persons with Disabilities.\t\t\t\t\t\t\t\t\r\n",
     'default_value' => array(
       array(
         'value' => '0',
@@ -2765,7 +2765,7 @@ $ercore_engagement_instances = array(
       ),
     ),
     'required' => 1,
-    'description' => '',
+    'description' => "Underrepresented minorities include <strong>ONLY</strong> Alaska Natives, Native Americans, African Americans, Hispanics, Native Hawaiians and other Pacific Islanders, and Persons with Disabilities.\t\t\t\t\t\t\t\t\r\n",
     'default_value' => array(
       array(
         'value' => '0',
