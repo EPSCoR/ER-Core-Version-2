@@ -288,6 +288,7 @@ function ercore_form_alter(&$form, &$form_state, $form_id) {
     );
   }
 }
+
 /**
  * Implements hook_form_FORM_ID_alter().
  */
@@ -298,6 +299,7 @@ function ercore_form_ercore_other_product_node_form_alter(&$form, &$form_state, 
     ),
   );
 }
+
 /**
  * Implements hook_form_FORM_ID_alter().
  */
