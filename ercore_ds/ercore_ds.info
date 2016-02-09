@@ -5,6 +5,7 @@ package = ERCore
 core = 7.x
 
 dependencies[] = ds
+dependencies[] = ds_extras
 dependencies[] = ercore
 
 ;stylesheets[all][] = css/ercore_ds.css

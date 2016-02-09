@@ -208,6 +208,34 @@ function ercore_ds_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_ercore_components' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'lbw' => 1,
+          'lbw-el' => 'span',
+          'lbw-cl' => 'label-inline',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'field-inline',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+          'fis' => TRUE,
+          'fis-el' => 'ul',
+          'fis-cl' => 'list-inline',
+          'fis-at' => '',
+          'fis-def-at' => FALSE,
+          'fi' => TRUE,
+          'fi-el' => 'li',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
+        ),
+      ),
+    ),
     'field_ercore_programs' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -1476,6 +1504,7 @@ function ercore_ds_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $ds_layouts['node|ercore_collaboration|full'] = $ds_layout;
 

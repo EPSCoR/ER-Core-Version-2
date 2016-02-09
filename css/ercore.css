@@ -36,3 +36,12 @@
 .collaborator-name {
   font-weight: bold;
 }
+
+.field-inline {}
+.field-inline .label-inline {
+    font-weight: bold;
+    display:inline;
+}
+.field-inline .ul.list-inline {
+    display: inline;}
+.field-inline .ul.list-inline li {}
