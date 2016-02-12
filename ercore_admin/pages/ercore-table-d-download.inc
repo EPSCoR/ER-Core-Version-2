@@ -20,7 +20,7 @@ require_once drupal_get_path('module', 'ercore_admin') . "/includes/classes/erco
 function ercore_table_d_download_callback($date_range) {
 
   if (isset($date_range)) {
-    $file_name = 'Content-Disposition: attachment;filename="' . 'Collaborations_' . $date_range . '.xls' . '"';
+    $file_name = 'Content-Disposition: attachment;filename="' . 'External-Engagements_' . $date_range . '.xls' . '"';
   }
   else {
     $file_name = 'Content-Disposition: attachment;filename="' . 'External-Engagements.xls' . '"';

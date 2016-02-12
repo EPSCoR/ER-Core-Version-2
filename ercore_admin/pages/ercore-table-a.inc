@@ -7,7 +7,7 @@
 require_once drupal_get_path('module', 'ercore_admin') . "/includes/ercore-admin-var.inc";
 
 /**
- * Display NSF Table B data in preparation for exporting to Excel.
+ * Display NSF Table A data in preparation for exporting to Excel.
  *
  * @return array
  *    Returns form array for page display.

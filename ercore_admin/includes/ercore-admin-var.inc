@@ -115,7 +115,7 @@ function ercore_this_date_range() {
  *   Returns date array for forms.
  */
 function ercore_admin_current_range_argument() {
-  $argument_date_format = variable_get('date_format_ercore_date_format_filter_admin');
+  $argument_date_format = variable_get('date_format_ercore_date_format_filter');
   $reporting_month = variable_get('ercore_reporting_month');
   $start_date = variable_get('ercore_start_date');
   $start_date = $start_date['year'] . '-' . $start_date['month'];
@@ -368,7 +368,7 @@ function ercore_admin_table_link(&$title, &$path, &$ranges) {
  *    Returns date argument string for use in NSF Tables.
  */
 function ercore_admin_download_path(&$ranges) {
-  $argument_date_format = variable_get('date_format_ercore_date_format_filter_admin');
+  $argument_date_format = variable_get('date_format_ercore_date_format_filter');
   if (isset($ranges[0][0])) {
     $start = date($argument_date_format, $ranges[0][0]);
     $end = date($argument_date_format, $ranges[0][1]);

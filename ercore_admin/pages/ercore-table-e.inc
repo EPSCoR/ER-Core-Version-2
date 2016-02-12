@@ -27,7 +27,7 @@ function nsf_table_e_callback() {
  *    A nested a array of date ranges.
  */
 function ercore_table_e($variables) {
-  $default_range = ercore_admin_view_start_end_dates();
+  $default_range = ercore_start_end_dates();
   $date_range = $variables['ranges'];
   $title = 'Download NSF Table E';
   if (isset($date_range[0])) {

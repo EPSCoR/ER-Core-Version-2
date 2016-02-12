@@ -8,7 +8,7 @@ require_once drupal_get_path('module', 'ercore_admin') . '/includes/ercore-admin
 
 $zone = variable_get('date_default_timezone');
 $ercore_date = variable_get('ercore_start_date');
-$argument_date_format = variable_get('date_format_ercore_date_format_filter_admin');
+$argument_date_format = variable_get('date_format_ercore_date_format_filter');
 $date_year_range = $ercore_date['year'] . ':+1';
 $default_dates = ercore_start_end_dates();
 $select_list = ercore_select_list();
