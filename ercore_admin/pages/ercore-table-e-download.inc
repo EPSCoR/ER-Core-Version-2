@@ -201,7 +201,7 @@ function ercore_table_e_data_patent_build(&$date_array) {
     $data = views_get_view_result('ercore_table_e_patents', $display, $date_for_view);
     $patent_object[$type] = new ErcoreOutputs();
     $patent_object[$type]->type = 'Patent';
-    $patent_object[$type]->sub_type = $type;
+    $patent_object[$type]->subType = $type;
     $patent_object[$type]->ercoreOutputsBuild($patent_object[$type], $data, $date_for_object);
   }
   return $patent_object;
@@ -234,7 +234,7 @@ function ercore_table_e_data_proposal_build(&$date_array) {
     $data = views_get_view_result('ercore_table_e_proposals', $display, $date_for_view);
     $proposal_object[$type] = new ErcoreOutputs();
     $proposal_object[$type]->type = 'Proposal';
-    $proposal_object[$type]->sub_type = $type;
+    $proposal_object[$type]->subType = $type;
     $proposal_object[$type]->ercoreOutputsBuild($proposal_object[$type], $data, $date_for_object);
   }
   return $proposal_object;
@@ -265,7 +265,7 @@ function ercore_table_e_data_publication_build(&$date_array) {
   foreach ($types as $key => $type) {
     $publication_object[$type] = new ErcoreOutputs();
     $publication_object[$type]->type = 'Publication';
-    $publication_object[$type]->sub_type = $type;
+    $publication_object[$type]->subType = $type;
     $publication_object[$type]->ercoreOutputsBuild($publication_object[$type], $data, $date_for_object);
   }
   return $publication_object;
@@ -311,7 +311,7 @@ function ercore_table_e_data_participant_build(&$date_array, &$section) {
   foreach ($types as $key => $type) {
     $participant_object[$type] = new ErcoreOutputs();
     $participant_object[$type]->type = $section;
-    $participant_object[$type]->sub_type = $type;
+    $participant_object[$type]->subType = $type;
     $participant_object[$type]->ercoreOutputsBuild($participant_object[$type], $data, $date_for_object);
   }
   return $participant_object;
