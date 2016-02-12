@@ -100,8 +100,6 @@ function _ercore_default_roles() {
       'entityconnect add button',
       'entityconnect edit button',
       'view date repeats',
-      'administer users',
-      'access private fields',
       'create field_ercore_us_committees',
       'edit own field_ercore_us_committees',
       'edit field_ercore_us_committees',
@@ -137,6 +135,23 @@ function _ercore_default_roles() {
       'view own field_ercore_in_participating',
       'edit field_ercore_in_participating',
       'view field_ercore_in_participating',
+    ),
+  );
+  $user_role['ercore_admin'] = array(
+    'name' => 'ercore admin',
+    'weight' => '9',
+    'permissions' => array(
+      'access ercore admin content',
+      'access ercore content',
+      'access ercore excel sheets',
+      'access user profiles',
+      'access toolbar',
+      'administer menu',
+      'access content overview',
+      'access administration pages',
+      'access private fields',
+      'administer users',
+      'access private fields',
     ),
   );
   $user_role['administrator'] = array(
