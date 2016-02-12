@@ -48,19 +48,19 @@ class ErcoreOutputs {
       // Identifying values to compare dare ranges with.
       // Patent data build.
       if ($object->type == 'Patent') {
-        // Patent data, subtype Pending.
+        // Patent data, subType Pending.
         if ($object->subType == 'Pending') {
           if (isset($data_row->field_field_ercore_pt_provisional[0]['raw'])) {
             $within = $data_row->field_field_ercore_pt_provisional[0]['raw']['value'];
           }
         }
-        // Patent data, subtype Awarded.
+        // Patent data, subType Awarded.
         elseif ($object->subType == 'Awarded') {
           if (isset($data_row->field_field_ercore_pt_award[0]['raw'])) {
             $within = $data_row->field_field_ercore_pt_award[0]['raw']['value'];
           }
         }
-        // Patent data, subtype Licensed.
+        // Patent data, subType Licensed.
         else {
           if (isset($data_row->field_field_ercore_pt_date[0]['raw'])) {
             $within = $data_row->field_field_ercore_pt_date[0]['raw']['value'];
@@ -73,19 +73,19 @@ class ErcoreOutputs {
 
       // Proposal data build.
       elseif ($object->type == 'Proposal') {
-        // Proposal data, subtype Pending.
+        // Proposal data, subType Pending.
         if ($object->subType == 'Submitted') {
           if (isset($data_row->field_field_ercore_pp_proposal_submit[0]['raw'])) {
             $within = $data_row->field_field_ercore_pp_proposal_submit[0]['raw']['value'];
           }
         }
-        // Patent data, subtype Awarded.
+        // Patent data, subType Awarded.
         elseif ($object->subType == 'Awarded') {
           if (isset($data_row->field_field_ercore_pp_proposal_date[0]['raw'])) {
             $within = $data_row->field_field_ercore_pp_proposal_date[0]['raw']['value'];
           }
         }
-        // Patent data, subtype Pending.
+        // Patent data, subType Pending.
         else {
           if (isset($data_row->field_field_ercore_pp_proposal_pending[0]['raw'])) {
             $within = $data_row->field_field_ercore_pp_proposal_pending[0]['raw']['value'];
@@ -107,14 +107,14 @@ class ErcoreOutputs {
         if (isset($data_row->field_field_ercore_pb_date[0]['raw'])) {
           $within = $data_row->field_field_ercore_pb_date[0]['raw']['value'];
         }
-        // Publication data, subtype Primary.
+        // Publication data, subType Primary.
         if ($object->subType == 'Primary' && $data_row->field_field_ercore_pb_rii_support[0]['raw']['value'] == '0') {
           $current = TRUE;
           // Compare date ranges.
           $this->value2 = $this->value2 + 1;
         }
 
-        // Publication data, subtype Partial.
+        // Publication data, subType Partial.
         if ($object->subType == 'Partial' && $data_row->field_field_ercore_pb_rii_support[0]['raw']['value'] == '1') {
           $current = TRUE;
           // Compare date ranges.
@@ -154,6 +154,12 @@ class ErcoreOutputs {
         else {
           $race = NULL;
         }
+        if (isset($data_row->field_field_ercore_us_disabilities[0]['rendered'])) {
+          $disabled_value = TRUE;
+        }
+        else {
+          $disabled_value = FALSE;
+        }
         $urm = array(
           'American Indian',
           'Alaskan Native',
@@ -174,13 +180,15 @@ class ErcoreOutputs {
           $current = TRUE;
           $this->value2 = $this->value2 + 1;
         }
-        elseif ($object->subType == 'Disabled' && $data_row->field_field_ercore_us_disabilities[0]['rendered']['#markup'] != 'None') {
-          $current = TRUE;
-          $this->value2 = $this->value2 + 1;
+        elseif ($object->subType == 'Disabled' && $disabled_value == TRUE) {
+          if ($data_row->field_field_ercore_us_disabilities[0]['rendered']['#markup'] != 'None') {
+            $current = TRUE;
+            $this->value2 = $this->value2 + 1;
+          }
         }
       }
 
-      if ($current == TRUE && $this->ercoreOutputsDateCallback($within, $date_range) == TRUE&& $date_range != $default_array) {
+      if ($current == TRUE && $this->ercoreOutputsDateCallback($within, $date_range) == TRUE && $date_range != $default_array) {
         $this->value1 = $this->value1 + 1;
       }
     }

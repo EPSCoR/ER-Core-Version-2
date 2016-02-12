@@ -78,13 +78,13 @@ function ercore_table_e_download_callback_data(&$date_range, $sheet = 0) {
   $default_range = ercore_admin_download_path($default_array);
 
   $passing_value = $default_range;
+
   if ($date_range == NULL) {
     $date_range = $passing_value;
   }
-  $date_string = $passing_value;
+  $passing_string = $date_range;
 
-  $date_array = ercore_admin_date_argument_to_array($passing_value);
-
+  $date_array = ercore_admin_date_argument_to_array($passing_string);
   $title = 'E - Outputs';
   $template_path = drupal_get_path('module', 'ercore_admin') . "/excel-templates/outputs-template.xls";
 
@@ -199,6 +199,7 @@ function ercore_table_e_data_patent_build(&$date_array) {
   foreach ($types as $display => $type) {
 
     $data = views_get_view_result('ercore_table_e_patents', $display, $date_for_view);
+
     $patent_object[$type] = new ErcoreOutputs();
     $patent_object[$type]->type = 'Patent';
     $patent_object[$type]->subType = $type;
