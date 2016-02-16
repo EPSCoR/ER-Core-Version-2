@@ -1311,7 +1311,7 @@ function ercore_block_view($delta = '') {
  */
 function _ercore_grant_block() {
   $grant_number = variable_get('ercore_grant_number');
-  $grant = '<span class="grant-number"> ' . t('This material is based upon work supported by the National Science Foundation under Grant Number ') .  '<em>' . $grant_number . '</em>.</span><br />';
+  $grant = '<span class="grant-number"> ' . t('This material is based upon work supported by the National Science Foundation under Grant Number') . '<em> ' . $grant_number . '</em>.</span><br />';
 
   $opinion = t('Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.');
   $output = $grant . $opinion;
@@ -1337,6 +1337,20 @@ function ercore_theme_registry_alter(&$theme_registry) {
       $theme_registry[$key]['theme path'] = $modulepath;
       $theme_registry[$key] = array_merge($theme_registry[$key], $template_file_object);
       $theme_registry[$key]['type'] = 'module';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function ercore_preprocess_field(&$vars) {
+  if ($vars['element']['#field_type'] == 'text_long') {
+    $field_name = $vars['element']['#field_name'];
+    foreach ($vars['items'] as $key => &$item) {
+      if ($vars['element']['#object']->{$field_name}[LANGUAGE_NONE][$key]['format'] == NULL) {
+        $item['#markup'] = nl2br($item['#markup']);
+      }
     }
   }
 }
