@@ -9947,13 +9947,13 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '100';
   $handler->display->display_options['style_plugin'] = 'semanticviews_default';
-  $handler->display->display_options['style_options']['row']['class'] = 'user-row';
+  $handler->display->display_options['style_options']['row']['class'] = 'user-row person';
   $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
   $handler->display->display_options['row_options']['skip_blank'] = 1;
   $handler->display->display_options['row_options']['semantic_html'] = array(
     'name' => array(
       'element_type' => 'div',
-      'class' => 'user-name',
+      'class' => 'user-name name',
     ),
     'field_ercore_us_sen_role' => array(
       'element_type' => 'div',
