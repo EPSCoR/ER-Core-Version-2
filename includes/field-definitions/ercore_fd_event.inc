@@ -388,15 +388,9 @@ $ercore_event_definitions = array(
 
 // FIELD: field_ercore_ev_location.
   'ev_field_ercore_ev_location' => array(
-    'type_name' => 'ercore_event',
-    'entity_types' => array(),
-    'settings' => array(
-      'max_length' => '255',
-      'text_processing' => '0',
-      'allowed_values' => '',
-      'allowed_values_php' => '',
-    ),
     'translatable' => '0',
+    'entity_types' => array(),
+    'settings' => array(),
     'storage' => array(
       'type' => 'field_sql_storage',
       'settings' => array(),
@@ -436,7 +430,7 @@ $ercore_event_definitions = array(
       'type' => '0',
     ),
     'field_name' => 'field_ercore_ev_location',
-    'type' => 'text',
+    'type' => 'text_long',
     'module' => 'text',
     'active' => '1',
     'locked' => '0',
@@ -444,8 +438,8 @@ $ercore_event_definitions = array(
     'deleted' => '0',
     'columns' => array(
       'value' => array(
-        'type' => 'varchar',
-        'length' => '255',
+        'type' => 'text',
+        'size' => 'big',
         'not null' => FALSE,
       ),
       'format' => array(

@@ -418,15 +418,20 @@ $ercore_event_instances = array(
     'label' => 'Location/Address',
     'widget' => array(
       'weight' => '9',
-      'type' => 'text_textfield',
+      'type' => 'text_textarea',
       'module' => 'text',
       'active' => 1,
       'settings' => array(
-        'size' => '60',
+        'rows' => '2',
       ),
     ),
     'settings' => array(
       'text_processing' => '0',
+      'linkit' => array(
+        'enable' => 0,
+        'profile' => '',
+        'button_text' => 'Search',
+      ),
       'user_register_form' => FALSE,
     ),
     'display' => array(
@@ -437,18 +442,18 @@ $ercore_event_instances = array(
         'settings' => array(),
         'module' => 'text',
       ),
-      'teaser' => array(
-        'type' => 'hidden',
-        'label' => 'above',
-        'settings' => array(),
-        'weight' => 0,
-      ),
       'full' => array(
         'label' => 'above',
         'type' => 'text_default',
         'weight' => '7',
         'settings' => array(),
         'module' => 'text',
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'type' => 'hidden',
+        'weight' => '5',
+        'settings' => array(),
       ),
     ),
     'required' => 0,
