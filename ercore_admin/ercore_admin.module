@@ -354,6 +354,23 @@ function ercore_admin_views_pre_execute(&$view) {
 }
 
 /**
+ * Implements hook_views_query_alter().
+ */
+function ercore_admin_views_query_alter(&$view, &$query) {
+  if( $view->name === 'ercore_table_c_display') {
+    if (isset($query->where[0])) {
+      $new_query = $query->where[0];
+      $where = explode(' AND ', $new_query['conditions'][0]['field']);
+      $new_where = $where[1] . ' AND ' . "field_data_field_ercore_cn_dates.field_ercore_cn_dates_value2 = field_data_field_ercore_cn_dates.field_ercore_cn_dates_value";
+      $new_query['conditions'][1] = $new_query['conditions'][0];
+      $new_query['conditions'][1]['field'] = $new_where;
+      $new_query['type'] = 'OR';
+      $query->where[0] = $new_query;
+    }
+  }
+}
+
+/**
  * Implements hook_preprocess_user_profile().
  */
 function ercore_admin_preprocess_user_profile(&$vars) {
