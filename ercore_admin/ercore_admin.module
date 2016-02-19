@@ -361,11 +361,19 @@ function ercore_admin_views_query_alter(&$view, &$query) {
     if (isset($query->where[0])) {
       $new_query = $query->where[0];
       $where = explode(' AND ', $new_query['conditions'][0]['field']);
-      $new_where = $where[1] . ' AND ' . "field_data_field_ercore_cn_dates.field_ercore_cn_dates_value2 = field_data_field_ercore_cn_dates.field_ercore_cn_dates_value";
+      $new_where = $where[1] . ' AND ' . 'field_data_field_ercore_cn_dates.field_ercore_cn_dates_value2 = field_data_field_ercore_cn_dates.field_ercore_cn_dates_value';
       $new_query['conditions'][1] = $new_query['conditions'][0];
       $new_query['conditions'][1]['field'] = $new_where;
       $new_query['type'] = 'OR';
       $query->where[0] = $new_query;
+    }
+  }
+  if ($view->name == 'ercore_table_c_export') {
+    if (isset($query->where[0])) {
+      $where_field = $query->where[0]['conditions'][1]['field'];
+      $where = explode(' AND ', $where_field);
+      $new_where = '(' . $where_field . ') OR (' . $where[1] . ' AND ' . 'field_ercore_cn_collaborator_field_collection_item__field_data_field_ercore_cn_dates.field_ercore_cn_dates_value2 = field_ercore_cn_collaborator_field_collection_item__field_data_field_ercore_cn_dates.field_ercore_cn_dates_value' . ')';
+      $query->where[0]['conditions'][1]['field'] = $new_where;
     }
   }
 }
