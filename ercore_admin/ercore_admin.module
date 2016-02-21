@@ -415,10 +415,9 @@ function ercore_admin_views_query_alter(&$view, &$query) {
         elseif (strpos($condition['field'], 'field_ercore_us_part_date_value2,')) {
           $new_field1 = $condition['field'];
           $new_field1a = ' OR (' . str_replace("date_value2,", "date_value,", $new_field1) . ' AND field_data_field_ercore_us_part_date.field_ercore_us_part_date_value2 = field_data_field_ercore_us_part_date.field_ercore_us_part_date_value)';
-          $new_field1b = ' OR (' . str_replace("date_value2,", "date_value,", $new_field1) . ' AND ' . str_replace("part_date_value2,", "part_date_value,", $new_field1) . ')';
+          $new_field1b = ' OR (' . str_replace("date_value2,", "date_value,", $new_field1) . ' AND ' . str_replace("<=", ">=", $new_field1) . ')';
           $new_where = $new_field1 . $new_field1a . $new_field1b;
         }
-
         if ($new_where != NULL) {
           $query->where[1]['conditions'][$key]['field'] = $new_where;
         }
