@@ -1592,6 +1592,10 @@ function ercore_admin_views_default_views() {
       'label_class' => '',
     ),
   );
+  /* Header: Global: Result summary */
+  $handler->display->display_options['header']['result']['id'] = 'result';
+  $handler->display->display_options['header']['result']['table'] = 'views';
+  $handler->display->display_options['header']['result']['field'] = 'result';
   /* Field: User: Most Senior Project Role */
   $handler->display->display_options['fields']['field_ercore_us_sen_role']['id'] = 'field_ercore_us_sen_role';
   $handler->display->display_options['fields']['field_ercore_us_sen_role']['table'] = 'field_data_field_ercore_us_sen_role';
@@ -1643,6 +1647,11 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_us_leadership_team']['id'] = 'field_ercore_us_leadership_team';
   $handler->display->display_options['fields']['field_ercore_us_leadership_team']['table'] = 'field_data_field_ercore_us_leadership_team';
   $handler->display->display_options['fields']['field_ercore_us_leadership_team']['field'] = 'field_ercore_us_leadership_team';
+  /* Field: User: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
   /* Sort criterion: User: Most Senior Project Role (field_ercore_us_sen_role) */
   $handler->display->display_options['sorts']['field_ercore_us_sen_role_value']['id'] = 'field_ercore_us_sen_role_value';
   $handler->display->display_options['sorts']['field_ercore_us_sen_role_value']['table'] = 'field_data_field_ercore_us_sen_role';
@@ -1655,15 +1664,17 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['arguments']['field_ercore_us_inst_ref_target_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_ercore_us_inst_ref_target_id']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_ercore_us_inst_ref_target_id']['summary_options']['items_per_page'] = '25';
-  /* Contextual filter: Global: Null */
-  $handler->display->display_options['arguments']['null']['id'] = 'null';
-  $handler->display->display_options['arguments']['null']['table'] = 'views';
-  $handler->display->display_options['arguments']['null']['field'] = 'null';
-  $handler->display->display_options['arguments']['null']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['null']['default_argument_options']['argument'] = '2013-05--2014-05';
-  $handler->display->display_options['arguments']['null']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['null']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['null']['summary_options']['items_per_page'] = '25';
+  /* Contextual filter: User: Participating Date(s) -  start date (field_ercore_us_part_date) */
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['id'] = 'field_ercore_us_part_date_value';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['table'] = 'field_data_field_ercore_us_part_date';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['field'] = 'field_ercore_us_part_date_value';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['year_range'] = '-25:+5';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['granularity'] = 'day';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['granularity_reset'] = 1;
   /* Filter criterion: User: Active */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'users';
@@ -1680,6 +1691,11 @@ function ercore_admin_views_default_views() {
     6 => '6',
     7 => '7',
   );
+  /* Filter criterion: User: Participating Date(s) -  start date (field_ercore_us_part_date) */
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['id'] = 'field_ercore_us_part_date_value';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['table'] = 'field_data_field_ercore_us_part_date';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['field'] = 'field_ercore_us_part_date_value';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['operator'] = 'not empty';
 
   /* Display: Data Export */
   $handler = $view->new_display('panel_pane', 'Data Export', 'panel_pane_1');
@@ -1980,14 +1996,17 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['sorts']['field_ercore_us_sen_role_value']['id'] = 'field_ercore_us_sen_role_value';
   $handler->display->display_options['sorts']['field_ercore_us_sen_role_value']['table'] = 'field_data_field_ercore_us_sen_role';
   $handler->display->display_options['sorts']['field_ercore_us_sen_role_value']['field'] = 'field_ercore_us_sen_role_value';
-  /* Contextual filter: Global: Null */
-  $handler->display->display_options['arguments']['null']['id'] = 'null';
-  $handler->display->display_options['arguments']['null']['table'] = 'views';
-  $handler->display->display_options['arguments']['null']['field'] = 'null';
-  $handler->display->display_options['arguments']['null']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['null']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['null']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['null']['summary_options']['items_per_page'] = '25';
+  /* Contextual filter: User: Participating Date(s) -  start date (field_ercore_us_part_date) */
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['id'] = 'field_ercore_us_part_date_value';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['table'] = 'field_data_field_ercore_us_part_date';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['field'] = 'field_ercore_us_part_date_value';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['year_range'] = '-25:+5';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['granularity'] = 'day';
+  $handler->display->display_options['arguments']['field_ercore_us_part_date_value']['granularity_reset'] = 1;
   /* Filter criterion: User: Active */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'users';
@@ -2016,10 +2035,6 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['field_ercore_us_leadership_team_value']['value'] = array(
     1 => '1',
   );
-
-  /* Display: Data Export Leadership */
-  $handler = $view->new_display('panel_pane', 'Data Export Leadership', 'panel_pane_1');
-  $handler->display->display_options['enabled'] = FALSE;
 
   /* Display: Data Export Boards */
   $handler = $view->new_display('panel_pane', 'Data Export Boards', 'panel_pane_2');
@@ -2051,6 +2066,15 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['field_ercore_us_committees_value']['table'] = 'field_data_field_ercore_us_committees';
   $handler->display->display_options['filters']['field_ercore_us_committees_value']['field'] = 'field_ercore_us_committees_value';
   $handler->display->display_options['filters']['field_ercore_us_committees_value']['operator'] = 'not empty';
+  /* Filter criterion: User: Participating Date(s) -  start date (field_ercore_us_part_date) */
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['id'] = 'field_ercore_us_part_date_value';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['table'] = 'field_data_field_ercore_us_part_date';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['field'] = 'field_ercore_us_part_date_value';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['operator'] = 'not empty';
+
+  /* Display: Data Export Leadership */
+  $handler = $view->new_display('panel_pane', 'Data Export Leadership', 'panel_pane_1');
+  $handler->display->display_options['enabled'] = FALSE;
   $views['ercore_export_table_b_totals'] = $view;
 
   $view = new view();
@@ -2427,6 +2451,7 @@ function ercore_admin_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Participants with Incomplete Profiles';
+  $handler->display->display_options['css_class'] = 'person-list  row';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore admin content';
@@ -2436,7 +2461,9 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'semanticviews_default';
-  $handler->display->display_options['style_options']['row']['class'] = 'list-row';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['style_options']['row']['class'] = 'list-row person col-sm-6';
   $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
   $handler->display->display_options['row_options']['skip_blank'] = 0;
   $handler->display->display_options['row_options']['semantic_html'] = array(
@@ -2463,19 +2490,12 @@ function ercore_admin_views_default_views() {
       'label_class' => 'label-inline',
     ),
   );
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<p>This view includes those users with "Faculty" and "Student" role selected</p>';
-  $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'All existing Student and Faculty profiles are associated with a participating institution.';
+  $handler->display->display_options['empty']['area']['content'] = 'All existing Student and Faculty profiles have Participating Dates assigned.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
@@ -2529,6 +2549,63 @@ function ercore_admin_views_default_views() {
     'value' => '',
   );
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['group'] = 1;
+  /* Filter criterion: User: The user ID */
+  $handler->display->display_options['filters']['uid_raw']['id'] = 'uid_raw';
+  $handler->display->display_options['filters']['uid_raw']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_raw']['field'] = 'uid_raw';
+  $handler->display->display_options['filters']['uid_raw']['operator'] = '!=';
+  $handler->display->display_options['filters']['uid_raw']['value']['value'] = '1';
+  $handler->display->display_options['filters']['uid_raw']['group'] = 1;
+  /* Filter criterion: User: Most Senior Project Role (field_ercore_us_sen_role) */
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['id'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['table'] = 'field_data_field_ercore_us_sen_role';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['field'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['value'] = array(
+    0 => '0',
+    2 => '2',
+    3 => '3',
+    4 => '4',
+    5 => '5',
+  );
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<p>This view includes those users with Faculty, Post Doc, Graduate Student, Undergraduate Student, or Non-Technical Support Staff selected in Senior Project Role who have Active Status (not blocked).</p>
+<h2>No Participating Institutions</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['path'] = 'ercore/participants/incomplete-profiles';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Users with Incomplete Profiles';
+  $handler->display->display_options['menu']['description'] = 'Displays users with missing on incomplete profile information.';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'ercore_admin_menu';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
+
+  /* Display: Attachment */
+  $handler = $view->new_display('attachment', 'Attachment', 'attachment_1');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h2>No Participating Dates</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: User: Roles */
   $handler->display->display_options['filters']['rid']['id'] = 'rid';
   $handler->display->display_options['filters']['rid']['table'] = 'users_roles';
@@ -2545,18 +2622,372 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['uid_raw']['operator'] = '!=';
   $handler->display->display_options['filters']['uid_raw']['value']['value'] = '1';
   $handler->display->display_options['filters']['uid_raw']['group'] = 1;
+  /* Filter criterion: User: Participating Date(s) -  start date (field_ercore_us_part_date) */
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['id'] = 'field_ercore_us_part_date_value';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['table'] = 'field_data_field_ercore_us_part_date';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['field'] = 'field_ercore_us_part_date_value';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['operator'] = 'empty';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['displays'] = array(
+    'page' => 'page',
+    'default' => 0,
+  );
+  $handler->display->display_options['attachment_position'] = 'after';
+  $views['ercore_participants_with_incomplete_profiles'] = $view;
+
+  $view = new view();
+  $view->name = 'ercore_participant_testing';
+  $view->description = 'Overview of Users with filtering and sorting options.';
+  $view->tag = 'default';
+  $view->base_table = 'users';
+  $view->human_name = 'ERCore User Testing';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'User Testing';
+  $handler->display->display_options['css_class'] = 'person-list row';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'access ercore admin content';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '50';
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['style_options']['row']['class'] = 'list-row person col-sm-6';
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 1;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'name' => array(
+      'element_type' => 'div',
+      'class' => 'name',
+    ),
+    'field_ercore_us_inst_ref' => array(
+      'element_type' => 'div',
+      'class' => 'institution',
+    ),
+    'field_ercore_us_sen_role' => array(
+      'element_type' => 'div',
+      'class' => '',
+    ),
+    'field_ercore_us_hired_date' => array(
+      'element_type' => 'div',
+      'class' => 'field-inline',
+      'label_element_type' => 'span',
+      'label_class' => 'label-inline',
+    ),
+    'field_ercore_us_part_date' => array(
+      'element_type' => 'div',
+      'class' => 'field-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'label-inline',
+    ),
+  );
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  /* Field: User: Participating Institutions */
+  $handler->display->display_options['fields']['field_ercore_us_inst_ref']['id'] = 'field_ercore_us_inst_ref';
+  $handler->display->display_options['fields']['field_ercore_us_inst_ref']['table'] = 'field_data_field_ercore_us_inst_ref';
+  $handler->display->display_options['fields']['field_ercore_us_inst_ref']['field'] = 'field_ercore_us_inst_ref';
+  $handler->display->display_options['fields']['field_ercore_us_inst_ref']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_us_inst_ref']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ercore_us_inst_ref']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_ercore_us_inst_ref']['delta_offset'] = '0';
+  /* Field: User: Most Senior Project Role */
+  $handler->display->display_options['fields']['field_ercore_us_sen_role']['id'] = 'field_ercore_us_sen_role';
+  $handler->display->display_options['fields']['field_ercore_us_sen_role']['table'] = 'field_data_field_ercore_us_sen_role';
+  $handler->display->display_options['fields']['field_ercore_us_sen_role']['field'] = 'field_ercore_us_sen_role';
+  $handler->display->display_options['fields']['field_ercore_us_sen_role']['label'] = '';
+  $handler->display->display_options['fields']['field_ercore_us_sen_role']['element_label_colon'] = FALSE;
+  /* Field: User: Hired Date */
+  $handler->display->display_options['fields']['field_ercore_us_hired_date']['id'] = 'field_ercore_us_hired_date';
+  $handler->display->display_options['fields']['field_ercore_us_hired_date']['table'] = 'field_data_field_ercore_us_hired_date';
+  $handler->display->display_options['fields']['field_ercore_us_hired_date']['field'] = 'field_ercore_us_hired_date';
+  $handler->display->display_options['fields']['field_ercore_us_hired_date']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: User: Participating Date(s) */
+  $handler->display->display_options['fields']['field_ercore_us_part_date']['id'] = 'field_ercore_us_part_date';
+  $handler->display->display_options['fields']['field_ercore_us_part_date']['table'] = 'field_data_field_ercore_us_part_date';
+  $handler->display->display_options['fields']['field_ercore_us_part_date']['field'] = 'field_ercore_us_part_date';
+  $handler->display->display_options['fields']['field_ercore_us_part_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_ercore_us_part_date']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_day_year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Sort criterion: Name Components: Family */
+  $handler->display->display_options['sorts']['field_user_name_family']['id'] = 'field_user_name_family';
+  $handler->display->display_options['sorts']['field_user_name_family']['table'] = 'field_data_field_user_name';
+  $handler->display->display_options['sorts']['field_user_name_family']['field'] = 'field_user_name_family';
+  $handler->display->display_options['sorts']['field_user_name_family']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['field_user_name_family']['expose']['label'] = 'Last Name';
+  /* Sort criterion: User: Most Senior Project Role (field_ercore_us_sen_role) */
+  $handler->display->display_options['sorts']['field_ercore_us_sen_role_value']['id'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['sorts']['field_ercore_us_sen_role_value']['table'] = 'field_data_field_ercore_us_sen_role';
+  $handler->display->display_options['sorts']['field_ercore_us_sen_role_value']['field'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['sorts']['field_ercore_us_sen_role_value']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['field_ercore_us_sen_role_value']['expose']['label'] = 'Senior Project Role';
+  /* Filter criterion: User: Hired Date (field_ercore_us_hired_date) */
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value']['id'] = 'field_ercore_us_hired_date_value';
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value']['table'] = 'field_data_field_ercore_us_hired_date';
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value']['field'] = 'field_ercore_us_hired_date_value';
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value']['expose']['operator_id'] = 'field_ercore_us_hired_date_value_op';
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value']['expose']['label'] = 'Hired - Beginning';
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value']['expose']['operator'] = 'field_ercore_us_hired_date_value_op';
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value']['expose']['identifier'] = 'field_ercore_us_hired_date_value';
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value']['year_range'] = '-10:+5';
+  /* Filter criterion: User: Hired Date (field_ercore_us_hired_date) */
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value_1']['id'] = 'field_ercore_us_hired_date_value_1';
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value_1']['table'] = 'field_data_field_ercore_us_hired_date';
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value_1']['field'] = 'field_ercore_us_hired_date_value';
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value_1']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value_1']['group'] = 1;
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value_1']['expose']['operator_id'] = 'field_ercore_us_hired_date_value_1_op';
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value_1']['expose']['label'] = 'Hired - End';
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value_1']['expose']['operator'] = 'field_ercore_us_hired_date_value_1_op';
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value_1']['expose']['identifier'] = 'field_ercore_us_hired_date_value_1';
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value_1']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value_1']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_ercore_us_hired_date_value_1']['year_range'] = '-10:+5';
+  /* Filter criterion: User: Participating Date(s) -  start date (field_ercore_us_part_date) */
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['id'] = 'field_ercore_us_part_date_value';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['table'] = 'field_data_field_ercore_us_part_date';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['field'] = 'field_ercore_us_part_date_value';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['expose']['operator_id'] = 'field_ercore_us_part_date_value_op';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['expose']['label'] = 'Participating Start';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['expose']['operator'] = 'field_ercore_us_part_date_value_op';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['expose']['identifier'] = 'field_ercore_us_part_date_value';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['year_range'] = '-10:+5';
+  /* Filter criterion: User: Participating Date(s) - end date (field_ercore_us_part_date:value2) */
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['id'] = 'field_ercore_us_part_date_value2';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['table'] = 'field_data_field_ercore_us_part_date';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['field'] = 'field_ercore_us_part_date_value2';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['group'] = 1;
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['expose']['operator_id'] = 'field_ercore_us_part_date_value2_op';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['expose']['label'] = 'Participating End';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['expose']['operator'] = 'field_ercore_us_part_date_value2_op';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['expose']['identifier'] = 'field_ercore_us_part_date_value2';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['year_range'] = '-10:+5';
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['status']['expose']['label'] = 'Active Status';
+  $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
+  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['required'] = TRUE;
+  $handler->display->display_options['filters']['status']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  /* Filter criterion: User: Most Senior Project Role (field_ercore_us_sen_role) */
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['id'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['table'] = 'field_data_field_ercore_us_sen_role';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['field'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['expose']['operator_id'] = 'field_ercore_us_sen_role_value_op';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['expose']['label'] = 'Senior Project Role';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['expose']['operator'] = 'field_ercore_us_sen_role_value_op';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['expose']['identifier'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  /* Filter criterion: User: EPSCoR Management Team (field_ercore_us_leadership_team) */
+  $handler->display->display_options['filters']['field_ercore_us_leadership_team_value']['id'] = 'field_ercore_us_leadership_team_value';
+  $handler->display->display_options['filters']['field_ercore_us_leadership_team_value']['table'] = 'field_data_field_ercore_us_leadership_team';
+  $handler->display->display_options['filters']['field_ercore_us_leadership_team_value']['field'] = 'field_ercore_us_leadership_team_value';
+  $handler->display->display_options['filters']['field_ercore_us_leadership_team_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_ercore_us_leadership_team_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_us_leadership_team_value']['expose']['operator_id'] = 'field_ercore_us_leadership_team_value_op';
+  $handler->display->display_options['filters']['field_ercore_us_leadership_team_value']['expose']['label'] = 'Management Team';
+  $handler->display->display_options['filters']['field_ercore_us_leadership_team_value']['expose']['operator'] = 'field_ercore_us_leadership_team_value_op';
+  $handler->display->display_options['filters']['field_ercore_us_leadership_team_value']['expose']['identifier'] = 'field_ercore_us_leadership_team_value';
+  $handler->display->display_options['filters']['field_ercore_us_leadership_team_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_ercore_us_leadership_team_value']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_us_leadership_team_value']['group_info']['label'] = 'Management Team';
+  $handler->display->display_options['filters']['field_ercore_us_leadership_team_value']['group_info']['identifier'] = 'field_ercore_us_leadership_team_value';
+  $handler->display->display_options['filters']['field_ercore_us_leadership_team_value']['group_info']['group_items'] = array(
+    1 => array(
+      'title' => 'Yes',
+      'operator' => 'or',
+      'value' => array(
+        1 => '1',
+      ),
+    ),
+    2 => array(
+      'title' => 'No',
+      'operator' => 'or',
+      'value' => array(
+        0 => '0',
+      ),
+    ),
+    3 => array(
+      'title' => '',
+      'operator' => 'or',
+      'value' => array(),
+    ),
+  );
+  /* Filter criterion: Name Components: Family */
+  $handler->display->display_options['filters']['field_user_name_family']['id'] = 'field_user_name_family';
+  $handler->display->display_options['filters']['field_user_name_family']['table'] = 'field_data_field_user_name';
+  $handler->display->display_options['filters']['field_user_name_family']['field'] = 'field_user_name_family';
+  $handler->display->display_options['filters']['field_user_name_family']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_user_name_family']['group'] = 1;
+  $handler->display->display_options['filters']['field_user_name_family']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_user_name_family']['expose']['operator_id'] = 'field_user_name_family_op';
+  $handler->display->display_options['filters']['field_user_name_family']['expose']['label'] = 'Last Name (Contains)';
+  $handler->display->display_options['filters']['field_user_name_family']['expose']['operator'] = 'field_user_name_family_op';
+  $handler->display->display_options['filters']['field_user_name_family']['expose']['identifier'] = 'field_user_name_family';
+  $handler->display->display_options['filters']['field_user_name_family']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  /* Filter criterion: User: Participating Institutions (field_ercore_us_inst_ref) */
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['group'] = 1;
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator_id'] = 'field_ercore_us_inst_ref_target_id_op';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['label'] = 'Institution';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator'] = 'field_ercore_us_inst_ref_target_id_op';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['identifier'] = 'field_ercore_us_inst_ref_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    3 => 0,
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'ercore/participants/incomplete-profiles';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<em><strong>Warning!</strong> This page is for testing purposes only. The Participation Date filters are intended to duplicate the functionality of the NSF Table B filters and may no behave as expected when used in a more traditional way.</em>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['path'] = 'ercore/participants/user-testing';
   $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Users with Incomplete Profiles';
-  $handler->display->display_options['menu']['description'] = 'Displays users with missing on incomplete profile information.';
+  $handler->display->display_options['menu']['title'] = 'User Testing';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'ercore_admin_menu';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
-  $views['ercore_participants_with_incomplete_profiles'] = $view;
+  $views['ercore_participant_testing'] = $view;
 
   $view = new view();
   $view->name = 'ercore_summary_collaboration';
@@ -4462,6 +4893,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['access']['perm'] = 'access ercore content';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['disable_sql_rewrite'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '50';
@@ -6752,7 +7184,8 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['year_range'] = '-25:+3';
-  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['granularity_reset'] = 0;
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['granularity'] = 'day';
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['granularity_reset'] = 1;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -6838,6 +7271,21 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_in_category']['table'] = 'field_data_field_ercore_in_category';
   $handler->display->display_options['fields']['field_ercore_in_category']['field'] = 'field_ercore_in_category';
   $handler->display->display_options['fields']['field_ercore_in_category']['relationship'] = 'field_ercore_cr_inst_ref_target_id';
+  $handler->display->display_options['fields']['field_ercore_in_category']['type'] = 'list_key';
+  /* Field: Content: Collaboration Dates */
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['id'] = 'field_ercore_cn_dates';
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['table'] = 'field_data_field_ercore_cn_dates';
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['field'] = 'field_ercore_cn_dates';
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['relationship'] = 'field_ercore_cn_collaborator_node';
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_day_year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
   /* Contextual filter: Content: Category (field_ercore_in_category) */
   $handler->display->display_options['arguments']['field_ercore_in_category_value']['id'] = 'field_ercore_in_category_value';
   $handler->display->display_options['arguments']['field_ercore_in_category_value']['table'] = 'field_data_field_ercore_in_category';
@@ -6857,7 +7305,9 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['granularity_reset'] = 0;
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['year_range'] = '-25:+5';
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['granularity'] = 'day';
+  $handler->display->display_options['arguments']['field_ercore_cn_dates_value']['granularity_reset'] = 1;
   /* Filter criterion: Field collection item: Institution/Organization (field_ercore_cr_inst_ref) */
   $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['id'] = 'field_ercore_cr_inst_ref_target_id';
   $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['table'] = 'field_data_field_ercore_cr_inst_ref';

@@ -357,7 +357,7 @@ function ercore_admin_views_pre_execute(&$view) {
  * Implements hook_views_query_alter().
  */
 function ercore_admin_views_query_alter(&$view, &$query) {
-  if( $view->name === 'ercore_table_c_display') {
+  if ($view->name === 'ercore_table_c_display') {
     if (isset($query->where[0])) {
       $new_query = $query->where[0];
       $where = explode(' AND ', $new_query['conditions'][0]['field']);
@@ -374,6 +374,55 @@ function ercore_admin_views_query_alter(&$view, &$query) {
       $where = explode(' AND ', $where_field);
       $new_where = '(' . $where_field . ') OR (' . $where[1] . ' AND ' . 'field_ercore_cn_collaborator_field_collection_item__field_data_field_ercore_cn_dates.field_ercore_cn_dates_value2 = field_ercore_cn_collaborator_field_collection_item__field_data_field_ercore_cn_dates.field_ercore_cn_dates_value' . ')';
       $query->where[0]['conditions'][1]['field'] = $new_where;
+    }
+  }
+  if ($view->name == 'ercore_export_table_b_data_objects') {
+    if (isset($query->where[0])) {
+      if (isset($query->where[0]['conditions'][1])) {
+        $var = '1';
+      }
+      else {
+        $var = '0';
+      }
+      $where_field = $query->where[0]['conditions'][$var]['field'];
+      if (strpos($where_field, 'DATE_FORMAT') !== FALSE) {
+        $where = explode(' AND ', $where_field);
+        $new_where = '(' . $where_field . ') OR (' . $where[1] . ' AND ' . 'field_data_field_ercore_us_part_date.field_ercore_us_part_date_value2 = field_data_field_ercore_us_part_date.field_ercore_us_part_date_value' . ')';
+        $query->where[0]['conditions'][$var]['field'] = $new_where;
+      }
+    }
+  }
+  if ($view->name == 'ercore_export_table_b_totals') {
+    if (isset($query->where[0])) {
+      $where_field = $query->where[0]['conditions'][0]['field'];
+      $where = explode(' AND ', $where_field);
+      $new_where = '(' . $where_field . ') OR (' . $where[1] . ' AND ' . 'field_data_field_ercore_us_part_date.field_ercore_us_part_date_value2 = field_data_field_ercore_us_part_date.field_ercore_us_part_date_value' . ')';
+      $query->where[0]['conditions'][0]['field'] = $new_where;
+    }
+  }
+  if ($view->name == 'ercore_participant_testing') {
+
+    if (isset($query->where[1])) {
+      $conditions = $query->where[1]['conditions'];
+      foreach ($conditions as $key => $condition) {
+        $new_where = NULL;
+        if (strpos($condition['field'], 'field_ercore_us_part_date_value,')) {
+          $new_field2 = $condition['field'];
+          $new_field2a = ' OR (' . str_replace(">=", "<=", $new_field2) . ' AND field_data_field_ercore_us_part_date.field_ercore_us_part_date_value2 = field_data_field_ercore_us_part_date.field_ercore_us_part_date_value)';
+          $new_field2b = ' OR (' . str_replace(">=", "<=", $new_field2) . ' AND ' . str_replace("part_date_value,", "part_date_value2,", $new_field2) . ')';
+          $new_where = $new_field2 . $new_field2a . $new_field2b;
+        }
+        elseif (strpos($condition['field'], 'field_ercore_us_part_date_value2,')) {
+          $new_field1 = $condition['field'];
+          $new_field1a = ' OR (' . str_replace("date_value2,", "date_value,", $new_field1) . ' AND field_data_field_ercore_us_part_date.field_ercore_us_part_date_value2 = field_data_field_ercore_us_part_date.field_ercore_us_part_date_value)';
+          $new_field1b = ' OR (' . str_replace("date_value2,", "date_value,", $new_field1) . ' AND ' . str_replace("part_date_value2,", "part_date_value,", $new_field1) . ')';
+          $new_where = $new_field1 . $new_field1a . $new_field1b;
+        }
+
+        if ($new_where != NULL) {
+          $query->where[1]['conditions'][$key]['field'] = $new_where;
+        }
+      }
     }
   }
 }

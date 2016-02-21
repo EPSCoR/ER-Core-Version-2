@@ -13,7 +13,6 @@ require_once drupal_get_path('module', 'ercore_admin') . '/includes/classes/erco
  *    Returns form array for page display.
  */
 function nsf_table_b_callback() {
-
   $form = array();
   $theme_variable = 'ercore_table_b';
   // Used within the following include.
@@ -87,22 +86,29 @@ function ercore_table_b_headers() {
  */
 function ercore_table_b_data(&$nid, &$date_range) {
   $non_displayed_values = ErcoreParticipantGroup::ercoreNoNewValues();
-  if ($date_range == NULL || $date_range == '') {
-    $date_range = 'empty';
+  if (!isset($date_range[0])) {
+    $empty = TRUE;
+    $range_array = NULL;
+    $date_argument = 'all';
   }
+  else {
+    $range_array = $date_range;
+    $empty = FALSE;
+    $date_argument = ercore_admin_download_path($date_range);
+  }
+
   $rii = FALSE;
   // Build data objects.
-  if ($nid == 'rii') {
+  if ($nid == 'all') {
 
     // RII Total Data.
-    $nid = NULL;
     $rii = TRUE;
-    $advisory_view = views_get_view_result('ercore_export_table_b_totals', 'panel_pane_2');
+    $advisory_view = views_get_view_result('ercore_export_table_b_totals', 'panel_pane_2', $date_argument);
     $advisory_data = new ErcoreParticipantGroup();
     $advisory_data->name = 'Advisory Board(s)**';
     foreach ($advisory_view as $advisory_row) {
       $type = $advisory_row->field_field_ercore_us_sen_role[0]['rendered']['#markup'];
-      if (isset($advisory_row->field_field_ercore_us_hired_date[0]['raw']) && $date_range != 'empty' && !in_array($type, $non_displayed_values)) {
+      if (isset($advisory_row->field_field_ercore_us_hired_date[0]['raw']) && $empty == FALSE && !in_array($type, $non_displayed_values)) {
         $hired = $advisory_row->field_field_ercore_us_hired_date[0]['raw']['value'];
         $new = $advisory_data->ercoreNewDateCallback($hired, $date_range);
       }
@@ -113,9 +119,10 @@ function ercore_table_b_data(&$nid, &$date_range) {
 
     }
   }
-  $view = views_get_view_result('ercore_export_table_b_data_objects', 'panel_pane_1', $nid);
+
+  $view = views_get_view_result('ercore_export_table_b_data_objects', 'panel_pane_1', $nid, $date_argument);
   $institution_data = new ErcoreParticipantCollection();
-  $institution_data->ercoreCollectionData($institution_data, $view, $date_range);
+  $institution_data->ercoreCollectionData($institution_data, $view, $range_array);
   if ($rii == TRUE) {
     $institution_data->advisory = $advisory_data;
   }
@@ -200,7 +207,7 @@ function ercore_table_b($variables) {
   $data = views_get_view_result('ercore_export_table_b_institutions', 'panel_pane_1');
   $header = ercore_table_b_headers();
   $title = 'Download NSF Table B';
-  if ($date_range != 'empty' && isset($date_range[0])) {
+  if (isset($date_range[0])) {
     $range_display = 'Date range is ' . ercore_displayed_date_ranges($variables['ranges']) . '.';
     $range = $date_range;
   }
@@ -250,7 +257,7 @@ function ercore_table_b($variables) {
       ),
     );
   }
-  $rii_nid = 'rii';
+  $rii_nid = 'all';
   $rii_collection = ercore_table_b_data($rii_nid, $date_range);
   $rii_data = ercore_table_b_cells($rii_collection);
   $summary['table_rii'] = array(

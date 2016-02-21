@@ -17,14 +17,12 @@ require_once drupal_get_path('module', 'ercore_admin') . '/includes/ercore-admin
  *   Error messages for PHPExcel errors.
  */
 function ercore_table_b_download_callback($date_range) {
-
-  if ($date_range == 'empty' || $date_range == NULL) {
+  if ($date_range == NULL) {
     $date_string = NULL;
   }
   else {
     $date_string = $date_range;
   }
-
   if (isset($date_string)) {
     $file_name = 'Content-Disposition: attachment;filename="' . 'Participants_' . $date_string . '.xls' . '"';
   }
@@ -70,8 +68,7 @@ function ercore_table_b_download_callback($date_range) {
  *   Error messages for PHPExcel errors.
  */
 function ercore_table_b_download_callback_data(&$date_range, $sheet = 0) {
-
-  if ($date_range == 'empty' || $date_range == NULL) {
+  if ($date_range == NULL) {
     $date_string = NULL;
   }
   else {
@@ -123,7 +120,7 @@ function ercore_table_b_download_callback_data(&$date_range, $sheet = 0) {
   $data = views_get_view_result('ercore_export_table_b_institutions', 'panel_pane_1');
   $rii = new stdClass();
   $rii->node_title = 'RII Totals';
-  $rii->nid = 'rii';
+  $rii->nid = 'all';
   $data[] = $rii;
 
   $num_institutions = count($data);
@@ -167,7 +164,7 @@ function ercore_table_b_download_callback_data(&$date_range, $sheet = 0) {
       ),
     ));
     $worksheet->mergeCells($merge_cells_second);
-
+    $date_array = ercore_admin_date_argument_to_array($date_string);
     // Include to allow access to ercore_table_b_data.
     include_once drupal_get_path('module', 'ercore_admin') . '/pages/ercore-table-b.inc';
     $collection = ercore_table_b_data($nid, $date_array);
