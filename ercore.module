@@ -956,9 +956,21 @@ function ercore_permission() {
  * Implements hook_help().
  */
 function ercore_help($path, $arg) {
+  global $base_url;
   switch ($path) {
     case 'admin/help#ercore':
-      return t("ERCore: Help text to come.");
+      if (module_exists('ercore_admin')) {
+
+        return t('ERCore administration pages include <a href="@user-guide">
+User Guides</a> and an <a href="@admin-guide">Administrative Guide</a>.', array(
+          '@user-guide' => $base_url . '/ercore/guides',
+          '@admin-guide' => $base_url . '/ercore/admin-guide',
+        ));
+      }
+    else {
+      return t('Install ERCore Admin module for User and Administrative Guide
+      pages.');
+    }
   }
 }
 
