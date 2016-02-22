@@ -164,7 +164,12 @@ function ercore_table_b_download_callback_data(&$date_range, $sheet = 0) {
       ),
     ));
     $worksheet->mergeCells($merge_cells_second);
-    $date_array = ercore_admin_date_argument_to_array($date_string);
+    if ($date_string != NULL) {
+      $date_array = ercore_admin_date_argument_to_array($date_string);
+    }
+    else {
+      $date_array = NULL;
+    }
     // Include to allow access to ercore_table_b_data.
     include_once drupal_get_path('module', 'ercore_admin') . '/pages/ercore-table-b.inc';
     $collection = ercore_table_b_data($nid, $date_array);
