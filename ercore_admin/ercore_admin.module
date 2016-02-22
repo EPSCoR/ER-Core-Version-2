@@ -423,7 +423,7 @@ function ercore_admin_views_query_alter(&$view, &$query) {
       }
     }
   }
-  if ($view->name == 'ercore_summary_collaborations' || $view->name == 'ercore_summary_collaborators') {
+  if ($view->name == 'ercore_summary_collaboration' || $view->name == 'ercore_summary_collaborators') {
     if (isset($query->where[1]['conditions'][1])) {
       $conditions = $query->where[1]['conditions'];
       foreach ($conditions as $key => $condition) {

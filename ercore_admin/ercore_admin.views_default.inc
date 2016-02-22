@@ -3010,6 +3010,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '15';
   $handler->display->display_options['style_plugin'] = 'semanticviews_default';
@@ -3077,38 +3078,17 @@ function ercore_admin_views_default_views() {
     'ercore_collaboration' => 'ercore_collaboration',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Collaboration Dates - end date (field_ercore_cn_dates:value2) */
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['id'] = 'field_ercore_cn_dates_value2';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['table'] = 'field_data_field_ercore_cn_dates';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['field'] = 'field_ercore_cn_dates_value2';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['operator_id'] = 'field_ercore_cn_dates_value2_op';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['label'] = 'Start Date';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['operator'] = 'field_ercore_cn_dates_value2_op';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['identifier'] = 'start-date';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['form_type'] = 'date_popup';
   /* Filter criterion: Content: Collaboration Dates -  start date (field_ercore_cn_dates) */
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['id'] = 'field_ercore_cn_dates_value';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['table'] = 'field_data_field_ercore_cn_dates';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['field'] = 'field_ercore_cn_dates_value';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['operator'] = '>=';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['group'] = 1;
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['operator_id'] = 'field_ercore_cn_dates_value_op';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['label'] = 'End Date';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['label'] = 'Start Date';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['operator'] = 'field_ercore_cn_dates_value_op';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['identifier'] = 'end-date';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['identifier'] = 'start-date';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -3119,11 +3099,33 @@ function ercore_admin_views_default_views() {
     3 => 0,
   );
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['form_type'] = 'date_popup';
+  /* Filter criterion: Content: Collaboration Dates - end date (field_ercore_cn_dates:value2) */
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['id'] = 'field_ercore_cn_dates_value2';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['table'] = 'field_data_field_ercore_cn_dates';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['field'] = 'field_ercore_cn_dates_value2';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['group'] = 1;
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['operator_id'] = 'field_ercore_cn_dates_value2_op';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['label'] = 'End Date';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['operator'] = 'field_ercore_cn_dates_value2_op';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['identifier'] = 'end-date';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['form_type'] = 'date_popup';
   /* Filter criterion: User: Participating Institutions (field_ercore_us_inst_ref) */
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['relationship'] = 'field_ercore_organizer_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['group'] = 1;
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator_id'] = 'field_ercore_us_inst_ref_target_id_op';
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['label'] = 'Institution';
@@ -3254,6 +3256,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '15';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -3354,37 +3357,56 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Collaboration Dates - end date (field_ercore_cn_dates:value2) */
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['id'] = 'field_ercore_cn_dates_value2';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['table'] = 'field_data_field_ercore_cn_dates';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['field'] = 'field_ercore_cn_dates_value2';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['relationship'] = 'field_er_collab_ref_target_id';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['operator_id'] = 'field_ercore_cn_dates_value2_op';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['label'] = 'End date';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['operator'] = 'field_ercore_cn_dates_value2_op';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['identifier'] = 'end-date';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['form_type'] = 'date_popup';
   /* Filter criterion: Content: Collaboration Dates -  start date (field_ercore_cn_dates) */
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['id'] = 'field_ercore_cn_dates_value';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['table'] = 'field_data_field_ercore_cn_dates';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['field'] = 'field_ercore_cn_dates_value';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['relationship'] = 'field_er_collab_ref_target_id';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['operator'] = '>=';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['group'] = 1;
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['operator_id'] = 'field_ercore_cn_dates_value_op';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['label'] = 'Start date';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['operator'] = 'field_ercore_cn_dates_value_op';
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['identifier'] = 'start-date';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    3 => 0,
+  );
   $handler->display->display_options['filters']['field_ercore_cn_dates_value']['form_type'] = 'date_popup';
+  /* Filter criterion: Content: Collaboration Dates - end date (field_ercore_cn_dates:value2) */
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['id'] = 'field_ercore_cn_dates_value2';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['table'] = 'field_data_field_ercore_cn_dates';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['field'] = 'field_ercore_cn_dates_value2';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['group'] = 1;
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['operator_id'] = 'field_ercore_cn_dates_value2_op';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['label'] = 'End date';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['operator'] = 'field_ercore_cn_dates_value2_op';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['identifier'] = 'end-date';
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['form_type'] = 'date_popup';
   /* Filter criterion: Field collection item: Institution/Organization (field_ercore_cr_inst_ref) */
   $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['id'] = 'field_ercore_cr_inst_ref_target_id';
   $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['table'] = 'field_data_field_ercore_cr_inst_ref';
   $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['field'] = 'field_ercore_cr_inst_ref_target_id';
   $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['relationship'] = 'field_ercore_cn_collaborator_value';
+  $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['group'] = 1;
   $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['expose']['operator_id'] = 'field_ercore_cr_inst_ref_target_id_op';
   $handler->display->display_options['filters']['field_ercore_cr_inst_ref_target_id']['expose']['label'] = 'Institution';
@@ -3519,6 +3541,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '15';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -4205,6 +4228,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '15';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -4462,6 +4486,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '15';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -4679,6 +4704,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '15';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -4895,6 +4921,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['disable_sql_rewrite'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '50';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -5275,6 +5302,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '15';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -5547,6 +5575,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '25';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -5633,33 +5662,11 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
-  /* Filter criterion: User: Participating Date(s) - end date (field_ercore_us_part_date:value2) */
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['id'] = 'field_ercore_us_part_date_value2';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['table'] = 'field_data_field_ercore_us_part_date';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['field'] = 'field_ercore_us_part_date_value2';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['expose']['operator_id'] = 'field_ercore_us_part_date_value2_op';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['expose']['label'] = 'End date';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['expose']['operator'] = 'field_ercore_us_part_date_value2_op';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['expose']['identifier'] = 'end-date';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['form_type'] = 'date_popup';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['year_range'] = '-25:+3';
   /* Filter criterion: User: Participating Date(s) -  start date (field_ercore_us_part_date) */
   $handler->display->display_options['filters']['field_ercore_us_part_date_value']['id'] = 'field_ercore_us_part_date_value';
   $handler->display->display_options['filters']['field_ercore_us_part_date_value']['table'] = 'field_data_field_ercore_us_part_date';
   $handler->display->display_options['filters']['field_ercore_us_part_date_value']['field'] = 'field_ercore_us_part_date_value';
-  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value']['operator'] = '>=';
   $handler->display->display_options['filters']['field_ercore_us_part_date_value']['group'] = 1;
   $handler->display->display_options['filters']['field_ercore_us_part_date_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ercore_us_part_date_value']['expose']['operator_id'] = 'field_ercore_us_part_date_value_op';
@@ -5673,14 +5680,39 @@ function ercore_admin_views_default_views() {
     5 => 0,
     6 => 0,
     7 => 0,
+    8 => 0,
     3 => 0,
   );
   $handler->display->display_options['filters']['field_ercore_us_part_date_value']['form_type'] = 'date_popup';
   $handler->display->display_options['filters']['field_ercore_us_part_date_value']['year_range'] = '-25:+3';
+  /* Filter criterion: User: Participating Date(s) - end date (field_ercore_us_part_date:value2) */
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['id'] = 'field_ercore_us_part_date_value2';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['table'] = 'field_data_field_ercore_us_part_date';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['field'] = 'field_ercore_us_part_date_value2';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['group'] = 1;
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['expose']['operator_id'] = 'field_ercore_us_part_date_value2_op';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['expose']['label'] = 'End date';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['expose']['operator'] = 'field_ercore_us_part_date_value2_op';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['expose']['identifier'] = 'end-date';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_ercore_us_part_date_value2']['year_range'] = '-25:+3';
   /* Filter criterion: User: Participating Institutions (field_ercore_us_inst_ref) */
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['group'] = 1;
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator_id'] = 'field_ercore_us_inst_ref_target_id_op';
   $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['label'] = 'Institution';
@@ -5703,10 +5735,12 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['uid']['value'] = array(
     0 => '1',
   );
+  $handler->display->display_options['filters']['uid']['group'] = 1;
   /* Filter criterion: User: Most Senior Project Role (field_ercore_us_sen_role) */
   $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['id'] = 'field_ercore_us_sen_role_value';
   $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['table'] = 'field_data_field_ercore_us_sen_role';
   $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['field'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['group'] = 1;
   $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['expose']['operator_id'] = 'field_ercore_us_sen_role_value_op';
   $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['expose']['label'] = 'Most Senior Project Role';
@@ -5851,6 +5885,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '15';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -6095,6 +6130,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '15';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -6421,6 +6457,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '15';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -6762,6 +6799,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '15';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -10397,7 +10435,7 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '100';
   $handler->display->display_options['style_plugin'] = 'semanticviews_default';
-  $handler->display->display_options['style_options']['row']['class'] = 'user-row person';
+  $handler->display->display_options['style_options']['row']['class'] = 'user-row person col-sm-6 col-lg-4';
   $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
   $handler->display->display_options['row_options']['skip_blank'] = 1;
   $handler->display->display_options['row_options']['semantic_html'] = array(
@@ -10634,1580 +10672,6 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
   $views['ercore_user_data'] = $view;
-
-  $view = new view();
-  $view->name = 'nv_ercore_summary_collaborations';
-  $view->description = '';
-  $view->tag = 'NV ERCore, ERCore, ERCore Summary, Collaboration';
-  $view->base_table = 'node';
-  $view->human_name = 'ERCore: Summary: Collaborations NV';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Collaborations';
-  $handler->display->display_options['css_class'] = 'ercore-summary-page collaborations-page ercore-view';
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'access ercore content';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['distinct'] = TRUE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '15';
-  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
-  $handler->display->display_options['style_options']['row']['class'] = 'list-row rows-counted';
-  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
-  $handler->display->display_options['row_options']['skip_blank'] = 1;
-  $handler->display->display_options['row_options']['semantic_html'] = array(
-    'counter' => array(
-      'element_type' => 'div',
-      'class' => 'collaboration counter',
-    ),
-    'rendered_entity' => array(
-      'element_type' => 'div',
-      'class' => 'collaboration counted',
-    ),
-  );
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No Collaborations have been created. <a href="/node/add/ercore-collaboration/">Create an collaboration</a>?';
-  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Relationship: Collaborator to User */
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['id'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['table'] = 'field_data_field_ercore_organizer';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['field'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['ui_name'] = 'Collaborator to User';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['label'] = 'Collaborator to User';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['required'] = TRUE;
-  /* Field: Global: View result counter */
-  $handler->display->display_options['fields']['counter']['id'] = 'counter';
-  $handler->display->display_options['fields']['counter']['table'] = 'views';
-  $handler->display->display_options['fields']['counter']['field'] = 'counter';
-  $handler->display->display_options['fields']['counter']['label'] = '';
-  $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
-  $handler->display->display_options['fields']['counter']['reverse'] = 0;
-  /* Field: Content: Rendered Node */
-  $handler->display->display_options['fields']['rendered_entity']['id'] = 'rendered_entity';
-  $handler->display->display_options['fields']['rendered_entity']['table'] = 'views_entity_node';
-  $handler->display->display_options['fields']['rendered_entity']['field'] = 'rendered_entity';
-  $handler->display->display_options['fields']['rendered_entity']['label'] = '';
-  $handler->display->display_options['fields']['rendered_entity']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['rendered_entity']['link_to_entity'] = 0;
-  $handler->display->display_options['fields']['rendered_entity']['display'] = 'view';
-  $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'teaser';
-  $handler->display->display_options['fields']['rendered_entity']['bypass_access'] = 0;
-  /* Sort criterion: Content: Title */
-  $handler->display->display_options['sorts']['title']['id'] = 'title';
-  $handler->display->display_options['sorts']['title']['table'] = 'node';
-  $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'ercore_collaboration' => 'ercore_collaboration',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Collaboration Dates - end date (field_ercore_cn_dates:value2) */
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['id'] = 'field_ercore_cn_dates_value2';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['table'] = 'field_data_field_ercore_cn_dates';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['field'] = 'field_ercore_cn_dates_value2';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['operator_id'] = 'field_ercore_cn_dates_value2_op';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['label'] = 'Start Date';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['operator'] = 'field_ercore_cn_dates_value2_op';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['identifier'] = 'start-date';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value2']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Collaboration Dates -  start date (field_ercore_cn_dates) */
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['id'] = 'field_ercore_cn_dates_value';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['table'] = 'field_data_field_ercore_cn_dates';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['field'] = 'field_ercore_cn_dates_value';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['operator_id'] = 'field_ercore_cn_dates_value_op';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['label'] = 'End Date';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['operator'] = 'field_ercore_cn_dates_value_op';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['identifier'] = 'end-date';
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_ercore_cn_dates_value']['form_type'] = 'date_popup';
-  /* Filter criterion: User: Participating Institutions (field_ercore_us_inst_ref) */
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['relationship'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator_id'] = 'field_ercore_us_inst_ref_target_id_op';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['label'] = 'Institution';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator'] = 'field_ercore_us_inst_ref_target_id_op';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['identifier'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'collaborations';
-  $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Collaborations';
-  $handler->display->display_options['menu']['name'] = 'main-menu';
-
-  /* Display: Data export */
-  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
-  $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'access ercore excel sheets';
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
-  $handler->display->display_options['style_options']['attach_text'] = 'Download Collaborations Summary';
-  $handler->display->display_options['style_options']['provide_file'] = 1;
-  $handler->display->display_options['style_options']['filename'] = '%view.xls';
-  $handler->display->display_options['style_options']['parent_sort'] = 0;
-  $handler->display->display_options['defaults']['empty'] = FALSE;
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Nid */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['label'] = 'Node ID';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Collaboration Dates */
-  $handler->display->display_options['fields']['field_ercore_cn_dates']['id'] = 'field_ercore_cn_dates';
-  $handler->display->display_options['fields']['field_ercore_cn_dates']['table'] = 'field_data_field_ercore_cn_dates';
-  $handler->display->display_options['fields']['field_ercore_cn_dates']['field'] = 'field_ercore_cn_dates';
-  $handler->display->display_options['fields']['field_ercore_cn_dates']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_cn_dates']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_cn_dates']['settings'] = array(
-    'format_type' => 'short',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_remaining_days' => 0,
-    'show_repeat_rule' => 'show',
-  );
-  /* Field: Content: Body */
-  $handler->display->display_options['fields']['body']['id'] = 'body';
-  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
-  $handler->display->display_options['fields']['body']['field'] = 'body';
-  $handler->display->display_options['fields']['body']['label'] = 'Abstract or Short Description';
-  /* Field: Field: Project Team */
-  $handler->display->display_options['fields']['field_ercore_programs']['id'] = 'field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['table'] = 'field_data_field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['field'] = 'field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_programs']['settings'] = array(
-    'link' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_programs']['delta_offset'] = '0';
-  /* Field: Content: EPSCoR Organizer(s) */
-  $handler->display->display_options['fields']['field_ercore_organizer']['id'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['table'] = 'field_data_field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['field'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['label'] = 'Collaborators';
-  $handler->display->display_options['fields']['field_ercore_organizer']['alter']['trim_whitespace'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_organizer']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_organizer']['settings'] = array(
-    'link' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_organizer']['delta_offset'] = '0';
-  /* Field: Content: EPSCoR Organizer(s) */
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['id'] = 'field_ercore_organizer_1';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['table'] = 'field_data_field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['field'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['label'] = 'Institution(s)';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['trim_whitespace'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['type'] = 'entityreference_entity_view';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['settings'] = array(
-    'view_mode' => 'institution',
-    'links' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['delta_offset'] = '0';
-  /* Field: Content: External Collaborators */
-  $handler->display->display_options['fields']['field_ercore_cn_collaborator']['id'] = 'field_ercore_cn_collaborator';
-  $handler->display->display_options['fields']['field_ercore_cn_collaborator']['table'] = 'field_data_field_ercore_cn_collaborator';
-  $handler->display->display_options['fields']['field_ercore_cn_collaborator']['field'] = 'field_ercore_cn_collaborator';
-  $handler->display->display_options['fields']['field_ercore_cn_collaborator']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_cn_collaborator']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_cn_collaborator']['type'] = 'field_collection_fields';
-  $handler->display->display_options['fields']['field_ercore_cn_collaborator']['settings'] = array(
-    'view_mode' => 'simplified',
-  );
-  $handler->display->display_options['fields']['field_ercore_cn_collaborator']['delta_offset'] = '0';
-  $handler->display->display_options['path'] = 'collaborations/download';
-  $handler->display->display_options['displays'] = array(
-    'default' => 'default',
-    'page' => 'page',
-  );
-  $views['nv_ercore_summary_collaborations'] = $view;
-
-  $view = new view();
-  $view->name = 'nv_ercore_summary_other_research_products';
-  $view->description = '';
-  $view->tag = 'NV ERCore, ERCore, ERCore Summary, Other Products';
-  $view->base_table = 'node';
-  $view->human_name = 'ERCore: Summary: Other Research Products NV';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Other Research Products';
-  $handler->display->display_options['css_class'] = 'ercore-summary-page other-products-page ercore-view';
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'access ercore content';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['distinct'] = TRUE;
-  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '15';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
-  $handler->display->display_options['style_options']['row']['class'] = 'list-row rows-counted';
-  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
-  $handler->display->display_options['row_options']['skip_blank'] = 1;
-  $handler->display->display_options['row_options']['semantic_html'] = array(
-    'counter' => array(
-      'element_type' => 'div',
-      'class' => 'counter',
-    ),
-    'rendered_entity' => array(
-      'element_type' => 'div',
-      'class' => 'counted',
-    ),
-  );
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No Research Products have been created. <a href="/node/add/ercore-other-product/">Create a research product</a>?';
-  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Relationship: Research to User */
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['id'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['table'] = 'field_data_field_ercore_organizer';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['field'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['ui_name'] = 'Research to User';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['label'] = 'Research to User';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['required'] = TRUE;
-  /* Field: Global: View result counter */
-  $handler->display->display_options['fields']['counter']['id'] = 'counter';
-  $handler->display->display_options['fields']['counter']['table'] = 'views';
-  $handler->display->display_options['fields']['counter']['field'] = 'counter';
-  $handler->display->display_options['fields']['counter']['label'] = '';
-  $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
-  $handler->display->display_options['fields']['counter']['reverse'] = 0;
-  /* Field: Content: Rendered Node */
-  $handler->display->display_options['fields']['rendered_entity']['id'] = 'rendered_entity';
-  $handler->display->display_options['fields']['rendered_entity']['table'] = 'views_entity_node';
-  $handler->display->display_options['fields']['rendered_entity']['field'] = 'rendered_entity';
-  $handler->display->display_options['fields']['rendered_entity']['label'] = '';
-  $handler->display->display_options['fields']['rendered_entity']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['rendered_entity']['link_to_entity'] = 1;
-  $handler->display->display_options['fields']['rendered_entity']['display'] = 'view';
-  $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'teaser';
-  $handler->display->display_options['fields']['rendered_entity']['bypass_access'] = 0;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'ercore_other_product' => 'ercore_other_product',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Date (field_ercore_op_date) */
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['id'] = 'field_ercore_op_date_value';
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['table'] = 'field_data_field_ercore_op_date';
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['field'] = 'field_ercore_op_date_value';
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['expose']['operator_id'] = 'field_ercore_op_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['expose']['label'] = 'Start Date';
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['expose']['operator'] = 'field_ercore_op_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['expose']['identifier'] = 'start-date';
-  $handler->display->display_options['filters']['field_ercore_op_date_value']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Date (field_ercore_op_date) */
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['id'] = 'field_ercore_op_date_value_1';
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['table'] = 'field_data_field_ercore_op_date';
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['field'] = 'field_ercore_op_date_value';
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['expose']['operator_id'] = 'field_ercore_op_date_value_1_op';
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['expose']['label'] = 'End Date';
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['expose']['operator'] = 'field_ercore_op_date_value_1_op';
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['expose']['identifier'] = 'end-date';
-  $handler->display->display_options['filters']['field_ercore_op_date_value_1']['form_type'] = 'date_popup';
-  /* Filter criterion: User: Participating Institutions (field_ercore_us_inst_ref) */
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['relationship'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator_id'] = 'field_ercore_us_inst_ref_target_id_op';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['label'] = 'Institution';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator'] = 'field_ercore_us_inst_ref_target_id_op';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['identifier'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    3 => 0,
-  );
-  /* Filter criterion: Content: Type (field_ercore_op_type) */
-  $handler->display->display_options['filters']['field_ercore_op_type_value']['id'] = 'field_ercore_op_type_value';
-  $handler->display->display_options['filters']['field_ercore_op_type_value']['table'] = 'field_data_field_ercore_op_type';
-  $handler->display->display_options['filters']['field_ercore_op_type_value']['field'] = 'field_ercore_op_type_value';
-  $handler->display->display_options['filters']['field_ercore_op_type_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_op_type_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_op_type_value']['expose']['operator_id'] = 'field_ercore_op_type_value_op';
-  $handler->display->display_options['filters']['field_ercore_op_type_value']['expose']['label'] = 'Type';
-  $handler->display->display_options['filters']['field_ercore_op_type_value']['expose']['operator'] = 'field_ercore_op_type_value_op';
-  $handler->display->display_options['filters']['field_ercore_op_type_value']['expose']['identifier'] = 'field_ercore_op_type_value';
-  $handler->display->display_options['filters']['field_ercore_op_type_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    3 => 0,
-  );
-
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'other-research-products';
-  $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Other Research Products';
-  $handler->display->display_options['menu']['weight'] = '0';
-  $handler->display->display_options['menu']['name'] = 'main-menu';
-  $handler->display->display_options['menu']['context'] = 0;
-  $handler->display->display_options['menu']['context_only_inline'] = 0;
-
-  /* Display: Data export */
-  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
-  $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'access ercore excel sheets';
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
-  $handler->display->display_options['style_options']['attach_text'] = 'Download Other Research Products Summary';
-  $handler->display->display_options['style_options']['provide_file'] = 1;
-  $handler->display->display_options['style_options']['filename'] = '%view.xls';
-  $handler->display->display_options['style_options']['parent_sort'] = 0;
-  $handler->display->display_options['defaults']['empty'] = FALSE;
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Nid */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['label'] = 'Node ID';
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: EPSCoR Organizer(s) */
-  $handler->display->display_options['fields']['field_ercore_organizer']['id'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['table'] = 'field_data_field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['field'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['label'] = 'Researcher';
-  $handler->display->display_options['fields']['field_ercore_organizer']['element_type'] = 'span';
-  $handler->display->display_options['fields']['field_ercore_organizer']['settings'] = array(
-    'link' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_organizer']['delta_offset'] = '0';
-  /* Field: Content: EPSCoR Organizer(s) */
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['id'] = 'field_ercore_organizer_1';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['table'] = 'field_data_field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['field'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['label'] = 'Institutions';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['trim_whitespace'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['type'] = 'entityreference_entity_view';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['settings'] = array(
-    'view_mode' => 'institution',
-    'links' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['delta_offset'] = '0';
-  /* Field: Content: Non-EPSCoR Participant Research Product Creators */
-  $handler->display->display_options['fields']['field_ercore_op_non_epscor']['id'] = 'field_ercore_op_non_epscor';
-  $handler->display->display_options['fields']['field_ercore_op_non_epscor']['table'] = 'field_data_field_ercore_op_non_epscor';
-  $handler->display->display_options['fields']['field_ercore_op_non_epscor']['field'] = 'field_ercore_op_non_epscor';
-  $handler->display->display_options['fields']['field_ercore_op_non_epscor']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_op_non_epscor']['delta_offset'] = '0';
-  /* Field: Content: EPSCoR Support */
-  $handler->display->display_options['fields']['field_ercore_op_rii_support']['id'] = 'field_ercore_op_rii_support';
-  $handler->display->display_options['fields']['field_ercore_op_rii_support']['table'] = 'field_data_field_ercore_op_rii_support';
-  $handler->display->display_options['fields']['field_ercore_op_rii_support']['field'] = 'field_ercore_op_rii_support';
-  $handler->display->display_options['fields']['field_ercore_op_rii_support']['element_label_colon'] = FALSE;
-  /* Field: Field: Project Team */
-  $handler->display->display_options['fields']['field_ercore_programs']['id'] = 'field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['table'] = 'field_data_field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['field'] = 'field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_programs']['settings'] = array(
-    'link' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_programs']['delta_offset'] = '0';
-  /* Field: Content: Type */
-  $handler->display->display_options['fields']['field_ercore_op_type']['id'] = 'field_ercore_op_type';
-  $handler->display->display_options['fields']['field_ercore_op_type']['table'] = 'field_data_field_ercore_op_type';
-  $handler->display->display_options['fields']['field_ercore_op_type']['field'] = 'field_ercore_op_type';
-  $handler->display->display_options['fields']['field_ercore_op_type']['element_label_colon'] = FALSE;
-  /* Field: Content: Date */
-  $handler->display->display_options['fields']['field_ercore_op_date']['id'] = 'field_ercore_op_date';
-  $handler->display->display_options['fields']['field_ercore_op_date']['table'] = 'field_data_field_ercore_op_date';
-  $handler->display->display_options['fields']['field_ercore_op_date']['field'] = 'field_ercore_op_date';
-  $handler->display->display_options['fields']['field_ercore_op_date']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_op_date']['element_type'] = 'span';
-  $handler->display->display_options['fields']['field_ercore_op_date']['settings'] = array(
-    'format_type' => 'short',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_remaining_days' => 0,
-    'show_repeat_rule' => 'show',
-  );
-  /* Field: Content: NSF Acknowledgement */
-  $handler->display->display_options['fields']['field_ercore_nsf']['id'] = 'field_ercore_nsf';
-  $handler->display->display_options['fields']['field_ercore_nsf']['table'] = 'field_data_field_ercore_nsf';
-  $handler->display->display_options['fields']['field_ercore_nsf']['field'] = 'field_ercore_nsf';
-  $handler->display->display_options['fields']['field_ercore_nsf']['element_label_colon'] = FALSE;
-  /* Field: Content: Goals and Objectives */
-  $handler->display->display_options['fields']['field_ercore_goals']['id'] = 'field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['table'] = 'field_data_field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['field'] = 'field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['element_label_colon'] = FALSE;
-  /* Field: Content: Body */
-  $handler->display->display_options['fields']['body']['id'] = 'body';
-  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
-  $handler->display->display_options['fields']['body']['field'] = 'body';
-  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
-  $handler->display->display_options['path'] = 'other-research-products/download';
-  $handler->display->display_options['displays'] = array(
-    'default' => 'default',
-    'page' => 'page',
-  );
-  $views['nv_ercore_summary_other_research_products'] = $view;
-
-  $view = new view();
-  $view->name = 'nv_ercore_summary_presentations';
-  $view->description = '';
-  $view->tag = 'NV ERCore, ERCore, ERCore Summary, Presentations';
-  $view->base_table = 'node';
-  $view->human_name = 'ERCore: Summary: Presentations NV';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Presentations';
-  $handler->display->display_options['css_class'] = 'ercore-summary-page presentations-page ercore-view';
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'access ercore content';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['distinct'] = TRUE;
-  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '15';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['columns'] = array(
-    'field_ercore_ps_type' => 'field_ercore_ps_type',
-    'title' => 'title',
-    'field_ercore_organizer' => 'field_ercore_organizer',
-    'field_ercore_ps_date' => 'field_ercore_ps_date',
-    'field_ercore_ps_upload_file' => 'field_ercore_ps_upload_file',
-  );
-  $handler->display->display_options['style_options']['default'] = 'field_ercore_ps_date';
-  $handler->display->display_options['style_options']['info'] = array(
-    'field_ercore_ps_type' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'desc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'title' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_ercore_organizer' => array(
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_ercore_ps_date' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_ercore_ps_upload_file' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-  );
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No Presentations have been created. <a href="/node/add/ercore-presentation/">Create a presentation</a>?';
-  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Relationship: Presenter to User */
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['id'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['table'] = 'field_data_field_ercore_organizer';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['field'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['ui_name'] = 'Presenter to User';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['label'] = 'Presenter to User';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['required'] = TRUE;
-  /* Field: Global: View result counter */
-  $handler->display->display_options['fields']['counter']['id'] = 'counter';
-  $handler->display->display_options['fields']['counter']['table'] = 'views';
-  $handler->display->display_options['fields']['counter']['field'] = 'counter';
-  $handler->display->display_options['fields']['counter']['label'] = '#';
-  $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
-  $handler->display->display_options['fields']['counter']['reverse'] = 0;
-  /* Field: Content: Type of Presentation */
-  $handler->display->display_options['fields']['field_ercore_ps_type']['id'] = 'field_ercore_ps_type';
-  $handler->display->display_options['fields']['field_ercore_ps_type']['table'] = 'field_data_field_ercore_ps_type';
-  $handler->display->display_options['fields']['field_ercore_ps_type']['field'] = 'field_ercore_ps_type';
-  $handler->display->display_options['fields']['field_ercore_ps_type']['label'] = 'Type';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: EPSCoR Organizer(s) */
-  $handler->display->display_options['fields']['field_ercore_organizer']['id'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['table'] = 'field_data_field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['field'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['label'] = 'Researcher';
-  $handler->display->display_options['fields']['field_ercore_organizer']['settings'] = array(
-    'link' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_organizer']['delta_offset'] = '0';
-  /* Field: Content: Date */
-  $handler->display->display_options['fields']['field_ercore_ps_date']['id'] = 'field_ercore_ps_date';
-  $handler->display->display_options['fields']['field_ercore_ps_date']['table'] = 'field_data_field_ercore_ps_date';
-  $handler->display->display_options['fields']['field_ercore_ps_date']['field'] = 'field_ercore_ps_date';
-  $handler->display->display_options['fields']['field_ercore_ps_date']['settings'] = array(
-    'format_type' => 'medium',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_remaining_days' => 0,
-    'show_repeat_rule' => 'show',
-  );
-  /* Sort criterion: Content: Date (field_ercore_ps_date) */
-  $handler->display->display_options['sorts']['field_ercore_ps_date_value']['id'] = 'field_ercore_ps_date_value';
-  $handler->display->display_options['sorts']['field_ercore_ps_date_value']['table'] = 'field_data_field_ercore_ps_date';
-  $handler->display->display_options['sorts']['field_ercore_ps_date_value']['field'] = 'field_ercore_ps_date_value';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
-  $handler->display->display_options['filters']['status']['expose']['label'] = 'Published';
-  $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
-  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
-  $handler->display->display_options['filters']['status']['expose']['required'] = TRUE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'ercore_presentation' => 'ercore_presentation',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Date (field_ercore_ps_date) */
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['id'] = 'field_ercore_ps_date_value';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['table'] = 'field_data_field_ercore_ps_date';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['field'] = 'field_ercore_ps_date_value';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['expose']['operator_id'] = 'field_ercore_ps_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['expose']['label'] = 'Start Date';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['expose']['operator'] = 'field_ercore_ps_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['expose']['identifier'] = 'start-date';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Date (field_ercore_ps_date) */
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['id'] = 'field_ercore_ps_date_value_1';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['table'] = 'field_data_field_ercore_ps_date';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['field'] = 'field_ercore_ps_date_value';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['expose']['operator_id'] = 'field_ercore_ps_date_value_1_op';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['expose']['label'] = 'End Date';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['expose']['operator'] = 'field_ercore_ps_date_value_1_op';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['expose']['identifier'] = 'end-date';
-  $handler->display->display_options['filters']['field_ercore_ps_date_value_1']['form_type'] = 'date_popup';
-  /* Filter criterion: User: Participating Institutions (field_ercore_us_inst_ref) */
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['relationship'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator_id'] = 'field_ercore_us_inst_ref_target_id_op';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['label'] = 'Institution';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator'] = 'field_ercore_us_inst_ref_target_id_op';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['identifier'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    3 => 0,
-  );
-  /* Filter criterion: Content: Type of Presentation (field_ercore_ps_type) */
-  $handler->display->display_options['filters']['field_ercore_ps_type_value']['id'] = 'field_ercore_ps_type_value';
-  $handler->display->display_options['filters']['field_ercore_ps_type_value']['table'] = 'field_data_field_ercore_ps_type';
-  $handler->display->display_options['filters']['field_ercore_ps_type_value']['field'] = 'field_ercore_ps_type_value';
-  $handler->display->display_options['filters']['field_ercore_ps_type_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_ps_type_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_ps_type_value']['expose']['operator_id'] = 'field_ercore_ps_type_value_op';
-  $handler->display->display_options['filters']['field_ercore_ps_type_value']['expose']['label'] = 'Type';
-  $handler->display->display_options['filters']['field_ercore_ps_type_value']['expose']['operator'] = 'field_ercore_ps_type_value_op';
-  $handler->display->display_options['filters']['field_ercore_ps_type_value']['expose']['identifier'] = 'field_ercore_ps_type_value';
-
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'presentations';
-  $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Presentations';
-  $handler->display->display_options['menu']['weight'] = '0';
-  $handler->display->display_options['menu']['name'] = 'main-menu';
-  $handler->display->display_options['menu']['context'] = 0;
-  $handler->display->display_options['menu']['context_only_inline'] = 0;
-
-  /* Display: Data export */
-  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
-  $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'access ercore excel sheets';
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
-  $handler->display->display_options['style_options']['attach_text'] = 'Download Presentations Summary';
-  $handler->display->display_options['style_options']['provide_file'] = 1;
-  $handler->display->display_options['style_options']['filename'] = '%view.xls';
-  $handler->display->display_options['style_options']['parent_sort'] = 0;
-  $handler->display->display_options['defaults']['empty'] = FALSE;
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Nid */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['label'] = 'Node ID';
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Body */
-  $handler->display->display_options['fields']['body']['id'] = 'body';
-  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
-  $handler->display->display_options['fields']['body']['field'] = 'body';
-  $handler->display->display_options['fields']['body']['label'] = 'Brief Description';
-  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
-  /* Field: Content: Date */
-  $handler->display->display_options['fields']['field_ercore_ps_date']['id'] = 'field_ercore_ps_date';
-  $handler->display->display_options['fields']['field_ercore_ps_date']['table'] = 'field_data_field_ercore_ps_date';
-  $handler->display->display_options['fields']['field_ercore_ps_date']['field'] = 'field_ercore_ps_date';
-  $handler->display->display_options['fields']['field_ercore_ps_date']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_ps_date']['settings'] = array(
-    'format_type' => 'short',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_remaining_days' => 0,
-    'show_repeat_rule' => 'show',
-  );
-  /* Field: Content: EPSCoR Organizer(s) */
-  $handler->display->display_options['fields']['field_ercore_organizer']['id'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['table'] = 'field_data_field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['field'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_organizer']['settings'] = array(
-    'link' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_organizer']['delta_offset'] = '0';
-  /* Field: Content: EPSCoR Organizer(s) */
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['id'] = 'field_ercore_organizer_1';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['table'] = 'field_data_field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['field'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['label'] = 'Institutions';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['trim_whitespace'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['type'] = 'entityreference_entity_view';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['settings'] = array(
-    'view_mode' => 'institution',
-    'links' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['delta_offset'] = '0';
-  /* Field: Content: Non-EPSCoR Authors */
-  $handler->display->display_options['fields']['field_ercore_pb_nonepscor_auth']['id'] = 'field_ercore_pb_nonepscor_auth';
-  $handler->display->display_options['fields']['field_ercore_pb_nonepscor_auth']['table'] = 'field_data_field_ercore_pb_nonepscor_auth';
-  $handler->display->display_options['fields']['field_ercore_pb_nonepscor_auth']['field'] = 'field_ercore_pb_nonepscor_auth';
-  $handler->display->display_options['fields']['field_ercore_pb_nonepscor_auth']['element_label_colon'] = FALSE;
-  /* Field: Content: Type of Presentation */
-  $handler->display->display_options['fields']['field_ercore_ps_type']['id'] = 'field_ercore_ps_type';
-  $handler->display->display_options['fields']['field_ercore_ps_type']['table'] = 'field_data_field_ercore_ps_type';
-  $handler->display->display_options['fields']['field_ercore_ps_type']['field'] = 'field_ercore_ps_type';
-  $handler->display->display_options['fields']['field_ercore_ps_type']['element_label_colon'] = FALSE;
-  /* Field: Content: Status */
-  $handler->display->display_options['fields']['field_ercore_ps_status']['id'] = 'field_ercore_ps_status';
-  $handler->display->display_options['fields']['field_ercore_ps_status']['table'] = 'field_data_field_ercore_ps_status';
-  $handler->display->display_options['fields']['field_ercore_ps_status']['field'] = 'field_ercore_ps_status';
-  $handler->display->display_options['fields']['field_ercore_ps_status']['element_label_colon'] = FALSE;
-  /* Field: Content: Goals and Objectives */
-  $handler->display->display_options['fields']['field_ercore_goals']['id'] = 'field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['table'] = 'field_data_field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['field'] = 'field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['element_label_colon'] = FALSE;
-  /* Field: Field: Project Team */
-  $handler->display->display_options['fields']['field_ercore_programs']['id'] = 'field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['table'] = 'field_data_field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['field'] = 'field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_programs']['settings'] = array(
-    'link' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_programs']['delta_offset'] = '0';
-  /* Field: Content: What was the event where you presented? */
-  $handler->display->display_options['fields']['field_ercore_ps_event']['id'] = 'field_ercore_ps_event';
-  $handler->display->display_options['fields']['field_ercore_ps_event']['table'] = 'field_data_field_ercore_ps_event';
-  $handler->display->display_options['fields']['field_ercore_ps_event']['field'] = 'field_ercore_ps_event';
-  $handler->display->display_options['fields']['field_ercore_ps_event']['label'] = 'What was the event?';
-  $handler->display->display_options['fields']['field_ercore_ps_event']['element_label_colon'] = FALSE;
-  /* Field: Content: Presentation Link */
-  $handler->display->display_options['fields']['field_ercore_ps_link']['id'] = 'field_ercore_ps_link';
-  $handler->display->display_options['fields']['field_ercore_ps_link']['table'] = 'field_data_field_ercore_ps_link';
-  $handler->display->display_options['fields']['field_ercore_ps_link']['field'] = 'field_ercore_ps_link';
-  $handler->display->display_options['fields']['field_ercore_ps_link']['label'] = 'Presentation Link (URL - Title)';
-  $handler->display->display_options['fields']['field_ercore_ps_link']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_ps_link']['alter']['text'] = '[field_ercore_ps_link-url] - [field_ercore_ps_link-title]';
-  $handler->display->display_options['fields']['field_ercore_ps_link']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_ps_link']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_ercore_ps_link']['type'] = 'link_separate';
-  $handler->display->display_options['defaults']['sorts'] = FALSE;
-  $handler->display->display_options['path'] = 'presentations/download';
-  $handler->display->display_options['displays'] = array(
-    'default' => 'default',
-    'page' => 'page',
-    'page_1' => 'page_1',
-    'page_2' => 'page_2',
-  );
-  $views['nv_ercore_summary_presentations'] = $view;
-
-  $view = new view();
-  $view->name = 'nv_ercore_summary_proposals';
-  $view->description = '';
-  $view->tag = 'NV ERCore, ERCore, ERCore Summary, Proposals';
-  $view->base_table = 'node';
-  $view->human_name = 'ERCore: Summary: Proposals NV';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Grants and Proposals';
-  $handler->display->display_options['css_class'] = 'ercore-summary-page proposals-page ercore-view';
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'access ercore content';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['distinct'] = TRUE;
-  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '15';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
-  $handler->display->display_options['style_options']['row']['class'] = 'list-row rows-counted';
-  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
-  $handler->display->display_options['row_options']['skip_blank'] = 1;
-  $handler->display->display_options['row_options']['semantic_html'] = array(
-    'counter' => array(
-      'element_type' => 'div',
-      'class' => 'counter',
-    ),
-    'rendered_entity' => array(
-      'element_type' => 'div',
-      'class' => 'counted',
-    ),
-  );
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No Grant Proposals have been created. <a href="/node/add/ercore-proposal/">Create a proposal</a>?';
-  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Relationship: Proposal to User */
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['id'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['table'] = 'field_data_field_ercore_organizer';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['field'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['ui_name'] = 'Proposal to User';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['label'] = 'Proposal to User';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['required'] = TRUE;
-  /* Field: Global: View result counter */
-  $handler->display->display_options['fields']['counter']['id'] = 'counter';
-  $handler->display->display_options['fields']['counter']['table'] = 'views';
-  $handler->display->display_options['fields']['counter']['field'] = 'counter';
-  $handler->display->display_options['fields']['counter']['label'] = '';
-  $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
-  $handler->display->display_options['fields']['counter']['reverse'] = 0;
-  /* Field: Content: Rendered Node */
-  $handler->display->display_options['fields']['rendered_entity']['id'] = 'rendered_entity';
-  $handler->display->display_options['fields']['rendered_entity']['table'] = 'views_entity_node';
-  $handler->display->display_options['fields']['rendered_entity']['field'] = 'rendered_entity';
-  $handler->display->display_options['fields']['rendered_entity']['label'] = '';
-  $handler->display->display_options['fields']['rendered_entity']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['rendered_entity']['link_to_entity'] = 1;
-  $handler->display->display_options['fields']['rendered_entity']['display'] = 'view';
-  $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'teaser';
-  $handler->display->display_options['fields']['rendered_entity']['bypass_access'] = 0;
-  /* Sort criterion: Content: Date Submitted (field_ercore_pp_proposal_submit) */
-  $handler->display->display_options['sorts']['field_ercore_pp_proposal_submit_value']['id'] = 'field_ercore_pp_proposal_submit_value';
-  $handler->display->display_options['sorts']['field_ercore_pp_proposal_submit_value']['table'] = 'field_data_field_ercore_pp_proposal_submit';
-  $handler->display->display_options['sorts']['field_ercore_pp_proposal_submit_value']['field'] = 'field_ercore_pp_proposal_submit_value';
-  $handler->display->display_options['sorts']['field_ercore_pp_proposal_submit_value']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'ercore_proposal' => 'ercore_proposal',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Award Dates - end date (field_ercore_pp_proposal_date:value2) */
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['id'] = 'field_ercore_pp_proposal_date_value2';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['table'] = 'field_data_field_ercore_pp_proposal_date';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['field'] = 'field_ercore_pp_proposal_date_value2';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['expose']['operator_id'] = 'field_ercore_pp_proposal_date_value2_op';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['expose']['label'] = 'Start date';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['expose']['operator'] = 'field_ercore_pp_proposal_date_value2_op';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['expose']['identifier'] = 'start-date';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value2']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Award Dates -  start date (field_ercore_pp_proposal_date) */
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['id'] = 'field_ercore_pp_proposal_date_value';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['table'] = 'field_data_field_ercore_pp_proposal_date';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['field'] = 'field_ercore_pp_proposal_date_value';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['expose']['operator_id'] = 'field_ercore_pp_proposal_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['expose']['label'] = 'End date';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['expose']['operator'] = 'field_ercore_pp_proposal_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['expose']['identifier'] = 'end-date';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_date_value']['form_type'] = 'date_popup';
-  /* Filter criterion: User: Participating Institutions (field_ercore_us_inst_ref) */
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['relationship'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator_id'] = 'field_ercore_us_inst_ref_target_id_op';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['label'] = 'Institution';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator'] = 'field_ercore_us_inst_ref_target_id_op';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['identifier'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    3 => 0,
-  );
-  /* Filter criterion: Content: Status (field_ercore_pp_proposal_status) */
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_status_value']['id'] = 'field_ercore_pp_proposal_status_value';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_status_value']['table'] = 'field_data_field_ercore_pp_proposal_status';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_status_value']['field'] = 'field_ercore_pp_proposal_status_value';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_status_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_status_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_status_value']['expose']['operator_id'] = 'field_ercore_pp_proposal_status_value_op';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_status_value']['expose']['label'] = 'Status';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_status_value']['expose']['operator'] = 'field_ercore_pp_proposal_status_value_op';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_status_value']['expose']['identifier'] = 'field_ercore_pp_proposal_status_value';
-  $handler->display->display_options['filters']['field_ercore_pp_proposal_status_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    6 => 0,
-    7 => 0,
-    5 => 0,
-    4 => 0,
-    3 => 0,
-  );
-
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'proposals';
-  $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Grants & Proposals';
-  $handler->display->display_options['menu']['weight'] = '0';
-  $handler->display->display_options['menu']['name'] = 'main-menu';
-  $handler->display->display_options['menu']['context'] = 0;
-  $handler->display->display_options['menu']['context_only_inline'] = 0;
-
-  /* Display: Data export */
-  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Grants and Proposals*';
-  $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'access ercore excel sheets';
-  $handler->display->display_options['defaults']['query'] = FALSE;
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['distinct'] = TRUE;
-  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
-  $handler->display->display_options['style_options']['attach_text'] = 'Download Grants and Proposals Summary';
-  $handler->display->display_options['style_options']['provide_file'] = 1;
-  $handler->display->display_options['style_options']['filename'] = '%view.xls';
-  $handler->display->display_options['style_options']['parent_sort'] = 0;
-  $handler->display->display_options['defaults']['empty'] = FALSE;
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Nid */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['label'] = 'Node ID';
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: EPSCoR Organizer(s) */
-  $handler->display->display_options['fields']['field_ercore_organizer']['id'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['table'] = 'field_data_field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['field'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_organizer']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_organizer']['settings'] = array(
-    'link' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_organizer']['delta_offset'] = '0';
-  /* Field: Content: EPSCoR Organizer(s) */
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['id'] = 'field_ercore_organizer_1';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['table'] = 'field_data_field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['field'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['label'] = 'Institution(s)';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['trim_whitespace'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['type'] = 'entityreference_entity_view';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['settings'] = array(
-    'view_mode' => 'institution',
-    'links' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['delta_offset'] = '0';
-  /* Field: Content: Non-EPSCoR PI/Co-PI */
-  $handler->display->display_options['fields']['field_ercore_pp_other_pi']['id'] = 'field_ercore_pp_other_pi';
-  $handler->display->display_options['fields']['field_ercore_pp_other_pi']['table'] = 'field_data_field_ercore_pp_other_pi';
-  $handler->display->display_options['fields']['field_ercore_pp_other_pi']['field'] = 'field_ercore_pp_other_pi';
-  $handler->display->display_options['fields']['field_ercore_pp_other_pi']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_pp_other_pi']['delta_offset'] = '0';
-  /* Field: Content: Other EPSCoR Researchers */
-  $handler->display->display_options['fields']['field_ercore_pp_others']['id'] = 'field_ercore_pp_others';
-  $handler->display->display_options['fields']['field_ercore_pp_others']['table'] = 'field_data_field_ercore_pp_others';
-  $handler->display->display_options['fields']['field_ercore_pp_others']['field'] = 'field_ercore_pp_others';
-  $handler->display->display_options['fields']['field_ercore_pp_others']['alter']['trim_whitespace'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_pp_others']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_pp_others']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_pp_others']['type'] = 'entityreference_entity_view';
-  $handler->display->display_options['fields']['field_ercore_pp_others']['settings'] = array(
-    'view_mode' => 'user_institution',
-    'links' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_pp_others']['delta_offset'] = '0';
-  /* Field: Content: Salary Support */
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_paid']['id'] = 'field_ercore_pp_proposal_paid';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_paid']['table'] = 'field_data_field_ercore_pp_proposal_paid';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_paid']['field'] = 'field_ercore_pp_proposal_paid';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_paid']['element_label_colon'] = FALSE;
-  /* Field: Content: Funding Agency */
-  $handler->display->display_options['fields']['field_ercore_pp_support']['id'] = 'field_ercore_pp_support';
-  $handler->display->display_options['fields']['field_ercore_pp_support']['table'] = 'field_data_field_ercore_pp_support';
-  $handler->display->display_options['fields']['field_ercore_pp_support']['field'] = 'field_ercore_pp_support';
-  $handler->display->display_options['fields']['field_ercore_pp_support']['element_label_colon'] = FALSE;
-  /* Field: Content: Amount Requested */
-  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['id'] = 'field_ercore_pp_award_req_dec';
-  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['table'] = 'field_data_field_ercore_pp_award_req_dec';
-  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['field'] = 'field_ercore_pp_award_req_dec';
-  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_pp_award_req_dec']['settings'] = array(
-    'thousand_separator' => ',',
-    'decimal_separator' => '.',
-    'scale' => '0',
-    'prefix_suffix' => 0,
-  );
-  /* Field: Content: Support Type */
-  $handler->display->display_options['fields']['field_ercore_pp_support_type']['id'] = 'field_ercore_pp_support_type';
-  $handler->display->display_options['fields']['field_ercore_pp_support_type']['table'] = 'field_data_field_ercore_pp_support_type';
-  $handler->display->display_options['fields']['field_ercore_pp_support_type']['field'] = 'field_ercore_pp_support_type';
-  $handler->display->display_options['fields']['field_ercore_pp_support_type']['element_label_colon'] = FALSE;
-  /* Field: Content: Status */
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_status']['id'] = 'field_ercore_pp_proposal_status';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_status']['table'] = 'field_data_field_ercore_pp_proposal_status';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_status']['field'] = 'field_ercore_pp_proposal_status';
-  /* Field: Content: Date Submitted */
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['id'] = 'field_ercore_pp_proposal_submit';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['table'] = 'field_data_field_ercore_pp_proposal_submit';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['field'] = 'field_ercore_pp_proposal_submit';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['settings'] = array(
-    'format_type' => 'short',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_remaining_days' => 0,
-    'show_repeat_rule' => 'show',
-  );
-  /* Field: Content: Award Dates */
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_date']['id'] = 'field_ercore_pp_proposal_date';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_date']['table'] = 'field_data_field_ercore_pp_proposal_date';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_date']['field'] = 'field_ercore_pp_proposal_date';
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_date']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_pp_proposal_date']['settings'] = array(
-    'format_type' => 'short',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_remaining_days' => 0,
-    'show_repeat_rule' => 'show',
-  );
-  /* Field: Content: Award Amount */
-  $handler->display->display_options['fields']['field_ercore_pp_award_amount']['id'] = 'field_ercore_pp_award_amount';
-  $handler->display->display_options['fields']['field_ercore_pp_award_amount']['table'] = 'field_data_field_ercore_pp_award_amount';
-  $handler->display->display_options['fields']['field_ercore_pp_award_amount']['field'] = 'field_ercore_pp_award_amount';
-  $handler->display->display_options['fields']['field_ercore_pp_award_amount']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_pp_award_amount']['settings'] = array(
-    'thousand_separator' => ',',
-    'decimal_separator' => '.',
-    'scale' => '0',
-    'prefix_suffix' => 0,
-  );
-  /* Field: Content: Location */
-  $handler->display->display_options['fields']['field_ercore_pp_location']['id'] = 'field_ercore_pp_location';
-  $handler->display->display_options['fields']['field_ercore_pp_location']['table'] = 'field_data_field_ercore_pp_location';
-  $handler->display->display_options['fields']['field_ercore_pp_location']['field'] = 'field_ercore_pp_location';
-  $handler->display->display_options['fields']['field_ercore_pp_location']['element_label_colon'] = FALSE;
-  /* Field: Content: Goals and Objectives */
-  $handler->display->display_options['fields']['field_ercore_goals']['id'] = 'field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['table'] = 'field_data_field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['field'] = 'field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['element_label_colon'] = FALSE;
-  /* Field: Content: Body */
-  $handler->display->display_options['fields']['body']['id'] = 'body';
-  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
-  $handler->display->display_options['fields']['body']['field'] = 'body';
-  $handler->display->display_options['fields']['body']['label'] = 'Brief Description';
-  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
-  /* Field: Field: Project Team */
-  $handler->display->display_options['fields']['field_ercore_programs']['id'] = 'field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['table'] = 'field_data_field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['field'] = 'field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_programs']['settings'] = array(
-    'link' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_programs']['delta_offset'] = '0';
-  $handler->display->display_options['path'] = 'proposals/download';
-  $handler->display->display_options['displays'] = array(
-    'default' => 'default',
-    'page' => 'page',
-    'page_1' => 'page_1',
-    'page_2' => 'page_2',
-  );
-  $handler->display->display_options['sitename_title'] = 0;
-  $views['nv_ercore_summary_proposals'] = $view;
-
-  $view = new view();
-  $view->name = 'nv_ercore_summary_publication';
-  $view->description = '';
-  $view->tag = 'NV ERCore, ERCore, ERCore Summary, Publications';
-  $view->base_table = 'node';
-  $view->human_name = 'ERCore: Summary: Publication NV';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Publications';
-  $handler->display->display_options['css_class'] = 'ercore-summary-page publications-page ercore-view';
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'access ercore content';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['distinct'] = TRUE;
-  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '15';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
-  $handler->display->display_options['style_options']['grouping'] = array(
-    0 => array(
-      'field' => 'field_ercore_pb_type',
-      'rendered' => 1,
-      'rendered_strip' => 0,
-    ),
-  );
-  $handler->display->display_options['style_options']['group']['element_type'] = 'h2';
-  $handler->display->display_options['style_options']['row']['class'] = 'list-row rows-counted';
-  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
-  $handler->display->display_options['row_options']['skip_blank'] = 1;
-  $handler->display->display_options['row_options']['semantic_html'] = array(
-    'counter' => array(
-      'element_type' => 'div',
-      'class' => 'counter',
-    ),
-    'rendered_entity' => array(
-      'element_type' => 'div',
-      'class' => 'counted',
-    ),
-  );
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No Publications have been created. <a href="/node/add/ercore-publication/">Create a publication</a>?';
-  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Relationship: Publication to User */
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['id'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['table'] = 'field_data_field_ercore_organizer';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['field'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['ui_name'] = 'Publication to User';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['label'] = 'Publication to User';
-  $handler->display->display_options['relationships']['field_ercore_organizer_target_id']['required'] = TRUE;
-  /* Field: Global: View result counter */
-  $handler->display->display_options['fields']['counter']['id'] = 'counter';
-  $handler->display->display_options['fields']['counter']['table'] = 'views';
-  $handler->display->display_options['fields']['counter']['field'] = 'counter';
-  $handler->display->display_options['fields']['counter']['label'] = '';
-  $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
-  $handler->display->display_options['fields']['counter']['reverse'] = 0;
-  /* Field: Content: Rendered Node */
-  $handler->display->display_options['fields']['rendered_entity']['id'] = 'rendered_entity';
-  $handler->display->display_options['fields']['rendered_entity']['table'] = 'views_entity_node';
-  $handler->display->display_options['fields']['rendered_entity']['field'] = 'rendered_entity';
-  $handler->display->display_options['fields']['rendered_entity']['label'] = '';
-  $handler->display->display_options['fields']['rendered_entity']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['rendered_entity']['link_to_entity'] = 0;
-  $handler->display->display_options['fields']['rendered_entity']['display'] = 'view';
-  $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'teaser';
-  $handler->display->display_options['fields']['rendered_entity']['bypass_access'] = 0;
-  /* Field: Content: Publication Type */
-  $handler->display->display_options['fields']['field_ercore_pb_type']['id'] = 'field_ercore_pb_type';
-  $handler->display->display_options['fields']['field_ercore_pb_type']['table'] = 'field_data_field_ercore_pb_type';
-  $handler->display->display_options['fields']['field_ercore_pb_type']['field'] = 'field_ercore_pb_type';
-  $handler->display->display_options['fields']['field_ercore_pb_type']['label'] = '';
-  $handler->display->display_options['fields']['field_ercore_pb_type']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_pb_type']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Publication Type (field_ercore_pb_type) */
-  $handler->display->display_options['sorts']['field_ercore_pb_type_value']['id'] = 'field_ercore_pb_type_value';
-  $handler->display->display_options['sorts']['field_ercore_pb_type_value']['table'] = 'field_data_field_ercore_pb_type';
-  $handler->display->display_options['sorts']['field_ercore_pb_type_value']['field'] = 'field_ercore_pb_type_value';
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = '1';
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'ercore_publication' => 'ercore_publication',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Date of Publication (field_ercore_pb_date) */
-  $handler->display->display_options['filters']['field_ercore_pb_date_value']['id'] = 'field_ercore_pb_date_value';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value']['table'] = 'field_data_field_ercore_pb_date';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value']['field'] = 'field_ercore_pb_date_value';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_pb_date_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_pb_date_value']['expose']['operator_id'] = 'field_ercore_pb_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value']['expose']['label'] = 'Start Date';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value']['expose']['operator'] = 'field_ercore_pb_date_value_op';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value']['expose']['identifier'] = 'start-date';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Date of Publication (field_ercore_pb_date) */
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['id'] = 'field_ercore_pb_date_value_1';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['table'] = 'field_data_field_ercore_pb_date';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['field'] = 'field_ercore_pb_date_value';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['expose']['operator_id'] = 'field_ercore_pb_date_value_1_op';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['expose']['label'] = 'End Date';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['expose']['operator'] = 'field_ercore_pb_date_value_1_op';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['expose']['identifier'] = 'end-date';
-  $handler->display->display_options['filters']['field_ercore_pb_date_value_1']['form_type'] = 'date_popup';
-  /* Filter criterion: User: Participating Institutions (field_ercore_us_inst_ref) */
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['relationship'] = 'field_ercore_organizer_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator_id'] = 'field_ercore_us_inst_ref_target_id_op';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['label'] = 'Institution';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator'] = 'field_ercore_us_inst_ref_target_id_op';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['identifier'] = 'field_ercore_us_inst_ref_target_id';
-  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    3 => 0,
-  );
-  /* Filter criterion: Content: Publication Type (field_ercore_pb_type) */
-  $handler->display->display_options['filters']['field_ercore_pb_type_value']['id'] = 'field_ercore_pb_type_value';
-  $handler->display->display_options['filters']['field_ercore_pb_type_value']['table'] = 'field_data_field_ercore_pb_type';
-  $handler->display->display_options['filters']['field_ercore_pb_type_value']['field'] = 'field_ercore_pb_type_value';
-  $handler->display->display_options['filters']['field_ercore_pb_type_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_ercore_pb_type_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ercore_pb_type_value']['expose']['operator_id'] = 'field_ercore_pb_type_value_op';
-  $handler->display->display_options['filters']['field_ercore_pb_type_value']['expose']['label'] = 'Type';
-  $handler->display->display_options['filters']['field_ercore_pb_type_value']['expose']['operator'] = 'field_ercore_pb_type_value_op';
-  $handler->display->display_options['filters']['field_ercore_pb_type_value']['expose']['identifier'] = 'field_ercore_pb_type_value';
-
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'publications';
-  $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Publications';
-  $handler->display->display_options['menu']['weight'] = '0';
-  $handler->display->display_options['menu']['name'] = 'main-menu';
-  $handler->display->display_options['menu']['context'] = 0;
-  $handler->display->display_options['menu']['context_only_inline'] = 0;
-
-  /* Display: Data export */
-  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
-  $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'access ercore excel sheets';
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
-  $handler->display->display_options['style_options']['attach_text'] = 'Download Publications Summary';
-  $handler->display->display_options['style_options']['provide_file'] = 1;
-  $handler->display->display_options['style_options']['filename'] = '%view.xls';
-  $handler->display->display_options['style_options']['parent_sort'] = 0;
-  $handler->display->display_options['defaults']['empty'] = FALSE;
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Nid */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['label'] = 'Node ID';
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: EPSCoR Organizer(s) */
-  $handler->display->display_options['fields']['field_ercore_organizer']['id'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['table'] = 'field_data_field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['field'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_organizer']['settings'] = array(
-    'link' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_organizer']['delta_offset'] = '0';
-  /* Field: Content: EPSCoR Organizer(s) */
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['id'] = 'field_ercore_organizer_1';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['table'] = 'field_data_field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['field'] = 'field_ercore_organizer';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['label'] = 'Institution(s)';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['trim_whitespace'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['type'] = 'entityreference_entity_view';
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['settings'] = array(
-    'view_mode' => 'institution',
-    'links' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_organizer_1']['delta_offset'] = '0';
-  /* Field: Content: Non-EPSCoR Authors */
-  $handler->display->display_options['fields']['field_ercore_pb_nonepscor_auth']['id'] = 'field_ercore_pb_nonepscor_auth';
-  $handler->display->display_options['fields']['field_ercore_pb_nonepscor_auth']['table'] = 'field_data_field_ercore_pb_nonepscor_auth';
-  $handler->display->display_options['fields']['field_ercore_pb_nonepscor_auth']['field'] = 'field_ercore_pb_nonepscor_auth';
-  $handler->display->display_options['fields']['field_ercore_pb_nonepscor_auth']['element_label_colon'] = FALSE;
-  /* Field: Content: Publication Type */
-  $handler->display->display_options['fields']['field_ercore_pb_type']['id'] = 'field_ercore_pb_type';
-  $handler->display->display_options['fields']['field_ercore_pb_type']['table'] = 'field_data_field_ercore_pb_type';
-  $handler->display->display_options['fields']['field_ercore_pb_type']['field'] = 'field_ercore_pb_type';
-  $handler->display->display_options['fields']['field_ercore_pb_type']['element_label_colon'] = FALSE;
-  /* Field: Field: Project Team */
-  $handler->display->display_options['fields']['field_ercore_programs']['id'] = 'field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['table'] = 'field_data_field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['field'] = 'field_ercore_programs';
-  $handler->display->display_options['fields']['field_ercore_programs']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_programs']['settings'] = array(
-    'link' => 0,
-  );
-  $handler->display->display_options['fields']['field_ercore_programs']['delta_offset'] = '0';
-  /* Field: Content: Peer Reviewed */
-  $handler->display->display_options['fields']['field_ercore_pb_peer_reviewed']['id'] = 'field_ercore_pb_peer_reviewed';
-  $handler->display->display_options['fields']['field_ercore_pb_peer_reviewed']['table'] = 'field_data_field_ercore_pb_peer_reviewed';
-  $handler->display->display_options['fields']['field_ercore_pb_peer_reviewed']['field'] = 'field_ercore_pb_peer_reviewed';
-  $handler->display->display_options['fields']['field_ercore_pb_peer_reviewed']['element_label_colon'] = FALSE;
-  /* Field: Content: Status */
-  $handler->display->display_options['fields']['field_ercore_pb_status']['id'] = 'field_ercore_pb_status';
-  $handler->display->display_options['fields']['field_ercore_pb_status']['table'] = 'field_data_field_ercore_pb_status';
-  $handler->display->display_options['fields']['field_ercore_pb_status']['field'] = 'field_ercore_pb_status';
-  $handler->display->display_options['fields']['field_ercore_pb_status']['element_label_colon'] = FALSE;
-  /* Field: Content: Date Submitted */
-  $handler->display->display_options['fields']['field_ercore_pb_submit_date']['id'] = 'field_ercore_pb_submit_date';
-  $handler->display->display_options['fields']['field_ercore_pb_submit_date']['table'] = 'field_data_field_ercore_pb_submit_date';
-  $handler->display->display_options['fields']['field_ercore_pb_submit_date']['field'] = 'field_ercore_pb_submit_date';
-  $handler->display->display_options['fields']['field_ercore_pb_submit_date']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_pb_submit_date']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_pb_submit_date']['settings'] = array(
-    'format_type' => 'short',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_remaining_days' => 0,
-    'show_repeat_rule' => 'show',
-  );
-  /* Field: Content: Date of Publication */
-  $handler->display->display_options['fields']['field_ercore_pb_date']['id'] = 'field_ercore_pb_date';
-  $handler->display->display_options['fields']['field_ercore_pb_date']['table'] = 'field_data_field_ercore_pb_date';
-  $handler->display->display_options['fields']['field_ercore_pb_date']['field'] = 'field_ercore_pb_date';
-  $handler->display->display_options['fields']['field_ercore_pb_date']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_pb_date']['settings'] = array(
-    'format_type' => 'short',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_remaining_days' => 0,
-    'show_repeat_rule' => 'show',
-  );
-  /* Field: Content: Journal, Book, Magazine or Newspaper Name */
-  $handler->display->display_options['fields']['field_ercore_pb_journal_name']['id'] = 'field_ercore_pb_journal_name';
-  $handler->display->display_options['fields']['field_ercore_pb_journal_name']['table'] = 'field_data_field_ercore_pb_journal_name';
-  $handler->display->display_options['fields']['field_ercore_pb_journal_name']['field'] = 'field_ercore_pb_journal_name';
-  $handler->display->display_options['fields']['field_ercore_pb_journal_name']['element_label_colon'] = FALSE;
-  /* Field: Content: Volume */
-  $handler->display->display_options['fields']['field_ercore_pb_journal_volume']['id'] = 'field_ercore_pb_journal_volume';
-  $handler->display->display_options['fields']['field_ercore_pb_journal_volume']['table'] = 'field_data_field_ercore_pb_journal_volume';
-  $handler->display->display_options['fields']['field_ercore_pb_journal_volume']['field'] = 'field_ercore_pb_journal_volume';
-  $handler->display->display_options['fields']['field_ercore_pb_journal_volume']['element_label_colon'] = FALSE;
-  /* Field: Content: Pages */
-  $handler->display->display_options['fields']['field_ercore_pb_journal_pages']['id'] = 'field_ercore_pb_journal_pages';
-  $handler->display->display_options['fields']['field_ercore_pb_journal_pages']['table'] = 'field_data_field_ercore_pb_journal_pages';
-  $handler->display->display_options['fields']['field_ercore_pb_journal_pages']['field'] = 'field_ercore_pb_journal_pages';
-  $handler->display->display_options['fields']['field_ercore_pb_journal_pages']['element_label_colon'] = FALSE;
-  /* Field: Content: DOI */
-  $handler->display->display_options['fields']['field_ercore_pb_doi']['id'] = 'field_ercore_pb_doi';
-  $handler->display->display_options['fields']['field_ercore_pb_doi']['table'] = 'field_data_field_ercore_pb_doi';
-  $handler->display->display_options['fields']['field_ercore_pb_doi']['field'] = 'field_ercore_pb_doi';
-  $handler->display->display_options['fields']['field_ercore_pb_doi']['element_label_colon'] = FALSE;
-  /* Field: Content: ISSN/ISBN */
-  $handler->display->display_options['fields']['field_ercore_pb_issn']['id'] = 'field_ercore_pb_issn';
-  $handler->display->display_options['fields']['field_ercore_pb_issn']['table'] = 'field_data_field_ercore_pb_issn';
-  $handler->display->display_options['fields']['field_ercore_pb_issn']['field'] = 'field_ercore_pb_issn';
-  $handler->display->display_options['fields']['field_ercore_pb_issn']['element_label_colon'] = FALSE;
-  /* Field: Content: NSF Acknowledgement */
-  $handler->display->display_options['fields']['field_ercore_nsf']['id'] = 'field_ercore_nsf';
-  $handler->display->display_options['fields']['field_ercore_nsf']['table'] = 'field_data_field_ercore_nsf';
-  $handler->display->display_options['fields']['field_ercore_nsf']['field'] = 'field_ercore_nsf';
-  $handler->display->display_options['fields']['field_ercore_nsf']['element_label_colon'] = FALSE;
-  /* Field: Content: What level of funding support did EPSCoR provide for this publication? */
-  $handler->display->display_options['fields']['field_ercore_pb_rii_support']['id'] = 'field_ercore_pb_rii_support';
-  $handler->display->display_options['fields']['field_ercore_pb_rii_support']['table'] = 'field_data_field_ercore_pb_rii_support';
-  $handler->display->display_options['fields']['field_ercore_pb_rii_support']['field'] = 'field_ercore_pb_rii_support';
-  $handler->display->display_options['fields']['field_ercore_pb_rii_support']['label'] = 'What level of funding?';
-  $handler->display->display_options['fields']['field_ercore_pb_rii_support']['element_label_colon'] = FALSE;
-  /* Field: Content: Goals and Objectives */
-  $handler->display->display_options['fields']['field_ercore_goals']['id'] = 'field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['table'] = 'field_data_field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['field'] = 'field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['element_label_colon'] = FALSE;
-  /* Field: Content: EPSCoR Support */
-  $handler->display->display_options['fields']['field_ercore_op_rii_support']['id'] = 'field_ercore_op_rii_support';
-  $handler->display->display_options['fields']['field_ercore_op_rii_support']['table'] = 'field_data_field_ercore_op_rii_support';
-  $handler->display->display_options['fields']['field_ercore_op_rii_support']['field'] = 'field_ercore_op_rii_support';
-  $handler->display->display_options['fields']['field_ercore_op_rii_support']['element_label_colon'] = FALSE;
-  /* Field: Content: Internet Link */
-  $handler->display->display_options['fields']['field_ercore_pb_link']['id'] = 'field_ercore_pb_link';
-  $handler->display->display_options['fields']['field_ercore_pb_link']['table'] = 'field_data_field_ercore_pb_link';
-  $handler->display->display_options['fields']['field_ercore_pb_link']['field'] = 'field_ercore_pb_link';
-  $handler->display->display_options['fields']['field_ercore_pb_link']['label'] = 'Internet Link (URL - Title)';
-  $handler->display->display_options['fields']['field_ercore_pb_link']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_ercore_pb_link']['alter']['text'] = '[field_ercore_pb_link-url] - [field_ercore_pb_link-title]';
-  $handler->display->display_options['fields']['field_ercore_pb_link']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_pb_link']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_ercore_pb_link']['type'] = 'link_separate';
-  $handler->display->display_options['path'] = 'publications/download';
-  $handler->display->display_options['displays'] = array(
-    'default' => 'default',
-    'page' => 'page',
-    'page_1' => 'page_1',
-    'page_2' => 'page_2',
-  );
-  $views['nv_ercore_summary_publication'] = $view;
 
   return $views;
 }

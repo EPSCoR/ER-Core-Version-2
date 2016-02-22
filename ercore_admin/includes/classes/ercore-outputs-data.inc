@@ -219,15 +219,12 @@ class ErcoreOutputs {
         $range2 = $dates[0][1];
         if ($begin == $end && $begin <= $range2) {
           $within = TRUE;
-          dpm('if');
         }
         elseif ($begin <= $range2 && $end >= $range1) {
           $within = TRUE;
-          dpm('elseif');
         }
         else {
           $within = FALSE;
-          dpm('False');
         }
         return $within;
       }
