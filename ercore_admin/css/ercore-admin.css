@@ -63,3 +63,12 @@ p.data-link a {
 .field-name-field-ercore-ee-estimated {
   font-weight: bold;
 }
+
+dl.admin-list dt {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+dl.admin-list dd + dt {
+    margin-top: 10px;
+}

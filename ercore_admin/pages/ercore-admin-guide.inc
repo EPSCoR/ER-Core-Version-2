@@ -24,15 +24,27 @@ researchers should enter data into the system.</p>
     <p><strong>These are steps that should be taken immediately after installing
     the EPSCoR Reporting package. These customizations will help make the system
     a better fit your jurisdiction.</strong></p>
+    <h3>Administrative settings</h3>
+    <p>Visit the <a href = "/admin/config/ercore/admin">administrative
+    configuration page</a> for the ERCore module.</p>
+    <ol><li>Set the EPSCoR start date</li>
+    <li>Set the Reporting period start month</li>
+    <li>Input the EPSCoR Grant Number</li>
+    <li>Select which data types to display on the Summary table</li>
+    <li>Choose to use and/or require the Components field</li>
+    <li>Choose to use and/or require the Programs field</li></ol>
     <h3>Project Components</h3>
-     <p>Change the list of Project Components (Taxonomy) (which may also be
-     known as "teams").  Use the "Add term" button to add a new component.
-     This will present you with a form, which includes a checkbox labeled
-     "Core Component", this checkbox denotes whether the component should show
-     up on every component selection list, or just on the user profile\'s select
-     list.</p>
+     <p>If you\'re using the Components field, change the list of Project
+     Components (Taxonomy) (which may also be known as "teams").  Use the
+     "Add term" button to add a new component. This will present you with a
+     form, which includes a checkbox labeled "Core Component", this checkbox
+     denotes whether the component should show up on every component selection
+     list, or just on the user profile\'s select list.</p>
      <p>Ex. The "Administration" component is non-core, while "CYBER", "ENDER",
      "ECOGEM", and "DEW" are all core teams for Hawaii.</p>
+     <h3>Programs</h3>
+     <p>If you\'re using the Programs field, change the list of Programs
+     (Taxonomy).  Use the "Add term" button to add a new component.</p>
       <h3>Customize the list of ethnicities/races</h3>
         <p>Modify the <strong>Ethnicity</strong> Field that your jurisdiction
         will want to track and report on.</p>
@@ -55,10 +67,12 @@ researchers should enter data into the system.</p>
   <p>This list will likely expand over time, but it is necessary to begin this
   process by setting up the most important institutions first.</p>
   <p>You can add a new institution to the system by going to the Add Content
-  link, then selecting the Institution.</p>
+  link, then selecting ERCore Institution.</p>
   <p>You may also see a list of institutions currently in the system through
   the Institutions page.</p>
   <h3>Data Repository Managers</h3>
+  <p><strong>Notifications are not currently included in this version of
+  ERCore.</strong></p>
   <p>After setting up user accounts for your administrators, you will be able
   to flag users whom should receive email notifications regarding researcher
   data collection events.</p>
@@ -75,9 +89,7 @@ researchers should enter data into the system.</p>
    <p>The link should change it\'s label to say "Do not receive data collection
    notifications", which when clicked will remove the user from recieving these
    notifications.</p>
-  <h3>Start date of grant and reporting periods</h3>
-  <p>Visit the EPSCoR configuration page, and change the start date.
-  </p>
+
   <h3>Setup Excel Sheet Output</h3>
   <p>The system relies on an external library called
   <a href="http://phpexcel.codeplex.com/releases/view/107442">PHPExcel</a> to
@@ -93,9 +105,9 @@ researchers should enter data into the system.</p>
    <code>/sites/all/libraries/PHPExcel/Classes/PHPExcel/IOFactory.php</code>,
    and <code>changelog.txt</code> needs to be located at
    <code>/sites/all/libraries/PHPExcel/changelog.txt</code></p>
-    <p>You can then navigate to the EPSCoR Settings page to see if the library
-    was detected.</p>
-  <h3>(Optional) Customize the list of Event Types</h3>
+    <p>You can then navigate to the Drupal Status Report page to see if the
+    library was detected.</p>
+  <h3>Customize the list of Event Types (Optional)</h3>
   <p>Some states may wish to customize the <strong>Event Types Field</strong>
   which label calendar events.</p>
   <h4>Notice: The available values should be of the form:</h4>
@@ -103,7 +115,7 @@ researchers should enter data into the system.</p>
    which is used as the internal representation (stored in the database), and
    Label is what is shown to the user.
   </p>
- <h3>(Optional) Public Profile settings</h3>
+ <h3>Public Profile settings (Optional)</h3>
   <p>Some states may wish to hide the uer profiles from public view.</p>
    <p>This may be accomplished by changing the "View user profiles" flag located
    on the User Permissions page.</p>'),

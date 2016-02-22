@@ -42,8 +42,8 @@ function ercore_admin_menu() {
   $items['ercore'] = array(
     'menu_name' => 'ercore_admin_menu',
     'title' => 'ERCore',
-    'description' => 'ERCore is a Drupal project to assist in the collection,
-    display, and preparation of EPSCoR grant data.',
+    'description' => 'ERCore is a Drupal project to assist in the collection, display, and preparation of EPSCoR grant data.',
+    'expanded' => '1',
     'page callback' => 'system_admin_menu_block_page',
     'access arguments' => array('access ercore content'),
     'file' => 'system.admin.inc',
@@ -68,6 +68,7 @@ function ercore_admin_menu() {
     NSF Reporting Tables are available here. In addition, other views such as
     flagged items for review are available in this menu flyout.',
     'page callback' => 'system_admin_menu_block_page',
+    'expanded' => '1',
     'access arguments' => array('access ercore admin content'),
     'file' => 'system.admin.inc',
     'file path' => drupal_get_path('module', 'system'),
@@ -297,30 +298,69 @@ function ercore_admin_menu() {
   $items['ercore/guides'] = array(
     'title' => 'User Guides',
     'description' => 'Reference guides for ERCore administrators and users.',
+    'expanded' => '1',
+    'weight' => '10',
     'page callback' => 'system_admin_menu_block_page',
     'access arguments' => array('access ercore content'),
     'file' => 'system.admin.inc',
     'file path' => drupal_get_path('module', 'system'),
   );
-  $items['ercore/guides/admin-guide'] = array(
+  $items['ercore/admin-guide'] = array(
     'title' => 'Administrative Guide',
     'description' => 'A reference and guide for administrator and staff.',
+    'weight' => '11',
     'type' => MENU_NORMAL_ITEM,
     'page callback' => 'ercore_admin_guide_callback',
     'access arguments' => array('access ercore content'),
     'file' => '/pages/ercore-admin-guide.inc',
   );
-  $items['ercore/guides/user-guide'] = array(
-    'title' => 'User Guide',
-    'description' => 'A reference and guide for the ERCore user.',
+  $items['ercore/guides/accounts'] = array(
+    'title' => 'User: Accounts',
+    'description' => 'Creating and/or editing ERCore user accounts.',
     'type' => MENU_NORMAL_ITEM,
     'page callback' => 'ercore_user_guide_callback',
     'access arguments' => array('access ercore content'),
     'file' => 'pages/ercore-user-guide.inc',
   );
+  $items['ercore/guides/reporting-data'] = array(
+    'title' => 'User: Entering Reporting Data',
+    'description' => 'Creating ERCore reporting data.',
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'ercore_user_reporting_callback',
+    'access arguments' => array('access ercore content'),
+    'file' => 'pages/ercore-user-reporting.inc',
+  );
+  $items['ercore/guides/viewing-data'] = array(
+    'title' => 'User: View Reporting Data',
+    'description' => 'Viewing and editing ERCore reporting data.',
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'ercore_user_viewing_callback',
+    'access arguments' => array('access ercore content'),
+    'file' => 'pages/ercore-user-viewing.inc',
+  );
+  $items['ercore/guides/drupal'] = array(
+    'title' => 'User: Drupal Terms and Information',
+    'description' => 'Drupal information you may find helpful.',
+    'weight' => '5',
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'ercore_user_drupal_callback',
+    'access arguments' => array('access ercore content'),
+    'file' => 'pages/ercore-user-drupal.inc',
+  );
+  $items['ercore/guides/nsf'] = array(
+    'title' => 'User: NSF Definitions',
+    'description' => 'Key Term NSF Definitions and the Criteria and the System
+    that Defines these Terms',
+    'weight' => '5',
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'ercore_user_nsf_callback',
+    'access arguments' => array('access ercore content'),
+    'file' => 'pages/ercore-user-nsf.inc',
+  );
   $items['ercore/participants'] = array(
     'title' => 'Participant Views',
     'description' => 'Views for administrating Participants.',
+    'expanded' => '1',
     'page callback' => 'system_admin_menu_block_page',
     'access arguments' => array('access ercore admin content'),
     'file' => 'system.admin.inc',
