@@ -367,7 +367,7 @@ variable_set('field_bundle_settings_node__ercore_j_honor', array(
         ),
         'teaser' =>
         array(
-          'custom_settings' => FALSE,
+          'custom_settings' => TRUE,
         ),
         'teaser_alternate' =>
         array(

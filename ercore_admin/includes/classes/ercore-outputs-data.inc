@@ -129,7 +129,7 @@ class ErcoreOutputs {
         }
         elseif ($object->type == 'post-doc') {
           if (isset($data_row->field_field_ercore_us_part_date[0]['raw'])) {
-            $within = $data_row->field_field_ercore_us_part_date[0]['raw']['value'];
+            $within = $data_row->field_field_ercore_us_part_date[0]['raw'];
           }
         }
         elseif ($object->type == 'graduate') {
@@ -212,9 +212,29 @@ class ErcoreOutputs {
       return FALSE;
     }
     else {
-      $within_date = strtotime($within_date);
-      return (($dates[0][0]) <= $within_date && ($dates[0][1]) >= $within_date);
+      if (isset($within_date['value'])) {
+        $begin = strtotime($within_date['value']);
+        $end = strtotime($within_date['value2']);
+        $range1 = $dates[0][0];
+        $range2 = $dates[0][1];
+        if ($begin == $end && $begin <= $range2) {
+          $within = TRUE;
+          dpm('if');
+        }
+        elseif ($begin <= $range2 && $end >= $range1) {
+          $within = TRUE;
+          dpm('elseif');
+        }
+        else {
+          $within = FALSE;
+          dpm('False');
+        }
+        return $within;
+      }
+      else {
+        $within_date = strtotime($within_date);
+        return (($dates[0][0]) <= $within_date && ($dates[0][1]) >= $within_date);
+      }
     }
   }
-
 }
