@@ -10425,7 +10425,7 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Participant Activity';
-  $handler->display->display_options['css_class'] = 'row ercore-view';
+  $handler->display->display_options['css_class'] = 'person-list row ercore-view participant';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access ercore admin content';
@@ -10435,7 +10435,9 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '100';
   $handler->display->display_options['style_plugin'] = 'semanticviews_default';
-  $handler->display->display_options['style_options']['row']['class'] = 'user-row person col-sm-6 col-lg-4';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['style_options']['row']['class'] = 'list-row person col-sm-6 col-lg-4';
   $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
   $handler->display->display_options['row_options']['skip_blank'] = 1;
   $handler->display->display_options['row_options']['semantic_html'] = array(
@@ -10478,16 +10480,6 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   $handler->display->display_options['fields']['field_ercore_us_sen_role']['field'] = 'field_ercore_us_sen_role';
   $handler->display->display_options['fields']['field_ercore_us_sen_role']['label'] = '';
   $handler->display->display_options['fields']['field_ercore_us_sen_role']['element_label_colon'] = FALSE;
-  /* Field: User: Description of Role and Contributions */
-  $handler->display->display_options['fields']['field_ercore_us_description']['id'] = 'field_ercore_us_description';
-  $handler->display->display_options['fields']['field_ercore_us_description']['table'] = 'field_data_field_ercore_us_description';
-  $handler->display->display_options['fields']['field_ercore_us_description']['field'] = 'field_ercore_us_description';
-  $handler->display->display_options['fields']['field_ercore_us_description']['label'] = '';
-  $handler->display->display_options['fields']['field_ercore_us_description']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ercore_us_description']['type'] = 'text_trimmed';
-  $handler->display->display_options['fields']['field_ercore_us_description']['settings'] = array(
-    'trim_length' => '200',
-  );
   /* Field: User: Created date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'users';
