@@ -171,7 +171,9 @@ class ErcoreParticipantCollection {
       if (isset($view_row->field_field_ercore_us_hired_date[0])) {
         if (isset($dates) && $dates != 'empty') {
           if (isset($view_row->field_field_ercore_us_hired_date[0])) {
-            $hired = $view_row->field_field_ercore_us_hired_date[0]['raw']['value'];
+            $zone = variable_get('date_default_timezone');
+            $hired = $view_row->field_field_ercore_us_hired_date[0]['raw']['value'] . ' ' . $zone;
+
             $new = ErcoreParticipantGroup::ercoreNewDateCallback($hired, $dates);
           }
         }

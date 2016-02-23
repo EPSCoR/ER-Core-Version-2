@@ -38,8 +38,10 @@ class ErcoreOutputs {
    */
   public function ercoreOutputsBuild(&$object, &$data, &$date_range) {
     // Three step default date to compensate for yyyy/mm date format rounding.
-    $default_string = ercore_admin_view_start_end_dates();
-    $default_array = ercore_admin_date_array_to_unix($default_string);
+    $default_string = ercore_start_end_dates();
+    $zone = variable_get('date_default_timezone');
+    $date = $default_string . ' 00:00:00 ' . $zone;
+    $default_array = ercore_admin_date_array_to_unix($date);
     $default_array = ercore_admin_date_array_converter($default_array);
     $within = NULL;
 
@@ -187,8 +189,8 @@ class ErcoreOutputs {
           }
         }
       }
+     if ($current == TRUE && $this->ercoreOutputsDateCallback($within, $date_range) == TRUE && $date_range != $default_array) {
 
-      if ($current == TRUE && $this->ercoreOutputsDateCallback($within, $date_range) == TRUE && $date_range != $default_array) {
         $this->value1 = $this->value1 + 1;
       }
     }
@@ -229,7 +231,8 @@ class ErcoreOutputs {
         return $within;
       }
       else {
-        $within_date = strtotime($within_date);
+        $zone = variable_get('date_default_timezone');
+        $within_date = strtotime($within_date . $zone);
         return (($dates[0][0]) <= $within_date && ($dates[0][1]) >= $within_date);
       }
     }

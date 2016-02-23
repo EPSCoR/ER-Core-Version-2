@@ -144,8 +144,6 @@ function ercore_admin_current_range_argument() {
  */
 function ercore_select_list() {
   $display_date_format = variable_get('date_format_ercore_date_format_month_day_year');
-  $zone = variable_get('date_default_timezone');
-
   $ranges = ercore_get_reporting_ranges();
   // This returns the list of available date ranges...
   $range = ercore_get_reporting_range();
@@ -231,18 +229,39 @@ function _generate_reporting_range($year) {
   if (!isset($reporting_month)) {
     $reporting_month = intval(variable_get('ercore_reporting_month'));
   }
+  $last_month = $reporting_month - 1;
+  $last_day =  date('t',strtotime($last_month . '/1/' . $year));
+
   if ($year == $start_date['year']) {
+    $second_year = array();
+    $second_year['day'] = $last_day;
+    $second_year['month'] = $last_month;
+    $second_year['year'] = $start_date['year'] + 1;
+
+    $date1 = implode('/', $start_date);
+    $date2 = implode('/', $second_year);
     return array(
-      mktime(0, 0, 0, $start_date['month'], $start_date['day'], $start_date['year']),
-      mktime(0, 0, 0, $reporting_month, 0, $year + 1),
+      ercore_admin_unix_date($date1),
+      ercore_admin_unix_date($date2),
     );
   }
   else {
+    $date1 = $reporting_month . '/1/' . $year;
+    $next_year = $year + 1;
+    $date2 = $last_month . '/' . $last_day . '/' . $next_year;
+
     return array(
-      mktime(0, 0, 0, $reporting_month, 1, $year),
-      mktime(0, 0, 0, $reporting_month, 0, $year + 1),
+      ercore_admin_unix_date($date1),
+      ercore_admin_unix_date($date2),
     );
   }
+}
+
+function ercore_admin_unix_date(&$var) {
+  $zone = variable_get('date_default_timezone');
+  $time = ' 00:00:00 ' . $zone;
+  $new_time = strtotime($var . $time);
+  return $new_time;
 }
 
 /**
@@ -395,9 +414,11 @@ function ercore_admin_download_path(&$ranges) {
  *    Returns unix date array for use in NSF Tables.
  */
 function ercore_admin_date_argument_to_array(&$date_range) {
+  $zone = variable_get('date_default_timezone');
+  $time = ' 00:00:00 ' . $zone;
   $range = explode('--', $date_range);
-  $new_range[0][0] = strtotime($range[0]);
-  $new_range[0][1] = strtotime($range[1]);
+  $new_range[0][0] = strtotime($range[0] . $time);
+  $new_range[0][1] = strtotime($range[1] . $time);
 
   return $new_range;
 }

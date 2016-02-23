@@ -203,7 +203,6 @@ function ercore_table_b_cells(&$collection) {
  */
 function ercore_table_b($variables) {
   $date_range = $variables['ranges'];
-
   $data = views_get_view_result('ercore_export_table_b_institutions', 'panel_pane_1');
   $header = ercore_table_b_headers();
   $title = 'Download NSF Table B';
