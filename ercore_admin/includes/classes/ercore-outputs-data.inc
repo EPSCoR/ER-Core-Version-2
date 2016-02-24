@@ -40,7 +40,8 @@ class ErcoreOutputs {
     // Three step default date to compensate for yyyy/mm date format rounding.
     $default_string = ercore_start_end_dates();
     $zone = variable_get('date_default_timezone');
-    $date = $default_string . ' 00:00:00 ' . $zone;
+    $date['start'] = $default_string['start'] . ' 00:00:00 ' . $zone;
+    $date['end'] = $default_string['end'] . ' 00:00:00 ' . $zone;
     $default_array = ercore_admin_date_array_to_unix($date);
     $default_array = ercore_admin_date_array_converter($default_array);
     $within = NULL;
@@ -70,7 +71,7 @@ class ErcoreOutputs {
         }
         $current = TRUE;
         // Compare date ranges.
-        $this->value2 = $this->value2 + 1;
+        $this->value2++;
       }
 
       // Proposal data build.
@@ -94,12 +95,12 @@ class ErcoreOutputs {
           }
         }
         if ($this->ercoreOutputsDateCallback($within, $date_range) == TRUE && $date_range != $default_array) {
-          $this->value1 = $this->value1 + 1;
+          $this->value1++;
           if (isset($data_row->field_field_ercore_pp_award_req_dec[0]['raw'])) {
             $this->value2 = $this->value2 + $data_row->field_field_ercore_pp_award_req_dec[0]['raw']['value'];
           }
         }
-        $this->value3 = $this->value3 + 1;
+        $this->value3++;
         if (isset($data_row->field_field_ercore_pp_award_req_dec[0]['raw'])) {
           $this->value4 = $this->value4 + $data_row->field_field_ercore_pp_award_req_dec[0]['raw']['value'];
         }
@@ -113,14 +114,14 @@ class ErcoreOutputs {
         if ($object->subType == 'Primary' && $data_row->field_field_ercore_pb_rii_support[0]['raw']['value'] == '0') {
           $current = TRUE;
           // Compare date ranges.
-          $this->value2 = $this->value2 + 1;
+          $this->value2++;
         }
 
         // Publication data, subType Partial.
         if ($object->subType == 'Partial' && $data_row->field_field_ercore_pb_rii_support[0]['raw']['value'] == '1') {
           $current = TRUE;
           // Compare date ranges.
-          $this->value2 = $this->value2 + 1;
+          $this->value2++;
         }
       }
       else {
@@ -156,6 +157,12 @@ class ErcoreOutputs {
         else {
           $race = NULL;
         }
+        if (isset($data_row->field_field_ercore_us_ethnicity[0]['raw']['value'])) {
+          $ethnicity = $data_row->field_field_ercore_us_ethnicity[0]['raw']['value'];
+        }
+        else {
+          $ethnicity = NULL;
+        }
         if (isset($data_row->field_field_ercore_us_disabilities[0]['rendered'])) {
           $disabled_value = TRUE;
         }
@@ -164,34 +171,36 @@ class ErcoreOutputs {
         }
         $urm = array(
           'American Indian',
+          'Black',
           'Alaskan Native',
           'Native Hawaiian',
           'Pacific Islander',
-          'Filipino',
         );
 
         if ($object->subType == 'Male' && $gender == '0') {
           $current = TRUE;
-          $this->value2 = $this->value2 + 1;
+          $this->value2++;
         }
-        elseif ($object->subType == 'Female' && $gender == '1') {
+        if ($object->subType == 'Female' && $gender == '1') {
           $current = TRUE;
-          $this->value2 = $this->value2 + 1;
+          $this->value2++;
         }
-        elseif ($object->subType == 'Under-represented minority' && in_array($race, $urm)) {
-          $current = TRUE;
-          $this->value2 = $this->value2 + 1;
+        if ($object->subType == 'Under-represented minority') {
+          if (in_array($race, $urm) || $ethnicity == '0') {
+            $current = TRUE;
+            $this->value2++;
+          }
         }
-        elseif ($object->subType == 'Disabled' && $disabled_value == TRUE) {
+        if ($object->subType == 'Disabled' && $disabled_value == TRUE) {
           if ($data_row->field_field_ercore_us_disabilities[0]['rendered']['#markup'] != 'None') {
             $current = TRUE;
-            $this->value2 = $this->value2 + 1;
+            $this->value2++;
           }
         }
       }
      if ($current == TRUE && $this->ercoreOutputsDateCallback($within, $date_range) == TRUE && $date_range != $default_array) {
 
-        $this->value1 = $this->value1 + 1;
+        $this->value1++;
       }
     }
 

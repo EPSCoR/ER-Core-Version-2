@@ -489,9 +489,9 @@ function ercore_admin_views_query_alter(&$view, &$query) {
   if ($view->name == 'ercore_table_e_users' && $view->current_display == 'panel_pane_2') {
     if (isset($query->where[0])) {
       $field = $query->where[0]['conditions'][0]['field'];
-      $field1a = ' OR (' . str_replace(">=", "<=", $field) . ' AND field_data_field_ercore_us_part_date.field_ercore_us_part_date_value2 = field_data_field_ercore_us_part_date.field_ercore_us_part_date_value)';
-      $field1b = ' OR (' . str_replace(">=", "<=", $field) . ' AND ' . str_replace("part_date_value,", "part_date_value2,", $field) . ')';
-      $new_where = $field . $field1a . $field1b;
+      $where = explode(' AND ', $field);
+      $field1a = ') OR (' . $where[1] . ' AND field_data_field_ercore_us_part_date.field_ercore_us_part_date_value2 = field_data_field_ercore_us_part_date.field_ercore_us_part_date_value)';
+      $new_where = '(' . $field . $field1a;
       $query->where[0]['conditions'][0]['field'] = $new_where;
     }
   }

@@ -234,8 +234,8 @@ function _generate_reporting_range($year) {
 
   if ($year == $start_date['year']) {
     $second_year = array();
-    $second_year['day'] = $last_day;
     $second_year['month'] = $last_month;
+    $second_year['day'] = $last_day;
     $second_year['year'] = $start_date['year'] + 1;
 
     $date1 = implode('/', $start_date);

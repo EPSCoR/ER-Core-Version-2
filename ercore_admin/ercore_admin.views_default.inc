@@ -2689,6 +2689,24 @@ function ercore_admin_views_default_views() {
       'label_element_type' => 'label',
       'label_class' => 'label-inline',
     ),
+    'field_ercore_us_under_act' => array(
+      'element_type' => 'div',
+      'class' => 'field-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'label-inline',
+    ),
+    'field_ercore_us_race' => array(
+      'element_type' => 'div',
+      'class' => 'field-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'label-inline',
+    ),
+    'field_ercore_us_masters_act' => array(
+      'element_type' => 'div',
+      'class' => 'field-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'label-inline',
+    ),
   );
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
@@ -2740,6 +2758,36 @@ function ercore_admin_views_default_views() {
     'show_remaining_days' => 0,
     'show_repeat_rule' => 'show',
   );
+  /* Field: User: Actual Undergraduate Graduation Date */
+  $handler->display->display_options['fields']['field_ercore_us_under_act']['id'] = 'field_ercore_us_under_act';
+  $handler->display->display_options['fields']['field_ercore_us_under_act']['table'] = 'field_data_field_ercore_us_under_act';
+  $handler->display->display_options['fields']['field_ercore_us_under_act']['field'] = 'field_ercore_us_under_act';
+  $handler->display->display_options['fields']['field_ercore_us_under_act']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_day_year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: User: Actual Masters Graduation Date */
+  $handler->display->display_options['fields']['field_ercore_us_masters_act']['id'] = 'field_ercore_us_masters_act';
+  $handler->display->display_options['fields']['field_ercore_us_masters_act']['table'] = 'field_data_field_ercore_us_masters_act';
+  $handler->display->display_options['fields']['field_ercore_us_masters_act']['field'] = 'field_ercore_us_masters_act';
+  $handler->display->display_options['fields']['field_ercore_us_masters_act']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_day_year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: User: Race */
+  $handler->display->display_options['fields']['field_ercore_us_race']['id'] = 'field_ercore_us_race';
+  $handler->display->display_options['fields']['field_ercore_us_race']['table'] = 'field_data_field_ercore_us_race';
+  $handler->display->display_options['fields']['field_ercore_us_race']['field'] = 'field_ercore_us_race';
   /* Sort criterion: Name Components: Family */
   $handler->display->display_options['sorts']['field_user_name_family']['id'] = 'field_user_name_family';
   $handler->display->display_options['sorts']['field_user_name_family']['table'] = 'field_data_field_user_name';
@@ -2969,6 +3017,87 @@ function ercore_admin_views_default_views() {
     7 => 0,
     8 => 0,
     3 => 0,
+  );
+  /* Filter criterion: User: Race (field_ercore_us_race) */
+  $handler->display->display_options['filters']['field_ercore_us_race_value']['id'] = 'field_ercore_us_race_value';
+  $handler->display->display_options['filters']['field_ercore_us_race_value']['table'] = 'field_data_field_ercore_us_race';
+  $handler->display->display_options['filters']['field_ercore_us_race_value']['field'] = 'field_ercore_us_race_value';
+  $handler->display->display_options['filters']['field_ercore_us_race_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_ercore_us_race_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_us_race_value']['expose']['operator_id'] = 'field_ercore_us_race_value_op';
+  $handler->display->display_options['filters']['field_ercore_us_race_value']['expose']['label'] = 'Race (contains)';
+  $handler->display->display_options['filters']['field_ercore_us_race_value']['expose']['operator'] = 'field_ercore_us_race_value_op';
+  $handler->display->display_options['filters']['field_ercore_us_race_value']['expose']['identifier'] = 'field_ercore_us_race_value';
+  $handler->display->display_options['filters']['field_ercore_us_race_value']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_us_race_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_ercore_us_race_value']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_us_race_value']['group_info']['label'] = 'Race';
+  $handler->display->display_options['filters']['field_ercore_us_race_value']['group_info']['identifier'] = 'field_ercore_us_race_value';
+  $handler->display->display_options['filters']['field_ercore_us_race_value']['group_info']['group_items'] = array(
+    1 => array(
+      'title' => 'No Value Chosen',
+      'operator' => 'empty',
+      'value' => 'Null',
+    ),
+    2 => array(
+      'title' => 'Prefer not to respond',
+      'operator' => 'contains',
+      'value' => 'Prefer not to respond',
+    ),
+    3 => array(
+      'title' => 'American Indian or Alaskan Native',
+      'operator' => 'contains',
+      'value' => 'American Indian or Alaskan Native',
+    ),
+    4 => array(
+      'title' => 'Asian',
+      'operator' => 'contains',
+      'value' => 'Asian',
+    ),
+    5 => array(
+      'title' => 'Filipino',
+      'operator' => 'contains',
+      'value' => 'Filipino',
+    ),
+    6 => array(
+      'title' => 'Black or African American',
+      'operator' => 'contains',
+      'value' => 'Black or African American',
+    ),
+    7 => array(
+      'title' => 'Pacific Islander',
+      'operator' => 'contains',
+      'value' => 'Pacific Islander',
+    ),
+    8 => array(
+      'title' => 'Native Hawaiian',
+      'operator' => 'contains',
+      'value' => 'Native Hawaiian',
+    ),
+    9 => array(
+      'title' => 'White',
+      'operator' => 'contains',
+      'value' => 'White',
+    ),
+    10 => array(
+      'title' => 'Under Represented Minority',
+      'operator' => 'regular_expression',
+      'value' => '[^White|^Filipino|^Asian|^Prefer not|^Mixed|^mixed]',
+    ),
+    11 => array(
+      'title' => 'Other',
+      'operator' => 'regular_expression',
+      'value' => '[^White|^Black or|^Asian|^Prefer not|^American Indian or Alaskan Native|^Native Hawaiian|^Pacific Islander|^Filipino]',
+    ),
   );
 
   /* Display: Page */
@@ -9622,6 +9751,12 @@ function ercore_admin_views_default_views() {
       'label_element_type' => 'label',
       'label_class' => 'field-label',
     ),
+    'field_ercore_us_ethnicity' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs ethnicity field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
   );
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
@@ -9689,6 +9824,10 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_us_race']['id'] = 'field_ercore_us_race';
   $handler->display->display_options['fields']['field_ercore_us_race']['table'] = 'field_data_field_ercore_us_race';
   $handler->display->display_options['fields']['field_ercore_us_race']['field'] = 'field_ercore_us_race';
+  /* Field: User: Ethnicity */
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['id'] = 'field_ercore_us_ethnicity';
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['table'] = 'field_data_field_ercore_us_ethnicity';
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['field'] = 'field_ercore_us_ethnicity';
   /* Field: User: Disabilities */
   $handler->display->display_options['fields']['field_ercore_us_disabilities']['id'] = 'field_ercore_us_disabilities';
   $handler->display->display_options['fields']['field_ercore_us_disabilities']['table'] = 'field_data_field_ercore_us_disabilities';
@@ -9799,6 +9938,12 @@ function ercore_admin_views_default_views() {
       'label_element_type' => 'label',
       'label_class' => 'field-label',
     ),
+    'field_ercore_us_ethnicity' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs ethnicity field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
     'field_ercore_us_disabilities' => array(
       'element_type' => 'div',
       'class' => 'outputs user-outputs disabilities field field-label-inline',
@@ -9874,6 +10019,10 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_us_race']['id'] = 'field_ercore_us_race';
   $handler->display->display_options['fields']['field_ercore_us_race']['table'] = 'field_data_field_ercore_us_race';
   $handler->display->display_options['fields']['field_ercore_us_race']['field'] = 'field_ercore_us_race';
+  /* Field: User: Ethnicity */
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['id'] = 'field_ercore_us_ethnicity';
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['table'] = 'field_data_field_ercore_us_ethnicity';
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['field'] = 'field_ercore_us_ethnicity';
   /* Field: User: Disabilities */
   $handler->display->display_options['fields']['field_ercore_us_disabilities']['id'] = 'field_ercore_us_disabilities';
   $handler->display->display_options['fields']['field_ercore_us_disabilities']['table'] = 'field_data_field_ercore_us_disabilities';
@@ -9925,10 +10074,6 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
   $handler->display->display_options['row_options']['skip_blank'] = 1;
   $handler->display->display_options['row_options']['semantic_html'] = array(
-    'field_user_name' => array(
-      'element_type' => 'div',
-      'class' => '',
-    ),
     'view_user' => array(
       'element_type' => 'div',
       'class' => 'user-name last-first',
@@ -9948,6 +10093,12 @@ function ercore_admin_views_default_views() {
     'field_ercore_us_race' => array(
       'element_type' => 'div',
       'class' => 'outputs user-outputs race field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'field_ercore_us_ethnicity' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs ethnicity field field-label-inline',
       'label_element_type' => 'label',
       'label_class' => 'field-label',
     ),
@@ -10027,6 +10178,10 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_us_race']['id'] = 'field_ercore_us_race';
   $handler->display->display_options['fields']['field_ercore_us_race']['table'] = 'field_data_field_ercore_us_race';
   $handler->display->display_options['fields']['field_ercore_us_race']['field'] = 'field_ercore_us_race';
+  /* Field: User: Ethnicity */
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['id'] = 'field_ercore_us_ethnicity';
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['table'] = 'field_data_field_ercore_us_ethnicity';
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['field'] = 'field_ercore_us_ethnicity';
   /* Field: User: Disabilities */
   $handler->display->display_options['fields']['field_ercore_us_disabilities']['id'] = 'field_ercore_us_disabilities';
   $handler->display->display_options['fields']['field_ercore_us_disabilities']['table'] = 'field_data_field_ercore_us_disabilities';
@@ -10078,7 +10233,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
   $handler->display->display_options['row_options']['skip_blank'] = 1;
   $handler->display->display_options['row_options']['semantic_html'] = array(
-    'field_user_name' => array(
+    'view_user' => array(
       'element_type' => 'div',
       'class' => 'user-name last-first',
     ),
@@ -10106,9 +10261,11 @@ function ercore_admin_views_default_views() {
       'label_element_type' => 'label',
       'label_class' => 'field-label',
     ),
-    'view_user' => array(
+    'field_ercore_us_ethnicity' => array(
       'element_type' => 'div',
-      'class' => 'user-name last-first',
+      'class' => 'outputs user-outputs ethnicity field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
     ),
   );
   $handler->display->display_options['defaults']['row_options'] = FALSE;
@@ -10180,6 +10337,10 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_us_race']['id'] = 'field_ercore_us_race';
   $handler->display->display_options['fields']['field_ercore_us_race']['table'] = 'field_data_field_ercore_us_race';
   $handler->display->display_options['fields']['field_ercore_us_race']['field'] = 'field_ercore_us_race';
+  /* Field: User: Ethnicity */
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['id'] = 'field_ercore_us_ethnicity';
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['table'] = 'field_data_field_ercore_us_ethnicity';
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['field'] = 'field_ercore_us_ethnicity';
   /* Field: User: Disabilities */
   $handler->display->display_options['fields']['field_ercore_us_disabilities']['id'] = 'field_ercore_us_disabilities';
   $handler->display->display_options['fields']['field_ercore_us_disabilities']['table'] = 'field_data_field_ercore_us_disabilities';
