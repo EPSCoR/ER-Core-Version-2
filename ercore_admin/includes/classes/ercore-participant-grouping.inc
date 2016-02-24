@@ -57,52 +57,52 @@ class ErcoreParticipantGroup {
    */
   public function ercoreParticipantGroupData(&$group, &$view_row, $new) {
 
-    $this->total = $this->total + 1;
+    $this->total++;
 
     if (isset($view_row->field_field_ercore_us_gender[0])) {
       if ($view_row->field_field_ercore_us_gender[0]['rendered']['#markup'] == 'Male') {
-        $this->male = $this->male + 1;
+        $this->male++;
       }
     }
     // Female.
     if (isset($view_row->field_field_ercore_us_gender[0])) {
       if ($view_row->field_field_ercore_us_gender[0]['rendered']['#markup'] == 'Female') {
-        $this->female = $this->female + 1;
+        $this->female++;
       }
     }
     // Black.
     if (isset($view_row->field_field_ercore_us_race[0])) {
       if ($view_row->field_field_ercore_us_race[0]['raw']['safe_value'] == 'Black or African American') {
-        $this->black = $this->black + 1;
+        $this->black++;
       }
     }
     // Hispanic.
     if (isset($view_row->field_field_ercore_us_ethnicity[0])) {
       if ($view_row->field_field_ercore_us_ethnicity[0]['rendered']['#markup'] == 'Hispanic or Latino') {
-        $this->hispanic = $this->hispanic + 1;
+        $this->hispanic++;
       }
     }
     // Other.
     if (isset($view_row->field_field_ercore_us_race[0])) {
       if ($view_row->field_field_ercore_us_race[0]['raw']['safe_value'] == 'American Indian or Alaskan Native') {
-        $this->other = $this->other + 1;
+        $this->other++;
       }
       elseif ($view_row->field_field_ercore_us_race[0]['raw']['safe_value'] == 'Pacific Islander') {
-        $this->other = $this->other + 1;
+        $this->other++;
       }
       elseif ($view_row->field_field_ercore_us_race[0]['raw']['safe_value'] == 'Native Hawaiian') {
-        $this->other = $this->other + 1;
+        $this->other++;
       }
     }
     // Disabled.
     if (isset($view_row->field_field_ercore_us_disabilities[0])) {
       if ($view_row->field_field_ercore_us_disabilities[0]['raw']['safe_value'] != 'None') {
-        $this->disabled = $this->disabled + 1;
+        $this->disabled++;
       }
     }
     // New Participant within supplied date range.
     if ($new == TRUE) {
-      $this->new = $this->new + 1;
+      $this->new++;
     }
     return $group;
   }

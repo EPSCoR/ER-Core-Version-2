@@ -43,15 +43,15 @@ class ErcoreCollaboration {
     $for_inst = array();
     foreach ($data as $row) {
       if ($row->field_field_ercore_in_type[0]['raw']['value'] == 'local') {
-        $this->withinColl = $this->withinColl + 1;
+        $this->withinColl++;
         $within_inst[] = $row->node_field_data_field_ercore_cr_inst_ref_nid;
       }
       elseif ($row->field_field_ercore_in_type[0]['raw']['value'] == 'domestic') {
-        $this->extColl = $this->extColl + 1;
+        $this->extColl++;
         $ext_inst[] = $row->node_field_data_field_ercore_cr_inst_ref_nid;
       }
       else {
-        $this->forColl = $this->forColl + 1;
+        $this->forColl++;
         $for_inst[] = $row->node_field_data_field_ercore_cr_inst_ref_nid;
       }
     }
