@@ -1,0 +1,10 @@
+name = ERCore Pages
+description = Page Manager configuration for a basic ERCore build.
+
+package = ERCore
+core = 7.x
+
+dependencies[] = page_manager
+
+;stylesheets[all][] = css/ercore_pages.css
+;scripts[] = js/ercore_pages.js

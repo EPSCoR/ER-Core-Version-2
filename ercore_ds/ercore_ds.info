@@ -1,5 +1,5 @@
 name = ERCore (DS) Display Suite
-description = Basic displya settings for ERCore
+description = Basic set of display settings for ERCore entities.
 
 package = ERCore
 core = 7.x

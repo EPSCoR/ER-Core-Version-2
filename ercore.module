@@ -113,6 +113,8 @@ function _ercore_callback_node_add_page() {
   $type['jurisdictional_types']['content'] = (array_filter($content, '_ercore_j_node_type_check'));
   $type['old_ercore_types']['name'] = 'Old ERCore Content Types';
   $type['old_ercore_types']['content'] = (array_filter($content, '_ercore_old_node_type_check'));
+  $type['admin_types']['name'] = 'ERCore Administrative';
+  $type['admin_types']['content'] = (array_filter($content, '_ercore_admin_node_type_check'));
   $type['drupal_types']['name'] = 'Drupal';
   $type['drupal_types']['content'] = (array_filter($content, '_ercore_drupal_node_type_check'));
   $print_type = _ercore_theme_node_add_list($type);
@@ -130,7 +132,7 @@ function _ercore_callback_node_add_page() {
  *   Returns boolean value of ERCore Status
  */
 function _ercore_node_type_check(array $type_check) {
-  if (substr($type_check['link_path'], 9, 6) === 'ercore' && substr($type_check['link_path'], 9, 8) !== 'ercore-j') {
+  if (substr($type_check['link_path'], 9, 6) === 'ercore' && substr($type_check['link_path'], 9, 8) !== 'ercore-j' && substr($type_check['link_path'], 9, 9) !== 'ercore-ad') {
     return TRUE;
   }
   else {
@@ -167,6 +169,24 @@ function _ercore_j_node_type_check(array $type_check) {
  */
 function _ercore_old_node_type_check(array $type_check) {
   if (substr($type_check['link_path'], 9, 3) === 'er-') {
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/**
+ * Receives node type array, returns true if type is ERCore.
+ *
+ * @param array $type_check
+ *   Checks if node type are identified as not ERCore related.
+ *
+ * @return bool
+ *   Returns boolean value of ERCore Status
+ */
+function _ercore_admin_node_type_check(array $type_check) {
+  if (substr($type_check['link_path'], 9, 9) === 'ercore-ad') {
     return TRUE;
   }
   else {
