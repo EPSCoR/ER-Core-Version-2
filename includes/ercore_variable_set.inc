@@ -846,6 +846,10 @@ variable_set('field_bundle_settings_user__user', array(
         array(
           'custom_settings' => TRUE,
         ),
+        'user_institution_link' =>
+          array(
+            'custom_settings' => TRUE,
+          ),
         'institution' =>
         array(
           'custom_settings' => TRUE,

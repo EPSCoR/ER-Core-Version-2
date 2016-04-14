@@ -333,52 +333,6 @@ $ercore_presentation_instances = array(
     'deleted' => '0',
   ),
 
-// INSTANCE: field_ercore_goals.
-  'ps_field_ercore_goals' => array(
-    'label' => 'Goals and Objectives',
-    'widget' => array(
-      'weight' => '7',
-      'type' => 'text_textfield',
-      'module' => 'text',
-      'active' => 1,
-      'settings' => array(
-        'size' => '60',
-      ),
-    ),
-    'settings' => array(
-      'text_processing' => '0',
-      'linkit' => array(
-        'enable' => 0,
-        'profile' => '',
-        'button_text' => 'Search',
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'type' => 'text_default',
-        'weight' => '7',
-        'settings' => array(),
-        'module' => 'text',
-      ),
-      'full' => array(
-        'label' => 'inline',
-        'type' => 'text_default',
-        'weight' => '6',
-        'settings' => array(),
-        'module' => 'text',
-      ),
-    ),
-    'required' => 1,
-    'description' => '',
-    'default_value' => NULL,
-    'field_name' => 'field_ercore_goals',
-    'entity_type' => 'node',
-    'bundle' => 'ercore_presentation',
-    'deleted' => '0',
-  ),
-
 // INSTANCE: field_ercore_ps_status.
   'ps_field_ercore_ps_status' => array(
     'label' => 'Status',
@@ -479,18 +433,23 @@ $ercore_presentation_instances = array(
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'type' => 'entityreference_label',
+        'type' => 'entityreference_entity_view',
+        'weight' => '11',
         'settings' => array(
-          'link' => FALSE,
+          'view_mode' => 'user_institution',
+          'links' => 1,
         ),
         'module' => 'entityreference',
-        'weight' => 11,
       ),
       'full' => array(
-        'type' => 'hidden',
         'label' => 'above',
-        'settings' => array(),
-        'weight' => 0,
+        'type' => 'entityreference_entity_view',
+        'weight' => '1',
+        'settings' => array(
+          'view_mode' => 'user_institution_link',
+          'links' => 1,
+        ),
+        'module' => 'entityreference',
       ),
     ),
     'required' => 1,

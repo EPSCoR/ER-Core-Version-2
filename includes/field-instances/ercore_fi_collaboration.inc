@@ -208,19 +208,21 @@ $ercore_collaboration_instances = array(
       ),
       'teaser' => array(
         'label' => 'above',
-        'type' => 'entityreference_label',
+        'type' => 'entityreference_entity_view',
         'weight' => '1',
         'settings' => array(
-          'link' => 1,
+          'view_mode' => 'user_institution',
+          'links' => 1,
         ),
         'module' => 'entityreference',
       ),
       'full' => array(
         'label' => 'above',
-        'type' => 'entityreference_label',
+        'type' => 'entityreference_entity_view',
         'weight' => '1',
         'settings' => array(
-          'link' => 1,
+          'view_mode' => 'user_institution_link',
+          'links' => 1,
         ),
         'module' => 'entityreference',
       ),

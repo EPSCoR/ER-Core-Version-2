@@ -25,5 +25,6 @@ featured-field|Featured Field'
  * Implements hook_uninstall().
  */
 function ercore_ds_uninstall() {
-
+  variable_del('ds_extras_field_template');
+  variable_del('ds_classes_fields');
 }

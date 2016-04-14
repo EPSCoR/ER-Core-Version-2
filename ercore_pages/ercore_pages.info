@@ -5,6 +5,8 @@ package = ERCore
 core = 7.x
 
 dependencies[] = page_manager
+dependencies[] = panels
+dependencies[] = panels_breadcrumbs
 
 ;stylesheets[all][] = css/ercore_pages.css
 ;scripts[] = js/ercore_pages.js

@@ -1167,28 +1167,31 @@ $ercore_publication_instances = array(
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'type' => 'entityreference_label',
-        'weight' => '0',
+        'type' => 'entityreference_entity_view',
+        'weight' => '1',
         'settings' => array(
-          'link' => 1,
+          'view_mode' => 'user_institution',
+          'links' => 1,
         ),
         'module' => 'entityreference',
       ),
       'teaser' => array(
         'label' => 'above',
-        'type' => 'entityreference_label',
-        'weight' => '0',
+        'type' => 'entityreference_entity_view',
+        'weight' => '1',
         'settings' => array(
-          'link' => 1,
+          'view_mode' => 'user_institution',
+          'links' => 1,
         ),
         'module' => 'entityreference',
       ),
       'full' => array(
         'label' => 'above',
-        'type' => 'entityreference_label',
-        'weight' => '0',
+        'type' => 'entityreference_entity_view',
+        'weight' => '1',
         'settings' => array(
-          'link' => 1,
+          'view_mode' => 'user_institution_link',
+          'links' => 1,
         ),
         'module' => 'entityreference',
       ),

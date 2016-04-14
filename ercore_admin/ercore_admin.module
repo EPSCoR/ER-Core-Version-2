@@ -497,17 +497,6 @@ function ercore_admin_views_query_alter(&$view, &$query) {
   }
 }
 
-/**
- * Implements hook_preprocess_user_profile().
- */
-function ercore_admin_preprocess_user_profile(&$vars) {
-  if ($vars['elements']['#view_mode'] == 'user_institution') {
-    $vars['theme_hook_suggestions'][] = 'user_profile__user_institution';
-  }
-  if ($vars['elements']['#view_mode'] == 'institution') {
-    $vars['theme_hook_suggestions'][] = 'user_profile__institution';
-  }
-}
 
 /**
  * Implements hook_theme_registry_alter().

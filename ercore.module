@@ -35,10 +35,29 @@ function ercore_entity_info_alter(&$entity_info) {
     'label' => t('User with Institution'),
     'custom settings' => FALSE,
   );
+  $entity_info['user']['view modes']['user_institution_link'] = array(
+    'label' => t('User with Institution: Linked'),
+    'custom settings' => FALSE,
+  );
   $entity_info['user']['view modes']['institution'] = array(
     'label' => t('Institution Only'),
     'custom settings' => FALSE,
   );
+}
+
+/**
+ * Implements hook_preprocess_user_profile().
+ */
+function ercore_preprocess_user_profile(&$vars) {
+  if ($vars['elements']['#view_mode'] == 'user_institution') {
+    $vars['theme_hook_suggestions'][] = 'user_profile__user_institution';
+  }
+  if ($vars['elements']['#view_mode'] == 'user_institution_link') {
+    $vars['theme_hook_suggestions'][] = 'user_profile__user_institution_link';
+  }
+  if ($vars['elements']['#view_mode'] == 'institution') {
+    $vars['theme_hook_suggestions'][] = 'user_profile__institution';
+  }
 }
 
 /**
@@ -597,7 +616,7 @@ function ercore_form_user_profile_form_alter(&$form, &$form_state, $form_id) {
   $admin_roles = array(
     'administrator',
     'administrative staff',
-    'site manager',
+    'ercore admin',
   );
   if (!in_array($highest_role, $admin_roles)) {
     $form['field_ercore_us_sen_role']['#disabled'] = TRUE;

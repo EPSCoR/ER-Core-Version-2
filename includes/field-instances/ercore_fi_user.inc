@@ -39,6 +39,12 @@ $ercore_user_instances = array(
         'weight' => '3',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -120,6 +126,12 @@ $ercore_user_instances = array(
         'weight' => '4',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -196,6 +208,12 @@ $ercore_user_instances = array(
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => '5',
+        'settings' => array(),
+      ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
         'settings' => array(),
       ),
       'institution' => array(
@@ -276,6 +294,12 @@ $ercore_user_instances = array(
         'weight' => '6',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -331,6 +355,12 @@ $ercore_user_instances = array(
         'weight' => '7',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -384,6 +414,12 @@ $ercore_user_instances = array(
         'weight' => '8',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -435,6 +471,12 @@ $ercore_user_instances = array(
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => '9',
+        'settings' => array(),
+      ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
         'settings' => array(),
       ),
       'institution' => array(
@@ -516,6 +558,12 @@ $ercore_user_instances = array(
         'weight' => '10',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -592,6 +640,12 @@ $ercore_user_instances = array(
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => '11',
+        'settings' => array(),
+      ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
         'settings' => array(),
       ),
       'institution' => array(
@@ -672,6 +726,12 @@ $ercore_user_instances = array(
         'weight' => '12',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -719,6 +779,12 @@ $ercore_user_instances = array(
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => '13',
+        'settings' => array(),
+      ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
         'settings' => array(),
       ),
       'institution' => array(
@@ -785,6 +851,12 @@ $ercore_user_instances = array(
         'weight' => '14',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -835,6 +907,12 @@ $ercore_user_instances = array(
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => '15',
+        'settings' => array(),
+      ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
         'settings' => array(),
       ),
       'institution' => array(
@@ -920,6 +998,12 @@ $ercore_user_instances = array(
         'weight' => '16',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -989,6 +1073,12 @@ $ercore_user_instances = array(
         'weight' => '17',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -1037,10 +1127,18 @@ $ercore_user_instances = array(
         'module' => 'text',
       ),
       'user_institution' => array(
-        'label' => 'hidden',
-        'type' => 'hidden',
-        'weight' => '18',
+        'label' => 'inline',
+        'type' => 'text_default',
+        'weight' => '7',
         'settings' => array(),
+        'module' => 'text',
+      ),
+      'user_institution_link' => array(
+        'label' => 'inline',
+        'type' => 'text_default',
+        'weight' => '7',
+        'settings' => array(),
+        'module' => 'text',
       ),
       'institution' => array(
         'label' => 'hidden',
@@ -1093,6 +1191,12 @@ $ercore_user_instances = array(
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => '19',
+        'settings' => array(),
+      ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
         'settings' => array(),
       ),
       'institution' => array(
@@ -1155,6 +1259,12 @@ $ercore_user_instances = array(
         'weight' => '20',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -1209,6 +1319,12 @@ $ercore_user_instances = array(
         'weight' => '21',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -1259,6 +1375,12 @@ $ercore_user_instances = array(
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => '22',
+        'settings' => array(),
+      ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
         'settings' => array(),
       ),
       'institution' => array(
@@ -1315,6 +1437,12 @@ $ercore_user_instances = array(
         'weight' => '23',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -1363,6 +1491,12 @@ $ercore_user_instances = array(
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => '24',
+        'settings' => array(),
+      ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
         'settings' => array(),
       ),
       'institution' => array(
@@ -1448,6 +1582,12 @@ $ercore_user_instances = array(
         'weight' => '25',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -1496,11 +1636,20 @@ $ercore_user_instances = array(
         'module' => 'entityreference',
       ),
       'user_institution' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'type' => 'entityreference_label',
         'weight' => '1',
         'settings' => array(
           'link' => 0,
+        ),
+        'module' => 'entityreference',
+      ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'entityreference_label',
+        'weight' => '1',
+        'settings' => array(
+          'link' => 1,
         ),
         'module' => 'entityreference',
       ),
@@ -1562,6 +1711,12 @@ $ercore_user_instances = array(
         'weight' => '26',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -1621,6 +1776,12 @@ $ercore_user_instances = array(
         'weight' => '27',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -1675,6 +1836,12 @@ $ercore_user_instances = array(
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => '28',
+        'settings' => array(),
+      ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
         'settings' => array(),
       ),
       'institution' => array(
@@ -1756,6 +1923,12 @@ $ercore_user_instances = array(
         'weight' => '29',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -1804,6 +1977,12 @@ $ercore_user_instances = array(
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => '30',
+        'settings' => array(),
+      ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
         'settings' => array(),
       ),
       'institution' => array(
@@ -1856,6 +2035,12 @@ $ercore_user_instances = array(
         'weight' => '31',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -1904,6 +2089,12 @@ $ercore_user_instances = array(
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => '32',
+        'settings' => array(),
+      ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
         'settings' => array(),
       ),
       'institution' => array(
@@ -1987,6 +2178,12 @@ $ercore_user_instances = array(
         'weight' => '33',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -2034,6 +2231,12 @@ $ercore_user_instances = array(
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => '34',
+        'settings' => array(),
+      ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
         'settings' => array(),
       ),
       'institution' => array(
@@ -2089,6 +2292,12 @@ $ercore_user_instances = array(
         'weight' => '35',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -2140,6 +2349,12 @@ $ercore_user_instances = array(
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => '36',
+        'settings' => array(),
+      ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
         'settings' => array(),
       ),
       'institution' => array(
@@ -2210,6 +2425,12 @@ $ercore_user_instances = array(
         'weight' => '37',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -2270,6 +2491,12 @@ $ercore_user_instances = array(
         'weight' => '38',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -2318,6 +2545,12 @@ $ercore_user_instances = array(
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => '39',
+        'settings' => array(),
+      ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
         'settings' => array(),
       ),
       'institution' => array(
@@ -2403,6 +2636,12 @@ $ercore_user_instances = array(
         'weight' => '40',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -2456,6 +2695,12 @@ $ercore_user_instances = array(
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => '41',
+        'settings' => array(),
+      ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
         'settings' => array(),
       ),
       'institution' => array(
@@ -2537,6 +2782,12 @@ $ercore_user_instances = array(
         'weight' => '42',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -2592,6 +2843,12 @@ $ercore_user_instances = array(
         'weight' => '43',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -2643,6 +2900,12 @@ $ercore_user_instances = array(
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => '44',
+        'settings' => array(),
+      ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
         'settings' => array(),
       ),
       'institution' => array(
@@ -2698,6 +2961,12 @@ $ercore_user_instances = array(
         'weight' => '45',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -2748,6 +3017,12 @@ $ercore_user_instances = array(
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => '46',
+        'settings' => array(),
+      ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
         'settings' => array(),
       ),
       'institution' => array(
@@ -2885,6 +3160,23 @@ $ercore_user_instances = array(
         ),
         'module' => 'name',
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'name_formatter',
+        'weight' => '0',
+        'settings' => array(
+          'format' => 'full',
+          'markup' => 0,
+          'output' => 'plain',
+          'multiple' => 'default',
+          'multiple_delimiter' => ', ',
+          'multiple_and' => 'text',
+          'multiple_delimiter_precedes_last' => 'never',
+          'multiple_el_al_min' => '3',
+          'multiple_el_al_first' => '1',
+        ),
+        'module' => 'name',
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -2937,6 +3229,12 @@ $ercore_user_instances = array(
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => '47',
+        'settings' => array(),
+      ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
         'settings' => array(),
       ),
       'institution' => array(
@@ -2997,6 +3295,12 @@ $ercore_user_instances = array(
         'weight' => '48',
         'settings' => array(),
       ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
+        'settings' => array(),
+      ),
       'institution' => array(
         'label' => 'hidden',
         'type' => 'hidden',
@@ -3052,6 +3356,12 @@ $ercore_user_instances = array(
         'label' => 'hidden',
         'type' => 'hidden',
         'weight' => '49',
+        'settings' => array(),
+      ),
+      'user_institution_link' => array(
+        'label' => 'hidden',
+        'type' => 'hidden',
+        'weight' => '3',
         'settings' => array(),
       ),
       'institution' => array(

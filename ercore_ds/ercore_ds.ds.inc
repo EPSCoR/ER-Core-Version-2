@@ -437,6 +437,13 @@ function ercore_ds_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
+    'field_ercore_ev_date' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'classes' => 'teaser-date',
+        ),
+      ),
+    ),
     'field_ercore_organizer' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -617,6 +624,33 @@ function ercore_ds_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_ercore_components' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'lb-el' => 'span',
+          'lb-cl' => 'label-inline',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'field-inline',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+          'fis' => TRUE,
+          'fis-el' => 'ul',
+          'fis-cl' => 'list-inline',
+          'fis-at' => '',
+          'fis-def-at' => FALSE,
+          'fi' => TRUE,
+          'fi-el' => 'li',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
+        ),
+      ),
+    ),
   );
   $ds_fieldsettings['node|ercore_j_highlight|full'] = $ds_fieldsetting;
 
@@ -628,7 +662,7 @@ function ercore_ds_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
     'title' => array(
-      'weight' => '1',
+      'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -704,6 +738,47 @@ function ercore_ds_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|ercore_j_honor|full';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'ercore_j_honor';
+  $ds_fieldsetting->view_mode = 'full';
+  $ds_fieldsetting->settings = array(
+    'field_ercore_organizer' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
+  );
+  $ds_fieldsettings['node|ercore_j_honor|full'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|ercore_j_honor|teaser';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'ercore_j_honor';
+  $ds_fieldsetting->view_mode = 'teaser';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h2',
+        'class' => '',
+        'ft' => array(),
+      ),
+    ),
+    'field_ercore_organizer' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
+  );
+  $ds_fieldsettings['node|ercore_j_honor|teaser'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|ercore_other_product|full';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'ercore_other_product';
@@ -751,33 +826,6 @@ function ercore_ds_ds_field_settings_info() {
           'fis' => TRUE,
           'fis-el' => 'ul',
           'fis-cl' => 'person',
-          'fis-at' => '',
-          'fis-def-at' => FALSE,
-          'fi' => TRUE,
-          'fi-el' => 'li',
-          'fi-cl' => '',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-          'fi-first-last' => FALSE,
-        ),
-      ),
-    ),
-    'field_ercore_programs' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'lb-el' => 'span',
-          'lb-cl' => 'label-inline',
-          'ow' => TRUE,
-          'ow-el' => 'div',
-          'ow-cl' => 'field-inline',
-          'ow-def-cl' => FALSE,
-          'ow-at' => '',
-          'ow-def-at' => FALSE,
-          'fis' => TRUE,
-          'fis-el' => 'ul',
-          'fis-cl' => 'list-inline',
           'fis-at' => '',
           'fis-def-at' => FALSE,
           'fi' => TRUE,
@@ -865,7 +913,71 @@ function ercore_ds_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_ercore_programs' => array(
+  );
+  $ds_fieldsettings['node|ercore_other_product|teaser'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|ercore_patent|full';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'ercore_patent';
+  $ds_fieldsetting->view_mode = 'full';
+  $ds_fieldsetting->settings = array(
+    'field_ercore_organizer' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'lb-el' => 'h2',
+          'lb-cl' => 'field-label',
+          'lb-col' => TRUE,
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => '',
+          'ow-def-cl' => TRUE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+          'fis' => TRUE,
+          'fis-el' => 'ul',
+          'fis-cl' => 'person',
+          'fis-at' => '',
+          'fis-def-at' => FALSE,
+          'fi' => TRUE,
+          'fi-el' => 'li',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
+        ),
+      ),
+    ),
+  );
+  $ds_fieldsettings['node|ercore_patent|full'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|ercore_patent|teaser';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'ercore_patent';
+  $ds_fieldsetting->view_mode = 'teaser';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h2',
+        'class' => '',
+        'ft' => array(),
+      ),
+    ),
+    'field_ercore_pt_disclosure' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
+    'field_ercore_organizer' => array(
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
@@ -883,8 +995,8 @@ function ercore_ds_ds_field_settings_info() {
           'fis-at' => '',
           'fis-def-at' => FALSE,
           'fi' => TRUE,
-          'fi-el' => 'li',
-          'fi-cl' => '',
+          'fi-el' => 'list',
+          'fi-cl' => 'person',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -893,7 +1005,7 @@ function ercore_ds_ds_field_settings_info() {
       ),
     ),
   );
-  $ds_fieldsettings['node|ercore_other_product|teaser'] = $ds_fieldsetting;
+  $ds_fieldsettings['node|ercore_patent|teaser'] = $ds_fieldsetting;
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
@@ -1249,33 +1361,6 @@ function ercore_ds_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_ercore_programs' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'lb-el' => 'span',
-          'lb-cl' => 'label-inline',
-          'ow' => TRUE,
-          'ow-el' => 'div',
-          'ow-cl' => 'field-inline',
-          'ow-def-cl' => FALSE,
-          'ow-at' => '',
-          'ow-def-at' => FALSE,
-          'fis' => TRUE,
-          'fis-el' => 'ul',
-          'fis-cl' => 'list-inline',
-          'fis-at' => '',
-          'fis-def-at' => FALSE,
-          'fi' => TRUE,
-          'fi-el' => 'li',
-          'fi-cl' => '',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-          'fi-first-last' => FALSE,
-        ),
-      ),
-    ),
   );
   $ds_fieldsettings['node|ercore_publication|full'] = $ds_fieldsetting;
 
@@ -1466,6 +1551,7 @@ function ercore_ds_ds_layout_settings_info() {
     'layout_attributes_merge' => TRUE,
     'layout_link_attribute' => FALSE,
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $ds_layouts['field_collection_item|field_ercore_ev_engagement|simplified'] = $ds_layout;
 
@@ -1545,6 +1631,7 @@ function ercore_ds_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $ds_layouts['node|ercore_collaboration|teaser'] = $ds_layout;
 
@@ -1591,6 +1678,7 @@ function ercore_ds_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $ds_layouts['node|ercore_event|full'] = $ds_layout;
 
@@ -1627,6 +1715,7 @@ function ercore_ds_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $ds_layouts['node|ercore_event|teaser'] = $ds_layout;
 
@@ -1663,8 +1752,48 @@ function ercore_ds_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $ds_layouts['node|ercore_event|teaser_alternate'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|ercore_institution|full';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'ercore_institution';
+  $ds_layout->view_mode = 'full';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_ercore_in_abbr',
+        1 => 'field_ercore_in_participating',
+        2 => 'field_ercore_in_type',
+        3 => 'field_ercore_in_category',
+        4 => 'field_ercore_in_country',
+        5 => 'body',
+        6 => 'field_ercore_in_link',
+      ),
+    ),
+    'fields' => array(
+      'field_ercore_in_abbr' => 'ds_content',
+      'field_ercore_in_participating' => 'ds_content',
+      'field_ercore_in_type' => 'ds_content',
+      'field_ercore_in_category' => 'ds_content',
+      'field_ercore_in_country' => 'ds_content',
+      'body' => 'ds_content',
+      'field_ercore_in_link' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => TRUE,
+    'layout_link_attribute' => FALSE,
+    'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
+  );
+  $ds_layouts['node|ercore_institution|full'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
@@ -1677,8 +1806,8 @@ function ercore_ds_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'field_ercore_hi_date',
-        1 => 'field_ercore_hi_image',
-        2 => 'field_ercore_organizer',
+        1 => 'field_ercore_organizer',
+        2 => 'field_ercore_hi_image',
         3 => 'field_ercore_components',
         4 => 'field_ercore_programs',
         5 => 'body',
@@ -1686,8 +1815,8 @@ function ercore_ds_ds_layout_settings_info() {
     ),
     'fields' => array(
       'field_ercore_hi_date' => 'ds_content',
-      'field_ercore_hi_image' => 'ds_content',
       'field_ercore_organizer' => 'ds_content',
+      'field_ercore_hi_image' => 'ds_content',
       'field_ercore_components' => 'ds_content',
       'field_ercore_programs' => 'ds_content',
       'body' => 'ds_content',
@@ -1701,6 +1830,7 @@ function ercore_ds_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $ds_layouts['node|ercore_j_highlight|full'] = $ds_layout;
 
@@ -1714,19 +1844,21 @@ function ercore_ds_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_ercore_hi_image',
-        1 => 'title',
-        2 => 'field_ercore_programs',
-        3 => 'field_ercore_organizer',
-        4 => 'field_ercore_hi_date',
+        0 => 'title',
+        1 => 'field_ercore_hi_date',
+        2 => 'field_ercore_hi_image',
+        3 => 'field_ercore_programs',
+        4 => 'field_ercore_organizer',
+        5 => 'body',
       ),
     ),
     'fields' => array(
-      'field_ercore_hi_image' => 'ds_content',
       'title' => 'ds_content',
+      'field_ercore_hi_date' => 'ds_content',
+      'field_ercore_hi_image' => 'ds_content',
       'field_ercore_programs' => 'ds_content',
       'field_ercore_organizer' => 'ds_content',
-      'field_ercore_hi_date' => 'ds_content',
+      'body' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -1737,8 +1869,81 @@ function ercore_ds_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $ds_layouts['node|ercore_j_highlight|teaser'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|ercore_j_honor|full';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'ercore_j_honor';
+  $ds_layout->view_mode = 'full';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_ercore_hn_date',
+        1 => 'field_ercore_organizer',
+        2 => 'field_ercore_programs',
+        3 => 'body',
+      ),
+    ),
+    'fields' => array(
+      'field_ercore_hn_date' => 'ds_content',
+      'field_ercore_organizer' => 'ds_content',
+      'field_ercore_programs' => 'ds_content',
+      'body' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 0,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
+  );
+  $ds_layouts['node|ercore_j_honor|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|ercore_j_honor|teaser';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'ercore_j_honor';
+  $ds_layout->view_mode = 'teaser';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'title',
+        1 => 'field_ercore_hn_date',
+        2 => 'field_ercore_programs',
+        3 => 'field_ercore_organizer',
+        4 => 'body',
+      ),
+    ),
+    'fields' => array(
+      'title' => 'ds_content',
+      'field_ercore_hn_date' => 'ds_content',
+      'field_ercore_programs' => 'ds_content',
+      'field_ercore_organizer' => 'ds_content',
+      'body' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
+  );
+  $ds_layouts['node|ercore_j_honor|teaser'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
@@ -1753,21 +1958,17 @@ function ercore_ds_ds_layout_settings_info() {
         0 => 'field_ercore_organizer',
         1 => 'field_ercore_op_non_epscor',
         2 => 'field_ercore_op_type',
-        3 => 'field_ercore_goals',
-        4 => 'field_ercore_programs',
-        5 => 'field_ercore_op_rii_support',
-        6 => 'field_ercore_nsf',
-        7 => 'field_ercore_op_website',
-        8 => 'field_ercore_op_description',
-        9 => 'field_ercore_op_date',
+        3 => 'field_ercore_op_rii_support',
+        4 => 'field_ercore_nsf',
+        5 => 'field_ercore_op_website',
+        6 => 'field_ercore_op_description',
+        7 => 'field_ercore_op_date',
       ),
     ),
     'fields' => array(
       'field_ercore_organizer' => 'ds_content',
       'field_ercore_op_non_epscor' => 'ds_content',
       'field_ercore_op_type' => 'ds_content',
-      'field_ercore_goals' => 'ds_content',
-      'field_ercore_programs' => 'ds_content',
       'field_ercore_op_rii_support' => 'ds_content',
       'field_ercore_nsf' => 'ds_content',
       'field_ercore_op_website' => 'ds_content',
@@ -1783,6 +1984,7 @@ function ercore_ds_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $ds_layouts['node|ercore_other_product|full'] = $ds_layout;
 
@@ -1797,20 +1999,18 @@ function ercore_ds_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'title',
-        1 => 'field_ercore_op_date',
-        2 => 'field_ercore_organizer',
-        3 => 'field_ercore_op_non_epscor',
-        4 => 'field_ercore_goals',
-        5 => 'field_ercore_programs',
+        1 => 'field_ercore_op_type',
+        2 => 'field_ercore_op_non_epscor',
+        3 => 'field_ercore_organizer',
+        4 => 'field_ercore_op_date',
       ),
     ),
     'fields' => array(
       'title' => 'ds_content',
-      'field_ercore_op_date' => 'ds_content',
-      'field_ercore_organizer' => 'ds_content',
+      'field_ercore_op_type' => 'ds_content',
       'field_ercore_op_non_epscor' => 'ds_content',
-      'field_ercore_goals' => 'ds_content',
-      'field_ercore_programs' => 'ds_content',
+      'field_ercore_organizer' => 'ds_content',
+      'field_ercore_op_date' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -1821,8 +2021,91 @@ function ercore_ds_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $ds_layouts['node|ercore_other_product|teaser'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|ercore_patent|full';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'ercore_patent';
+  $ds_layout->view_mode = 'full';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_ercore_organizer',
+        1 => 'field_ercore_pt_disclosure',
+        2 => 'field_ercore_programs',
+        3 => 'field_ercore_pt_description',
+        4 => 'field_ercore_pt_link',
+        5 => 'field_ercore_pt_provisional',
+        6 => 'field_ercore_pt_filing',
+        7 => 'field_ercore_pt_award',
+        8 => 'field_ercore_pt_date',
+        9 => 'field_ercore_pt_licensee',
+      ),
+    ),
+    'fields' => array(
+      'field_ercore_organizer' => 'ds_content',
+      'field_ercore_pt_disclosure' => 'ds_content',
+      'field_ercore_programs' => 'ds_content',
+      'field_ercore_pt_description' => 'ds_content',
+      'field_ercore_pt_link' => 'ds_content',
+      'field_ercore_pt_provisional' => 'ds_content',
+      'field_ercore_pt_filing' => 'ds_content',
+      'field_ercore_pt_award' => 'ds_content',
+      'field_ercore_pt_date' => 'ds_content',
+      'field_ercore_pt_licensee' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
+  );
+  $ds_layouts['node|ercore_patent|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|ercore_patent|teaser';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'ercore_patent';
+  $ds_layout->view_mode = 'teaser';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'title',
+        1 => 'field_ercore_organizer',
+        2 => 'field_ercore_pt_disclosure',
+        3 => 'field_ercore_pt_date',
+      ),
+    ),
+    'fields' => array(
+      'title' => 'ds_content',
+      'field_ercore_organizer' => 'ds_content',
+      'field_ercore_pt_disclosure' => 'ds_content',
+      'field_ercore_pt_date' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
+  );
+  $ds_layouts['node|ercore_patent|teaser'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
@@ -1889,18 +2172,17 @@ function ercore_ds_ds_layout_settings_info() {
         2 => 'field_ercore_pp_others',
         3 => 'field_ercore_pp_proposal_paid',
         4 => 'field_ercore_pp_support',
-        5 => 'field_ercore_goals',
-        6 => 'body',
-        7 => 'field_ercore_pp_award_req_dec',
-        8 => 'field_ercore_programs',
-        9 => 'field_ercore_pp_support_type',
-        10 => 'field_ercore_pp_proposal_status',
-        11 => 'field_ercore_pp_proposal_denied',
-        12 => 'field_ercore_pp_proposal_date',
-        13 => 'field_ercore_pp_award_amount',
-        14 => 'field_ercore_pp_proposal_pending',
-        15 => 'field_ercore_pp_proposal_submit',
-        16 => 'field_ercore_pp_location',
+        5 => 'field_ercore_pp_award_req_dec',
+        6 => 'field_ercore_programs',
+        7 => 'body',
+        8 => 'field_ercore_pp_support_type',
+        9 => 'field_ercore_pp_proposal_status',
+        10 => 'field_ercore_pp_proposal_denied',
+        11 => 'field_ercore_pp_proposal_date',
+        12 => 'field_ercore_pp_award_amount',
+        13 => 'field_ercore_pp_proposal_pending',
+        14 => 'field_ercore_pp_proposal_submit',
+        15 => 'field_ercore_pp_location',
       ),
     ),
     'fields' => array(
@@ -1909,10 +2191,9 @@ function ercore_ds_ds_layout_settings_info() {
       'field_ercore_pp_others' => 'ds_content',
       'field_ercore_pp_proposal_paid' => 'ds_content',
       'field_ercore_pp_support' => 'ds_content',
-      'field_ercore_goals' => 'ds_content',
-      'body' => 'ds_content',
       'field_ercore_pp_award_req_dec' => 'ds_content',
       'field_ercore_programs' => 'ds_content',
+      'body' => 'ds_content',
       'field_ercore_pp_support_type' => 'ds_content',
       'field_ercore_pp_proposal_status' => 'ds_content',
       'field_ercore_pp_proposal_denied' => 'ds_content',
@@ -1931,6 +2212,7 @@ function ercore_ds_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $ds_layouts['node|ercore_proposal|full'] = $ds_layout;
 
@@ -1945,20 +2227,20 @@ function ercore_ds_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'title',
-        1 => 'field_ercore_organizer',
-        2 => 'field_ercore_pp_other_pi',
-        3 => 'field_ercore_pp_others',
-        4 => 'field_ercore_programs',
+        1 => 'field_ercore_programs',
+        2 => 'field_ercore_organizer',
+        3 => 'field_ercore_pp_other_pi',
+        4 => 'field_ercore_pp_others',
         5 => 'field_ercore_pp_proposal_status',
         6 => 'field_ercore_pp_proposal_date',
       ),
     ),
     'fields' => array(
       'title' => 'ds_content',
+      'field_ercore_programs' => 'ds_content',
       'field_ercore_organizer' => 'ds_content',
       'field_ercore_pp_other_pi' => 'ds_content',
       'field_ercore_pp_others' => 'ds_content',
-      'field_ercore_programs' => 'ds_content',
       'field_ercore_pp_proposal_status' => 'ds_content',
       'field_ercore_pp_proposal_date' => 'ds_content',
     ),
@@ -1971,6 +2253,7 @@ function ercore_ds_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $ds_layouts['node|ercore_proposal|teaser'] = $ds_layout;
 
@@ -1984,63 +2267,57 @@ function ercore_ds_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_ercore_pb_submit_date',
+        0 => 'field_ercore_pb_date',
         1 => 'field_ercore_pb_type',
-        2 => 'field_ercore_pb_date',
-        3 => 'field_ercore_organizer',
-        4 => 'field_ercore_pb_nonepscor_auth',
-        5 => 'field_ercore_programs',
-        6 => 'field_ercore_goals',
-        7 => 'field_ercore_pb_peer_reviewed',
-        8 => 'field_ercore_pb_rii_support',
-        9 => 'body',
-        10 => 'field_ercore_pb_citation',
-        11 => 'field_ercore_pb_doi',
-        12 => 'field_ercore_pb_issn',
-        13 => 'field_ercore_pb_epscor',
-        14 => 'field_ercore_pb_upload',
-        15 => 'field_ercore_nsf',
-        16 => 'field_ercore_pb_status',
-        17 => 'field_ercore_pb_archived',
-        18 => 'field_ercore_pb_arch_name',
-        19 => 'field_ercore_pb_data',
-        20 => 'field_ercore_pb_ark',
-        21 => 'field_ercore_pb_publisher',
-        22 => 'field_ercore_pb_coll_title',
-        23 => 'field_ercore_pb_journal_name',
-        24 => 'field_ercore_pb_journal_volume',
-        25 => 'field_ercore_pb_link',
-        26 => 'field_ercore_pb_journal_pages',
+        2 => 'field_ercore_organizer',
+        3 => 'field_ercore_pb_nonepscor_auth',
+        4 => 'field_ercore_pb_journal_name',
+        5 => 'field_ercore_pb_journal_volume',
+        6 => 'body',
+        7 => 'field_ercore_pb_publisher',
+        8 => 'field_ercore_pb_coll_title',
+        9 => 'field_ercore_pb_journal_pages',
+        10 => 'field_ercore_pb_doi',
+        11 => 'field_ercore_pb_issn',
+        12 => 'field_ercore_pb_ark',
+        13 => 'field_ercore_pb_submit_date',
+        14 => 'field_ercore_pb_status',
+        15 => 'field_ercore_pb_peer_reviewed',
+        16 => 'field_ercore_pb_rii_support',
+        17 => 'field_ercore_pb_epscor',
+        18 => 'field_ercore_pb_citation',
+        19 => 'field_ercore_pb_link',
+        20 => 'field_ercore_pb_upload',
+        21 => 'field_ercore_pb_data',
+        22 => 'field_ercore_pb_arch_name',
+        23 => 'field_ercore_pb_archived',
       ),
     ),
     'fields' => array(
-      'field_ercore_pb_submit_date' => 'ds_content',
-      'field_ercore_pb_type' => 'ds_content',
       'field_ercore_pb_date' => 'ds_content',
+      'field_ercore_pb_type' => 'ds_content',
       'field_ercore_organizer' => 'ds_content',
       'field_ercore_pb_nonepscor_auth' => 'ds_content',
-      'field_ercore_programs' => 'ds_content',
-      'field_ercore_goals' => 'ds_content',
-      'field_ercore_pb_peer_reviewed' => 'ds_content',
-      'field_ercore_pb_rii_support' => 'ds_content',
-      'body' => 'ds_content',
-      'field_ercore_pb_citation' => 'ds_content',
-      'field_ercore_pb_doi' => 'ds_content',
-      'field_ercore_pb_issn' => 'ds_content',
-      'field_ercore_pb_epscor' => 'ds_content',
-      'field_ercore_pb_upload' => 'ds_content',
-      'field_ercore_nsf' => 'ds_content',
-      'field_ercore_pb_status' => 'ds_content',
-      'field_ercore_pb_archived' => 'ds_content',
-      'field_ercore_pb_arch_name' => 'ds_content',
-      'field_ercore_pb_data' => 'ds_content',
-      'field_ercore_pb_ark' => 'ds_content',
-      'field_ercore_pb_publisher' => 'ds_content',
-      'field_ercore_pb_coll_title' => 'ds_content',
       'field_ercore_pb_journal_name' => 'ds_content',
       'field_ercore_pb_journal_volume' => 'ds_content',
-      'field_ercore_pb_link' => 'ds_content',
+      'body' => 'ds_content',
+      'field_ercore_pb_publisher' => 'ds_content',
+      'field_ercore_pb_coll_title' => 'ds_content',
       'field_ercore_pb_journal_pages' => 'ds_content',
+      'field_ercore_pb_doi' => 'ds_content',
+      'field_ercore_pb_issn' => 'ds_content',
+      'field_ercore_pb_ark' => 'ds_content',
+      'field_ercore_pb_submit_date' => 'ds_content',
+      'field_ercore_pb_status' => 'ds_content',
+      'field_ercore_pb_peer_reviewed' => 'ds_content',
+      'field_ercore_pb_rii_support' => 'ds_content',
+      'field_ercore_pb_epscor' => 'ds_content',
+      'field_ercore_pb_citation' => 'ds_content',
+      'field_ercore_pb_link' => 'ds_content',
+      'field_ercore_pb_upload' => 'ds_content',
+      'field_ercore_pb_data' => 'ds_content',
+      'field_ercore_pb_arch_name' => 'ds_content',
+      'field_ercore_pb_archived' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -2051,6 +2328,7 @@ function ercore_ds_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $ds_layouts['node|ercore_publication|full'] = $ds_layout;
 
@@ -2087,6 +2365,7 @@ function ercore_ds_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $ds_layouts['node|ercore_publication|teaser'] = $ds_layout;
 

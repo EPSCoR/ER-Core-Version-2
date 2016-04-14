@@ -5666,12 +5666,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_nsf']['table'] = 'field_data_field_ercore_nsf';
   $handler->display->display_options['fields']['field_ercore_nsf']['field'] = 'field_ercore_nsf';
   $handler->display->display_options['fields']['field_ercore_nsf']['element_label_colon'] = FALSE;
-  /* Field: Content: Goals and Objectives */
-  $handler->display->display_options['fields']['field_ercore_goals']['id'] = 'field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['table'] = 'field_data_field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['field'] = 'field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['element_label_colon'] = FALSE;
-  /* Field: Content: Body */
+ /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -6535,11 +6530,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_ps_status']['table'] = 'field_data_field_ercore_ps_status';
   $handler->display->display_options['fields']['field_ercore_ps_status']['field'] = 'field_ercore_ps_status';
   $handler->display->display_options['fields']['field_ercore_ps_status']['element_label_colon'] = FALSE;
-  /* Field: Content: Goals and Objectives */
-  $handler->display->display_options['fields']['field_ercore_goals']['id'] = 'field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['table'] = 'field_data_field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['field'] = 'field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['element_label_colon'] = FALSE;
+
   /* Field: Content: What was the event where you presented? */
   $handler->display->display_options['fields']['field_ercore_ps_event']['id'] = 'field_ercore_ps_event';
   $handler->display->display_options['fields']['field_ercore_ps_event']['table'] = 'field_data_field_ercore_ps_event';
@@ -6885,11 +6876,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_pp_location']['table'] = 'field_data_field_ercore_pp_location';
   $handler->display->display_options['fields']['field_ercore_pp_location']['field'] = 'field_ercore_pp_location';
   $handler->display->display_options['fields']['field_ercore_pp_location']['element_label_colon'] = FALSE;
-  /* Field: Content: Goals and Objectives */
-  $handler->display->display_options['fields']['field_ercore_goals']['id'] = 'field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['table'] = 'field_data_field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['field'] = 'field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['element_label_colon'] = FALSE;
+
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
@@ -7220,11 +7207,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_pb_rii_support']['field'] = 'field_ercore_pb_rii_support';
   $handler->display->display_options['fields']['field_ercore_pb_rii_support']['label'] = 'What level of funding?';
   $handler->display->display_options['fields']['field_ercore_pb_rii_support']['element_label_colon'] = FALSE;
-  /* Field: Content: Goals and Objectives */
-  $handler->display->display_options['fields']['field_ercore_goals']['id'] = 'field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['table'] = 'field_data_field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['field'] = 'field_ercore_goals';
-  $handler->display->display_options['fields']['field_ercore_goals']['element_label_colon'] = FALSE;
+
   /* Field: Content: EPSCoR Support */
   $handler->display->display_options['fields']['field_ercore_op_rii_support']['id'] = 'field_ercore_op_rii_support';
   $handler->display->display_options['fields']['field_ercore_op_rii_support']['table'] = 'field_data_field_ercore_op_rii_support';
