@@ -48,7 +48,6 @@ class ErcoreOutputs {
 
     foreach ($data as $data_row) {
       $current = FALSE;
-      // Identifying values to compare dare ranges with.
       // Patent data build.
       if ($object->type == 'Patent') {
         // Patent data, subType Pending.
@@ -198,7 +197,7 @@ class ErcoreOutputs {
           }
         }
       }
-     if ($current == TRUE && $this->ercoreOutputsDateCallback($within, $date_range) == TRUE && $date_range != $default_array) {
+     if ($current == TRUE && $this->ercoreOutputsDateCallback($within, $date_range) == TRUE) {
 
         $this->value1++;
       }
@@ -241,7 +240,12 @@ class ErcoreOutputs {
       }
       else {
         $zone = variable_get('date_default_timezone');
+        $test = $within_date;
         $within_date = strtotime($within_date . $zone);
+        if ($test == '2016-05-01 00:00:00') {
+           dpm($within_date);
+           dpm($dates);
+        }
         return (($dates[0][0]) <= $within_date && ($dates[0][1]) >= $within_date);
       }
     }
