@@ -60,48 +60,48 @@ variable_set('field_bundle_settings_node__ercore_admin', array(
     'view_modes' =>
       array(
         'full' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'teaser' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'teaser_alternate' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'rss' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_index' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_result' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'diff_standard' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'token' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'revision' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-        array(),
+          array(),
         'display' =>
-        array(),
+          array(),
       ),
   )
 );
@@ -122,48 +122,48 @@ variable_set('field_bundle_settings_node__ercore_collaboration', array(
     'view_modes' =>
       array(
         'full' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'teaser' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'teaser_alternate' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'rss' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_index' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_result' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'diff_standard' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'token' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'revision' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-        array(),
+          array(),
         'display' =>
-        array(),
+          array(),
       ),
   )
 );
@@ -172,24 +172,24 @@ variable_set('field_bundle_settings_field_collection_item__field_ercore_cn_colla
     'view_modes' =>
       array(
         'full' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'simplified' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'token' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-        array(),
+          array(),
         'display' =>
-        array(),
+          array(),
       ),
   )
 );
@@ -211,48 +211,48 @@ variable_set('field_bundle_settings_node__ercore_event', array(
     'view_modes' =>
       array(
         'full' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'teaser' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'teaser_alternate' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'rss' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_index' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_result' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'diff_standard' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'token' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'revision' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-        array(),
+          array(),
         'display' =>
-        array(),
+          array(),
       ),
   )
 );
@@ -262,24 +262,24 @@ variable_set('field_bundle_settings_field_collection_item__field_ercore_ev_engag
   'view_modes' =>
     array(
       'full' =>
-      array(
-        'custom_settings' => TRUE,
-      ),
+        array(
+          'custom_settings' => TRUE,
+        ),
       'simplified' =>
-      array(
-        'custom_settings' => TRUE,
-      ),
+        array(
+          'custom_settings' => TRUE,
+        ),
       'token' =>
-      array(
-        'custom_settings' => FALSE,
-      ),
+        array(
+          'custom_settings' => FALSE,
+        ),
     ),
   'extra_fields' =>
     array(
       'form' =>
-      array(),
+        array(),
       'display' =>
-      array(),
+        array(),
     ),
 ));
 
@@ -300,48 +300,48 @@ variable_set('field_bundle_settings_node__ercore_j_highlight', array(
     'view_modes' =>
       array(
         'full' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'teaser' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'teaser_alternate' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'rss' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_index' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_result' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'diff_standard' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'token' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'revision' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-        array(),
+          array(),
         'display' =>
-        array(),
+          array(),
       ),
   )
 );
@@ -362,48 +362,48 @@ variable_set('field_bundle_settings_node__ercore_j_honor', array(
     'view_modes' =>
       array(
         'full' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'teaser' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'teaser_alternate' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'rss' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_index' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_result' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'diff_standard' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'token' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'revision' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-        array(),
+          array(),
         'display' =>
-        array(),
+          array(),
       ),
   )
 );
@@ -424,48 +424,48 @@ variable_set('field_bundle_settings_node__ercore_institution', array(
     'view_modes' =>
       array(
         'full' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'teaser' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'teaser_alternate' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'rss' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_index' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_result' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'diff_standard' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'token' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'revision' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-        array(),
+          array(),
         'display' =>
-        array(),
+          array(),
       ),
   )
 );
@@ -486,48 +486,48 @@ variable_set('field_bundle_settings_node__ercore_other_product', array(
     'view_modes' =>
       array(
         'full' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'teaser' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'teaser_alternate' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'rss' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_index' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_result' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'diff_standard' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'token' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'revision' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-        array(),
+          array(),
         'display' =>
-        array(),
+          array(),
       ),
   )
 );
@@ -547,48 +547,48 @@ variable_set('field_bundle_settings_node__ercore_patent', array(
     'view_modes' =>
       array(
         'full' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'teaser' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'teaser_alternate' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'rss' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_index' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_result' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'diff_standard' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'token' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'revision' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-        array(),
+          array(),
         'display' =>
-        array(),
+          array(),
       ),
   )
 );
@@ -609,48 +609,48 @@ variable_set('field_bundle_settings_node__ercore_presentation', array(
     'view_modes' =>
       array(
         'full' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'teaser' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'teaser_alternate' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'rss' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_index' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_result' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'diff_standard' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'token' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'revision' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-        array(),
+          array(),
         'display' =>
-        array(),
+          array(),
       ),
   )
 );
@@ -671,48 +671,48 @@ variable_set('field_bundle_settings_node__ercore_proposal', array(
     'view_modes' =>
       array(
         'full' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'teaser' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'teaser_alternate' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'rss' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_index' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_result' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'diff_standard' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'token' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'revision' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-        array(),
+          array(),
         'display' =>
-        array(),
+          array(),
       ),
   )
 );
@@ -733,48 +733,48 @@ variable_set('field_bundle_settings_node__ercore_publication', array(
     'view_modes' =>
       array(
         'full' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'teaser' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'teaser_alternate' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'rss' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_index' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'search_result' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'diff_standard' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'token' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
         'revision' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-        array(),
+          array(),
         'display' =>
-        array(),
+          array(),
       ),
   )
 );
@@ -839,51 +839,51 @@ variable_set('field_bundle_settings_user__user', array(
     'view_modes' =>
       array(
         'full' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'user_institution' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'user_institution_link' =>
           array(
             'custom_settings' => TRUE,
           ),
         'institution' =>
-        array(
-          'custom_settings' => TRUE,
-        ),
+          array(
+            'custom_settings' => TRUE,
+          ),
         'token' =>
-        array(
-          'custom_settings' => FALSE,
-        ),
+          array(
+            'custom_settings' => FALSE,
+          ),
       ),
     'extra_fields' =>
       array(
         'form' =>
-        array(),
+          array(),
         'display' =>
-        array(
-          'summary' =>
           array(
-            'default' =>
-            array(
-              'weight' => '5',
-              'visible' => TRUE,
-            ),
-            'full' =>
-            array(
-              'weight' => '5',
-              'visible' => TRUE,
-            ),
-            'token' =>
-            array(
-              'weight' => '5',
-              'visible' => TRUE,
-            ),
+            'summary' =>
+              array(
+                'default' =>
+                  array(
+                    'weight' => '5',
+                    'visible' => TRUE,
+                  ),
+                'full' =>
+                  array(
+                    'weight' => '5',
+                    'visible' => TRUE,
+                  ),
+                'token' =>
+                  array(
+                    'weight' => '5',
+                    'visible' => TRUE,
+                  ),
+              ),
           ),
-        ),
       ),
   )
 );
