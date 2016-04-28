@@ -230,7 +230,7 @@ function _generate_reporting_range($year) {
     $reporting_month = intval(variable_get('ercore_reporting_month'));
   }
   $last_month = $reporting_month - 1;
-  $last_day =  date('t',strtotime($last_month . '/1/' . $year));
+  $last_day = date('t', strtotime($last_month . '/1/' . $year));
 
   if ($year == $start_date['year']) {
     $second_year = array();
@@ -256,7 +256,15 @@ function _generate_reporting_range($year) {
     );
   }
 }
-
+/**
+ * Receives php date and returns Unix timestamp.
+ *
+ * @param array $var
+ *   Receives date value.
+ *
+ * @return array
+ *   Returns unix date for internal function.
+ */
 function ercore_admin_unix_date(&$var) {
   $zone = variable_get('date_default_timezone');
   $time = ' 00:00:00 ' . $zone;

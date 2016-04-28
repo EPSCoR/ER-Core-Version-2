@@ -197,7 +197,7 @@ class ErcoreOutputs {
           }
         }
       }
-     if ($current == TRUE && $this->ercoreOutputsDateCallback($within, $date_range) == TRUE) {
+      if ($current == TRUE && $this->ercoreOutputsDateCallback($within, $date_range) == TRUE) {
 
         $this->value1++;
       }
@@ -242,12 +242,9 @@ class ErcoreOutputs {
         $zone = variable_get('date_default_timezone');
         $test = $within_date;
         $within_date = strtotime($within_date . $zone);
-        if ($test == '2016-05-01 00:00:00') {
-           dpm($within_date);
-           dpm($dates);
-        }
         return (($dates[0][0]) <= $within_date && ($dates[0][1]) >= $within_date);
       }
     }
   }
+
 }

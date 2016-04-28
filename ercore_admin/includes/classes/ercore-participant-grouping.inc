@@ -179,32 +179,32 @@ class ErcoreParticipantCollection {
         }
       }
       if (!in_array($view_row->field_field_ercore_us_sen_role[0]['rendered']['#markup'], $non_displayed_values) && isset($view_row->field_field_ercore_us_leadership_team[0]['raw']) && $view_row->field_field_ercore_us_leadership_team[0]['raw']['value'] == 1) {
-            $collection->rii->ercoreParticipantGroupData($this->rii, $view_row, $new);
-          }
-        else {
+        $collection->rii->ercoreParticipantGroupData($this->rii, $view_row, $new);
+      }
+      else {
 
-          // Faculty.
-          if ($view_row->field_field_ercore_us_sen_role[0]['raw']['value'] == 0) {
-            $collection->faculty->ercoreParticipantGroupData($this->faculty, $view_row, $new);
-          }
-          // Technical.
-          if ($view_row->field_field_ercore_us_sen_role[0]['raw']['value'] == 1) {
-            $collection->technical->ercoreParticipantGroupData($this->technical, $view_row, $new);
-          }
-          // Non-technical.
-          if ($view_row->field_field_ercore_us_sen_role[0]['raw']['value'] == 2) {
-            $collection->nontechnical->ercoreParticipantGroupData($this->nontechnical, $view_row, $new);
-          }
-          if ($view_row->field_field_ercore_us_sen_role[0]['raw']['value'] == 3) {
-            $collection->postdoc->ercoreParticipantGroupData($this->postdoc, $view_row, $new);
-          }
-          if ($view_row->field_field_ercore_us_sen_role[0]['raw']['value'] == 4) {
-            $collection->graduate->ercoreParticipantGroupData($this->graduate, $view_row, $new);
-          }
-          if ($view_row->field_field_ercore_us_sen_role[0]['raw']['value'] == 5) {
-            $collection->undergraduate->ercoreParticipantGroupData($this->undergraduate, $view_row, $new);
-          }
+        // Faculty.
+        if ($view_row->field_field_ercore_us_sen_role[0]['raw']['value'] == 0) {
+          $collection->faculty->ercoreParticipantGroupData($this->faculty, $view_row, $new);
         }
+        // Technical.
+        if ($view_row->field_field_ercore_us_sen_role[0]['raw']['value'] == 1) {
+          $collection->technical->ercoreParticipantGroupData($this->technical, $view_row, $new);
+        }
+        // Non-technical.
+        if ($view_row->field_field_ercore_us_sen_role[0]['raw']['value'] == 2) {
+          $collection->nontechnical->ercoreParticipantGroupData($this->nontechnical, $view_row, $new);
+        }
+        if ($view_row->field_field_ercore_us_sen_role[0]['raw']['value'] == 3) {
+          $collection->postdoc->ercoreParticipantGroupData($this->postdoc, $view_row, $new);
+        }
+        if ($view_row->field_field_ercore_us_sen_role[0]['raw']['value'] == 4) {
+          $collection->graduate->ercoreParticipantGroupData($this->graduate, $view_row, $new);
+        }
+        if ($view_row->field_field_ercore_us_sen_role[0]['raw']['value'] == 5) {
+          $collection->undergraduate->ercoreParticipantGroupData($this->undergraduate, $view_row, $new);
+        }
+      }
     }
     return $collection;
   }
