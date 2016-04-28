@@ -51,7 +51,7 @@ function ercore_start_end_dates_displayed() {
 }
 
 /**
- * Generates start/end dates for forms.
+ * Generates start/end date array for forms.
  *
  * @return array $default_date_array
  *    Returns default date range array with Unix timestamps.
@@ -63,7 +63,7 @@ function ercore_admin_default_start_end_dates() {
 }
 
 /**
- * Change format of dater array for display purposes.
+ * Change format of date array for display purposes.
  *
  * @param array $dates
  *   Receives $date array for reformatting.
