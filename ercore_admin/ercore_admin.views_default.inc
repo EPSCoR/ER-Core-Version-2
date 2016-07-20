@@ -11233,7 +11233,7 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'There are no proposals left with unfinished status. (Submitted or Pending within 3 months)';
+  $handler->display->display_options['empty']['area']['content'] = '<p>There are no proposals left with unfinished status.</p>';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -11373,7 +11373,7 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'There are no publications left in unfinished status. (Submitted within three months.)';
+  $handler->display->display_options['empty']['area']['content'] = '<p>There are no publications left in unfinished status.</p>';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
