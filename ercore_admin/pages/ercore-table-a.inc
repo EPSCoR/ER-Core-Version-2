@@ -25,18 +25,21 @@ function nsf_table_a_callback() {
  *
  * @param array $variables
  *    A nested a array of date ranges.
+ *
+ * @return array $summary
+ *   Returns render array of results.
  */
 function ercore_table_a($variables) {
   $date_range = $variables['ranges'];
   $title = 'Download NSF Table A';
   if (isset($date_range[0])) {
     $range = $date_range;
-    $date_argument = ercore_admin_download_path($date_range);
+    //$date_argument = ercore_admin_download_path($date_range);
     $range_display = 'Date range is ' . ercore_displayed_date_ranges($variables['ranges']) . '.';
   }
   else {
     $range = array();
-    $date_argument = NULL;
+    //$date_argument = NULL;
     $range_display = 'Date range is undefined.';
   }
 
