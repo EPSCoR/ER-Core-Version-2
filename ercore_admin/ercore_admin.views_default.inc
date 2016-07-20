@@ -11226,7 +11226,7 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<h2>Proposals that are not Up to Date</h2>';
+  $handler->display->display_options['header']['area']['content'] = '<h2>Proposals that are not Up to Date</h2><p>More than three months since submission date.</p>';
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -11366,7 +11366,7 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<h2>Publications that are not Up to Date</h2>';
+  $handler->display->display_options['header']['area']['content'] = '<h2>Publications that are not Up to Date</h2><p>More than three months since submission date.</p>';
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';

@@ -27,9 +27,6 @@ function ercore_data_integrity_callback() {
 /**
  * This theme function (see theme.inc) generates the summary table.
  *
- * @param array $variables
- *    A nested a array of date ranges.
- *
  * @return array $summary
  *   Returns render array of results.
  */
