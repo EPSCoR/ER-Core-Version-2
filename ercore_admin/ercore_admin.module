@@ -107,7 +107,17 @@ function ercore_admin_menu() {
     'page arguments' => array('admin/config/ercore/admin'),
     'access arguments' => array('administer ercore module'),
   );
-  // NSF TABLE VIEWS:
+  // ERCore Data Integrity.
+  $items['ercore/views/integrity'] = array(
+    'title' => 'Data Integrity',
+    'description' => 'Look for potential problems with data integrity.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ercore_data_integrity_callback'),
+    'access arguments' => array('access ercore admin content'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'pages/ercore-integrity.inc',
+  );
+  // NSF TABLE VIEWS.
   $items['ercore/views/salary-support'] = array(
     'title' => 'NSF Table A - Salary Support',
     'description' => 'This view aims to help you determine where the Salary Support information is coming from.',
@@ -497,7 +507,6 @@ function ercore_admin_views_query_alter(&$view, &$query) {
   }
 }
 
-
 /**
  * Implements hook_theme_registry_alter().
  */
@@ -520,6 +529,13 @@ function ercore_admin_theme($existing, $type, $theme, $path) {
         'default_form' => TRUE,
       ),
       'function' => 'ercore_summary_table',
+    ),
+    'ercore_integrity' => array(
+      'variables' => array(
+        'ranges' => array(),
+      ),
+      'function' => 'ercore_integrity',
+
     ),
     'ercore_table_a' => array(
       'variables' => array(

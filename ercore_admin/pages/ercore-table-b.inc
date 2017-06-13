@@ -83,6 +83,9 @@ function ercore_table_b_headers() {
  *    Node ID of Institution.
  * @param string $date_range
  *    Optional date range filter from hook menu.
+ *
+ * @return array $institution_data
+ *   Returns data array of results.
  */
 function ercore_table_b_data(&$nid, &$date_range) {
   $non_displayed_values = ErcoreParticipantGroup::ercoreNoNewValues();
@@ -200,6 +203,9 @@ function ercore_table_b_cells(&$collection) {
  *
  * @param array $variables
  *    A nested a array of date ranges.
+ *
+ * @return array $summary
+ *   Returns data array of results.
  */
 function ercore_table_b($variables) {
   $date_range = $variables['ranges'];

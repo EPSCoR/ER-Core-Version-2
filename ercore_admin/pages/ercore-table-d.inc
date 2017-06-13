@@ -9,7 +9,7 @@ include_once drupal_get_path('module', 'ercore_admin') . "/includes/ercore-admin
 /**
  * Display NSF Table D data in preparation for exporting to Excel.
  *
- * @return array
+ * @return array $form
  *    Returns form array for page display.
  */
 function nsf_table_d_callback() {
@@ -49,6 +49,9 @@ For the sake of bevity, the headings display the names used internally by the sy
  *
  * @param array $variables
  *    A nested a array of date ranges.
+ *
+ * @return array $data
+ *   Returns Collection object for NSF Table B data.
  */
 function ercore_table_d($variables) {
   $date_range = $variables['ranges'];

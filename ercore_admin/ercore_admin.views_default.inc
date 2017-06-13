@@ -10809,5 +10809,630 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   $handler->display->display_options['menu']['context_only_inline'] = 0;
   $views['ercore_user_data'] = $view;
 
+  $view = new view();
+  $view->name = 'ercore_integrity_collaboration';
+  $view->description = '';
+  $view->tag = 'ERCore, ERCore Integrity, Collaboration';
+  $view->base_table = 'node';
+  $view->human_name = 'ERCore: Integrity: Collaborations';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Collaborations';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page collaborations-page ercore-view';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'mini';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
+  $handler->display->display_options['style_options']['list']['class'] = 'integrity';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 1;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'title' => array(
+      'element_type' => 'div',
+      'class' => 'title',
+    ),
+    'field_ercore_cn_dates' => array(
+      'element_type' => 'div',
+      'class' => 'dates',
+      'label_element_type' => 'span',
+      'label_class' => 'label-inline',
+    ),
+  );
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<h2>Collaborations without an Assigned End Date</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No collaborations have unassigned end-dates.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Collaboration Dates */
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['id'] = 'field_ercore_cn_dates';
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['table'] = 'field_data_field_ercore_cn_dates';
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['field'] = 'field_ercore_cn_dates';
+  $handler->display->display_options['fields']['field_ercore_cn_dates']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_day_year',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'ercore_collaboration' => 'ercore_collaboration',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+
+  /* Display: Content pane */
+  $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $views['ercore_integrity_collaboration'] = $view;
+
+  $view = new view();
+  $view->name = 'ercore_integrity_duplicate';
+  $view->description = '';
+  $view->tag = 'ERCore, ERCore Integrity';
+  $view->base_table = 'node';
+  $view->human_name = 'ERCore: Integrity: Duplicate';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'mini';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
+  $handler->display->display_options['style_options']['list']['class'] = 'integrity';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['inline'] = array(
+    'title_1' => 'title_1',
+    'title' => 'title',
+  );
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<h2>Possible Duplicate Content</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'There appears to be no duplicate content based on titles.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: COUNT(Content: Title) */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['group_type'] = 'count';
+  $handler->display->display_options['fields']['title_1']['label'] = '';
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['separator'] = '';
+  $handler->display->display_options['fields']['title_1']['prefix'] = ' (';
+  $handler->display->display_options['fields']['title_1']['suffix'] = ')';
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: COUNT(Content: Nid) */
+  $handler->display->display_options['filters']['nid']['id'] = 'nid';
+  $handler->display->display_options['filters']['nid']['table'] = 'node';
+  $handler->display->display_options['filters']['nid']['field'] = 'nid';
+  $handler->display->display_options['filters']['nid']['group_type'] = 'count';
+  $handler->display->display_options['filters']['nid']['operator'] = '>';
+  $handler->display->display_options['filters']['nid']['value']['value'] = '1';
+
+  /* Display: Content pane */
+  $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $views['ercore_integrity_duplicate'] = $view;
+
+  $view = new view();
+  $view->name = 'ercore_integrity_events';
+  $view->description = '';
+  $view->tag = 'ERCore, ERCore Integrity, Events';
+  $view->base_table = 'node';
+  $view->human_name = 'ERCore: Integrity: Events';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Collaborations';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page collaborations-page ercore-view';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'mini';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
+  $handler->display->display_options['style_options']['list']['class'] = 'integrity';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 1;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'title' => array(
+      'element_type' => 'div',
+      'class' => 'title',
+    ),
+    'field_ercore_ev_date' => array(
+      'element_type' => 'div',
+      'class' => 'dates',
+      'label_element_type' => 'span',
+      'label_class' => 'label-inline',
+    ),
+  );
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<h2>External Engagements</h2>
+<h3>With Unssigned Attendee Data</h3>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'There are no external engagements with attendee data unassigned.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_ercore_ev_date']['id'] = 'field_ercore_ev_date';
+  $handler->display->display_options['fields']['field_ercore_ev_date']['table'] = 'field_data_field_ercore_ev_date';
+  $handler->display->display_options['fields']['field_ercore_ev_date']['field'] = 'field_ercore_ev_date';
+  $handler->display->display_options['fields']['field_ercore_ev_date']['label'] = 'Event Date';
+  $handler->display->display_options['fields']['field_ercore_ev_date']['settings'] = array(
+    'format_type' => 'medium',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  $handler->display->display_options['fields']['field_ercore_ev_date']['delta_offset'] = '0';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'ercore_event' => 'ercore_event',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Date -  start date (field_ercore_ev_date) */
+  $handler->display->display_options['filters']['field_ercore_ev_date_value']['id'] = 'field_ercore_ev_date_value';
+  $handler->display->display_options['filters']['field_ercore_ev_date_value']['table'] = 'field_data_field_ercore_ev_date';
+  $handler->display->display_options['filters']['field_ercore_ev_date_value']['field'] = 'field_ercore_ev_date_value';
+  $handler->display->display_options['filters']['field_ercore_ev_date_value']['operator'] = '<';
+  $handler->display->display_options['filters']['field_ercore_ev_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_ev_date_value']['default_date'] = 'now';
+  /* Filter criterion: Content: External Engagement (field_ercore_ev_engagement) */
+  $handler->display->display_options['filters']['field_ercore_ev_engagement_value']['id'] = 'field_ercore_ev_engagement_value';
+  $handler->display->display_options['filters']['field_ercore_ev_engagement_value']['table'] = 'field_data_field_ercore_ev_engagement';
+  $handler->display->display_options['filters']['field_ercore_ev_engagement_value']['field'] = 'field_ercore_ev_engagement_value';
+  $handler->display->display_options['filters']['field_ercore_ev_engagement_value']['operator'] = 'empty';
+
+  /* Display: Content pane */
+  $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+
+  /* Display: Content pane */
+  $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_2');
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<h3>With Attendee Data set to Zero</h3>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'There are no external engagements with attendee date set to zero.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content: External Engagement (field_ercore_ev_engagement) */
+  $handler->display->display_options['relationships']['field_ercore_ev_engagement_value']['id'] = 'field_ercore_ev_engagement_value';
+  $handler->display->display_options['relationships']['field_ercore_ev_engagement_value']['table'] = 'field_data_field_ercore_ev_engagement';
+  $handler->display->display_options['relationships']['field_ercore_ev_engagement_value']['field'] = 'field_ercore_ev_engagement_value';
+  $handler->display->display_options['relationships']['field_ercore_ev_engagement_value']['required'] = TRUE;
+  $handler->display->display_options['relationships']['field_ercore_ev_engagement_value']['delta'] = '-1';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'ercore_event' => 'ercore_event',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Date -  start date (field_ercore_ev_date) */
+  $handler->display->display_options['filters']['field_ercore_ev_date_value']['id'] = 'field_ercore_ev_date_value';
+  $handler->display->display_options['filters']['field_ercore_ev_date_value']['table'] = 'field_data_field_ercore_ev_date';
+  $handler->display->display_options['filters']['field_ercore_ev_date_value']['field'] = 'field_ercore_ev_date_value';
+  $handler->display->display_options['filters']['field_ercore_ev_date_value']['operator'] = '<';
+  $handler->display->display_options['filters']['field_ercore_ev_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_ev_date_value']['default_date'] = 'now';
+  /* Filter criterion: Field collection item: Total (field_ercore_ee_t_t) */
+  $handler->display->display_options['filters']['field_ercore_ee_t_t_value']['id'] = 'field_ercore_ee_t_t_value';
+  $handler->display->display_options['filters']['field_ercore_ee_t_t_value']['table'] = 'field_data_field_ercore_ee_t_t';
+  $handler->display->display_options['filters']['field_ercore_ee_t_t_value']['field'] = 'field_ercore_ee_t_t_value';
+  $handler->display->display_options['filters']['field_ercore_ee_t_t_value']['relationship'] = 'field_ercore_ev_engagement_value';
+  $handler->display->display_options['filters']['field_ercore_ee_t_t_value']['value']['value'] = '0';
+  $views['ercore_integrity_events'] = $view;
+
+  $view = new view();
+  $view->name = 'ercore_integrity_proposals';
+  $view->description = '';
+  $view->tag = 'ERCore, ERCore Integrity, Proposal';
+  $view->base_table = 'node';
+  $view->human_name = 'ERCore: Integrity: Proposals';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Collaborations';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page collaborations-page ercore-view';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'mini';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
+  $handler->display->display_options['style_options']['list']['class'] = 'integrity';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 1;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'title' => array(
+      'element_type' => 'div',
+      'class' => 'title',
+    ),
+    'field_ercore_pp_proposal_pending' => array(
+      'element_type' => 'div',
+      'class' => 'dates',
+      'label_element_type' => 'span',
+      'label_class' => 'label-inline',
+    ),
+    'field_ercore_pp_proposal_submit' => array(
+      'element_type' => 'div',
+      'class' => 'dates',
+      'label_element_type' => 'span',
+      'label_class' => 'label-inline',
+    ),
+  );
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<h2>Proposals that are not Up to Date</h2><p>More than three months since submission date.</p>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<p>There are no proposals left with unfinished status.</p>';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Date of Pending Notification */
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_pending']['id'] = 'field_ercore_pp_proposal_pending';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_pending']['table'] = 'field_data_field_ercore_pp_proposal_pending';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_pending']['field'] = 'field_ercore_pp_proposal_pending';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_pending']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_day_year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Date Submitted */
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['id'] = 'field_ercore_pp_proposal_submit';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['table'] = 'field_data_field_ercore_pp_proposal_submit';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['field'] = 'field_ercore_pp_proposal_submit';
+  $handler->display->display_options['fields']['field_ercore_pp_proposal_submit']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_day_year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'ercore_proposal' => 'ercore_proposal',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Date of Pending Notification (field_ercore_pp_proposal_pending) */
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_pending_value']['id'] = 'field_ercore_pp_proposal_pending_value';
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_pending_value']['table'] = 'field_data_field_ercore_pp_proposal_pending';
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_pending_value']['field'] = 'field_ercore_pp_proposal_pending_value';
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_pending_value']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_pending_value']['group'] = 2;
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_pending_value']['default_date'] = 'now - 3 months';
+  /* Filter criterion: Content: Date of Pending Notification (field_ercore_pp_proposal_pending) */
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_pending_value_1']['id'] = 'field_ercore_pp_proposal_pending_value_1';
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_pending_value_1']['table'] = 'field_data_field_ercore_pp_proposal_pending';
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_pending_value_1']['field'] = 'field_ercore_pp_proposal_pending_value';
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_pending_value_1']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_pending_value_1']['group'] = 2;
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_pending_value_1']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_pending_value_1']['default_date'] = 'now - 3 months';
+  /* Filter criterion: Content: Status (field_ercore_pp_proposal_status) */
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_status_value']['id'] = 'field_ercore_pp_proposal_status_value';
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_status_value']['table'] = 'field_data_field_ercore_pp_proposal_status';
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_status_value']['field'] = 'field_ercore_pp_proposal_status_value';
+  $handler->display->display_options['filters']['field_ercore_pp_proposal_status_value']['value'] = array(
+    'Submitted' => 'Submitted',
+    'Pending' => 'Pending',
+  );
+
+  /* Display: Content pane */
+  $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $views['ercore_integrity_proposals'] = $view;
+
+  $view = new view();
+  $view->name = 'ercore_integrity_publications';
+  $view->description = '';
+  $view->tag = 'ERCore, ERCore Integrity, Publications';
+  $view->base_table = 'node';
+  $view->human_name = 'ERCore: Integrity: Publications';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Collaborations';
+  $handler->display->display_options['css_class'] = 'ercore-summary-page collaborations-page ercore-view';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'mini';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
+  $handler->display->display_options['style_options']['list']['class'] = 'integrity';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 1;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'title' => array(
+      'element_type' => 'div',
+      'class' => 'title',
+    ),
+    'field_ercore_pb_submit_date' => array(
+      'element_type' => 'div',
+      'class' => 'dates',
+      'label_element_type' => 'span',
+      'label_class' => 'label-inline',
+    ),
+  );
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<h2>Publications that are not Up to Date</h2><p>More than three months since submission date.</p>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<p>There are no publications left in unfinished status.</p>';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Date Submitted */
+  $handler->display->display_options['fields']['field_ercore_pb_submit_date']['id'] = 'field_ercore_pb_submit_date';
+  $handler->display->display_options['fields']['field_ercore_pb_submit_date']['table'] = 'field_data_field_ercore_pb_submit_date';
+  $handler->display->display_options['fields']['field_ercore_pb_submit_date']['field'] = 'field_ercore_pb_submit_date';
+  $handler->display->display_options['fields']['field_ercore_pb_submit_date']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_day_year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'ercore_publication' => 'ercore_publication',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Status (field_ercore_pb_status) */
+  $handler->display->display_options['filters']['field_ercore_pb_status_value']['id'] = 'field_ercore_pb_status_value';
+  $handler->display->display_options['filters']['field_ercore_pb_status_value']['table'] = 'field_data_field_ercore_pb_status';
+  $handler->display->display_options['filters']['field_ercore_pb_status_value']['field'] = 'field_ercore_pb_status_value';
+  $handler->display->display_options['filters']['field_ercore_pb_status_value']['value'] = array(
+    2 => '2',
+    1 => '1',
+  );
+  $handler->display->display_options['filters']['field_ercore_pb_status_value']['group'] = 1;
+  /* Filter criterion: Content: Date Submitted (field_ercore_pb_submit_date) */
+  $handler->display->display_options['filters']['field_ercore_pb_submit_date_value']['id'] = 'field_ercore_pb_submit_date_value';
+  $handler->display->display_options['filters']['field_ercore_pb_submit_date_value']['table'] = 'field_data_field_ercore_pb_submit_date';
+  $handler->display->display_options['filters']['field_ercore_pb_submit_date_value']['field'] = 'field_ercore_pb_submit_date_value';
+  $handler->display->display_options['filters']['field_ercore_pb_submit_date_value']['operator'] = '<';
+  $handler->display->display_options['filters']['field_ercore_pb_submit_date_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_ercore_pb_submit_date_value']['default_date'] = 'now -3 months';
+
+  /* Display: Content pane */
+  $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $views['ercore_integrity_publications'] = $view;
+
   return $views;
 }
