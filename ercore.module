@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Module file for the ERCore module.
@@ -237,7 +238,7 @@ function _ercore_drupal_node_type_check(array $type_check) {
  * @param array $variables
  *   Variables to use for configuration.
  *
- * @return array $output
+ * @return array
  *   Returns modified page form elements.
  */
 function _ercore_theme_node_add_list($variables) {
@@ -684,9 +685,7 @@ function ercore_form_user_profile_form_alter(&$form, &$form_state, $form_id) {
   );
   // User field Actual Masters Date #states.
   $form['field_ercore_us_masters_act']['#states'] = array(
-    'visible' => array(
-      ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => '4'),
-    ),
+    'visible' => array(),
   );
   // User field Anticipated Doctoral Date #states.
   $form['field_ercore_us_doctor_ant']['#states'] = array(
@@ -956,6 +955,9 @@ function ercore_minority_count(&$form, &$form_state) {
  *   Undeclared attendee integer value.
  * @param int $minority
  *   Under-represented Minority attendee integer value.
+ *
+ * @return bool
+ *   Return boolean of comparison.
  */
 function ercore_minority_count_compare(&$male, &$female, &$undeclared, &$minority) {
   $attendees = $male + $female + $undeclared;
@@ -1001,15 +1003,16 @@ function ercore_help($path, $arg) {
       if (module_exists('ercore_admin')) {
 
         return t('ERCore administration pages include <a href="@user-guide">
-User Guides</a> and an <a href="@admin-guide">Administrative Guide</a>.', array(
-          '@user-guide' => $base_url . '/ercore/guides',
-          '@admin-guide' => $base_url . '/ercore/admin-guide',
-        ));
+User Guides</a> and an <a href="@admin-guide">Administrative Guide</a>.',
+          array(
+            '@user-guide' => $base_url . '/ercore/guides',
+            '@admin-guide' => $base_url . '/ercore/admin-guide',
+          ));
       }
-    else {
-      return t('Install ERCore Admin module for User and Administrative Guide
+      else {
+        return t('Install ERCore Admin module for User and Administrative Guide
       pages.');
-    }
+      }
   }
 }
 
@@ -1141,7 +1144,7 @@ function ercore_field_collection_item_presave(FieldCollectionItemEntity $field_c
  * Uses PHPExcel to parse .xls file.
  *
  * @param object $field_collection_item
- *    Field Collection item object to access files and fields.
+ *   Field Collection item object to access files and fields.
  *
  * @throws error
  *    PHPExcel_Reader_Exception.
@@ -1157,7 +1160,7 @@ function _ercore_parse_ee_file(&$field_collection_item) {
 
     // Makes sure that it's the expected excel sheet.
     if ($worksheet->getCellByColumnAndRow(2, 1)
-        ->getValue() != "External Engagement Reporting Sheet"
+      ->getValue() != "External Engagement Reporting Sheet"
     ) {
       return;
     }
@@ -1177,17 +1180,17 @@ function _ercore_parse_ee_file(&$field_collection_item) {
 
     // Clear out all of the values in preparation for new values.
     foreach (array(
-               'ari_fac',
-               'ari_stu',
-               'pui_fac',
-               'pui_stu',
-               'msi_fac',
-               'msi_stu',
-               'k12i_tec',
-               'k12i_stud',
-               'k12i_stut',
-               'oth',
-             ) as $prefix) {
+      'ari_fac',
+      'ari_stu',
+      'pui_fac',
+      'pui_stu',
+      'msi_fac',
+      'msi_stu',
+      'k12i_tec',
+      'k12i_stud',
+      'k12i_stut',
+      'oth',
+    ) as $prefix) {
       foreach (array("t", "m", "f", "u", "mn") as $attr) {
         $field_collection_item->{"field_ercore_ee_{$prefix}_{$attr}"}['und'][0]['value'] = 0;
       }

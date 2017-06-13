@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ERCore Admin page content.
