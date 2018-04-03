@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * File for the ERCore Table D Download pages.
@@ -56,6 +57,8 @@ function ercore_table_d_download_callback($date_range) {
  *
  * @throws \PHPExcel_Reader_Exception
  *   Error messages for PHPExcel errors.
+ *
+ * @return PHPExcel
  */
 function ercore_table_d_download_callback_data(&$date_range, $sheet = 0) {
 
@@ -116,10 +119,10 @@ function ercore_table_d_download_callback_data(&$date_range, $sheet = 0) {
  * Generates the NSF Table D data array for print.
  *
  * @param string $dates
- *    Receives date array from display for print data build.
+ *   Receives date array from display for print data build.
  *
- * @return object mixed
- *    Table D build object.
+ * @return object|mixed
+ *   Table D build object.
  */
 function ercore_table_d_data_build(&$dates) {
   $categories = array(
@@ -141,13 +144,13 @@ function ercore_table_d_data_build(&$dates) {
  * Data formatting for placement in Participant data export.
  *
  * @param array $worksheet
- *    Data array of Excel object.
+ *   Data array of Excel object.
  * @param array $collection
- *    Array of Object data.
+ *   Array of Object data.
  * @param int $row
- *    Integer for placing data in correct Excel row.
+ *   Integer for placing data in correct Excel row.
  */
-function ercore_table_d_cells($worksheet, &$collection, &$row) {
+function ercore_table_d_cells(array $worksheet, array &$collection, &$row) {
   foreach ($collection as $collection_data) {
     $worksheet->setCellValue('B' . $row, $collection_data->ariFac);
     $worksheet->setCellValue('C' . $row, $collection_data->ariStu);

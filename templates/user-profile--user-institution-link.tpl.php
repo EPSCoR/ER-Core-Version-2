@@ -52,7 +52,7 @@ if (isset($user_profile['field_ercore_us_inst_ref'])) {
     if ($i >= $count) {
       break;
     }
-    $list[$i] = $institutions[$i]['#markup'];
+    $list[$i] = $institutions[$i]['#label'];
     $i++;
   }
   $institution_list = implode(', ', $list);

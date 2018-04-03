@@ -10,7 +10,7 @@ require_once drupal_get_path('module', 'ercore_admin') . "/includes/ercore-admin
  * Display NSF Table A data in preparation for exporting to Excel.
  *
  * @return array
- *    Returns form array for page display.
+ *   Returns form array for page display.
  */
 function nsf_table_a_callback() {
   $form = array();
@@ -24,22 +24,20 @@ function nsf_table_a_callback() {
  * This theme function (see theme.inc) generates the summary table.
  *
  * @param array $variables
- *    A nested a array of date ranges.
+ *   A nested a array of date ranges.
  *
- * @return array $summary
+ * @returns array
  *   Returns render array of results.
  */
-function ercore_table_a($variables) {
+function ercore_table_a(array $variables) {
   $date_range = $variables['ranges'];
   $title = 'Download NSF Table A';
   if (isset($date_range[0])) {
     $range = $date_range;
-    //$date_argument = ercore_admin_download_path($date_range);
     $range_display = 'Date range is ' . ercore_displayed_date_ranges($variables['ranges']) . '.';
   }
   else {
     $range = array();
-    //$date_argument = NULL;
     $range_display = 'Date range is undefined.';
   }
 

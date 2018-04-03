@@ -1014,6 +1014,13 @@ function ercore_admin_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: View area */
+  $handler->display->display_options['footer']['view']['id'] = 'view';
+  $handler->display->display_options['footer']['view']['table'] = 'views';
+  $handler->display->display_options['footer']['view']['field'] = 'view';
+  $handler->display->display_options['footer']['view']['view_to_insert'] = 'ercore_160_hour:block_1';
+  $handler->display->display_options['footer']['view']['inherit_arguments'] = TRUE;
   $handler->display->display_options['path'] = 'ercore/participants/160-hours';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = '160 Hour Criteria';
@@ -1023,9 +1030,8 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
 
-  /* Display: Attachment */
-  $handler = $view->new_display('attachment', 'Attachment', 'attachment_1');
-  $handler->display->display_options['pager']['type'] = 'some';
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block_1');
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
@@ -1034,17 +1040,17 @@ function ercore_admin_views_default_views() {
     'name' => 'name',
     'edit_node' => 'edit_node',
   );
-  $handler->display->display_options['style_options']['default'] = 'field_user_name_1';
+  $handler->display->display_options['style_options']['default'] = 'name';
   $handler->display->display_options['style_options']['info'] = array(
     'field_user_name_1' => array(
-      'sortable' => 1,
+      'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
     'field_user_name' => array(
-      'sortable' => 1,
+      'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
@@ -1068,7 +1074,6 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: User: Active */
@@ -1085,12 +1090,6 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['field_ercore_us_160hours_value']['value'] = array(
     0 => '0',
   );
-  $handler->display->display_options['filters']['field_ercore_us_160hours_value']['reduce_duplicates'] = TRUE;
-  $handler->display->display_options['displays'] = array(
-    'page' => 'page',
-    'default' => 0,
-  );
-  $handler->display->display_options['attachment_position'] = 'after';
   $views['ercore_160_hour'] = $view;
 
   $view = new view();
@@ -5666,7 +5665,7 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['field_ercore_nsf']['table'] = 'field_data_field_ercore_nsf';
   $handler->display->display_options['fields']['field_ercore_nsf']['field'] = 'field_ercore_nsf';
   $handler->display->display_options['fields']['field_ercore_nsf']['element_label_colon'] = FALSE;
- /* Field: Content: Body */
+  /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -7491,6 +7490,8 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -8438,6 +8439,8 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -9863,6 +9866,13 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['footer']['view']['view_to_insert'] = 'ercore_table_e_users:panel_pane_2';
   $handler->display->display_options['footer']['view']['inherit_arguments'] = TRUE;
   /* Footer: Global: View area */
+  $handler->display->display_options['footer']['view_3']['id'] = 'view_3';
+  $handler->display->display_options['footer']['view_3']['table'] = 'views';
+  $handler->display->display_options['footer']['view_3']['field'] = 'view';
+  $handler->display->display_options['footer']['view_3']['label'] = 'Doctoral Students';
+  $handler->display->display_options['footer']['view_3']['view_to_insert'] = 'ercore_table_e_users:panel_pane_5';
+  $handler->display->display_options['footer']['view_3']['inherit_arguments'] = TRUE;
+  /* Footer: Global: View area */
   $handler->display->display_options['footer']['view_1']['id'] = 'view_1';
   $handler->display->display_options['footer']['view_1']['table'] = 'views';
   $handler->display->display_options['footer']['view_1']['field'] = 'view';
@@ -10361,6 +10371,165 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['field'] = 'field_ercore_us_sen_role_value';
   $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['value'] = array(
     5 => '5',
+  );
+
+  /* Display: doctoral students */
+  $handler = $view->new_display('panel_pane', 'doctoral students', 'panel_pane_5');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ol';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['style_options']['row']['class'] = 'outputs list-row';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 1;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'view_user' => array(
+      'element_type' => 'div',
+      'class' => 'user-name last-first',
+    ),
+    'field_ercore_us_masters_act' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs grad graduate field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'field_ercore_us_gender' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs gender field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'field_ercore_us_race' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs race field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'field_ercore_us_ethnicity' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs ethnicity field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+    'field_ercore_us_disabilities' => array(
+      'element_type' => 'div',
+      'class' => 'outputs user-outputs disabilities field field-label-inline',
+      'label_element_type' => 'label',
+      'label_class' => 'field-label',
+    ),
+  );
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<h3>Doctoral Students Graduated</h3>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<p>No Doctoral Students graduated in this period.</p>';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: User: User Name */
+  $handler->display->display_options['fields']['field_user_name']['id'] = 'field_user_name';
+  $handler->display->display_options['fields']['field_user_name']['table'] = 'field_data_field_user_name';
+  $handler->display->display_options['fields']['field_user_name']['field'] = 'field_user_name';
+  $handler->display->display_options['fields']['field_user_name']['label'] = '';
+  $handler->display->display_options['fields']['field_user_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_user_name']['alter']['text'] = '[field_user_name-family], [field_user_name-given] [field_user_name-middle]';
+  $handler->display->display_options['fields']['field_user_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_name']['click_sort_column'] = 'title';
+  $handler->display->display_options['fields']['field_user_name']['settings'] = array(
+    'format' => 'default',
+    'markup' => 0,
+    'output' => 'plain',
+    'multiple' => 'default',
+    'multiple_delimiter' => ', ',
+    'multiple_and' => 'text',
+    'multiple_delimiter_precedes_last' => 'never',
+    'multiple_el_al_min' => '3',
+    'multiple_el_al_first' => '1',
+  );
+  /* Field: User: Link */
+  $handler->display->display_options['fields']['view_user']['id'] = 'view_user';
+  $handler->display->display_options['fields']['view_user']['table'] = 'users';
+  $handler->display->display_options['fields']['view_user']['field'] = 'view_user';
+  $handler->display->display_options['fields']['view_user']['label'] = '';
+  $handler->display->display_options['fields']['view_user']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['view_user']['alter']['text'] = '[field_user_name]';
+  $handler->display->display_options['fields']['view_user']['element_label_colon'] = FALSE;
+  /* Field: User: Actual Doctoral Completion Date */
+  $handler->display->display_options['fields']['field_ercore_us_doctor_act']['id'] = 'field_ercore_us_doctor_act';
+  $handler->display->display_options['fields']['field_ercore_us_doctor_act']['table'] = 'field_data_field_ercore_us_doctor_act';
+  $handler->display->display_options['fields']['field_ercore_us_doctor_act']['field'] = 'field_ercore_us_doctor_act';
+  $handler->display->display_options['fields']['field_ercore_us_doctor_act']['settings'] = array(
+    'format_type' => 'ercore_date_format_month_day_year',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: User: Gender */
+  $handler->display->display_options['fields']['field_ercore_us_gender']['id'] = 'field_ercore_us_gender';
+  $handler->display->display_options['fields']['field_ercore_us_gender']['table'] = 'field_data_field_ercore_us_gender';
+  $handler->display->display_options['fields']['field_ercore_us_gender']['field'] = 'field_ercore_us_gender';
+  /* Field: User: Race */
+  $handler->display->display_options['fields']['field_ercore_us_race']['id'] = 'field_ercore_us_race';
+  $handler->display->display_options['fields']['field_ercore_us_race']['table'] = 'field_data_field_ercore_us_race';
+  $handler->display->display_options['fields']['field_ercore_us_race']['field'] = 'field_ercore_us_race';
+  /* Field: User: Ethnicity */
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['id'] = 'field_ercore_us_ethnicity';
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['table'] = 'field_data_field_ercore_us_ethnicity';
+  $handler->display->display_options['fields']['field_ercore_us_ethnicity']['field'] = 'field_ercore_us_ethnicity';
+  /* Field: User: Disabilities */
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['id'] = 'field_ercore_us_disabilities';
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['table'] = 'field_data_field_ercore_us_disabilities';
+  $handler->display->display_options['fields']['field_ercore_us_disabilities']['field'] = 'field_ercore_us_disabilities';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: User: Actual Doctoral Completion Date (field_ercore_us_doctor_act) */
+  $handler->display->display_options['arguments']['field_ercore_us_doctor_act_value']['id'] = 'field_ercore_us_doctor_act_value';
+  $handler->display->display_options['arguments']['field_ercore_us_doctor_act_value']['table'] = 'field_data_field_ercore_us_doctor_act';
+  $handler->display->display_options['arguments']['field_ercore_us_doctor_act_value']['field'] = 'field_ercore_us_doctor_act_value';
+  $handler->display->display_options['arguments']['field_ercore_us_doctor_act_value']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_ercore_us_doctor_act_value']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['field_ercore_us_doctor_act_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ercore_us_doctor_act_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ercore_us_doctor_act_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_ercore_us_doctor_act_value']['year_range'] = '-25:+3';
+  $handler->display->display_options['arguments']['field_ercore_us_doctor_act_value']['granularity_reset'] = 0;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: User: The user ID */
+  $handler->display->display_options['filters']['uid_raw']['id'] = 'uid_raw';
+  $handler->display->display_options['filters']['uid_raw']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_raw']['field'] = 'uid_raw';
+  $handler->display->display_options['filters']['uid_raw']['operator'] = '!=';
+  $handler->display->display_options['filters']['uid_raw']['value']['value'] = '1';
+  /* Filter criterion: User: Most Senior Project Role (field_ercore_us_sen_role) */
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['id'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['table'] = 'field_data_field_ercore_us_sen_role';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['field'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['value'] = array(
+    4 => '4',
   );
   $views['ercore_table_e_users'] = $view;
 

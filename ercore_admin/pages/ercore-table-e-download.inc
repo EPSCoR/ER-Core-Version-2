@@ -284,6 +284,8 @@ function ercore_table_e_data_publication_build(&$date_array) {
  *    Returns ercore_outputs object for Excel.
  */
 function ercore_table_e_data_participant_build(&$date_array, &$section) {
+  $addition = FALSE;
+  $second_display = '';
   if ($section == 'new-hire') {
     $view_display = 'panel_pane_1';
   }
@@ -292,6 +294,8 @@ function ercore_table_e_data_participant_build(&$date_array, &$section) {
   }
   elseif ($section == 'graduate') {
     $view_display = 'panel_pane_3';
+    $addition = TRUE;
+    $second_display = 'panel_pane_5';
   }
   else {
     $view_display = 'panel_pane_4';
@@ -314,6 +318,10 @@ function ercore_table_e_data_participant_build(&$date_array, &$section) {
     $participant_object[$type]->type = $section;
     $participant_object[$type]->subType = $type;
     $participant_object[$type]->ercoreOutputsBuild($participant_object[$type], $data, $date_for_object);
+    if ($addition === TRUE) {
+      $additional = views_get_view_result('ercore_table_e_users', $second_display, $date_for_view);
+      $participant_object[$type]->ercoreOutputsBuild($participant_object[$type], $additional, $date_for_object);
+    }
   }
   return $participant_object;
 }

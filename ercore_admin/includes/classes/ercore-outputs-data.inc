@@ -45,7 +45,6 @@ class ErcoreOutputs {
     $default_array = ercore_admin_date_array_to_unix($date);
     $default_array = ercore_admin_date_array_converter($default_array);
     $within = NULL;
-
     foreach ($data as $data_row) {
       $current = FALSE;
       // Patent data build.
@@ -138,6 +137,9 @@ class ErcoreOutputs {
           if (isset($data_row->field_field_ercore_us_masters_act[0]['raw'])) {
             $within = $data_row->field_field_ercore_us_masters_act[0]['raw']['value'];
           }
+          if (isset($data_row->field_field_ercore_us_doctor_act[0]['raw'])) {
+            $within = $data_row->field_field_ercore_us_doctor_act[0]['raw']['value'];
+          }
         }
         else {
           if (isset($data_row->field_field_ercore_us_under_act[0]['raw'])) {
@@ -198,7 +200,6 @@ class ErcoreOutputs {
         }
       }
       if ($current == TRUE && $this->ercoreOutputsDateCallback($within, $date_range) == TRUE) {
-
         $this->value1++;
       }
     }
@@ -217,7 +218,7 @@ class ErcoreOutputs {
    * @return bool boolean
    *   Returns boolean value based on date validation.
    */
-  public static function ercoreOutputsDateCallback(&$within_date, &$dates) {
+  public function ercoreOutputsDateCallback(&$within_date, &$dates) {
     if ($within_date == NULL) {
       return FALSE;
     }
@@ -240,9 +241,8 @@ class ErcoreOutputs {
       }
       else {
         $zone = variable_get('date_default_timezone');
-        $test = $within_date;
         $within_date = strtotime($within_date . $zone);
-        return (($dates[0][0]) <= $within_date && ($dates[0][1]) >= $within_date);
+        return ($dates[0][0] <= $within_date && $dates[0][1] >= $within_date);
       }
     }
   }

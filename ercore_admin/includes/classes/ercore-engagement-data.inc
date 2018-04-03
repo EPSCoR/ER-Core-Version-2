@@ -39,66 +39,66 @@ class ErcoreEngagement {
    * @param array $data
    *   Receives data for placement in data object.
    *
-   * @return object $object
+   * @return object
    *   Returns engagement data object.
    */
-  public function ercoreEngagementBuild(&$object, &$data) {
+  public function ercoreEngagementBuild(&$object, array &$data) {
     foreach ($data as $data_row) {
       if ($object->type == 'Project Total') {
         // Total fields.
-        $this->ariFac = $this->ariFac + $data_row->field_field_ercore_ee_ari_fac_t[0]['raw']['value'];
-        $this->ariStu = $this->ariStu + $data_row->field_field_ercore_ee_ari_stu_t[0]['raw']['value'];
-        $this->uiFac = $this->uiFac + $data_row->field_field_ercore_ee_pui_fac_t[0]['raw']['value'];
-        $this->uiStu = $this->uiStu + $data_row->field_field_ercore_ee_pui_stu_t[0]['raw']['value'];
-        $this->msiFac = $this->msiFac + $data_row->field_field_ercore_ee_msi_fac_t[0]['raw']['value'];
-        $this->msiStu = $this->msiStu + $data_row->field_field_ercore_ee_msi_stu_t[0]['raw']['value'];
-        $this->k12T = $this->k12T + $data_row->field_field_ercore_ee_k12i_tec_t[0]['raw']['value'];
-        $this->k12Sd = $this->k12Sd + $data_row->field_field_ercore_ee_k12i_stud_t[0]['raw']['value'];
-        $this->k12St = $this->k12St + $data_row->field_field_ercore_ee_k12i_stut_t[0]['raw']['value'];
-        $this->other = $this->other + $data_row->field_field_ercore_ee_oth_t[0]['raw']['value'];
-        $this->total = $this->total + $data_row->field_field_ercore_ee_t_t[0]['raw']['value'];
+        $this->ariFac += $data_row->field_field_ercore_ee_ari_fac_t[0]['raw']['value'];
+        $this->ariStu += $data_row->field_field_ercore_ee_ari_stu_t[0]['raw']['value'];
+        $this->uiFac += $data_row->field_field_ercore_ee_pui_fac_t[0]['raw']['value'];
+        $this->uiStu += $data_row->field_field_ercore_ee_pui_stu_t[0]['raw']['value'];
+        $this->msiFac += $data_row->field_field_ercore_ee_msi_fac_t[0]['raw']['value'];
+        $this->msiStu += $data_row->field_field_ercore_ee_msi_stu_t[0]['raw']['value'];
+        $this->k12T += $data_row->field_field_ercore_ee_k12i_tec_t[0]['raw']['value'];
+        $this->k12Sd += $data_row->field_field_ercore_ee_k12i_stud_t[0]['raw']['value'];
+        $this->k12St += $data_row->field_field_ercore_ee_k12i_stut_t[0]['raw']['value'];
+        $this->other += $data_row->field_field_ercore_ee_oth_t[0]['raw']['value'];
+        $this->total += $data_row->field_field_ercore_ee_t_t[0]['raw']['value'];
       }
       elseif ($object->type == 'Male') {
         // Male fields.
-        $this->ariFac = $this->ariFac + $data_row->field_field_ercore_ee_ari_fac_m[0]['raw']['value'];
-        $this->ariStu = $this->ariStu + $data_row->field_field_ercore_ee_ari_stu_m[0]['raw']['value'];
-        $this->uiFac = $this->uiFac + $data_row->field_field_ercore_ee_pui_fac_m[0]['raw']['value'];
-        $this->uiStu = $this->uiStu + $data_row->field_field_ercore_ee_pui_stu_m[0]['raw']['value'];
-        $this->msiFac = $this->msiFac + $data_row->field_field_ercore_ee_msi_fac_m[0]['raw']['value'];
-        $this->msiStu = $this->msiStu + $data_row->field_field_ercore_ee_msi_stu_m[0]['raw']['value'];
-        $this->k12T = $this->k12T + $data_row->field_field_ercore_ee_k12i_tec_m[0]['raw']['value'];
-        $this->k12Sd = $this->k12Sd + $data_row->field_field_ercore_ee_k12i_stud_m[0]['raw']['value'];
-        $this->k12St = $this->k12St + $data_row->field_field_ercore_ee_k12i_stut_m[0]['raw']['value'];
-        $this->other = $this->other + $data_row->field_field_ercore_ee_oth_m[0]['raw']['value'];
-        $this->total = $this->total + $data_row->field_field_ercore_ee_m_t[0]['raw']['value'];
+        $this->ariFac += $data_row->field_field_ercore_ee_ari_fac_m[0]['raw']['value'];
+        $this->ariStu += $data_row->field_field_ercore_ee_ari_stu_m[0]['raw']['value'];
+        $this->uiFac += $data_row->field_field_ercore_ee_pui_fac_m[0]['raw']['value'];
+        $this->uiStu += $data_row->field_field_ercore_ee_pui_stu_m[0]['raw']['value'];
+        $this->msiFac += $data_row->field_field_ercore_ee_msi_fac_m[0]['raw']['value'];
+        $this->msiStu += $data_row->field_field_ercore_ee_msi_stu_m[0]['raw']['value'];
+        $this->k12T += $data_row->field_field_ercore_ee_k12i_tec_m[0]['raw']['value'];
+        $this->k12Sd += $data_row->field_field_ercore_ee_k12i_stud_m[0]['raw']['value'];
+        $this->k12St += $data_row->field_field_ercore_ee_k12i_stut_m[0]['raw']['value'];
+        $this->other += $data_row->field_field_ercore_ee_oth_m[0]['raw']['value'];
+        $this->total += $data_row->field_field_ercore_ee_m_t[0]['raw']['value'];
       }
       elseif ($object->type == 'Female') {
         // Female fields.
-        $this->ariFac = $this->ariFac + $data_row->field_field_ercore_ee_ari_fac_f[0]['raw']['value'];
-        $this->ariStu = $this->ariStu + $data_row->field_field_ercore_ee_ari_stu_f[0]['raw']['value'];
-        $this->uiFac = $this->uiFac + $data_row->field_field_ercore_ee_pui_fac_f[0]['raw']['value'];
-        $this->uiStu = $this->uiStu + $data_row->field_field_ercore_ee_pui_stu_f[0]['raw']['value'];
-        $this->msiFac = $this->msiFac + $data_row->field_field_ercore_ee_msi_fac_f[0]['raw']['value'];
-        $this->msiStu = $this->msiStu + $data_row->field_field_ercore_ee_msi_stu_f[0]['raw']['value'];
-        $this->k12T = $this->k12T + $data_row->field_field_ercore_ee_k12i_tec_f[0]['raw']['value'];
-        $this->k12Sd = $this->k12Sd + $data_row->field_field_ercore_ee_k12i_stud_f[0]['raw']['value'];
-        $this->k12St = $this->k12St + $data_row->field_field_ercore_ee_k12i_stut_f[0]['raw']['value'];
-        $this->other = $this->other + $data_row->field_field_ercore_ee_oth_f[0]['raw']['value'];
-        $this->total = $this->total + $data_row->field_field_ercore_ee_f_t[0]['raw']['value'];
+        $this->ariFac += $data_row->field_field_ercore_ee_ari_fac_f[0]['raw']['value'];
+        $this->ariStu += $data_row->field_field_ercore_ee_ari_stu_f[0]['raw']['value'];
+        $this->uiFac += $data_row->field_field_ercore_ee_pui_fac_f[0]['raw']['value'];
+        $this->uiStu += $data_row->field_field_ercore_ee_pui_stu_f[0]['raw']['value'];
+        $this->msiFac += $data_row->field_field_ercore_ee_msi_fac_f[0]['raw']['value'];
+        $this->msiStu += $data_row->field_field_ercore_ee_msi_stu_f[0]['raw']['value'];
+        $this->k12T += $data_row->field_field_ercore_ee_k12i_tec_f[0]['raw']['value'];
+        $this->k12Sd += $data_row->field_field_ercore_ee_k12i_stud_f[0]['raw']['value'];
+        $this->k12St += $data_row->field_field_ercore_ee_k12i_stut_f[0]['raw']['value'];
+        $this->other += $data_row->field_field_ercore_ee_oth_f[0]['raw']['value'];
+        $this->total += $data_row->field_field_ercore_ee_f_t[0]['raw']['value'];
       }
       else {
         // Minority fields.
-        $this->ariFac = $this->ariFac + $data_row->field_field_ercore_ee_ari_fac_mn[0]['raw']['value'];
-        $this->ariStu = $this->ariStu + $data_row->field_field_ercore_ee_ari_stu_mn[0]['raw']['value'];
-        $this->uiFac = $this->uiFac + $data_row->field_field_ercore_ee_pui_fac_mn[0]['raw']['value'];
-        $this->uiStu = $this->uiStu + $data_row->field_field_ercore_ee_pui_stu_mn[0]['raw']['value'];
-        $this->msiFac = $this->msiFac + $data_row->field_field_ercore_ee_msi_fac_mn[0]['raw']['value'];
-        $this->msiStu = $this->msiStu + $data_row->field_field_ercore_ee_msi_stu_mn[0]['raw']['value'];
-        $this->k12T = $this->k12T + $data_row->field_field_ercore_ee_k12i_tec_mn[0]['raw']['value'];
-        $this->k12Sd = $this->k12Sd + $data_row->field_field_ercore_ee_k12i_stud_mn[0]['raw']['value'];
-        $this->k12St = $this->k12St + $data_row->field_field_ercore_ee_k12i_stut_mn[0]['raw']['value'];
-        $this->other = $this->other + $data_row->field_field_ercore_ee_oth_mn[0]['raw']['value'];
-        $this->total = $this->total + $data_row->field_field_ercore_ee_um_t[0]['raw']['value'];
+        $this->ariFac += $data_row->field_field_ercore_ee_ari_fac_mn[0]['raw']['value'];
+        $this->ariStu += $data_row->field_field_ercore_ee_ari_stu_mn[0]['raw']['value'];
+        $this->uiFac += $data_row->field_field_ercore_ee_pui_fac_mn[0]['raw']['value'];
+        $this->uiStu += $data_row->field_field_ercore_ee_pui_stu_mn[0]['raw']['value'];
+        $this->msiFac += $data_row->field_field_ercore_ee_msi_fac_mn[0]['raw']['value'];
+        $this->msiStu += $data_row->field_field_ercore_ee_msi_stu_mn[0]['raw']['value'];
+        $this->k12T += $data_row->field_field_ercore_ee_k12i_tec_mn[0]['raw']['value'];
+        $this->k12Sd += $data_row->field_field_ercore_ee_k12i_stud_mn[0]['raw']['value'];
+        $this->k12St += $data_row->field_field_ercore_ee_k12i_stut_mn[0]['raw']['value'];
+        $this->other += $data_row->field_field_ercore_ee_oth_mn[0]['raw']['value'];
+        $this->total += $data_row->field_field_ercore_ee_um_t[0]['raw']['value'];
       }
     }
     return $object;
