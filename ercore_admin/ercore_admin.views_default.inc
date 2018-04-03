@@ -11603,5 +11603,259 @@ This allows admins to view at a glance those who haven\'t been: in the system, u
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
   $views['ercore_integrity_publications'] = $view;
 
+  $view = new view();
+  $view->name = 'ercore_participants_search';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'users';
+  $view->human_name = 'ERCore Participants Search';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Participants Search';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'administer ercore module';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '50';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'name' => 'name',
+    'field_user_name_middle' => 'field_user_name_middle',
+    'field_user_name_given' => 'field_user_name_given',
+    'field_user_name_family' => 'field_user_name_family',
+    'uid' => 'uid',
+    'field_ercore_us_sen_role' => 'field_ercore_us_sen_role',
+    'rid' => 'rid',
+  );
+  $handler->display->display_options['style_options']['default'] = 'field_user_name_family';
+  $handler->display->display_options['style_options']['info'] = array(
+    'name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_user_name_middle' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_user_name_given' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_user_name_family' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'uid' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ercore_us_sen_role' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'rid' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = 'This view is excluding users who do not have a Drupal role set.';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Field: Name Components: Middle name(s) */
+  $handler->display->display_options['fields']['field_user_name_middle']['id'] = 'field_user_name_middle';
+  $handler->display->display_options['fields']['field_user_name_middle']['table'] = 'field_data_field_user_name';
+  $handler->display->display_options['fields']['field_user_name_middle']['field'] = 'field_user_name_middle';
+  $handler->display->display_options['fields']['field_user_name_middle']['label'] = '';
+  $handler->display->display_options['fields']['field_user_name_middle']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_name_middle']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_user_name_middle']['alter']['text'] = ' [field_user_name_middle]';
+  $handler->display->display_options['fields']['field_user_name_middle']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_name_middle']['hide_empty'] = TRUE;
+  /* Field: Name Components: Given */
+  $handler->display->display_options['fields']['field_user_name_given']['id'] = 'field_user_name_given';
+  $handler->display->display_options['fields']['field_user_name_given']['table'] = 'field_data_field_user_name';
+  $handler->display->display_options['fields']['field_user_name_given']['field'] = 'field_user_name_given';
+  $handler->display->display_options['fields']['field_user_name_given']['label'] = '';
+  $handler->display->display_options['fields']['field_user_name_given']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_name_given']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_user_name_given']['alter']['text'] = ', [field_user_name_given][field_user_name_middle]';
+  $handler->display->display_options['fields']['field_user_name_given']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_name_given']['hide_empty'] = TRUE;
+  /* Field: Name Components: Family */
+  $handler->display->display_options['fields']['field_user_name_family']['id'] = 'field_user_name_family';
+  $handler->display->display_options['fields']['field_user_name_family']['table'] = 'field_data_field_user_name';
+  $handler->display->display_options['fields']['field_user_name_family']['field'] = 'field_user_name_family';
+  $handler->display->display_options['fields']['field_user_name_family']['label'] = '';
+  $handler->display->display_options['fields']['field_user_name_family']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_name_family']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_user_name_family']['alter']['text'] = '[field_user_name_family][field_user_name_given]';
+  $handler->display->display_options['fields']['field_user_name_family']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_name_family']['empty'] = '[name]';
+  /* Field: User: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['label'] = 'Name';
+  $handler->display->display_options['fields']['uid']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['uid']['alter']['text'] = '[field_user_name_family] ';
+  $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
+  /* Field: User: E-mail */
+  $handler->display->display_options['fields']['mail']['id'] = 'mail';
+  $handler->display->display_options['fields']['mail']['table'] = 'users';
+  $handler->display->display_options['fields']['mail']['field'] = 'mail';
+  /* Field: User: Most Senior Project Role */
+  $handler->display->display_options['fields']['field_ercore_us_sen_role']['id'] = 'field_ercore_us_sen_role';
+  $handler->display->display_options['fields']['field_ercore_us_sen_role']['table'] = 'field_data_field_ercore_us_sen_role';
+  $handler->display->display_options['fields']['field_ercore_us_sen_role']['field'] = 'field_ercore_us_sen_role';
+  /* Field: User: Participating Institutions */
+  $handler->display->display_options['fields']['field_ercore_us_inst_ref']['id'] = 'field_ercore_us_inst_ref';
+  $handler->display->display_options['fields']['field_ercore_us_inst_ref']['table'] = 'field_data_field_ercore_us_inst_ref';
+  $handler->display->display_options['fields']['field_ercore_us_inst_ref']['field'] = 'field_ercore_us_inst_ref';
+  $handler->display->display_options['fields']['field_ercore_us_inst_ref']['settings'] = array(
+    'bypass_access' => 0,
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_ercore_us_inst_ref']['delta_offset'] = '0';
+  /* Filter criterion: Realname: Name */
+  $handler->display->display_options['filters']['realname']['id'] = 'realname';
+  $handler->display->display_options['filters']['realname']['table'] = 'realname';
+  $handler->display->display_options['filters']['realname']['field'] = 'realname';
+  $handler->display->display_options['filters']['realname']['operator'] = 'contains';
+  $handler->display->display_options['filters']['realname']['group'] = 1;
+  $handler->display->display_options['filters']['realname']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['realname']['expose']['operator_id'] = 'realname_op';
+  $handler->display->display_options['filters']['realname']['expose']['label'] = 'Name (contains)';
+  $handler->display->display_options['filters']['realname']['expose']['operator'] = 'realname_op';
+  $handler->display->display_options['filters']['realname']['expose']['identifier'] = 'realname';
+  $handler->display->display_options['filters']['realname']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 'All';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['status']['expose']['label'] = 'Active';
+  $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
+  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  /* Filter criterion: User: Most Senior Project Role (field_ercore_us_sen_role) */
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['id'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['table'] = 'field_data_field_ercore_us_sen_role';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['field'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['expose']['operator_id'] = 'field_ercore_us_sen_role_value_op';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['expose']['label'] = 'Most Senior Project Role';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['expose']['operator'] = 'field_ercore_us_sen_role_value_op';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['expose']['identifier'] = 'field_ercore_us_sen_role_value';
+  $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    3 => 0,
+  );
+  /* Filter criterion: User: Roles */
+  $handler->display->display_options['filters']['rid_1']['id'] = 'rid_1';
+  $handler->display->display_options['filters']['rid_1']['table'] = 'users_roles';
+  $handler->display->display_options['filters']['rid_1']['field'] = 'rid';
+  $handler->display->display_options['filters']['rid_1']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['rid_1']['group'] = 1;
+  /* Filter criterion: User: Participating Institutions (field_ercore_us_inst_ref) */
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['id'] = 'field_ercore_us_inst_ref_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['table'] = 'field_data_field_ercore_us_inst_ref';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['field'] = 'field_ercore_us_inst_ref_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator_id'] = 'field_ercore_us_inst_ref_target_id_op';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['label'] = 'Participating Institutions';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['operator'] = 'field_ercore_us_inst_ref_target_id_op';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['identifier'] = 'field_ercore_us_inst_ref_target_id';
+  $handler->display->display_options['filters']['field_ercore_us_inst_ref_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    3 => 0,
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'ercore/participants/search';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Participant Search';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'ercore_admin_menu';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
+
+  $views['ercore_participants_search'] = $view;
+
   return $views;
 }
