@@ -143,14 +143,14 @@ function ercore_table_d_data_build(&$dates) {
 /**
  * Data formatting for placement in Participant data export.
  *
- * @param array $worksheet
- *   Data array of Excel object.
+ * @param obj $worksheet
+ *   Excel object.
  * @param array $collection
  *   Array of Object data.
  * @param int $row
  *   Integer for placing data in correct Excel row.
  */
-function ercore_table_d_cells(array $worksheet, array &$collection, &$row) {
+function ercore_table_d_cells($worksheet, array &$collection, &$row) {
   foreach ($collection as $collection_data) {
     $worksheet->setCellValue('B' . $row, $collection_data->ariFac);
     $worksheet->setCellValue('C' . $row, $collection_data->ariStu);
