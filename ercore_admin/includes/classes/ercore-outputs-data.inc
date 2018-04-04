@@ -33,7 +33,7 @@ class ErcoreOutputs {
    * @param array $data
    *   Receives data for placement in data object.
    *
-   * @return object $object
+   * @return object
    *   Returns outputs data object.
    */
   public function ercoreOutputsBuild(&$object, &$data, &$date_range) {
@@ -215,10 +215,10 @@ class ErcoreOutputs {
    * @param array $dates
    *   Receives date array for validation against string.
    *
-   * @return bool boolean
+   * @return bool
    *   Returns boolean value based on date validation.
    */
-  public function ercoreOutputsDateCallback(&$within_date, &$dates) {
+  public function ercoreOutputsDateCallback(&$within_date, array &$dates) {
     if ($within_date == NULL) {
       return FALSE;
     }

@@ -177,10 +177,10 @@ function ercore_table_e_download_callback_data(&$date_range, $sheet = 0) {
  * Returns patent data array for Excel document.
  *
  * @param array $date_array
- *    Dates of selected range.
+ *   Dates of selected range.
  *
- * @return object $new_object
- *    Returns ercore_outputs object for Excel.
+ * @return object
+ *   Returns ercore_outputs object for Excel.
  */
 function ercore_table_e_data_patent_build(&$date_array) {
   // Default Date Range.
@@ -212,12 +212,12 @@ function ercore_table_e_data_patent_build(&$date_array) {
  * Returns proposal data array for Excel document.
  *
  * @param array $date_array
- *    Dates of selected range.
+ *   Dates of selected range.
  *
- * @return object $new_object
- *    Returns ercore_outputs object for Excel.
+ * @return object
+ *   Returns ercore_outputs object for Excel.
  */
-function ercore_table_e_data_proposal_build(&$date_array) {
+function ercore_table_e_data_proposal_build(array &$date_array) {
   $default_build_date = ercore_admin_view_start_end_dates();
   // Date String.
   $date_for_view = ercore_admin_download_path($default_build_date);
@@ -245,10 +245,10 @@ function ercore_table_e_data_proposal_build(&$date_array) {
  * Returns publication data array for Excel document.
  *
  * @param array $date_array
- *    Dates of selected range.
+ *   Dates of selected range.
  *
- * @return object $new_object
- *    Returns ercore_outputs object for Excel.
+ * @return object
+ *   Returns ercore_outputs object for Excel.
  */
 function ercore_table_e_data_publication_build(&$date_array) {
   $default_build_date = ercore_admin_view_start_end_dates();
@@ -276,12 +276,12 @@ function ercore_table_e_data_publication_build(&$date_array) {
  * Returns Participant data arrays for Excel document.
  *
  * @param array $date_array
- *    Dates of selected range.
+ *   Dates of selected range.
  * @param string $section
- *    Section Variable to set values for processing.
+ *   Section Variable to set values for processing.
  *
- * @return object $participant_object
- *    Returns ercore_outputs object for Excel.
+ * @return object
+ *   Returns ercore_outputs object for Excel.
  */
 function ercore_table_e_data_participant_build(&$date_array, &$section) {
   $addition = FALSE;
@@ -330,15 +330,15 @@ function ercore_table_e_data_participant_build(&$date_array, &$section) {
  * Data formatting for placement in Participant data export.
  *
  * @param array $worksheet
- *    Data array of Excel object.
+ *   Data array of Excel object.
  * @param array $collection
- *    Array of Object data.
+ *   Array of Object data.
  * @param string $section
- *    String variable identifying section for different processing.
+ *   String variable identifying section for different processing.
  * @param int $row
- *    Integer for placing data in correct Excel row.
+ *   Integer for placing data in correct Excel row.
  */
-function ercore_table_e_cells($worksheet, &$collection, &$section, &$row) {
+function ercore_table_e_cells(array $worksheet, array &$collection, &$section, &$row) {
   foreach ($collection as $collection_data) {
     if ($section == 'proposal') {
       $worksheet->setCellValue('B' . $row, $collection_data->value1);

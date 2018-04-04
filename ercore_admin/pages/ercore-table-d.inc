@@ -50,8 +50,11 @@ For the sake of bevity, the headings display the names used internally by the sy
  *
  * @param array $variables
  *   A nested a array of date ranges.
+ *
+ * @return array
+ *   Returns Collection object for NSF Table B data.
  */
-function ercore_table_d($variables) {
+function ercore_table_d(array $variables) {
   $date_range = $variables['ranges'];
   $title = 'Download NSF Table D';
   if (isset($date_range[0])) {
