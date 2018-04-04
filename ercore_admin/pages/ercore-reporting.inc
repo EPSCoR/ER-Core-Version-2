@@ -158,7 +158,7 @@ function ercore_summary_table($variables) {
     ),
     'ercore_highlight' => array(
       'name' => 'Highlights',
-      'path' => 'highlghts',
+      'path' => 'highlights',
       'field' => 'field_field_ercore_hi_date',
     ),
     'ercore_participant' => array(

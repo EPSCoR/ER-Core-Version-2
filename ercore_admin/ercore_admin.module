@@ -507,7 +507,6 @@ function ercore_admin_views_query_alter(&$view, &$query) {
   }
 }
 
-
 /**
  * Implements hook_theme_registry_alter().
  */

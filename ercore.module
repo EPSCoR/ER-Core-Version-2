@@ -141,7 +141,6 @@ function _ercore_callback_node_add_page() {
   return $print_type;
 }
 
-
 /**
  * Receives node type array, returns true if type is ERCore.
  *
@@ -592,6 +591,7 @@ function ercore_form_ercore_publication_node_form_alter(&$form, &$form_state, $f
     ),
   );
 }
+
 /**
  * Implements hook_form_FORM_ID_alter().
  */
@@ -606,6 +606,7 @@ function ercore_form_ercore_presentation_node_form_alter(&$form, &$form_state, $
     ),
   );
 }
+
 /**
  * Implements hook_form_FORM_ID_alter().
  */
@@ -959,7 +960,7 @@ function ercore_minority_count(&$form, &$form_state) {
  *   Under-represented Minority attendee integer value.
  *
  * @return bool
- *   Returns comparison boolean.
+ *   Return boolean of comparison.
  */
 function ercore_minority_count_compare(&$male, &$female, &$undeclared, &$minority) {
   $attendees = $male + $female + $undeclared;
@@ -1005,15 +1006,16 @@ function ercore_help($path, $arg) {
       if (module_exists('ercore_admin')) {
 
         return t('ERCore administration pages include <a href="@user-guide">
-User Guides</a> and an <a href="@admin-guide">Administrative Guide</a>.', array(
-          '@user-guide' => $base_url . '/ercore/guides',
-          '@admin-guide' => $base_url . '/ercore/admin-guide',
-        ));
+User Guides</a> and an <a href="@admin-guide">Administrative Guide</a>.',
+          array(
+            '@user-guide' => $base_url . '/ercore/guides',
+            '@admin-guide' => $base_url . '/ercore/admin-guide',
+          ));
       }
-    else {
-      return t('Install ERCore Admin module for User and Administrative Guide
+      else {
+        return t('Install ERCore Admin module for User and Administrative Guide
       pages.');
-    }
+      }
   }
 }
 
@@ -1160,7 +1162,8 @@ function _ercore_parse_ee_file(&$field_collection_item) {
     $worksheet = $obj_php_excel->getActiveSheet();
 
     // Makes sure that it's the expected excel sheet.
-    if ($worksheet->getCellByColumnAndRow(2, 1)->getValue() != "External Engagement Reporting Sheet"
+    if ($worksheet->getCellByColumnAndRow(2, 1)
+      ->getValue() != "External Engagement Reporting Sheet"
     ) {
       return;
     }
