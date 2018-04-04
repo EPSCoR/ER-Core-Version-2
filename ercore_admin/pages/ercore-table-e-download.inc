@@ -329,8 +329,8 @@ function ercore_table_e_data_participant_build(&$date_array, &$section) {
 /**
  * Data formatting for placement in Participant data export.
  *
- * @param array $worksheet
- *   Data array of Excel object.
+ * @param obj $worksheet
+ *   Excel object.
  * @param array $collection
  *   Array of Object data.
  * @param string $section
@@ -338,7 +338,7 @@ function ercore_table_e_data_participant_build(&$date_array, &$section) {
  * @param int $row
  *   Integer for placing data in correct Excel row.
  */
-function ercore_table_e_cells(array $worksheet, array &$collection, &$section, &$row) {
+function ercore_table_e_cells($worksheet, array &$collection, &$section, &$row) {
   foreach ($collection as $collection_data) {
     if ($section == 'proposal') {
       $worksheet->setCellValue('B' . $row, $collection_data->value1);
