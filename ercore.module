@@ -1265,14 +1265,14 @@ function _ercore_parse_ee_file(&$field_collection_item) {
  * @param object $obj
  *   Data object to be used in validation.
  * @param array $value
- *   Vvalue to be compared with $object.
+ *   Value to be compared with $object.
  * @param bool $default
  *   Sets default value to be returned.
  *
  * @return bool
  *   Returns default value to be used.
  */
-function _ercore_get($obj, array $value, $default = FALSE) {
+function _ercore_get($obj, $value, $default = FALSE) {
   switch (gettype($obj)) {
     case 'array':
       return isset($obj[$value]) ? $obj[$value] : $default;
