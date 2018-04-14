@@ -518,7 +518,11 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = TRUE;
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   /* Footer: Global: Unfiltered text */
   $handler->display->display_options['footer']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom']['table'] = 'views';
@@ -534,9 +538,9 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['fields']['uid']['id'] = 'uid';
   $handler->display->display_options['fields']['uid']['table'] = 'users';
   $handler->display->display_options['fields']['uid']['field'] = 'uid';
-  $handler->display->display_options['fields']['uid']['group_type'] = 'count';
   $handler->display->display_options['fields']['uid']['label'] = '';
   $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
   /* Field: User: Participating Date(s) */
   $handler->display->display_options['fields']['field_ercore_us_part_date']['id'] = 'field_ercore_us_part_date';
   $handler->display->display_options['fields']['field_ercore_us_part_date']['table'] = 'field_data_field_ercore_us_part_date';
@@ -559,13 +563,6 @@ function ercore_admin_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: User: The user ID */
-  $handler->display->display_options['filters']['uid_raw']['id'] = 'uid_raw';
-  $handler->display->display_options['filters']['uid_raw']['table'] = 'users';
-  $handler->display->display_options['filters']['uid_raw']['field'] = 'uid_raw';
-  $handler->display->display_options['filters']['uid_raw']['operator'] = '!=';
-  $handler->display->display_options['filters']['uid_raw']['value']['value'] = '1';
-  $handler->display->display_options['filters']['uid_raw']['group'] = 1;
   /* Filter criterion: Content: Participating (field_ercore_in_participating) */
   $handler->display->display_options['filters']['field_ercore_in_participating_value']['id'] = 'field_ercore_in_participating_value';
   $handler->display->display_options['filters']['field_ercore_in_participating_value']['table'] = 'field_data_field_ercore_in_participating';
@@ -575,10 +572,17 @@ function ercore_admin_views_default_views() {
     1 => '1',
   );
   $handler->display->display_options['filters']['field_ercore_in_participating_value']['group'] = 1;
+  /* Filter criterion: User: The user ID */
+  $handler->display->display_options['filters']['uid_raw']['id'] = 'uid_raw';
+  $handler->display->display_options['filters']['uid_raw']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_raw']['field'] = 'uid_raw';
+  $handler->display->display_options['filters']['uid_raw']['operator'] = '!=';
+  $handler->display->display_options['filters']['uid_raw']['value']['value'] = '1';
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'count');
-  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $views['data_ercore_participant'] = $view;
 
   $view = new view();
@@ -5850,15 +5854,6 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
-  /* Filter criterion: User: Name */
-  $handler->display->display_options['filters']['uid']['id'] = 'uid';
-  $handler->display->display_options['filters']['uid']['table'] = 'users';
-  $handler->display->display_options['filters']['uid']['field'] = 'uid';
-  $handler->display->display_options['filters']['uid']['operator'] = 'not in';
-  $handler->display->display_options['filters']['uid']['value'] = array(
-    0 => '1',
-  );
-  $handler->display->display_options['filters']['uid']['group'] = 1;
   /* Filter criterion: User: Most Senior Project Role (field_ercore_us_sen_role) */
   $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['id'] = 'field_ercore_us_sen_role_value';
   $handler->display->display_options['filters']['field_ercore_us_sen_role_value']['table'] = 'field_data_field_ercore_us_sen_role';
@@ -5878,6 +5873,12 @@ function ercore_admin_views_default_views() {
     7 => 0,
     3 => 0,
   );
+  /* Filter criterion: User: The user ID */
+  $handler->display->display_options['filters']['uid_raw']['id'] = 'uid_raw';
+  $handler->display->display_options['filters']['uid_raw']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_raw']['field'] = 'uid_raw';
+  $handler->display->display_options['filters']['uid_raw']['operator'] = '!=';
+  $handler->display->display_options['filters']['uid_raw']['value']['value'] = '1';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

@@ -1,10 +1,12 @@
 <?php
+
 /**
  * @file
  * File for the ERCore Reporting page.
  */
 
 include_once drupal_get_path('module', 'ercore_admin') . "/includes/ercore-admin-var.inc";
+
 /**
  * Constructs the epscor reporting page.
  *
@@ -290,12 +292,12 @@ function ercore_reporting_callback_submit($form, &$form_state) {
  * Receives link values and generates links.
  *
  * @param array $link
- *    Uses View to control access.
+ *   Uses View to control access.
  * @param array $ranges
- *    Description.
+ *   Description.
  *
- * @return array $title
- *    Drupal link array.
+ * @return array
+ *   Drupal link array.
  */
 function ercore_format_label(&$link, &$ranges) {
   $argument_date_format = variable_get('date_format_ercore_date_format_filter');
@@ -328,7 +330,7 @@ function ercore_format_label(&$link, &$ranges) {
  * @param array $dates
  *   Receives date array for validation against string.
  *
- * @return bool boolean
+ * @return bool
  *   Returns boolean value based on date validation.
  */
 function ercore_reporting_date_callback(&$within_date, &$dates) {
