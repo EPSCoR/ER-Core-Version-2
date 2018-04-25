@@ -649,7 +649,11 @@ function ercore_form_user_profile_form_alter(&$form, &$form_state, $form_id) {
   // User field Advisor #states.
   $form['field_ercore_us_advisor']['#states'] = array(
     'visible' => array(
-      ':input[name="field_ercore_us_sen_role[und]"]' => array('value' => '3'),
+      ':input[name="field_ercore_us_sen_role[und]"]' => array(
+        array('value' => '3'),
+        array('value' => '4'),
+        array('value' => '5'),
+      ),
     ),
   );
   // Remove n/a option from field_ercore_us_fac_support.
