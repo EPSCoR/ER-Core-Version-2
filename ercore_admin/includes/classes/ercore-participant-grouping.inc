@@ -29,7 +29,7 @@ class ErcoreParticipantGroup {
   /**
    * Type for internal function.
    *
-   * @return array $ercore_no_new_values
+   * @return array
    *   Array of participant type for internal function.
    */
   public static function ercoreNoNewValues() {
@@ -96,7 +96,8 @@ class ErcoreParticipantGroup {
     }
     // Disabled.
     if (isset($view_row->field_field_ercore_us_disabilities[0])) {
-      if ($view_row->field_field_ercore_us_disabilities[0]['raw']['safe_value'] != 'None') {
+      if ($view_row->field_field_ercore_us_disabilities[0]['raw']['safe_value'] != 'None' &&
+        $view_row->field_field_ercore_us_disabilities[0]['raw']['safe_value'] != 'Prefer not to Respond') {
         $this->disabled++;
       }
     }
@@ -115,7 +116,7 @@ class ErcoreParticipantGroup {
    * @param array $dates
    *   Receives date array for validation against string.
    *
-   * @return bool boolean
+   * @return bool
    *   Returns boolean value based on date validation.
    */
   public static function ercoreNewDateCallback(&$hired, &$dates) {
