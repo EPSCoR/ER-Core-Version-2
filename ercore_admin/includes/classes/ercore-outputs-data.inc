@@ -32,6 +32,8 @@ class ErcoreOutputs {
    *   Receives outputs data object for data placement.
    * @param array $data
    *   Receives data for placement in data object.
+   * @param array $date_range
+   *   Array of date values.
    *
    * @return object
    *   Returns outputs data object.
@@ -193,7 +195,8 @@ class ErcoreOutputs {
           }
         }
         if ($object->subType == 'Disabled' && $disabled_value == TRUE) {
-          if ($data_row->field_field_ercore_us_disabilities[0]['rendered']['#markup'] != 'None') {
+          if ($data_row->field_field_ercore_us_disabilities[0]['rendered']['#markup'] != 'None' &&
+            $data_row->field_field_ercore_us_disabilities[0]['rendered']['#markup'] != 'Prefer not to Respond') {
             $current = TRUE;
             $this->value2++;
           }

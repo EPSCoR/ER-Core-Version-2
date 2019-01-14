@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * File for the ERCore Table E Download pages.
@@ -67,7 +68,7 @@ function ercore_table_e_download_callback($date_range) {
  * @param int $sheet
  *   Excel sheet for importing to different pages of external file.
  *
- * @return \PHPExcel Error messages for PHPExcel errors.
+ * @return \PHPExcel
  *   Error messages for PHPExcel errors.
  *
  * @throws \PHPExcel_Exception

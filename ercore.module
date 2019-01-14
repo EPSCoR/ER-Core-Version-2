@@ -964,7 +964,7 @@ function ercore_minority_count(&$form, &$form_state) {
  *   Under-represented Minority attendee integer value.
  *
  * @return bool
- *   Return boolean of comparison.
+ *   Returns comparison boolean.
  */
 function ercore_minority_count_compare(&$male, &$female, &$undeclared, &$minority) {
   $attendees = $male + $female + $undeclared;
@@ -1010,11 +1010,11 @@ function ercore_help($path, $arg) {
       if (module_exists('ercore_admin')) {
 
         return t('ERCore administration pages include <a href="@user-guide">
-User Guides</a> and an <a href="@admin-guide">Administrative Guide</a>.',
-          array(
+          User Guides</a> and an <a href="@admin-guide">Administrative Guide</a>.', array(
             '@user-guide' => $base_url . '/ercore/guides',
             '@admin-guide' => $base_url . '/ercore/admin-guide',
-          ));
+          )
+        );
       }
       else {
         return t('Install ERCore Admin module for User and Administrative Guide

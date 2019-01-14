@@ -25,6 +25,9 @@ function nsf_table_e_callback() {
  *
  * @param array $variables
  *    A nested a array of date ranges.
+ *
+ * @return array
+ *   Returns array of data for Table E.
  */
 function ercore_table_e($variables) {
   $default_range = ercore_start_end_dates();

@@ -52,7 +52,7 @@ class ErcoreParticipantGroup {
    * @param bool $new
    *   Boolean value determines placement within data structure.
    *
-   * @return object $group
+   * @return object
    *   Returns data object for use.
    */
   public function ercoreParticipantGroupData(&$group, &$view_row, $new) {
@@ -161,7 +161,7 @@ class ErcoreParticipantCollection {
    * @param array $dates
    *   Dates to determines placement within data structure.
    *
-   * @return object $group
+   * @return object
    *   Returns data object for use.
    */
   public function ercoreCollectionData(&$collection, &$view, &$dates) {
